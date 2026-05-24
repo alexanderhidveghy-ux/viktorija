@@ -7,14 +7,15 @@ export const metadata: Metadata = {
     alternates: { canonical: "/academia/pmu-ocnych-liniek" },
 };
 
-const PHOTOS = ["/academia/kurz3/3.png", "/academia/kurz3/vik4.jpg", "/academia/kurz3/vik1.jpg"];
+const PHOTOS = ["/academia/kurz3/3.png", "/academia/kurz3/IMG_5826 1.jpg", "/academia/kurz3/vik1.jpg"];
 
-function PhotoSection({ photo, flip = false, children }: { photo: string; flip?: boolean; children: React.ReactNode }) {
+function PhotoSection({ photo, flip = false, objectPosition, aspectClass, children }: { photo: string; flip?: boolean; objectPosition?: string; aspectClass?: string; children: React.ReactNode }) {
     const isPortraitPNG = /\.png$/i.test(photo);
+    const containerClass = aspectClass || (isPortraitPNG ? "aspect-[4/5]" : "min-h-[400px] md:min-h-[520px]");
     return (
         <div className={`grid grid-cols-1 md:grid-cols-2 gap-0 items-start ${flip ? "md:[&>*:first-child]:order-2 md:[&>*:last-child]:order-1" : ""}`}>
-            <div className={`relative overflow-hidden rounded-2xl ${isPortraitPNG ? "aspect-[4/5]" : "min-h-[400px] md:min-h-[520px]"}`}>
-                <Image src={photo} alt="" fill className="object-cover" />
+            <div className={`relative overflow-hidden rounded-2xl ${containerClass}`}>
+                <Image src={photo} alt="" fill className="object-cover" style={objectPosition ? { objectPosition } : undefined} />
             </div>
             <div className="flex flex-col justify-start px-0 md:px-12 pt-6 md:pt-0 pb-10">
                 {children}
@@ -22,15 +23,6 @@ function PhotoSection({ photo, flip = false, children }: { photo: string; flip?:
         </div>
     );
 }
-
-const SCHEDULE = [
-    { num: "1", title: "ONLINE ŠTART", date: "08:00 – 09:00", items: ["Úvodné online stretnutie, nastavenie systému práce"] },
-    { num: "2", title: "ONLINE PRÍPRAVA", date: "4 hodiny", items: ["Anatómia očí", "Technické vybavenie", "Koloristika", "Cvičenie na papieri a latexe"] },
-    { num: "3", title: "1. DEŇ – PREZENČNE", date: "09:00 – 18:00", items: ["Analýza domácich úloh", "Nastavenie ruky", "Odpracovanie techník na latexe", "Demo ukážka od Viktorije"] },
-    { num: "4", title: "2. DEŇ – PRAX", date: "09:00 – 18:00", items: ["Prax na modelkách", "Odpracovanie dvoch techník"] },
-    { num: "5", title: "ONLINE KONTROLA", date: "08:00 – 09:00", items: ["Analýza domácich prác"] },
-    { num: "6", title: "KOREKCIA O MESIAC", date: "09:00 – 18:00", items: ["Analýza vyhojených prác", "Pochopenie procesu hojenia", "Dovedenie práce k profesionálnemu výsledku"] },
-];
 
 import CourseBookingSection from "@/app/academia/_components/CourseBookingSection";
 import AnimatedSpace from "@/app/academia/_components/AnimatedSpace";
@@ -66,7 +58,7 @@ export default function Kurz3Page() {
             </PhotoSection>
 
             {/* Section 2: What we will cover & Who it is for */}
-            <PhotoSection photo={PHOTOS[1]} flip={true}>
+            <PhotoSection photo={PHOTOS[1]} flip={true} aspectClass="aspect-[4/5] w-full" objectPosition="top">
                 <div className="space-y-4 font-montserrat font-light text-[#1D0E22] leading-tight text-lg [&_p]:my-0">
                     <p className="font-medium text-base uppercase tracking-wider">Počas kurzu sa budeme venovať:</p>
                     <ul className="space-y-1.5 text-sm text-[#1D0E22]/80">
