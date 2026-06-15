@@ -62,7 +62,7 @@ export default function ArtOfPmuPage() {
             {/* Section 1: Estetika a biznis + photo */}
             <PhotoSection photo={PHOTOS[0]} flip={false}>
                 <div className="space-y-4 font-montserrat font-light text-[#1D0E22] leading-tight text-lg [&_p]:my-0">
-                    <h2 className="font-marcellus text-xl md:text-2xl uppercase tracking-widest text-[#1D0E22]">Estetika a biznis</h2>
+                    <h2 className="font-marcellus text-2xl md:text-3xl uppercase tracking-widest text-[#1D0E22] mb-4">Estetika a biznis</h2>
                     <p>
                         Moderný permanentný make-up patrí medzi vyhľadávané procedúry aktívnych žien. Šetrí čas a pomáha ženám pôsobiť harmonicky, prirodzene a upravene každý deň.
                     </p>

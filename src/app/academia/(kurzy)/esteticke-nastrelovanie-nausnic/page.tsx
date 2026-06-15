@@ -41,9 +41,9 @@ export default function Kurz7Page() {
                     />
                 </div>
                 <div className="flex flex-col justify-start px-0 md:px-12 pt-6 md:pt-0 pb-10 space-y-4 font-montserrat font-light text-[#1D0E22] leading-tight text-lg [&_p]:my-0">
-                    <p className="font-montserrat text-lg font-light text-[#1D0E22] leading-snug mb-2 font-medium">
+                    <h2 className="font-marcellus text-2xl md:text-3xl uppercase tracking-widest text-[#1D0E22] mb-4">
                         Estetické nastreľovanie náušníc — Individuálny praktický kurz
-                    </p>
+                    </h2>
                     <p>
                         Keď som sa v roku 2001 učila nastreľovať náušnice, školenie vyzeralo jednoducho — pri kúpe pištole výrobca ukázal základné miesta vpichu a tým sa výučba prakticky končila.
                     </p>

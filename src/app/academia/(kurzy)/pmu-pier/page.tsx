@@ -9,14 +9,43 @@ export const metadata: Metadata = {
 
 const PHOTOS = ["/academia/kurz2/4.png", "/academia/kurz2/kozmetika.webp", "/academia/kurz2/vik2.jpg"];
 
-function PhotoSection({ photo, flip = false, children }: { photo: string; flip?: boolean; children: React.ReactNode }) {
+function PhotoSection({
+    photo,
+    flip = false,
+    contentClassName = "md:px-12",
+    videoFallback,
+    children
+}: {
+    photo: string;
+    flip?: boolean;
+    contentClassName?: string;
+    videoFallback?: string;
+    children: React.ReactNode;
+}) {
     const isPortraitPNG = /\.png$/i.test(photo);
+    const isVideo = /\.(mov|mp4|webm)$/i.test(photo);
+    const getVideoType = (src: string) => /\.webm$/i.test(src) ? "video/webm" : /\.mp4$/i.test(src) ? "video/mp4" : "video/quicktime";
     return (
         <div className={`grid grid-cols-1 md:grid-cols-2 gap-0 items-start ${flip ? "md:[&>*:first-child]:order-2 md:[&>*:last-child]:order-1" : ""}`}>
             <div className={`relative overflow-hidden rounded-2xl ${isPortraitPNG ? "aspect-[4/5]" : "min-h-[400px] md:min-h-[520px]"}`}>
-                <Image src={photo} alt="" fill className="object-cover" />
+                {isVideo ? (
+                    <video
+                        aria-hidden="true"
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        preload="metadata"
+                        className="absolute inset-0 h-full w-full object-cover"
+                    >
+                        {videoFallback && <source src={videoFallback} type={getVideoType(videoFallback)} />}
+                        <source src={photo} type={getVideoType(photo)} />
+                    </video>
+                ) : (
+                    <Image src={photo} alt="" fill className="object-cover" />
+                )}
             </div>
-            <div className="flex flex-col justify-start px-0 md:px-12 pt-6 md:pt-0 pb-10">
+            <div className={`flex flex-col justify-start px-0 ${contentClassName} pt-6 md:pt-0 pb-10`}>
                 {children}
             </div>
         </div>
@@ -41,33 +70,65 @@ export default function Kurz2Page() {
             <h1 className="sr-only">Master Class: PMU Pier</h1>
 
             {/* Section 1: Techniques */}
-            <PhotoSection photo={PHOTOS[0]} flip={false}>
-                <div className="space-y-6">
-                    <p className="font-montserrat text-lg font-light text-[#1D0E22] leading-snug">
-                        Špecializačný kurz zameraný na moderné techniky pier, systematizáciu vedomostí a precíznu prácu s tvarom a farbou.
+            <PhotoSection photo={PHOTOS[0]} flip={false} contentClassName="md:pl-8 md:pr-6">
+                <div className="space-y-3">
+                    <div className="space-y-1">
+                        <p className="font-montserrat text-xs uppercase tracking-[0.18em] text-[#1D0E22]/50 leading-tight">
+                            MASTER CLASS
+                        </p>
+                        <h2 className="font-marcellus text-2xl md:text-3xl uppercase tracking-widest text-[#1D0E22] leading-none">
+                            Permanentný make-up pier
+                        </h2>
+                    </div>
+
+                    <p className="font-montserrat text-base md:text-lg font-light text-[#1D0E22] leading-[1.18]">
+                        Na kurze sa budeme venovať dvom moderným technikám permanentného make-upu pier:
                     </p>
-                    
-                    <h2 className="font-marcellus text-xl md:text-2xl uppercase tracking-widest text-[#1D0E22] pt-4">
-                        Čo sa naučíte
-                    </h2>
-                    <ul className="space-y-4 font-montserrat text-lg font-light text-[#1D0E22] leading-snug">
+
+                    <ul className="space-y-2 font-montserrat text-base md:text-lg font-light text-[#1D0E22] leading-[1.16]">
                         {[
-                            "technika ombré s minerálnymi pigmentmi",
-                            "kórejské pery s hybridnými pigmentmi",
-                            "vytvorenie čistej formy a rovnomerného vyfarbenia bez efektu rozmazaného rúžu"
+                            "efektu kórejských pier — jemná červeň prirodzene vychádzajúca zo stredu pier so sviežim a prirodzeným výsledkom",
+                            "ombré technike — definovanejšia kontúra plynulo prechádzajúca do jemného púdrového ružového alebo broskyňového odtieňa smerom do vnútra pier"
                         ].map((item, i) => (
-                            <li key={i} className="flex gap-3"><span className="text-[#1D0E22]/30 mt-0.5 shrink-0">✦</span><span>{item}</span></li>
+                            <li key={i} className="flex gap-2"><span className="text-[#1D0E22]/30 text-sm mt-0.5 shrink-0">✦</span><span>{item}</span></li>
                         ))}
                     </ul>
-                    <div className="pt-4 space-y-1 font-montserrat text-sm text-[#1D0E22]/70">
-                        <p><span className="font-medium text-[#1D0E22]">Začiatok:</span> 14. 9. 2026</p>
-                        <p><span className="font-medium text-[#1D0E22]">Záverečná korekcia:</span> 23. 10. 2026</p>
-                    </div>
+
+                    <p className="font-montserrat text-base md:text-lg font-light text-[#1D0E22] leading-[1.18]">
+                        Permanentný make-up pier vyžaduje jemnosť, technickú kontrolu a správne pochopenie práce s pokožkou pier.
+                    </p>
+
+                    <p className="font-montserrat text-base md:text-lg font-light text-[#1D0E22] leading-[1.18]">
+                        Jedným z najdôležitejších bodov pri práci na perách je správne vyrovnanie pracovnej plochy — tak akurát.
+                        Nie príliš veľa, ale ani málo.
+                        Práve správne napnutie pokožky výrazne ovplyvňuje čistotu implantácie pigmentu aj následné hojenie.
+                    </p>
+
+                    <h3 className="font-marcellus text-xl md:text-2xl uppercase tracking-widest text-[#1D0E22] pt-1 leading-none">
+                        Budeme sa venovať:
+                    </h3>
+
+                    <ul className="space-y-2 font-montserrat text-base md:text-lg font-light text-[#1D0E22] leading-[1.16]">
+                        {[
+                            "správnemu šrafovaniu končekom ihly",
+                            "práci s rýchlosťou strojčeka",
+                            "netraumatickému pohybu ruky",
+                            "technike práce bez zbytočného opuchu a krvácania",
+                            "vytváraniu jemných farebných prechodov",
+                            "práci s formou a optickou harmóniou pier"
+                        ].map((item, i) => (
+                            <li key={i} className="flex gap-2"><span className="text-[#1D0E22]/30 text-sm mt-0.5 shrink-0">✦</span><span>{item}</span></li>
+                        ))}
+                    </ul>
+
+                    <p className="font-montserrat text-base md:text-lg font-light text-[#1D0E22] leading-[1.18]">
+                        Počas kurzu budeme pracovať s minerálnymi aj hybridnými pigmentami, aby študenti precítili rozdiel v implantácii pigmentu, jeho správaní v pokožke a vo vyhojenom výsledku.
+                    </p>
                 </div>
             </PhotoSection>
 
             {/* Section 2: Schedule */}
-            <PhotoSection photo={PHOTOS[1]} flip={true}>
+            <PhotoSection photo="/academia/kurz2/PERY.MOV" videoFallback="/academia/kurz2/PERY.mp4" flip={true}>
                 <div className="space-y-6">
                     <div>
                         <h2 className="font-marcellus text-xl md:text-2xl uppercase tracking-widest text-[#1D0E22]">Program kurzu</h2>
@@ -117,7 +178,7 @@ export default function Kurz2Page() {
             <div className="grid md:grid-cols-2 gap-6 md:max-w-[66.666%] md:mx-auto">
                 <div className="border border-[#1D0E22]/30 bg-[#1D0E22]/5 rounded-2xl p-8 text-center space-y-3 flex flex-col justify-center">
                     <p className="font-montserrat text-xs uppercase tracking-[0.2em] text-[#1D0E22]/50">Cena kurzu</p>
-                    <p className="font-marcellus text-5xl text-[#1D0E22]">1 240 €</p>
+                    <p className="font-marcellus text-5xl text-[#1D0E22]">1 268 €</p>
                 </div>
                 <a
                     href="https://www.tatrabanka.sk/sk/business/uvery-financovanie/online-podnikatelsky-uver/?utm_medium=banner&utm_campaign=opu2026&utm_source=viktorijakendra"

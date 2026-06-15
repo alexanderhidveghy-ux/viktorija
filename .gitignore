@@ -44,6 +44,7 @@ next-env.d.ts
 *.MOV
 *.MP4
 *.mp4
+!public/academia/kurz2/PERY.mp4
 
 # Quarantined / unused media (kept locally for review, do not commit)
 /public/_unused/

@@ -10,11 +10,12 @@ export const metadata: Metadata = {
     alternates: { canonical: "/academia/laser-touch" },
 };
 
-function PhotoSection({ photo, flip = false, children }: { photo: string; flip?: boolean; children: React.ReactNode }) {
+function PhotoSection({ photo, flip = false, aspectClass, children }: { photo: string; flip?: boolean; aspectClass?: string; children: React.ReactNode }) {
     const isPortraitPNG = /\.png$/i.test(photo);
+    const containerClass = aspectClass || (isPortraitPNG ? "aspect-[4/5]" : "min-h-[400px] md:min-h-[520px]");
     return (
         <div className={`grid grid-cols-1 md:grid-cols-2 gap-0 items-start ${flip ? "md:[&>*:first-child]:order-2 md:[&>*:last-child]:order-1" : ""}`}>
-            <div className={`relative overflow-hidden rounded-2xl ${isPortraitPNG ? "aspect-[4/5]" : "min-h-[400px] md:min-h-[520px]"}`}>
+            <div className={`relative overflow-hidden rounded-2xl ${containerClass}`}>
                 <Image src={photo} alt="" fill className="object-cover" />
             </div>
             <div className="flex flex-col justify-start px-0 md:px-12 pt-6 md:pt-0 pb-10">
@@ -31,82 +32,94 @@ export default function Kurz6Page() {
 
             {/* Section 1: Photo + Intro */}
             <PhotoSection photo="/academia/kurz6/lasertouch%20main.PNG" flip={false}>
-                <div className="space-y-4 font-montserrat font-light text-[#1D0E22] leading-tight text-lg [&_p]:my-0">
-                    <p className="font-montserrat text-lg font-light text-[#1D0E22] leading-snug mb-2">
-                        Odstraňovanie nežiaduceho permanentného make-upu ND:YAG Q-Switch laserom
-                    </p>
-                    <p>
-                        Laserovému odstraňovaniu permanentného make-upu sa venujem od roku 2014.
-                        Aj ja sama som absolvovala individuálne školenia u dvoch špecialistov, ktorí patrili medzi priekopníkov laserového odstraňovania pigmentov. Jeden z nich sa dokonca podieľal na vývoji Q-Switch technológie.
-                    </p>
-                    <p>
-                        Dlhoročná prax v permanentnom make-upe mi umožňuje rozumieť pigmentu nielen z pohľadu lasera, ale aj z pohľadu jeho správania v pokožke, hĺbky uloženia, hojenia a reakcie organizmu počas rokov.
-                    </p>
-                    <p>
-                        Kurz je určený pre špecialistov, ktorí chcú bezpečne a profesionálne pracovať s laserovým odstraňovaním permanentného make-upu a malých tetovaní.
-                    </p>
-                    <p>
-                        Výučba prebieha individuálne a pozostáva z dvoch častí.
-                    </p>
-                </div>
-            </PhotoSection>
-
-            {/* Section 2: Photo + 1. časť — teória */}
-            <PhotoSection photo="/academia/kurz6/lasertouch_preview.PNG" flip={true}>
                 <div className="space-y-6">
-                    <div>
-                        <h2 className="font-marcellus text-xl md:text-2xl uppercase tracking-widest text-[#1D0E22]">1. časť</h2>
-                        <p className="font-montserrat text-sm text-[#1D0E22]/60 mt-1">Teória a ukážky procedúr</p>
-                    </div>
                     <div className="space-y-4 font-montserrat font-light text-[#1D0E22] leading-tight text-lg [&_p]:my-0">
+                        <h2 className="font-marcellus text-2xl md:text-3xl uppercase tracking-widest text-[#1D0E22] mb-4">
+                            Odstraňovanie nežiaduceho permanentného make-upu ND:YAG Q-Switch laserom
+                        </h2>
                         <p>
-                            Prvé stretnutie prebieha v mojom štúdiu formou teoretickej výučby a praktických ukážok.
+                            Laserovému odstraňovaniu permanentného make-upu sa venujem od roku 2014.
+                            Aj ja sama som absolvovala individuálne školenia u dvoch špecialistov, ktorí patrili medzi priekopníkov laserového odstraňovania pigmentov. Jeden z nich sa dokonca podieľal na vývoji Q-Switch technológie.
                         </p>
-                        <p className="font-medium text-base uppercase tracking-wider">Budeme sa venovať:</p>
-                        <ul className="space-y-1.5 text-sm text-[#1D0E22]/80">
-                            <li className="flex gap-2"><span className="text-[#1D0E22]/25 shrink-0">—</span><span>technickým možnostiam ND:YAG Q-Switch lasera</span></li>
-                            <li className="flex gap-2"><span className="text-[#1D0E22]/25 shrink-0">—</span><span>správnemu nastavovaniu a kalibrácii impulzov</span></li>
-                            <li className="flex gap-2"><span className="text-[#1D0E22]/25 shrink-0">—</span><span>komunikácii medzi laserom, pokožkou a pigmentom</span></li>
-                            <li className="flex gap-2"><span className="text-[#1D0E22]/25 shrink-0">—</span><span>odtieňom pigmentov, ktoré laser vidí a ktoré reagujú odlišne</span></li>
-                            <li className="flex gap-2"><span className="text-[#1D0E22]/25 shrink-0">—</span><span>biologickým procesom v pokožke počas procedúry</span></li>
-                            <li className="flex gap-2"><span className="text-[#1D0E22]/25 shrink-0">—</span><span>fungovaniu lymfatického systému pri odvádzaní pigmentu</span></li>
-                            <li className="flex gap-2"><span className="text-[#1D0E22]/25 shrink-0">—</span><span>životu pigmentu v pokožke a pôsobeniu organizmu na jeho zmeny</span></li>
-                            <li className="flex gap-2"><span className="text-[#1D0E22]/25 shrink-0">—</span><span>bezpečnosti práce a ochrane integrity pokožky</span></li>
-                            <li className="flex gap-2"><span className="text-[#1D0E22]/25 shrink-0">—</span><span>situáciám, v ktorých môžeme bezpečne zvýšiť intenzitu laserového lúča</span></li>
-                        </ul>
-                        <p className="font-medium text-base uppercase tracking-wider pt-2">Učíme sa pracovať s:</p>
-                        <ul className="space-y-1.5 text-sm text-[#1D0E22]/80">
-                            <li className="flex gap-2"><span className="text-[#1D0E22]/25 shrink-0">—</span><span>obočím</span></li>
-                            <li className="flex gap-2"><span className="text-[#1D0E22]/25 shrink-0">—</span><span>perami</span></li>
-                            <li className="flex gap-2"><span className="text-[#1D0E22]/25 shrink-0">—</span><span>očnými linkami</span></li>
-                            <li className="flex gap-2"><span className="text-[#1D0E22]/25 shrink-0">—</span><span>malými tetovaniami</span></li>
-                        </ul>
+                        <p>
+                            Dlhoročná prax v permanentnom make-upe mi umožňuje rozumieť pigmentu nielen z pohledu lasera, ale aj z pohľadu jeho správania v pokožke, hĺbky uloženia, hojenia a reakcie organizmu počas rokov.
+                        </p>
+                        <p>
+                            Kurz je určený pre špecialistov, ktorí chcú bezpečne a profesionálne pracovať s laserovým odstraňovaním permanentného make-upu a malých tetovaní.
+                        </p>
                         <p className="pt-2">
-                            Súčasťou školenia je aj systém výpočtu predpokladaného počtu procedúr pomocou špecializovaných tabuliek, aby ste vedeli klientov správne informovať ešte pred začiatkom procesu.
+                            Výučba prebieha individuálne a pozostáva z dvoch častí.
                         </p>
-                        <div className="border-l-2 border-gold/40 pl-4 italic text-[#1D0E22]/80 pt-2">
-                            <p>Laserové odstránenie patrí medzi najrýchlejšie a najbezpečnejšie metódy odstránenia pigmentu z tela bez narušenia integrity pokožky.</p>
+                    </div>
+
+                    <div className="space-y-6">
+                        <div>
+                            <h2 className="font-marcellus text-xl md:text-2xl uppercase tracking-widest text-[#1D0E22]">
+                                1. časť — Teória a ukážky procedúr
+                            </h2>
+                        </div>
+                        <div className="space-y-4 font-montserrat font-light text-[#1D0E22] leading-tight text-lg [&_p]:my-0">
+                            <p>
+                                Prvé stretnutie prebieha v mojom štúdiu formou teoretickej výučby a praktických ukážok.
+                            </p>
+                            <p className="font-medium text-base uppercase tracking-wider pt-4">Budeme sa venovať:</p>
+                            <ul className="space-y-1.5 text-sm text-[#1D0E22]/80">
+                                <li className="flex gap-2"><span className="text-[#1D0E22]/25 shrink-0">—</span><span>technickým možnostiam ND:YAG Q-Switch lasera</span></li>
+                                <li className="flex gap-2"><span className="text-[#1D0E22]/25 shrink-0">—</span><span>správnemu nastavovaniu a kalibrácii impulzov</span></li>
+                                <li className="flex gap-2"><span className="text-[#1D0E22]/25 shrink-0">—</span><span>komunikácii medzi laserom, pokožkou a pigmentom</span></li>
+                                <li className="flex gap-2"><span className="text-[#1D0E22]/25 shrink-0">—</span><span>odtieňom pigmentov, ktoré laser vidí a ktoré reagujú odlišne</span></li>
+                                <li className="flex gap-2"><span className="text-[#1D0E22]/25 shrink-0">—</span><span>biologickým procesom v pokožke počas procedúry</span></li>
+                                <li className="flex gap-2"><span className="text-[#1D0E22]/25 shrink-0">—</span><span>fungovaniu lymfatického systému pri odvádzaní pigmentu</span></li>
+                                <li className="flex gap-2"><span className="text-[#1D0E22]/25 shrink-0">—</span><span>životu pigmentu v pokožke a pôsobeniu organizmu na jeho zmeny</span></li>
+                                <li className="flex gap-2"><span className="text-[#1D0E22]/25 shrink-0">—</span><span>bezpečnosti práce a ochrane integrity pokožky</span></li>
+                                <li className="flex gap-2"><span className="text-[#1D0E22]/25 shrink-0">—</span><span>situáciám, v ktorých môžeme bezpečne zvýšiť intenzitu laserového lúča</span></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </PhotoSection>
 
-            {/* Section 3: 2. časť + V rámci kurzu získavate */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
-                <div className="space-y-6">
+            {/* Section 2: Photo + Učíme sa pracovať s & 2. časť */}
+            <PhotoSection photo="/academia/kurz6/photo_2025-03-17_13-31-34.jpg" flip={true} aspectClass="aspect-square">
+                <div className="space-y-6 font-montserrat font-light text-[#1D0E22] leading-tight text-lg [&_p]:my-0">
                     <div>
-                        <h2 className="font-marcellus text-xl md:text-2xl uppercase tracking-widest text-[#1D0E22]">2. časť</h2>
-                        <p className="font-montserrat text-sm text-[#1D0E22]/60 mt-1">Práca s vaším laserom</p>
+                        <p className="font-medium text-base uppercase tracking-wider">Učíme sa pracovať s:</p>
+                        <ul className="space-y-1.5 text-sm text-[#1D0E22]/80 mt-2">
+                            <li className="flex gap-2"><span className="text-[#1D0E22]/25 shrink-0">—</span><span>obočím</span></li>
+                            <li className="flex gap-2"><span className="text-[#1D0E22]/25 shrink-0">—</span><span>perami</span></li>
+                            <li className="flex gap-2"><span className="text-[#1D0E22]/25 shrink-0">—</span><span>očnými linkami</span></li>
+                            <li className="flex gap-2"><span className="text-[#1D0E22]/25 shrink-0">—</span><span>malými tetovaniami</span></li>
+                        </ul>
                     </div>
-                    <div className="space-y-4 font-montserrat font-light text-[#1D0E22] leading-tight text-lg [&_p]:my-0">
-                        <p>Druhá časť kurzu prebieha priamo u vás v salóne alebo na klinike.</p>
-                        <p>Pracujeme s vaším laserom a nastavujeme vhodné parametre podľa typu zariadenia, výkonu a konkrétnych procedúr.</p>
-                        <p>Nasleduje praktická časť na modelkách, kde sa špecialista zaučuje pod mojím vedením priamo v praxi.</p>
+                    <p className="pt-2">
+                        Súčasťou školenia je aj systém výpočtu predpokladaného počtu procedúr pomocou špecializovaných tabuliek, aby ste vedeli klientov správne informovať ešte pred začiatkom procesu.
+                    </p>
+                    <div className="border-l-2 border-gold/40 pl-4 italic text-[#1D0E22]/80 py-1">
+                        <p>Laserové odstránenie patrí medzi najrýchlejšie a najbezpečnejšie metódy odstránenia pigmentu z tela bez narušenia integrity pokožky.</p>
+                    </div>
+
+                    <div className="space-y-6 pt-4">
+                        <div>
+                            <h2 className="font-marcellus text-xl md:text-2xl uppercase tracking-widest text-[#1D0E22]">
+                                2. časť — Práca s vaším laserom
+                            </h2>
+                        </div>
+                        <div className="space-y-4 font-montserrat font-light text-[#1D0E22] leading-tight text-lg [&_p]:my-0">
+                            <p>Druhá časť kurzu prebieha priamo u vás v salóne alebo na klinike.</p>
+                            <p>Pracujeme s vaším laserom and nastavujeme vhodné parametre podľa typu zariadenia, výkonu a konkrétnych procedúr.</p>
+                            <p>Nasleduje praktická časť na modelkách, kde sa špecialista zaučuje pod mojím vedením priamo v praxi.</p>
+                        </div>
                     </div>
                 </div>
+            </PhotoSection>
+
+            {/* Section 3: Photo + V rámci kurzu získavate */}
+            <PhotoSection photo="/academia/kurz6/IMG_4532%201.jpg" flip={false} aspectClass="aspect-square">
                 <div className="space-y-6">
                     <div>
-                        <h2 className="font-marcellus text-xl md:text-2xl uppercase tracking-widest text-[#1D0E22]">V rámci kurzu získavate</h2>
+                        <h2 className="font-marcellus text-xl md:text-2xl uppercase tracking-widest text-[#1D0E22]">
+                            V rámci kurzu získavate
+                        </h2>
                     </div>
                     <ul className="space-y-2 font-montserrat font-light text-[#1D0E22]/80 text-base">
                         <li className="flex gap-2"><span className="text-[#1D0E22]/25 shrink-0">—</span><span>plagáty procesu odstránenia pre klientov</span></li>
@@ -115,10 +128,10 @@ export default function Kurz6Page() {
                         <li className="flex gap-2"><span className="text-[#1D0E22]/25 shrink-0">—</span><span>individuálne vedenie počas zaučenia</span></li>
                     </ul>
                     <div className="border-l-2 border-gold/40 pl-4 italic text-[#1D0E22]/70 text-sm">
-                        <p className="font-montserrat font-light leading-relaxed">V prípade záujmu viem individuálne pomôcť aj so zabezpečením kvalitného lasera priamo od výrobcu — od komunikácie a dohodnutia podmienok až po samotný proces objednávky.</p>
+                        <p className="font-montserrat font-light leading-relaxed">V prípade záujmu viem individuálne pomôcť aj so zabezpečením kvalitného lasera priamo od výrobcu — od komunikácie and dohodnutia podmienok až po samotný proces objednávky.</p>
                     </div>
                 </div>
-            </div>
+            </PhotoSection>
 
             {/* Pricing */}
             <div className="grid md:grid-cols-2 gap-6 md:max-w-[66.666%] md:mx-auto">

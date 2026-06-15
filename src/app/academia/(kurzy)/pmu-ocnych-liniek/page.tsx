@@ -9,13 +9,21 @@ export const metadata: Metadata = {
 
 const PHOTOS = ["/academia/kurz3/3.png", "/academia/kurz3/IMG_5826 1.jpg", "/academia/kurz3/vik1.jpg"];
 
-function PhotoSection({ photo, flip = false, objectPosition, aspectClass, children }: { photo: string; flip?: boolean; objectPosition?: string; aspectClass?: string; children: React.ReactNode }) {
+function PhotoSection({ photo, flip = false, objectPosition, aspectClass, photoLabel, children }: { photo: string; flip?: boolean; objectPosition?: string; aspectClass?: string; photoLabel?: string; children: React.ReactNode }) {
     const isPortraitPNG = /\.png$/i.test(photo);
     const containerClass = aspectClass || (isPortraitPNG ? "aspect-[4/5]" : "min-h-[400px] md:min-h-[520px]");
     return (
         <div className={`grid grid-cols-1 md:grid-cols-2 gap-0 items-start ${flip ? "md:[&>*:first-child]:order-2 md:[&>*:last-child]:order-1" : ""}`}>
             <div className={`relative overflow-hidden rounded-2xl ${containerClass}`}>
                 <Image src={photo} alt="" fill className="object-cover" style={objectPosition ? { objectPosition } : undefined} />
+                {photoLabel && (
+                    <>
+                        <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
+                        <p className="absolute bottom-6 left-6 font-marcellus text-base md:text-lg uppercase tracking-widest text-[#EEE3CE]">
+                            {photoLabel}
+                        </p>
+                    </>
+                )}
             </div>
             <div className="flex flex-col justify-start px-0 md:px-12 pt-6 md:pt-0 pb-10">
                 {children}
@@ -36,9 +44,9 @@ export default function Kurz3Page() {
             {/* Section 1: Intro & Techniques */}
             <PhotoSection photo={PHOTOS[0]} flip={false}>
                 <div className="space-y-4 font-montserrat font-light text-[#1D0E22] leading-tight text-lg [&_p]:my-0">
-                    <p className="font-montserrat text-lg font-light text-[#1D0E22] leading-snug mb-2 font-medium">
+                    <h2 className="font-marcellus text-2xl md:text-3xl uppercase tracking-widest text-[#1D0E22] mb-4">
                         MASTER CLASS — Permanentný make-up očných liniek
-                    </p>
+                    </h2>
                     <p>
                         Očné linky patria medzi najprecíznejšie techniky permanentného make-upu. Práca na viečkach vyžaduje jemnosť, technickú kontrolu a správne nastavenie ruky.
                     </p>
@@ -58,7 +66,7 @@ export default function Kurz3Page() {
             </PhotoSection>
 
             {/* Section 2: What we will cover & Who it is for */}
-            <PhotoSection photo={PHOTOS[1]} flip={true} aspectClass="aspect-[4/5] w-full" objectPosition="top">
+            <PhotoSection photo={PHOTOS[1]} flip={true} aspectClass="aspect-[4/5] w-full" objectPosition="50% 50%" photoLabel="Kórejské očné linky">
                 <div className="space-y-4 font-montserrat font-light text-[#1D0E22] leading-tight text-lg [&_p]:my-0">
                     <p className="font-medium text-base uppercase tracking-wider">Počas kurzu sa budeme venovať:</p>
                     <ul className="space-y-1.5 text-sm text-[#1D0E22]/80">
@@ -88,7 +96,7 @@ export default function Kurz3Page() {
             <div className="grid md:grid-cols-2 gap-6 md:max-w-[66.666%] md:mx-auto">
                 <div className="border border-[#1D0E22]/30 bg-[#1D0E22]/5 rounded-2xl p-8 text-center space-y-3 flex flex-col justify-center">
                     <p className="font-montserrat text-xs uppercase tracking-[0.2em] text-[#1D0E22]/50">Cena kurzu</p>
-                    <p className="font-marcellus text-5xl text-[#1D0E22]">1 240 €</p>
+                    <p className="font-marcellus text-5xl text-[#1D0E22]">1 268 €</p>
                 </div>
                 <a
                     href="https://www.tatrabanka.sk/sk/business/uvery-financovanie/online-podnikatelsky-uver/?utm_medium=banner&utm_campaign=opu2026&utm_source=viktorijakendra"

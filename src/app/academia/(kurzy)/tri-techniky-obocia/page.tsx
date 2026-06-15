@@ -37,7 +37,7 @@ import ContactCTA from "@/app/academia/_components/ContactCTA";
 
 export default function Kurz4Page() {
     return (
-        <AnimatedSpace className="space-y-16">
+        <AnimatedSpace className="space-y-10">
             <PhotoSection photo={PHOTOS[0]} flip={false}>
                 <div className="space-y-4 font-montserrat font-light text-[#1D0E22] leading-tight text-lg [&_p]:my-0">
                     <h2 className="font-marcellus text-3xl uppercase tracking-widest text-[#1D0E22] mb-1">
@@ -90,17 +90,10 @@ export default function Kurz4Page() {
                     <p className="pt-4 italic text-[#1D0E22]/80">
                         Prosím, príďte s krátkymi nechtami, ideálne bez umelých nechtov.
                     </p>
-                    
-                    <div className="pt-6 border-t border-[#1D0E22]/10 mt-6 flex flex-col items-end">
-                        <span className="font-montserrat text-xs uppercase tracking-widest text-[#1D0E22]/60">Teším sa na Vás,</span>
-                        <span className="!font-alex text-4xl text-[#1D0E22] mt-1 block">
-                            Viktorija Kendra
-                        </span>
-                    </div>
                 </div>
             </PhotoSection>
 
-            <PhotoSection photo={PHOTOS[1]} flip={true}>
+            <PhotoSection photo="/academia/kurz4/IMG_5741%201.jpg" flip={true}>
                 <div className="space-y-4 font-montserrat font-light text-[#1D0E22] leading-tight text-lg [&_p]:my-0">
                     <h2 className="font-marcellus text-2xl uppercase tracking-widest text-[#1D0E22] mb-6">
                         Komplexný špecialista na obočie
