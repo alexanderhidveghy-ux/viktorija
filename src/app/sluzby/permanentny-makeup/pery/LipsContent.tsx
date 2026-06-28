@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Lightbox from "@/components/Lightbox";
+import RevealGroup from "@/components/RevealGroup";
 import PmuSubSidebar from "../../_components/PmuSubSidebar";
 import ContactForm from "../../_components/ContactForm";
 import StickyCennikButton from "../../_components/StickyCennikButton";
@@ -69,8 +70,8 @@ export default function LipsContent() {
                     </div>
 
                     {/* Content */}
-                    <div className="font-montserrat font-light text-[#1D0E22] leading-snug text-lg">
-                        <div className="space-y-8">
+                    <div className="font-montserrat font-light text-[#1D0E22] leading-snug text-base">
+                        <RevealGroup className="space-y-8">
                             <h3 className="font-marcellus text-3xl text-[#1D0E22] mb-4">Permanentný make-up pier</h3>
 
                             <div className="space-y-2">
@@ -84,10 +85,10 @@ export default function LipsContent() {
 
                             <div className="pt-4 space-y-2">
                                 <p className="font-medium">Permanentný make-up pier je vhodný pre ženy, ktoré:</p>
-                                <ul className="space-y-0">
-                                    <li className="flex gap-3"><span className="text-gold text-lg">✦</span><span>chcú mať upravený vzhľad bez každodenného líčenia,</span></li>
-                                    <li className="flex gap-3"><span className="text-gold text-lg">✦</span><span>absolvujú výplne pier, pri ktorých pery získajú objem, no strácajú formu a farebnosť,</span></li>
-                                    <li className="flex gap-3"><span className="text-gold text-lg">✦</span><span>vnímajú, že s vekom pery blednú, chladnú do fialových tónov a strácajú jasné kontúry.</span></li>
+                                <ul className="space-y-1">
+                                    <li className="flex gap-3"><span className="text-gold text-lg leading-none">✦</span><span>chcú mať upravený vzhľad bez každodenného líčenia,</span></li>
+                                    <li className="flex gap-3"><span className="text-gold text-lg leading-none">✦</span><span>absolvujú výplne pier, pri ktorých pery získajú objem, no strácajú formu a farebnosť,</span></li>
+                                    <li className="flex gap-3"><span className="text-gold text-lg leading-none">✦</span><span>vnímajú, že s vekom pery blednú, chladnú do fialových tónov a strácajú jasné kontúry.</span></li>
                                 </ul>
                             </div>
 
@@ -231,8 +232,8 @@ export default function LipsContent() {
                                 </div>
                             </div>
 
-                            <StickyCennikButton />
-                        </div>
+                        </RevealGroup>
+                        <StickyCennikButton />
                     </div>
                 </div>
 

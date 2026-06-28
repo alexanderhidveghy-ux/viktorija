@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import LightboxImage from "@/components/LightboxImage";
 
 export const metadata: Metadata = {
     title: "Master Class: Permanentný Make-up Pier | Academia | Salón Viktória",
@@ -7,7 +8,7 @@ export const metadata: Metadata = {
     alternates: { canonical: "/academia/pmu-pier" },
 };
 
-const PHOTOS = ["/academia/kurz2/4.png", "/academia/kurz2/kozmetika.webp", "/academia/kurz2/vik2.jpg"];
+const PHOTOS = ["/academia/kurz-pery/4.png", "/academia/kurz-pery/kozmetika.webp", "/academia/kurz-pery/vik2.jpg"];
 
 function PhotoSection({
     photo,
@@ -42,7 +43,7 @@ function PhotoSection({
                         <source src={photo} type={getVideoType(photo)} />
                     </video>
                 ) : (
-                    <Image src={photo} alt="" fill className="object-cover" />
+                    <LightboxImage src={photo} alt="" fill className="object-cover" />
                 )}
             </div>
             <div className={`flex flex-col justify-start px-0 ${contentClassName} pt-6 md:pt-0 pb-10`}>
@@ -51,6 +52,11 @@ function PhotoSection({
         </div>
     );
 }
+
+const STUDENT_WORKS = [
+    "/academia/kurz-pery/081a3ef1-727c-45b5-8bef-4c47d01c3b52.JPG",
+    "/academia/kurz-pery/PHOTO-2026-06-04-13-38-01.JPG",
+];
 
 const SCHEDULE = [
     { num: "1", title: "ONLINE ŠTART", date: "09:00 – 10:00", items: ["Úvod, nastavenie systému práce a očakávaní"] },
@@ -71,44 +77,44 @@ export default function Kurz2Page() {
 
             {/* Section 1: Techniques */}
             <PhotoSection photo={PHOTOS[0]} flip={false} contentClassName="md:pl-8 md:pr-6">
-                <div className="space-y-3">
+                <div className="space-y-6">
                     <div className="space-y-1">
-                        <p className="font-montserrat text-xs uppercase tracking-[0.18em] text-[#1D0E22]/50 leading-tight">
-                            MASTER CLASS
-                        </p>
-                        <h2 className="font-marcellus text-2xl md:text-3xl uppercase tracking-widest text-[#1D0E22] leading-none">
+                        <h2 className="font-marcellus text-3xl uppercase tracking-widest text-[#1D0E22] leading-none">
                             Permanentný make-up pier
                         </h2>
                     </div>
 
-                    <p className="font-montserrat text-base md:text-lg font-light text-[#1D0E22] leading-[1.18]">
+                    <p className="font-montserrat text-base font-light text-[#1D0E22] leading-[1.18]">
                         Na kurze sa budeme venovať dvom moderným technikám permanentného make-upu pier:
                     </p>
 
-                    <ul className="space-y-2 font-montserrat text-base md:text-lg font-light text-[#1D0E22] leading-[1.16]">
+                    <ul className="space-y-1 font-montserrat text-base font-light text-[#1D0E22] leading-[1.16]">
                         {[
                             "efektu kórejských pier — jemná červeň prirodzene vychádzajúca zo stredu pier so sviežim a prirodzeným výsledkom",
                             "ombré technike — definovanejšia kontúra plynulo prechádzajúca do jemného púdrového ružového alebo broskyňového odtieňa smerom do vnútra pier"
                         ].map((item, i) => (
-                            <li key={i} className="flex gap-2"><span className="text-[#1D0E22]/30 text-sm mt-0.5 shrink-0">✦</span><span>{item}</span></li>
+                            <li key={i} className="flex gap-2"><span className="text-gold text-sm mt-0.5 shrink-0">✦</span><span>{item}</span></li>
                         ))}
                     </ul>
 
-                    <p className="font-montserrat text-base md:text-lg font-light text-[#1D0E22] leading-[1.18]">
+                    <p className="font-montserrat text-base font-light text-[#1D0E22] leading-[1.18]">
                         Permanentný make-up pier vyžaduje jemnosť, technickú kontrolu a správne pochopenie práce s pokožkou pier.
                     </p>
 
-                    <p className="font-montserrat text-base md:text-lg font-light text-[#1D0E22] leading-[1.18]">
+                    <p className="font-montserrat text-base font-light text-[#1D0E22] leading-[1.18]">
                         Jedným z najdôležitejších bodov pri práci na perách je správne vyrovnanie pracovnej plochy — tak akurát.
                         Nie príliš veľa, ale ani málo.
                         Práve správne napnutie pokožky výrazne ovplyvňuje čistotu implantácie pigmentu aj následné hojenie.
                     </p>
 
-                    <h3 className="font-marcellus text-xl md:text-2xl uppercase tracking-widest text-[#1D0E22] pt-1 leading-none">
+                    <p className="font-montserrat text-base font-light text-[#1D0E22] leading-[1.18]">
+                        Počas kurzu budeme pracovať s minerálnymi aj hybridnými pigmentami, aby študenti precítili rozdiel v implantácii pigmentu, jeho správaní v pokožke a vo vyhojenom výsledku.
+                    </p>
+
+                    <h3 className="font-marcellus text-2xl uppercase tracking-widest text-[#1D0E22] pt-1 leading-none">
                         Budeme sa venovať:
                     </h3>
-
-                    <ul className="space-y-2 font-montserrat text-base md:text-lg font-light text-[#1D0E22] leading-[1.16]">
+                    <ul className="space-y-1 font-montserrat text-base font-light text-[#1D0E22] leading-[1.16]">
                         {[
                             "správnemu šrafovaniu končekom ihly",
                             "práci s rýchlosťou strojčeka",
@@ -117,49 +123,100 @@ export default function Kurz2Page() {
                             "vytváraniu jemných farebných prechodov",
                             "práci s formou a optickou harmóniou pier"
                         ].map((item, i) => (
-                            <li key={i} className="flex gap-2"><span className="text-[#1D0E22]/30 text-sm mt-0.5 shrink-0">✦</span><span>{item}</span></li>
+                            <li key={i} className="flex gap-2"><span className="text-gold text-sm mt-0.5 shrink-0">✦</span><span>{item}</span></li>
                         ))}
                     </ul>
-
-                    <p className="font-montserrat text-base md:text-lg font-light text-[#1D0E22] leading-[1.18]">
-                        Počas kurzu budeme pracovať s minerálnymi aj hybridnými pigmentami, aby študenti precítili rozdiel v implantácii pigmentu, jeho správaní v pokožke a vo vyhojenom výsledku.
-                    </p>
                 </div>
             </PhotoSection>
 
-            {/* Section 2: Schedule */}
-            <PhotoSection photo="/academia/kurz2/PERY.MOV" videoFallback="/academia/kurz2/PERY.mp4" flip={true}>
-                <div className="space-y-6">
-                    <div>
-                        <h2 className="font-marcellus text-xl md:text-2xl uppercase tracking-widest text-[#1D0E22]">Program kurzu</h2>
-                    </div>
-                    <div className="space-y-2">
-                        {SCHEDULE.map((block) => (
-                            <div key={block.num}>
-                                <div className="flex gap-3">
+            {/* Section 2: Photo + PERY video side by side */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="relative overflow-hidden rounded-2xl min-h-[400px] md:min-h-[520px]">
+                    <LightboxImage src="/academia/kurz-pery/IMG_8614.webp" alt="" fill className="object-cover" />
+                    <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
+                    <p className="absolute bottom-6 left-6 font-marcellus text-base md:text-lg uppercase tracking-widest text-[#EEE3CE]">
+                        Definícia formy pier
+                    </p>
+                </div>
+                <div className="relative overflow-hidden rounded-2xl min-h-[400px] md:min-h-[520px]">
+                    <video
+                        src="/academia/kurz-pery/PERY.mp4"
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        className="absolute inset-0 h-full w-full object-cover"
+                    />
+                    <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
+                    <p className="absolute bottom-6 left-6 font-marcellus text-base md:text-lg uppercase tracking-widest text-[#EEE3CE]">
+                        Šrafovanie
+                    </p>
+                </div>
+            </div>
+
+            {/* Program kurzu + video */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-0 items-stretch">
+                <div className="relative overflow-hidden rounded-2xl min-h-[400px] md:min-h-[520px]">
+                    <video
+                        src="/academia/kurz-pery/IMG_1254.mp4"
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        className="absolute inset-0 h-full w-full object-cover"
+                    />
+                </div>
+                <div className="flex flex-col justify-start px-0 md:px-12 pt-6 md:pt-0 pb-10">
+                    <div className="space-y-6">
+                        <h2 className="font-marcellus text-2xl uppercase tracking-widest text-[#1D0E22]">Program kurzu</h2>
+                        <div className="space-y-4">
+                            {SCHEDULE.map((block) => (
+                                <div key={block.num} className="flex gap-3">
                                     <span className="font-marcellus text-3xl text-[#1D0E22]/15 leading-none shrink-0">{block.num}</span>
                                     <div className="space-y-0.5">
                                         <div>
-                                            <p className="font-marcellus text-sm uppercase tracking-widest text-[#1D0E22] leading-tight">{block.title}</p>
-                                            {block.date && <p className="font-montserrat text-xs text-[#1D0E22]/45 leading-tight">{block.date}</p>}
+                                            <p className="font-marcellus text-base uppercase tracking-widest text-[#1D0E22] leading-tight">{block.title}</p>
+                                            {block.date && <p className="font-montserrat text-xs text-[#1D0E22]/45 leading-tight mb-[3px]">{block.date}</p>}
                                         </div>
-                                        <ul className="font-montserrat text-sm font-light text-[#1D0E22]/70 leading-tight">
+                                        <ul className="font-montserrat text-base font-light text-[#1D0E22]/70 leading-tight">
                                             {block.items.map((item, i) => (
-                                                <li key={i} className="flex gap-1.5"><span className="text-[#1D0E22]/25 shrink-0">—</span><span>{item}</span></li>
+                                                <li key={i} className="flex gap-1.5"><span className="text-gold shrink-0">✦</span><span>{item}</span></li>
                                             ))}
                                         </ul>
                                     </div>
                                 </div>
-                            </div>
-                        ))}
+                            ))}
+                        </div>
                     </div>
                 </div>
-            </PhotoSection>
+            </div>
+
+            {/* Práce študentiek */}
+            <div className="space-y-6">
+                <h2 className="font-marcellus text-2xl uppercase tracking-widest text-[#1D0E22] text-center">Práce študentiek</h2>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    {STUDENT_WORKS.map((item, i) => (
+                        <div key={item} className="relative aspect-square overflow-hidden rounded-2xl border border-black/10 shadow-sm bg-[#1D0E22]/5">
+                            <LightboxImage src={item} alt="Práca študentky" fill className="object-cover" group={STUDENT_WORKS} groupIndex={i} />
+                        </div>
+                    ))}
+                    <div className="relative aspect-square overflow-hidden rounded-2xl border border-black/10 shadow-sm bg-[#1D0E22]/5">
+                        <video
+                            src="/academia/kurz-pery/IMG_3039.mp4"
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                            className="absolute inset-0 h-full w-full object-cover"
+                        />
+                    </div>
+                </div>
+            </div>
 
             {/* Hours + Pricing */}
             <div className="space-y-8">
                 <div className="border border-[#1D0E22]/10 rounded-2xl p-8 space-y-6">
-                    <h2 className="font-marcellus text-sm uppercase tracking-[0.2em] text-[#1D0E22]">Rozsah výučby</h2>
+                    <h2 className="font-marcellus text-2xl uppercase tracking-widest text-[#1D0E22]">Rozsah výučby</h2>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
                         <div>
                             <p className="font-marcellus text-3xl text-[#1D0E22]">29 hod</p>

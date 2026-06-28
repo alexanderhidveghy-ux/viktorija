@@ -3,6 +3,9 @@ import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Reveal from "@/components/Reveal";
+import LightboxImage from "@/components/LightboxImage";
+import BlogArticleContent from "@/components/BlogArticleContent";
 
 // Sample blog data - in production this would come from a CMS/database
 const BLOG_POSTS = [
@@ -283,9 +286,9 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
                 </Link>
 
                 {/* Article Header: Image Top, Title Below */}
-                <header className="mb-16">
+                <Reveal className="mb-16">
                     <div className="relative aspect-[21/7] max-h-[400px] w-full rounded-3xl overflow-hidden shadow-2xl border border-white/20 mb-10">
-                        <Image
+                        <LightboxImage
                             src={post.image}
                             alt={post.title}
                             fill
@@ -305,19 +308,16 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
                             {post.excerpt}
                         </p>
                     </div>
-                </header>
+                </Reveal>
 
                 <div className="max-w-5xl">
                     {/* Main Content */}
                     <article className="py-2 md:py-4 overflow-hidden border-b border-[#1D0E22]/10 mb-16">
-                        <div
-                            className="blog-content"
-                            dangerouslySetInnerHTML={{ __html: post.content }}
-                        />
+                        <BlogArticleContent html={post.content} />
                     </article>
 
                     {/* Recommendations at bottom */}
-                    <div className="mt-16 bg-[#1D0E22] rounded-3xl p-8 text-[#EEE3CE] shadow-2xl">
+                    <Reveal className="mt-16 bg-[#1D0E22] rounded-3xl p-8 text-[#EEE3CE] shadow-2xl">
                         <h3 className="font-marcellus text-2xl mb-8 border-b border-white/10 pb-4 uppercase tracking-wider text-center">
                             Odporúčané články
                         </h3>
@@ -348,7 +348,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
                                 </Link>
                             ))}
                         </div>
-                    </div>
+                    </Reveal>
                 </div>
             </div>
 

@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import { useState } from "react";
 import { Loader2, CheckCircle, AlertCircle } from "lucide-react";
 import GoogleMap from "@/components/GoogleMap";
-import Image from "next/image";
+import LightboxImage from "@/components/LightboxImage";
 
 export default function KontaktPage() {
     const [formData, setFormData] = useState({ name: "", email: "", phone: "", message: "" });
@@ -147,7 +147,7 @@ export default function KontaktPage() {
                 {/* Map Section */}
                 <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-4 h-[600px] w-full">
                     <div className="relative w-full h-full rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
-                        <Image
+                        <LightboxImage
                             src="/shared/mapa.jpeg"
                             alt="Mapa prístupu"
                             fill

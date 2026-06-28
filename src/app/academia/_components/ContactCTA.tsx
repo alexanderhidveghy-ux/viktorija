@@ -1,7 +1,7 @@
 export default function ContactCTA() {
     return (
         <div className="text-center space-y-6 pt-4">
-            <p className="font-montserrat text-lg font-light text-[#1D0E22] max-w-2xl mx-auto leading-snug">
+            <p className="font-montserrat text-base font-light text-[#1D0E22] max-w-2xl mx-auto leading-snug">
                 V prípade že máte ďalšie otázky nás neváhajte kontaktovať.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">

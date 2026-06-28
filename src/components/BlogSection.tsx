@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import Reveal from "@/components/Reveal";
 
 type BlogPost = {
     id: number;
@@ -39,21 +40,25 @@ const BLOG_POSTS: BlogPost[] = [
 
 export default function BlogSection() {
     return (
-        <section className="py-20 px-4" id="blog">
+        <section className="pt-14 pb-0 px-4" id="blog">
             <div className="w-[90vw] max-w-7xl mx-auto">
-                <div className="w-full text-center mb-16">
+                <Reveal className="w-full text-center mb-8">
                     <h2 className="font-marcellus text-4xl mb-4 text-[#1D0E22] tracking-widest">
                         BLOG
                     </h2>
                     <p className="font-montserrat text-[#1D0E22] text-lg uppercase tracking-wider">
                         Najnovšie zo sveta krásy
                     </p>
-                </div>
+                </Reveal>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {BLOG_POSTS.map((post) => (
-                        <Link
+                    {BLOG_POSTS.map((post, i) => (
+                        <Reveal
                             key={post.id}
+                            delay={i * 0.1}
+                            className="flex flex-col h-full"
+                        >
+                        <Link
                             href={`/blog/${post.slug}`}
                             className="group flex flex-col h-full"
                         >
@@ -89,6 +94,7 @@ export default function BlogSection() {
                                 </div>
                             </article>
                         </Link>
+                        </Reveal>
                     ))}
                 </div>
             </div>

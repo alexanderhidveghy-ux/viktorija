@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import LightboxImage from "@/components/LightboxImage";
 import AnimatedSpace from "@/app/academia/_components/AnimatedSpace";
 import ContactCTA from "@/app/academia/_components/ContactCTA";
 import CourseBookingSection from "@/app/academia/_components/CourseBookingSection";
@@ -11,12 +12,17 @@ export const metadata: Metadata = {
 };
 
 function PhotoSection({ photo, flip = false, aspectClass, children }: { photo: string; flip?: boolean; aspectClass?: string; children: React.ReactNode }) {
+    const isVideo = /\.(mp4|mov|webm)$/i.test(photo);
     const isPortraitPNG = /\.png$/i.test(photo);
     const containerClass = aspectClass || (isPortraitPNG ? "aspect-[4/5]" : "min-h-[400px] md:min-h-[520px]");
     return (
         <div className={`grid grid-cols-1 md:grid-cols-2 gap-0 items-start ${flip ? "md:[&>*:first-child]:order-2 md:[&>*:last-child]:order-1" : ""}`}>
             <div className={`relative overflow-hidden rounded-2xl ${containerClass}`}>
-                <Image src={photo} alt="" fill className="object-cover" />
+                {isVideo ? (
+                    <video src={photo} autoPlay muted loop playsInline className="absolute inset-0 h-full w-full object-cover" />
+                ) : (
+                    <LightboxImage src={photo} alt="" fill className="object-cover" />
+                )}
             </div>
             <div className="flex flex-col justify-start px-0 md:px-12 pt-6 md:pt-0 pb-10">
                 {children}
@@ -31,10 +37,10 @@ export default function Kurz6Page() {
             <h1 className="sr-only">Laser Touch – Individuálny kurz</h1>
 
             {/* Section 1: Photo + Intro */}
-            <PhotoSection photo="/academia/kurz6/lasertouch%20main.PNG" flip={false}>
+            <PhotoSection photo="/academia/kurz-laser/lasertouch%20main.PNG" flip={false}>
                 <div className="space-y-6">
-                    <div className="space-y-4 font-montserrat font-light text-[#1D0E22] leading-tight text-lg [&_p]:my-0">
-                        <h2 className="font-marcellus text-2xl md:text-3xl uppercase tracking-widest text-[#1D0E22] mb-4">
+                    <div className="space-y-6 font-montserrat font-light text-[#1D0E22] leading-snug text-base">
+                        <h2 className="font-marcellus text-3xl uppercase tracking-widest text-[#1D0E22] mb-4">
                             Odstraňovanie nežiaduceho permanentného make-upu ND:YAG Q-Switch laserom
                         </h2>
                         <p>
@@ -47,48 +53,45 @@ export default function Kurz6Page() {
                         <p>
                             Kurz je určený pre špecialistov, ktorí chcú bezpečne a profesionálne pracovať s laserovým odstraňovaním permanentného make-upu a malých tetovaní.
                         </p>
-                        <p className="pt-2">
-                            Výučba prebieha individuálne a pozostáva z dvoch častí.
-                        </p>
                     </div>
 
                     <div className="space-y-6">
                         <div>
-                            <h2 className="font-marcellus text-xl md:text-2xl uppercase tracking-widest text-[#1D0E22]">
+                            <h2 className="font-marcellus text-2xl uppercase tracking-widest text-[#1D0E22]">
                                 1. časť — Teória a ukážky procedúr
                             </h2>
                         </div>
-                        <div className="space-y-4 font-montserrat font-light text-[#1D0E22] leading-tight text-lg [&_p]:my-0">
+                        <div className="space-y-6 font-montserrat font-light text-[#1D0E22] leading-snug text-base">
                             <p>
                                 Prvé stretnutie prebieha v mojom štúdiu formou teoretickej výučby a praktických ukážok.
                             </p>
-                            <p className="font-medium text-base uppercase tracking-wider pt-4">Budeme sa venovať:</p>
-                            <ul className="space-y-1.5 text-sm text-[#1D0E22]/80">
-                                <li className="flex gap-2"><span className="text-[#1D0E22]/25 shrink-0">—</span><span>technickým možnostiam ND:YAG Q-Switch lasera</span></li>
-                                <li className="flex gap-2"><span className="text-[#1D0E22]/25 shrink-0">—</span><span>správnemu nastavovaniu a kalibrácii impulzov</span></li>
-                                <li className="flex gap-2"><span className="text-[#1D0E22]/25 shrink-0">—</span><span>komunikácii medzi laserom, pokožkou a pigmentom</span></li>
-                                <li className="flex gap-2"><span className="text-[#1D0E22]/25 shrink-0">—</span><span>odtieňom pigmentov, ktoré laser vidí a ktoré reagujú odlišne</span></li>
-                                <li className="flex gap-2"><span className="text-[#1D0E22]/25 shrink-0">—</span><span>biologickým procesom v pokožke počas procedúry</span></li>
-                                <li className="flex gap-2"><span className="text-[#1D0E22]/25 shrink-0">—</span><span>fungovaniu lymfatického systému pri odvádzaní pigmentu</span></li>
-                                <li className="flex gap-2"><span className="text-[#1D0E22]/25 shrink-0">—</span><span>životu pigmentu v pokožke a pôsobeniu organizmu na jeho zmeny</span></li>
-                                <li className="flex gap-2"><span className="text-[#1D0E22]/25 shrink-0">—</span><span>bezpečnosti práce a ochrane integrity pokožky</span></li>
-                                <li className="flex gap-2"><span className="text-[#1D0E22]/25 shrink-0">—</span><span>situáciám, v ktorých môžeme bezpečne zvýšiť intenzitu laserového lúča</span></li>
+                            <h3 className="font-marcellus text-2xl uppercase tracking-widest text-[#1D0E22] pt-4">Budeme sa venovať:</h3>
+                            <ul className="space-y-1 text-base text-[#1D0E22]/80">
+                                <li className="flex gap-2"><span className="text-gold shrink-0">✦</span><span>technickým možnostiam ND:YAG Q-Switch lasera</span></li>
+                                <li className="flex gap-2"><span className="text-gold shrink-0">✦</span><span>správnemu nastavovaniu a kalibrácii impulzov</span></li>
+                                <li className="flex gap-2"><span className="text-gold shrink-0">✦</span><span>komunikácii medzi laserom, pokožkou a pigmentom</span></li>
+                                <li className="flex gap-2"><span className="text-gold shrink-0">✦</span><span>odtieňom pigmentov, ktoré laser vidí a ktoré reagujú odlišne</span></li>
+                                <li className="flex gap-2"><span className="text-gold shrink-0">✦</span><span>biologickým procesom v pokožke počas procedúry</span></li>
+                                <li className="flex gap-2"><span className="text-gold shrink-0">✦</span><span>fungovaniu lymfatického systému pri odvádzaní pigmentu</span></li>
+                                <li className="flex gap-2"><span className="text-gold shrink-0">✦</span><span>životu pigmentu v pokožke a pôsobeniu organizmu na jeho zmeny</span></li>
+                                <li className="flex gap-2"><span className="text-gold shrink-0">✦</span><span>bezpečnosti práce a ochrane integrity pokožky</span></li>
+                                <li className="flex gap-2"><span className="text-gold shrink-0">✦</span><span>situáciám, v ktorých môžeme bezpečne zvýšiť intenzitu laserového lúča</span></li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </PhotoSection>
 
-            {/* Section 2: Photo + Učíme sa pracovať s & 2. časť */}
-            <PhotoSection photo="/academia/kurz6/photo_2025-03-17_13-31-34.jpg" flip={true} aspectClass="aspect-square">
-                <div className="space-y-6 font-montserrat font-light text-[#1D0E22] leading-tight text-lg [&_p]:my-0">
+            {/* Section 2: Video + Učíme sa pracovať s & 2. časť */}
+            <PhotoSection photo="/academia/kurz-laser/IMG_1270.MOV" flip={true} aspectClass="aspect-square">
+                <div className="space-y-6 font-montserrat font-light text-[#1D0E22] leading-tight text-base">
                     <div>
-                        <p className="font-medium text-base uppercase tracking-wider">Učíme sa pracovať s:</p>
-                        <ul className="space-y-1.5 text-sm text-[#1D0E22]/80 mt-2">
-                            <li className="flex gap-2"><span className="text-[#1D0E22]/25 shrink-0">—</span><span>obočím</span></li>
-                            <li className="flex gap-2"><span className="text-[#1D0E22]/25 shrink-0">—</span><span>perami</span></li>
-                            <li className="flex gap-2"><span className="text-[#1D0E22]/25 shrink-0">—</span><span>očnými linkami</span></li>
-                            <li className="flex gap-2"><span className="text-[#1D0E22]/25 shrink-0">—</span><span>malými tetovaniami</span></li>
+                        <h2 className="font-marcellus text-2xl uppercase tracking-widest text-[#1D0E22]">Učíme sa pracovať s:</h2>
+                        <ul className="space-y-1 text-base text-[#1D0E22]/80 mt-2">
+                            <li className="flex gap-2"><span className="text-gold shrink-0">✦</span><span>obočím</span></li>
+                            <li className="flex gap-2"><span className="text-gold shrink-0">✦</span><span>perami</span></li>
+                            <li className="flex gap-2"><span className="text-gold shrink-0">✦</span><span>očnými linkami</span></li>
+                            <li className="flex gap-2"><span className="text-gold shrink-0">✦</span><span>malými tetovaniami</span></li>
                         </ul>
                     </div>
                     <p className="pt-2">
@@ -100,11 +103,11 @@ export default function Kurz6Page() {
 
                     <div className="space-y-6 pt-4">
                         <div>
-                            <h2 className="font-marcellus text-xl md:text-2xl uppercase tracking-widest text-[#1D0E22]">
+                            <h2 className="font-marcellus text-2xl uppercase tracking-widest text-[#1D0E22]">
                                 2. časť — Práca s vaším laserom
                             </h2>
                         </div>
-                        <div className="space-y-4 font-montserrat font-light text-[#1D0E22] leading-tight text-lg [&_p]:my-0">
+                        <div className="space-y-6 font-montserrat font-light text-[#1D0E22] leading-snug text-base">
                             <p>Druhá časť kurzu prebieha priamo u vás v salóne alebo na klinike.</p>
                             <p>Pracujeme s vaším laserom and nastavujeme vhodné parametre podľa typu zariadenia, výkonu a konkrétnych procedúr.</p>
                             <p>Nasleduje praktická časť na modelkách, kde sa špecialista zaučuje pod mojím vedením priamo v praxi.</p>
@@ -114,27 +117,30 @@ export default function Kurz6Page() {
             </PhotoSection>
 
             {/* Section 3: Photo + V rámci kurzu získavate */}
-            <PhotoSection photo="/academia/kurz6/IMG_4532%201.jpg" flip={false} aspectClass="aspect-square">
+            <PhotoSection photo="/academia/kurz-laser/photo_2025-03-17_13-31-34.jpg" flip={false} aspectClass="aspect-square">
                 <div className="space-y-6">
                     <div>
-                        <h2 className="font-marcellus text-xl md:text-2xl uppercase tracking-widest text-[#1D0E22]">
+                        <h2 className="font-marcellus text-2xl uppercase tracking-widest text-[#1D0E22]">
                             V rámci kurzu získavate
                         </h2>
                     </div>
-                    <ul className="space-y-2 font-montserrat font-light text-[#1D0E22]/80 text-base">
-                        <li className="flex gap-2"><span className="text-[#1D0E22]/25 shrink-0">—</span><span>plagáty procesu odstránenia pre klientov</span></li>
-                        <li className="flex gap-2"><span className="text-[#1D0E22]/25 shrink-0">—</span><span>anamnézy a informované súhlasy</span></li>
-                        <li className="flex gap-2"><span className="text-[#1D0E22]/25 shrink-0">—</span><span>systém práce a konzultácií</span></li>
-                        <li className="flex gap-2"><span className="text-[#1D0E22]/25 shrink-0">—</span><span>individuálne vedenie počas zaučenia</span></li>
+                    <ul className="space-y-1 font-montserrat font-light text-[#1D0E22]/80 text-base">
+                        <li className="flex gap-2"><span className="text-gold shrink-0">✦</span><span>plagáty procesu odstránenia pre klientov</span></li>
+                        <li className="flex gap-2"><span className="text-gold shrink-0">✦</span><span>anamnézy a informované súhlasy</span></li>
+                        <li className="flex gap-2"><span className="text-gold shrink-0">✦</span><span>systém práce a konzultácií</span></li>
+                        <li className="flex gap-2"><span className="text-gold shrink-0">✦</span><span>individuálne vedenie počas zaučenia</span></li>
                     </ul>
                     <div className="border-l-2 border-gold/40 pl-4 italic text-[#1D0E22]/70 text-sm">
                         <p className="font-montserrat font-light leading-relaxed">V prípade záujmu viem individuálne pomôcť aj so zabezpečením kvalitného lasera priamo od výrobcu — od komunikácie and dohodnutia podmienok až po samotný proces objednávky.</p>
+                    </div>
+                    <div className="relative aspect-square overflow-hidden rounded-2xl border border-black/10 shadow-sm">
+                        <LightboxImage src="/academia/kurz-laser/IMG_4532%201.jpg" alt="" fill className="object-cover" />
                     </div>
                 </div>
             </PhotoSection>
 
             {/* Pricing */}
-            <div className="grid md:grid-cols-2 gap-6 md:max-w-[66.666%] md:mx-auto">
+            <div className="grid md:grid-cols-2 gap-6 md:max-w-[66.666%] md:mx-auto -mt-8 md:-mt-12">
                 <div className="border border-[#1D0E22]/30 bg-[#1D0E22]/5 rounded-2xl p-8 text-center space-y-3 flex flex-col justify-center">
                     <p className="font-montserrat text-xs uppercase tracking-[0.2em] text-[#1D0E22]/50">Cena kurzu</p>
                     <p className="font-marcellus text-5xl text-[#1D0E22]">1 280 €</p>

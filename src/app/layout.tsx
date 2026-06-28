@@ -4,6 +4,7 @@ import "./globals.css";
 import SmoothScroller from "@/components/SmoothScroller";
 import CookieConsent from "@/components/CookieConsent";
 import SiteBackdrop from "@/components/SiteBackdrop";
+import LightboxProvider from "@/components/lightbox/LightboxContext";
 
 const marcellus = Marcellus_SC({
   variable: "--font-marcellus",
@@ -58,7 +59,7 @@ export const metadata: Metadata = {
     images: ["/shared/IMG_1422.JPG"],
   },
   icons: {
-    icon: '/shared/output-onlinepngtools-removebg-preview.png',
+    icon: '/shared/favicon.png',
   },
 };
 
@@ -118,9 +119,11 @@ export default function RootLayout({
       >
         <SiteBackdrop />
         <SmoothScroller>
-          <div className="relative z-10 min-h-screen">
-            {children}
-          </div>
+          <LightboxProvider>
+            <div className="relative z-10 min-h-screen">
+              {children}
+            </div>
+          </LightboxProvider>
         </SmoothScroller>
         <CookieConsent />
       </body>

@@ -4,7 +4,7 @@ import KozmetikaContent from "./KozmetikaContent";
 export const metadata: Metadata = {
     title: "Rituály tváre | Salón Viktória",
     description: "Komplexné kozmetické ošetrenia pre zdravie a krásu pleti. Mezoboost, exozómy, peelingy, luxusné rituály a ošetrenia pre citlivú pleť.",
-    alternates: { canonical: "/sluzby/kozmetika" },
+    alternates: { canonical: "/sluzby/beauty-therapy" },
 };
 
 export default function CosmeticsPage() {

@@ -16,14 +16,14 @@ type Course = {
 };
 
 const COURSES: Course[] = [
-    { label: "The Art of PMU", href: "/academia/the-art-of-pmu", image: "/academia/kurz1/preview.PNG", position: "center 40%" },
-    { label: "Tri Techniky Obočia", href: "/academia/tri-techniky-obocia", image: "/academia/kurz4/preview.PNG" },
-    { label: "Hyperrealistické Obočie", href: "/academia/hyperrealisticke-obocie", image: "/academia/kurz5/preview.PNG" },
-    { label: "Laser Touch", href: "/academia/laser-touch", image: "/academia/kurz6/lasertouch_preview.PNG" },
-    { label: "PMU Očných Liniek", href: "/academia/pmu-ocnych-liniek", image: "/academia/kurz3/linky_preview.PNG" },
-    { label: "PMU Pier", href: "/academia/pmu-pier", image: "/academia/kurz2/pery_preview.PNG" },
-    { label: "Estetické nastrelovanie náušníc", href: "/academia/esteticke-nastrelovanie-nausnic", video: "https://pub-60b685024baf4def829d5151d4dc320a.r2.dev/kurz7.mp4" },
+    { label: "The Art of PMU", href: "/academia/the-art-of-pmu", image: "/academia/kurz-art-of-pmu/preview.PNG", position: "center 40%" },
+    { label: "Tri Techniky Obočia", href: "/academia/tri-techniky-obocia", image: "/academia/kurz-obocie/preview.PNG" },
+    { label: "Hyperrealistické Obočie", href: "/academia/hyperrealisticke-obocie", image: "/academia/kurz-hyperrealisticke-obocie/preview.PNG" },
+    { label: "PMU Očných Liniek", href: "/academia/pmu-ocnych-liniek", image: "/academia/kurz-linky/linky_preview.PNG" },
+    { label: "PMU Pier", href: "/academia/pmu-pier", image: "/academia/kurz-pery/pery_preview.PNG" },
+    { label: "Laser Touch", href: "/academia/laser-touch", image: "/academia/kurz-laser/lasertouch_preview.PNG" },
     { label: "Deň Otvorených Dverí", href: "/academia/dod", video: "https://pub-60b685024baf4def829d5151d4dc320a.r2.dev/dod.mp4", position: "center 20%" },
+    { label: "Estetické nastrelovanie náušníc", href: "/academia/esteticke-nastrelovanie-nausnic", video: "https://pub-60b685024baf4def829d5151d4dc320a.r2.dev/kurz7.mp4" },
 ];
 
 export default function AcademiaSidebar() {
@@ -103,7 +103,7 @@ export default function AcademiaSidebar() {
             </div>
 
             {/* Mobile Top Active Button Trigger */}
-            <div className="lg:hidden flex flex-col gap-2 mb-8">
+            <div className="lg:hidden flex flex-col gap-2 mt-8 order-last lg:order-none">
                 <label className="text-[#1D0E22] text-xs uppercase tracking-widest mb-1 block font-marcellus">Vybraný kurz</label>
                 <button
                     onClick={() => setIsDrawerOpen(true)}
@@ -211,6 +211,8 @@ export default function AcademiaSidebar() {
                                                     src={course.image}
                                                     alt={course.label}
                                                     fill
+                                                    sizes="85vw"
+                                                    loading="eager"
                                                     className="object-cover transition-transform duration-700 group-hover:scale-110"
                                                     style={course.position ? { objectPosition: course.position } : undefined}
                                                 />

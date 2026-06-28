@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import LightboxImage from "@/components/LightboxImage";
 
 export const metadata: Metadata = {
     title: "Tri Techniky Obočia | Academia | Salón Viktória",
@@ -7,14 +8,27 @@ export const metadata: Metadata = {
     alternates: { canonical: "/academia/tri-techniky-obocia" },
 };
 
-const PHOTOS = ["/academia/kurz4/2.png", "/academia/kurz4/3d72931a-081c-427a-8a31-07c8d8fea3ff.JPG", "/academia/kurz4/vik3.jpg"];
+const PHOTOS = ["/academia/kurz-obocie/2.png", "/academia/kurz-obocie/3d72931a-081c-427a-8a31-07c8d8fea3ff.JPG", "/academia/kurz-obocie/vik3.jpg"];
 
-function PhotoSection({ photo, flip = false, children }: { photo: string; flip?: boolean; children: React.ReactNode }) {
+function PhotoSection({ photo, flip = false, label, children }: { photo: string; flip?: boolean; label?: string; children: React.ReactNode }) {
+    const isVideo = /\.(mp4|mov|webm)$/i.test(photo);
     const isPortraitPNG = /\.png$/i.test(photo);
     return (
         <div className={`grid grid-cols-1 md:grid-cols-2 gap-0 items-start ${flip ? "md:[&>*:first-child]:order-2 md:[&>*:last-child]:order-1" : ""}`}>
             <div className={`relative overflow-hidden rounded-2xl ${isPortraitPNG ? "aspect-[4/5]" : "min-h-[400px] md:min-h-[520px]"}`}>
-                <Image src={photo} alt="" fill className="object-cover" />
+                {isVideo ? (
+                    <video src={photo} autoPlay muted loop playsInline className="absolute inset-0 h-full w-full object-cover" />
+                ) : (
+                    <LightboxImage src={photo} alt="" fill className="object-cover" />
+                )}
+                {label && (
+                    <>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent pointer-events-none" />
+                        <p className="absolute bottom-4 left-4 font-marcellus text-sm md:text-base uppercase tracking-widest text-[#EEE3CE] drop-shadow-lg">
+                            {label}
+                        </p>
+                    </>
+                )}
             </div>
             <div className="flex flex-col justify-start px-0 md:px-12 pt-6 md:pt-0 pb-10">
                 {children}
@@ -39,15 +53,12 @@ export default function Kurz4Page() {
     return (
         <AnimatedSpace className="space-y-10">
             <PhotoSection photo={PHOTOS[0]} flip={false}>
-                <div className="space-y-4 font-montserrat font-light text-[#1D0E22] leading-tight text-lg [&_p]:my-0">
-                    <h2 className="font-marcellus text-3xl uppercase tracking-widest text-[#1D0E22] mb-1">
+                <div className="space-y-6 font-montserrat font-light text-[#1D0E22] leading-snug text-base">
+                    <h2 className="font-marcellus text-3xl uppercase tracking-widest text-[#1D0E22] mb-4">
                         TRI TECHNIKY OBOČIA
                     </h2>
-                    <p className="font-marcellus text-xs uppercase tracking-wider text-[#1D0E22]/60 mb-6">
-                        Kurz permanentného make-upu obočia
-                    </p>
-                    
-                    <p className="font-medium text-[#1D0E22] mb-4">
+
+                    <p className="text-[#1D0E22] mb-4">
                         Na kurze sa budeme učiť tri rozdielne techniky obočia — od najjemnejších a technicky jednoduchších až po pokročilé hairstroke techniky.
                     </p>
                     
@@ -87,14 +98,16 @@ export default function Kurz4Page() {
                         Zároveň sa pripravte na intenzívnu prácu. Budeme veľa trénovať, tetovať každý deň, analyzovať chyby a dostávať spätnú väzbu k domácim úlohám aj každodennému progresu.
                     </p>
                     
-                    <p className="pt-4 italic text-[#1D0E22]/80">
-                        Prosím, príďte s krátkymi nechtami, ideálne bez umelých nechtov.
-                    </p>
+                    <div className="pt-4 border-t border-[#1D0E22]/10">
+                        <p className="text-sm font-medium text-[#1D0E22] italic">
+                            ⚠️ Prosím, príďte s krátkymi prírodnými nechtami.
+                        </p>
+                    </div>
                 </div>
             </PhotoSection>
 
-            <PhotoSection photo="/academia/kurz4/IMG_5741%201.jpg" flip={true}>
-                <div className="space-y-4 font-montserrat font-light text-[#1D0E22] leading-tight text-lg [&_p]:my-0">
+            <PhotoSection photo="/academia/kurz-obocie/IMG_3405.MOV" flip={true} label="Práca absolventky Moniky">
+                <div className="space-y-6 font-montserrat font-light text-[#1D0E22] leading-snug text-base">
                     <h2 className="font-marcellus text-2xl uppercase tracking-widest text-[#1D0E22] mb-6">
                         Komplexný špecialista na obočie
                     </h2>
@@ -119,14 +132,14 @@ export default function Kurz4Page() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {[
-                    { src: "/academia/kurz4/5bddc510-09c7-4ed2-94cc-4f41247bf806.JPG", label: "Hyperrealistické / Hairstroke" },
-                    { src: "/academia/kurz4/e1d00a2b-d239-40bf-b217-3d283796a228.JPG", label: "Hybridné pigmenty" },
-                    { src: "/academia/kurz4/06e30ad8-671a-4f20-bb8e-73e2e3de7a43.JPG", label: "Minerálne" },
-                ].map((item, i) => (
+                    { src: "/academia/kurz-obocie/5bddc510-09c7-4ed2-94cc-4f41247bf806.JPG", label: "Hyperrealistické / Hairstroke" },
+                    { src: "/academia/kurz-obocie/e1d00a2b-d239-40bf-b217-3d283796a228.JPG", label: "Hybridné pigmenty" },
+                    { src: "/academia/kurz-obocie/06e30ad8-671a-4f20-bb8e-73e2e3de7a43.JPG", label: "Minerálne" },
+                ].map((item, i, arr) => (
                     <div key={i} className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-black/10 shadow-sm">
-                        <Image src={item.src} alt={item.label} fill className="object-cover" />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
-                        <p className="absolute bottom-4 left-4 font-marcellus text-sm md:text-base uppercase tracking-widest text-[#EEE3CE]">
+                        <LightboxImage src={item.src} alt={item.label} fill className="object-cover" group={arr.map((g) => g.src)} groupIndex={i} />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent pointer-events-none" />
+                        <p className="absolute bottom-4 left-4 font-marcellus text-sm md:text-base uppercase tracking-widest text-[#EEE3CE] drop-shadow-lg">
                             {item.label}
                         </p>
                     </div>
@@ -135,19 +148,19 @@ export default function Kurz4Page() {
 
             {/* Program kurzu */}
             <div className="space-y-8 max-w-xl mx-auto flex flex-col items-center py-8">
-                <h2 className="font-marcellus text-xl md:text-2xl uppercase tracking-widest text-[#1D0E22] text-center">Program kurzu</h2>
-                <div className="space-y-6 w-full px-4 sm:px-8">
+                <h2 className="font-marcellus text-2xl uppercase tracking-widest text-[#1D0E22] text-center">Program kurzu</h2>
+                <div className="space-y-4 w-full px-4 sm:px-8">
                     {SCHEDULE.map((block) => (
-                        <div key={block.num} className="flex gap-4 items-start">
-                            <span className="font-marcellus text-4xl text-[#1D0E22]/20 leading-none shrink-0">{block.num}</span>
-                            <div className="space-y-1">
+                        <div key={block.num} className="flex gap-3 items-start">
+                            <span className="font-marcellus text-3xl text-[#1D0E22]/15 leading-none shrink-0">{block.num}</span>
+                            <div className="space-y-0.5">
                                 <div>
-                                    <p className="font-marcellus text-sm uppercase tracking-widest text-[#1D0E22] leading-tight font-semibold">{block.title}</p>
-                                    {block.date && <p className="font-montserrat text-xs text-[#1D0E22]/50 leading-tight mt-0.5">{block.date}</p>}
+                                    <p className="font-marcellus text-base uppercase tracking-widest text-[#1D0E22] leading-tight">{block.title}</p>
+                                    {block.date && <p className="font-montserrat text-xs text-[#1D0E22]/45 leading-tight mb-[3px]">{block.date}</p>}
                                 </div>
-                                <ul className="font-montserrat text-sm font-light text-[#1D0E22]/70 leading-tight pt-1">
+                                <ul className="font-montserrat text-base font-light text-[#1D0E22]/70 leading-tight">
                                     {block.items.map((item, i) => (
-                                        <li key={i} className="flex gap-1.5"><span className="text-[#1D0E22]/25 shrink-0">—</span><span>{item}</span></li>
+                                        <li key={i} className="flex gap-1.5"><span className="text-gold shrink-0">✦</span><span>{item}</span></li>
                                     ))}
                                 </ul>
                             </div>

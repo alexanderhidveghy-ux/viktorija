@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import LightboxImage from "@/components/LightboxImage";
 
 export const metadata: Metadata = {
     title: "Hyperrealistické Obočie | Academia | Salón Viktória",
@@ -7,7 +8,7 @@ export const metadata: Metadata = {
     alternates: { canonical: "/academia/hyperrealisticke-obocie" },
 };
 
-const PHOTOS = ["/academia/kurz5/5.png", "/academia/kurz5/1.jpg", "/academia/kurz5/IMG_4090%201.jpg"];
+const PHOTOS = ["/academia/kurz-hyperrealisticke-obocie/5.png", "/academia/kurz-hyperrealisticke-obocie/d58b22d3-0299-4126-b2de-dbe420480e95.JPG", "/academia/kurz-hyperrealisticke-obocie/IMG_4090%201.jpg"];
 
 function PhotoSection({
     photo,
@@ -27,7 +28,7 @@ function PhotoSection({
     return (
         <div className={`grid grid-cols-1 md:grid-cols-2 gap-0 items-start ${flip ? "md:[&>*:first-child]:order-2 md:[&>*:last-child]:order-1" : ""}`}>
             <div className={`relative overflow-hidden rounded-2xl ${resolvedAspect}`}>
-                <Image src={photo} alt="" fill className={imageClass} />
+                <LightboxImage src={photo} alt="" fill className={imageClass} />
             </div>
             <div className="flex flex-col justify-start px-0 md:px-12 pt-6 md:pt-0 pb-10">
                 {children}
@@ -51,25 +52,25 @@ export default function Kurz5Page() {
         <AnimatedSpace className="space-y-16">
             <PhotoSection photo={PHOTOS[0]} flip={false}>
                 <div className="space-y-6">
-                    <h2 className="font-marcellus text-2xl md:text-3xl uppercase tracking-widest text-[#1D0E22] mb-4">
+                    <h2 className="font-marcellus text-3xl uppercase tracking-widest text-[#1D0E22] mb-4">
                         HYPERREALISTICKÉ OBOČIE / HAIRSTROKE
                     </h2>
                     
-                    <p className="font-montserrat text-lg font-light text-[#1D0E22] leading-snug">
+                    <p className="font-montserrat text-base font-light text-[#1D0E22] leading-snug">
                         Technika kreslenia chĺpkov a schéma ich ukladania, ktorú učím, je vytvorená predovšetkým pre klientsku prax.
                         Na medzinárodných súťažiach som s touto technikou obsadila 2. až 8. miesto, no pre mňa je najdôležitejšie, že klientky tento typ obočia milujú — pretože pôsobí prirodzene, vzdušne a zároveň husto.
                     </p>
                     
-                    <p className="font-montserrat text-lg font-light text-[#1D0E22] leading-snug">
+                    <p className="font-montserrat text-base font-light text-[#1D0E22] leading-snug">
                         Hyperrealistické obočie patrí technicky medzi najnáročnejšie techniky permanentného make-upu.
                         Aj skúsený artist musí pri práci neustále premýšľať nad smerom, rytmom a hustotou chĺpkov, vytvárať priestorový 3D efekt a kontrolovať jemnosť jednotlivých ťahov.
                     </p>
                     
-                    <p className="font-montserrat text-lg font-light text-[#1D0E22] leading-snug">
+                    <p className="font-montserrat text-base font-light text-[#1D0E22] leading-snug">
                         Pracujeme s viacerými odtieňmi pigmentov aj s riedidlom, aby sme vedeli regulovať intenzitu chĺpka — pretože prirodzený chĺpok nikdy nemá rovnakú sýtosť po celej dĺžke a ku koncu zostáva jemnejší a priesvitnejší.
                     </p>
                     
-                    <p className="font-montserrat text-lg font-light text-[#1D0E22] leading-snug">
+                    <p className="font-montserrat text-base font-light text-[#1D0E22] leading-snug">
                         Tento Master Class je určený pre skúsených artistov.
                         Budeme sa venovať predovšetkým technicky správnemu tetovaniu chĺpkov, práci s rýchlosťou strojčeka, vhodnou konfiguráciou ihiel a kontrole pohybu ruky pri vytváraní realistického efektu.
                     </p>
@@ -79,9 +80,9 @@ export default function Kurz5Page() {
             <PhotoSection photo={PHOTOS[1]} flip={true} aspectClass="aspect-[2/3] md:aspect-[3/4] max-h-[620px] mx-auto w-full" imageClass="object-cover object-top">
                 <div className="space-y-6">
                     <div>
-                        <h2 className="font-marcellus text-xl md:text-2xl uppercase tracking-widest text-[#1D0E22]">Čo sa naučíte</h2>
+                        <h2 className="font-marcellus text-2xl uppercase tracking-widest text-[#1D0E22]">Čo sa naučíte</h2>
                     </div>
-                    <ul className="space-y-3 font-montserrat text-lg font-light text-[#1D0E22] leading-snug">
+                    <ul className="space-y-1 font-montserrat text-base font-light text-[#1D0E22] leading-snug">
                         {[
                             "presné vedenie chĺpkov (flow, smer, vrstvenie)",
                             "kontrolu ruky a hĺbky pigmentácie",
@@ -89,7 +90,7 @@ export default function Kurz5Page() {
                             "tvorbu prirodzenej hustoty bez preplnenia",
                             "dosiahnuť výsledok, ktorý sa hojí jemne a čisto"
                         ].map((item, i) => (
-                            <li key={i} className="flex gap-3"><span className="text-[#1D0E22]/30 mt-0.5 shrink-0">✦</span><span>{item}</span></li>
+                            <li key={i} className="flex gap-3"><span className="text-gold mt-0.5 shrink-0">✦</span><span>{item}</span></li>
                         ))}
                     </ul>
                 </div>
@@ -98,21 +99,21 @@ export default function Kurz5Page() {
             <PhotoSection photo={PHOTOS[2]} flip={false}>
                 <div className="space-y-6">
                     <div>
-                        <h2 className="font-marcellus text-xl md:text-2xl uppercase tracking-widest text-[#1D0E22]">Program kurzu</h2>
+                        <h2 className="font-marcellus text-2xl uppercase tracking-widest text-[#1D0E22]">Program kurzu</h2>
                     </div>
-                    <div className="space-y-2">
+                    <div className="space-y-4">
                         {SCHEDULE.map((block) => (
                             <div key={block.num}>
                                 <div className="flex gap-3">
                                     <span className="font-marcellus text-3xl text-[#1D0E22]/15 leading-none shrink-0">{block.num}</span>
                                     <div className="space-y-0.5">
                                         <div>
-                                            <p className="font-marcellus text-sm uppercase tracking-widest text-[#1D0E22] leading-tight">{block.title}</p>
-                                            {block.date && <p className="font-montserrat text-xs text-[#1D0E22]/45 leading-tight">{block.date}</p>}
+                                            <p className="font-marcellus text-base uppercase tracking-widest text-[#1D0E22] leading-tight">{block.title}</p>
+                                            {block.date && <p className="font-montserrat text-xs text-[#1D0E22]/45 leading-tight mb-[3px]">{block.date}</p>}
                                         </div>
-                                        <ul className="font-montserrat text-sm font-light text-[#1D0E22]/70 leading-tight">
+                                        <ul className="font-montserrat text-base font-light text-[#1D0E22]/70 leading-tight">
                                             {block.items.map((item, i) => (
-                                                <li key={i} className="flex gap-1.5"><span className="text-[#1D0E22]/25 shrink-0">—</span><span>{item}</span></li>
+                                                <li key={i} className="flex gap-1.5"><span className="text-gold shrink-0">✦</span><span>{item}</span></li>
                                             ))}
                                         </ul>
                                     </div>
@@ -145,7 +146,7 @@ export default function Kurz5Page() {
             </div>
             
             <div className="p-8 bg-[#1D0E22]/5 rounded-2xl text-center italic font-montserrat text-sm text-[#1D0E22]/70">
-                "Priemernosť dnes nestačí – klientky si vyberajú kvalitu, presnosť a výsledok. Pridajte sa na kurz a posuňte svoju prácu na vyššiu úroveň."
+                „Priemernosť dnes nestačí – klientky si vyberajú kvalitu, presnosť a výsledok. Pridajte sa na kurz a posuňte svoju prácu na vyššiu úroveň.“
             </div>
 
             <CourseBookingSection courseName="Hyperrealistické Obočie" />

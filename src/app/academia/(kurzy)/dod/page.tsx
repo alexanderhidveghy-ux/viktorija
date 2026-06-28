@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import LightboxImage from "@/components/LightboxImage";
 import AnimatedSpace from "@/app/academia/_components/AnimatedSpace";
 
 export const metadata: Metadata = {
@@ -16,15 +16,18 @@ export default function DodPage() {
             {/* Section 1: Photo + Text */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-0 items-start">
                 <div className="relative overflow-hidden rounded-2xl aspect-[4/5] md:min-h-[520px]">
-                    <Image
+                    <LightboxImage
                         src="/academia/DENOTVORENYCHDVERI.png"
                         alt="Deň Otvorených Dverí"
                         fill
                         className="object-cover"
                     />
                 </div>
-                <div className="flex flex-col justify-start px-0 md:px-12 pt-6 md:pt-0 pb-10 space-y-4 font-montserrat font-light text-[#1D0E22] leading-tight text-lg [&_p]:my-0">
-                    <p className="font-montserrat text-lg font-light text-[#1D0E22] leading-snug mb-2">
+                <div className="flex flex-col justify-start px-0 md:px-12 pt-6 md:pt-0 pb-10 space-y-6 font-montserrat font-light text-[#1D0E22] leading-snug text-base">
+                    <h2 className="font-marcellus text-3xl uppercase tracking-widest text-[#1D0E22] mb-4">
+                        DEŇ OTVORENÝCH DVERÍ
+                    </h2>
+                    <p className="font-montserrat text-base font-light text-[#1D0E22] leading-snug mb-2">
                         Pozývam vás na deň otvorených dverí v mojej akadémii, kde si môžete vyskúšať prácu permanent make-up artistu.
                     </p>
                     <p>
@@ -56,7 +59,7 @@ export default function DodPage() {
                         className="absolute inset-0 w-full h-full object-cover"
                     />
                 </div>
-                <div className="flex flex-col justify-start px-0 md:px-12 pt-6 md:pt-0 pb-10 space-y-4 font-montserrat font-light text-[#1D0E22] leading-tight text-lg [&_p]:my-0">
+                <div className="flex flex-col justify-start px-0 md:px-12 pt-6 md:pt-0 pb-10 space-y-6 font-montserrat font-light text-[#1D0E22] leading-snug text-base">
                     <p>
                         Srdečne vás pozývam <strong>18. 09. 2026</strong>. Ja vás osobne prevediem celým procesom a spolu si vytvoríme vaše prvé obočie, pery alebo očné linky na latexe a face chartoch.
                     </p>
@@ -67,7 +70,7 @@ export default function DodPage() {
             </div>
 
             <div className="space-y-4">
-                <h2 className="font-marcellus text-2xl md:text-3xl uppercase tracking-widest text-[#1D0E22] text-center">Program dňa</h2>
+                <h2 className="font-marcellus text-2xl uppercase tracking-widest text-[#1D0E22] text-center">Program dňa</h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     {[
                         { time: "9:00", label: "Obočie" },
@@ -83,8 +86,8 @@ export default function DodPage() {
             </div>
 
             <div className="p-8 bg-gold/5 border border-gold/20 rounded-2xl text-center space-y-2">
-                <p className="font-marcellus text-xs uppercase tracking-[0.3em] text-gold">Počet miest je obmedzený</p>
-                <p className="font-montserrat text-lg font-light text-[#1D0E22] leading-snug">
+                <p className="font-marcellus text-xs uppercase tracking-[0.3em] text-[#1D0E22]">Počet miest je obmedzený</p>
+                <p className="font-montserrat text-base font-light text-[#1D0E22] leading-snug">
                     V prípade záujmu mi, prosím, napíšte správu.
                 </p>
             </div>

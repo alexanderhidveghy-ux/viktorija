@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import LightboxImage from "@/components/LightboxImage";
 import AnimatedSpace from "@/app/academia/_components/AnimatedSpace";
 import ContactCTA from "@/app/academia/_components/ContactCTA";
 import CourseBookingSection from "@/app/academia/_components/CourseBookingSection";
@@ -10,21 +11,6 @@ export const metadata: Metadata = {
     alternates: { canonical: "/academia/esteticke-nastrelovanie-nausnic" },
 };
 
-function PhotoSection({ photo, flip = false, children }: { photo: string; flip?: boolean; children: React.ReactNode }) {
-    return (
-        <div className={`grid grid-cols-1 md:grid-cols-2 gap-0 items-start ${flip ? "md:[&>*:first-child]:order-2 md:[&>*:last-child]:order-1" : ""}`}>
-            <div className="relative overflow-hidden rounded-2xl aspect-[4/5] md:min-h-[520px]">
-                <Image src={photo} alt="" fill className="object-cover" />
-            </div>
-            <div className="flex flex-col justify-start px-0 md:px-12 pt-6 md:pt-0 pb-10">
-                {children}
-            </div>
-        </div>
-    );
-}
-
-
-
 export default function Kurz7Page() {
     return (
         <AnimatedSpace className="space-y-16">
@@ -33,15 +19,15 @@ export default function Kurz7Page() {
             {/* Section 1: Photo + Intro, Acupuncture & Focus Areas */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-0 items-start">
                 <div className="relative overflow-hidden rounded-2xl aspect-[4/5] md:min-h-[520px]">
-                    <Image
-                        src="/academia/kurz7/7.png"
+                    <LightboxImage
+                        src="/academia/kurz-nausnice/7.png"
                         alt="Estetické Nastreľovanie Náušníc"
                         fill
                         className="object-cover"
                     />
                 </div>
-                <div className="flex flex-col justify-start px-0 md:px-12 pt-6 md:pt-0 pb-10 space-y-4 font-montserrat font-light text-[#1D0E22] leading-tight text-lg [&_p]:my-0">
-                    <h2 className="font-marcellus text-2xl md:text-3xl uppercase tracking-widest text-[#1D0E22] mb-4">
+                <div className="flex flex-col justify-start px-0 md:px-12 pt-6 md:pt-0 pb-10 space-y-6 font-montserrat font-light text-[#1D0E22] leading-snug text-base">
+                    <h2 className="font-marcellus text-3xl uppercase tracking-widest text-[#1D0E22] mb-4">
                         Estetické nastreľovanie náušníc — Individuálny praktický kurz
                     </h2>
                     <p>
@@ -59,19 +45,19 @@ export default function Kurz7Page() {
                     <p className="pt-2">
                         Na kurze sa budeme venovať nielen samotnému vpichu, ale hlavne estetike, anatómii ucha a komunikácii s klientom.
                     </p>
-                    <p className="font-medium text-base uppercase tracking-wider pt-2">Budeme riešiť:</p>
-                    <ul className="space-y-1.5 text-sm text-[#1D0E22]/80">
-                        <li className="flex gap-2"><span className="text-[#1D0E22]/25 shrink-0">—</span><span>správne umiestnenie náušnice podľa typu ucha</span></li>
-                        <li className="flex gap-2"><span className="text-[#1D0E22]/25 shrink-0">—</span><span>zarastené dierky</span></li>
-                        <li className="flex gap-2"><span className="text-[#1D0E22]/25 shrink-0">—</span><span>zošívané alebo poškodené uši</span></li>
-                        <li className="flex gap-2"><span className="text-[#1D0E22]/25 shrink-0">—</span><span>prácu v oblasti jazvy</span></li>
-                        <li className="flex gap-2"><span className="text-[#1D0E22]/25 shrink-0">—</span><span>jemné detské ušká</span></li>
-                        <li className="flex gap-2"><span className="text-[#1D0E22]/25 shrink-0">—</span><span>vystrašené deti a stres rodičov</span></li>
-                        <li className="flex gap-2"><span className="text-[#1D0E22]/25 shrink-0">—</span><span>pubertiačky</span></li>
-                        <li className="flex gap-2"><span className="text-[#1D0E22]/25 shrink-0">—</span><span>helix</span></li>
-                        <li className="flex gap-2"><span className="text-[#1D0E22]/25 shrink-0">—</span><span>uši po plastických operáciách</span></li>
-                        <li className="flex gap-2"><span className="text-[#1D0E22]/25 shrink-0">—</span><span>vytvorenie pokojnej a priateľskej atmosféry počas procedúry</span></li>
-                        <li className="flex gap-2"><span className="text-[#1D0E22]/25 shrink-0">—</span><span>domácu starostlivosť po nastrelení</span></li>
+                    <h3 className="font-marcellus text-2xl uppercase tracking-widest text-[#1D0E22] pt-2">Budeme riešiť:</h3>
+                    <ul className="space-y-1 text-base text-[#1D0E22]/80">
+                        <li className="flex gap-2"><span className="text-gold shrink-0">✦</span><span>správne umiestnenie náušnice podľa typu ucha</span></li>
+                        <li className="flex gap-2"><span className="text-gold shrink-0">✦</span><span>zarastené dierky</span></li>
+                        <li className="flex gap-2"><span className="text-gold shrink-0">✦</span><span>zošívané alebo poškodené uši</span></li>
+                        <li className="flex gap-2"><span className="text-gold shrink-0">✦</span><span>prácu v oblasti jazvy</span></li>
+                        <li className="flex gap-2"><span className="text-gold shrink-0">✦</span><span>jemné detské ušká</span></li>
+                        <li className="flex gap-2"><span className="text-gold shrink-0">✦</span><span>vystrašené deti a stres rodičov</span></li>
+                        <li className="flex gap-2"><span className="text-gold shrink-0">✦</span><span>pubertiačky</span></li>
+                        <li className="flex gap-2"><span className="text-gold shrink-0">✦</span><span>helix</span></li>
+                        <li className="flex gap-2"><span className="text-gold shrink-0">✦</span><span>uši po plastických operáciách</span></li>
+                        <li className="flex gap-2"><span className="text-gold shrink-0">✦</span><span>vytvorenie pokojnej a priateľskej atmosféry počas procedúry</span></li>
+                        <li className="flex gap-2"><span className="text-gold shrink-0">✦</span><span>domácu starostlivosť po nastrelení</span></li>
                     </ul>
                     <p className="pt-2">
                         Budeme hovoriť aj o tom, kto je naším klientom — či dieťa, alebo rodič — a ako správne viesť komunikáciu, aby bol celý proces pokojný, bezpečný a príjemný pre všetkých.
@@ -91,14 +77,14 @@ export default function Kurz7Page() {
                         className="absolute inset-0 w-full h-full object-cover"
                     />
                 </div>
-                <div className="flex flex-col justify-start px-0 md:px-12 pt-6 md:pt-0 pb-10 space-y-4 font-montserrat font-light text-[#1D0E22] leading-tight text-lg [&_p]:my-0">
+                <div className="flex flex-col justify-start px-0 md:px-12 pt-6 md:pt-0 pb-10 space-y-6 font-montserrat font-light text-[#1D0E22] leading-snug text-base">
                     <p>
                         Kurz je postavený na dlhoročnej praxi, skúsenostiach a detailoch, ktoré sa človek z klasického „školenia k pištoli“ nenaučí.
                     </p>
-                    <p className="font-medium pt-2">
+                    <p className="pt-2">
                         O svoje profesionálne tajomstvá a systém estetického nastreľovania náušníc sa s vami podelím na tomto autorskom kurze, vytvorenom na základe rokov každodennej praxe.
                     </p>
-                    <p className="pt-4 font-medium">
+                    <p className="pt-4">
                         Kurz je prakticky orientovaný a trvá približne 4 hodiny. Súčasťou výučby je demo ukážka a následná práca na modelkách.
                     </p>
                     <p>

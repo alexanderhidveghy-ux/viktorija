@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Lightbox from "@/components/Lightbox";
+import RevealGroup from "@/components/RevealGroup";
 import PmuSubSidebar from "../../_components/PmuSubSidebar";
 import ContactForm from "../../_components/ContactForm";
 import StickyCennikButton from "../../_components/StickyCennikButton";
@@ -54,7 +55,10 @@ export default function BrowsContent() {
                     </Link>
 
                     {/* Large Detail Image */}
-                    <div className="relative h-[300px] md:h-[500px] w-full rounded-xl overflow-hidden border border-white/10 shadow-2xl">
+                    <div
+                        className="relative h-[300px] md:h-[500px] w-full rounded-xl overflow-hidden border border-white/10 shadow-2xl cursor-pointer"
+                        onClick={() => openLightbox(["/sluzby/permanentny-makeup/obocie/m4.jpg"], 0)}
+                    >
                         <Image
                             src="/sluzby/permanentny-makeup/obocie/m4.jpg"
                             alt="Permanentný make-up obočia"
@@ -64,8 +68,8 @@ export default function BrowsContent() {
                     </div>
 
                     {/* Content */}
-                    <div className="font-montserrat font-light text-[#1D0E22] leading-snug text-lg">
-                        <div className="space-y-8">
+                    <div className="font-montserrat font-light text-[#1D0E22] leading-snug text-base">
+                        <RevealGroup className="space-y-8">
                             {/* Intro + 3 Navigation Boxes */}
                             <div>
                                 <h3 className="font-marcellus text-3xl text-[#1D0E22] mb-4">Permanentný make-up obočia</h3>
@@ -112,10 +116,10 @@ export default function BrowsContent() {
                                 </p>
                                 <div className="space-y-2">
                                     <p className="font-medium">Pre koho je vhodné:</p>
-                                    <ul className="space-y-3">
-                                        <li className="flex gap-3"><span className="text-gold text-lg">✦</span><span>pri riedkom alebo chýbajúcom obočí (medzery, asymetria, vypadávanie chĺpkov),</span></li>
-                                        <li className="flex gap-3"><span className="text-gold text-lg">✦</span><span>pre klientky, ktoré preferujú maximálne prirodzený vzhľad,</span></li>
-                                        <li className="flex gap-3"><span className="text-gold text-lg">✦</span><span>pre ženy, ktoré chcú doplniť tvar bez viditeľného „make-up" efektu.</span></li>
+                                    <ul className="space-y-1">
+                                        <li className="flex gap-3"><span className="text-gold text-lg leading-none">✦</span><span>pri riedkom alebo chýbajúcom obočí (medzery, asymetria, vypadávanie chĺpkov),</span></li>
+                                        <li className="flex gap-3"><span className="text-gold text-lg leading-none">✦</span><span>pre klientky, ktoré preferujú maximálne prirodzený vzhľad,</span></li>
+                                        <li className="flex gap-3"><span className="text-gold text-lg leading-none">✦</span><span>pre ženy, ktoré chcú doplniť tvar bez viditeľného „make-up" efektu.</span></li>
                                     </ul>
                                 </div>
                                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -215,10 +219,10 @@ export default function BrowsContent() {
                                 </p>
                                 <div className="space-y-2">
                                     <p className="font-medium">Pre koho je vhodné:</p>
-                                    <ul className="space-y-3">
-                                        <li className="flex gap-3"><span className="text-gold text-lg">✦</span><span>pre klientky, ktoré majú vlastné obočie, ale chýba mu forma, hustota alebo symetria,</span></li>
-                                        <li className="flex gap-3"><span className="text-gold text-lg">✦</span><span>pre ženy, ktorým pristane jemne upravené, definované obočie,</span></li>
-                                        <li className="flex gap-3"><span className="text-gold text-lg">✦</span><span>pre tých, ktorí chcú stabilný tvar a elegantný výsledok.</span></li>
+                                    <ul className="space-y-1">
+                                        <li className="flex gap-3"><span className="text-gold text-lg leading-none">✦</span><span>pre klientky, ktoré majú vlastné obočie, ale chýba mu forma, hustota alebo symetria,</span></li>
+                                        <li className="flex gap-3"><span className="text-gold text-lg leading-none">✦</span><span>pre ženy, ktorým pristane jemne upravené, definované obočie,</span></li>
+                                        <li className="flex gap-3"><span className="text-gold text-lg leading-none">✦</span><span>pre tých, ktorí chcú stabilný tvar a elegantný výsledok.</span></li>
                                     </ul>
                                 </div>
                             </div>
@@ -276,10 +280,10 @@ export default function BrowsContent() {
                                 </p>
                                 <div className="space-y-2">
                                     <p className="font-medium">Pre koho je vhodné:</p>
-                                    <ul className="space-y-3">
-                                        <li className="flex gap-3"><span className="text-gold text-lg">✦</span><span>pre mladé dievčatá a klientky, ktoré preferujú naturálnu krásu,</span></li>
-                                        <li className="flex gap-3"><span className="text-gold text-lg">✦</span><span>pre ženy, ktoré nechcú výraznú intenzitu ani ostré línie,</span></li>
-                                        <li className="flex gap-3"><span className="text-gold text-lg">✦</span><span>pre klientky, ktoré uprednostňujú jemný, dočasnejší efekt.</span></li>
+                                    <ul className="space-y-1">
+                                        <li className="flex gap-3"><span className="text-gold text-lg leading-none">✦</span><span>pre mladé dievčatá a klientky, ktoré preferujú naturálnu krásu,</span></li>
+                                        <li className="flex gap-3"><span className="text-gold text-lg leading-none">✦</span><span>pre ženy, ktoré nechcú výraznú intenzitu ani ostré línie,</span></li>
+                                        <li className="flex gap-3"><span className="text-gold text-lg leading-none">✦</span><span>pre klientky, ktoré uprednostňujú jemný, dočasnejší efekt.</span></li>
                                     </ul>
                                 </div>
                                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -366,8 +370,8 @@ export default function BrowsContent() {
                                 </div>
                             </div>
 
-                            <StickyCennikButton />
-                        </div>
+                        </RevealGroup>
+                        <StickyCennikButton />
                     </div>
                 </div>
 

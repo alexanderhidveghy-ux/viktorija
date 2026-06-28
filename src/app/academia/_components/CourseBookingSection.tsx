@@ -14,7 +14,7 @@ export default function CourseBookingSection({ courseName }: CourseBookingSectio
         <div className="pt-12 border-t border-[#1D0E22]/10 mt-16 text-center space-y-6">
             <div className="space-y-2">
                 <h3 className="font-marcellus text-2xl uppercase tracking-widest text-[#1D0E22]">Máte záujem o tento kurz?</h3>
-                <p className="font-montserrat text-lg text-[#1D0E22] leading-snug">Zarezervujte si svoje miesto ešte dnes.</p>
+                <p className="font-montserrat text-base text-[#1D0E22] leading-snug">Zarezervujte si svoje miesto ešte dnes.</p>
             </div>
             
             <button

@@ -4,6 +4,7 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import Lightbox from "@/components/Lightbox";
+import RevealGroup from "@/components/RevealGroup";
 import ContactForm from "../_components/ContactForm";
 import StickyCennikButton from "../_components/StickyCennikButton";
 
@@ -128,8 +129,8 @@ export default function NausniceContent() {
                 ))}
             </div>
 
-            <div className="font-montserrat font-light text-[#1D0E22] leading-tight text-lg [&_p]:my-0 [&_ul]:my-0">
-                <div className="space-y-6">
+            <div className="font-montserrat font-light text-[#1D0E22] leading-tight text-base [&_p]:my-0">
+                <RevealGroup className="space-y-6">
 
                     {/* ═══ Úvod ═══ */}
                     <div className="space-y-1">
@@ -143,7 +144,7 @@ export default function NausniceContent() {
                         <p>
                             Pri nastreľovaní používam profesionálny systém značky <strong>STUDEX</strong>. K dispozícii mám dva typy aplikačných pištolí:
                         </p>
-                        <ul className="space-y-1 pl-1">
+                        <ul className="space-y-1 my-2.5 pl-1">
                             <li className="flex gap-1.5"><span className="text-gold text-lg leading-none">✦</span><span>veľmi tichý systém, ktorý odporúčam najmä pre malé dievčatká a citlivejšie klientky,</span></li>
                             <li className="flex gap-1.5"><span className="text-gold text-lg leading-none">✦</span><span>dynamickejší systém s rýchlou aplikáciou.</span></li>
                         </ul>
@@ -202,14 +203,14 @@ export default function NausniceContent() {
                                 </motion.div>
                             </button>
                         </div>
-                        <h4 className="font-marcellus text-2xl text-[#1D0E22] uppercase tracking-wider pb-1 border-b border-[#1D0E22]/10 mb-1 pt-4">
+                        <h4 className="font-marcellus text-2xl text-[#1D0E22] uppercase tracking-wider mb-1 pt-4">
                             Priebeh procedúry
                         </h4>
                         <p>
                             Každému klientovi venujem individuálnu pozornosť a dostatok času, aby celý proces prebehol pokojne, komfortne a s dôrazom na estetický výsledok.
                         </p>
                         <p>Procedúra zahŕňa:</p>
-                        <ul className="space-y-1 pl-1">
+                        <ul className="space-y-1 my-2.5 pl-1">
                             <li className="flex gap-1.5"><span className="text-gold text-lg leading-none">✦</span><span>konzultáciu a výber náušníc,</span></li>
                             <li className="flex gap-1.5"><span className="text-gold text-lg leading-none">✦</span><span>analýzu tvaru a anatómie uška,</span></li>
                             <li className="flex gap-1.5"><span className="text-gold text-lg leading-none">✦</span><span>dezinfekciu,</span></li>
@@ -234,7 +235,7 @@ export default function NausniceContent() {
                         </p>
 
                         <h5 className="font-marcellus text-lg text-[#1D0E22] uppercase tracking-wider pt-2">Odporúčania po procedúre</h5>
-                        <ul className="space-y-1 pl-1">
+                        <ul className="space-y-1 my-2.5 pl-1">
                             <li className="flex gap-1.5"><span className="text-gold text-lg leading-none">✦</span><span>V deň procedúry neodporúčam umývanie vlasov.</span></li>
                             <li className="flex gap-1.5"><span className="text-gold text-lg leading-none">✦</span>
                                 <div>
@@ -254,7 +255,7 @@ export default function NausniceContent() {
                         </p>
 
                         <h5 className="font-marcellus text-lg text-[#1D0E22] uppercase tracking-wider pt-2">Čomu sa počas hojenia vyhnúť</h5>
-                        <ul className="space-y-1 pl-1">
+                        <ul className="space-y-1 my-2.5 pl-1">
                             <li className="flex gap-1.5"><span className="text-gold text-lg leading-none">✦</span><span>bazén odporúčam vynechať približne 5 dní,</span></li>
                             <li className="flex gap-1.5"><span className="text-gold text-lg leading-none">✦</span><span>kúpanie v jazerách a prírodných vodách približne 1 mesiac.</span></li>
                         </ul>
@@ -263,7 +264,7 @@ export default function NausniceContent() {
                         <p>
                             Po uplynutí odporúčanej doby je možné náušnice jemným, ale pevným potiahnutím otvoriť a vybrať. Pred výmenou odporúčam:
                         </p>
-                        <ul className="space-y-1 pl-1">
+                        <ul className="space-y-1 my-2.5 pl-1">
                             <li className="flex gap-1.5"><span className="text-gold text-lg leading-none">✦</span><span>vydezinfikovať uško,</span></li>
                             <li className="flex gap-1.5"><span className="text-gold text-lg leading-none">✦</span><span>očistiť a vydezinfikovať náušnice.</span></li>
                         </ul>
@@ -316,7 +317,7 @@ export default function NausniceContent() {
                             ))}
                         </div>
                     </div>
-                </div>
+                </RevealGroup>
             </div>
 
             {/* ═══ Cenník + Contact Form ═══ */}
@@ -325,7 +326,6 @@ export default function NausniceContent() {
                     <div className="space-y-10 bg-white/30 p-8 rounded-2xl">
                         <div className="text-center space-y-2 mb-8">
                             <h3 className="font-marcellus text-3xl text-[#1D0E22] uppercase tracking-widest">Nastreľovanie náušníc</h3>
-                            <p className="font-montserrat text-sm text-[#1D0E22]/60 uppercase tracking-widest">Precíznosť, bezpečnosť a estetika v harmonickom spojení</p>
                         </div>
 
                         <div className="space-y-8 font-montserrat text-[#1D0E22]">
@@ -494,7 +494,7 @@ export default function NausniceContent() {
                             </button>
 
                             {/* Popup Content */}
-                            <div className="space-y-4 font-montserrat font-light text-base leading-relaxed md:text-lg">
+                            <div className="space-y-4 font-montserrat font-light text-base leading-relaxed">
                                 <p className="font-semibold text-lg md:text-xl">Milé maminky, tatinkovia a babičky,</p>
                                 
                                 <p>

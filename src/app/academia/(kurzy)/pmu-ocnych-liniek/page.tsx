@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import LightboxImage from "@/components/LightboxImage";
 
 export const metadata: Metadata = {
     title: "Master Class: PMU Očných Liniek | Academia | Salón Viktória",
@@ -7,15 +8,28 @@ export const metadata: Metadata = {
     alternates: { canonical: "/academia/pmu-ocnych-liniek" },
 };
 
-const PHOTOS = ["/academia/kurz3/3.png", "/academia/kurz3/IMG_5826 1.jpg", "/academia/kurz3/vik1.jpg"];
+const PHOTOS = ["/academia/kurz-linky/3.png", "/academia/kurz-linky/IMG_5826 1.jpg", "/academia/kurz-linky/vik1.jpg"];
+
+const SCHEDULE = [
+    { num: "1", title: "Online príprava", date: "8:00 – 9:00", items: ["úvodné online stretnutie, nastavenie systému práce a príprava na kurz", "4 hodiny teoretických lekcií"] },
+    { num: "2", title: "1. deň", date: "9:00 – 18:00", items: ["analýza domácich úloh", "nastavenie ruky", "odpracovanie každej techniky na latexe", "demo ukážka od Viktorije"] },
+    { num: "3", title: "2. deň", date: "9:00 – 18:00", items: ["prax na modelkách", "každá študentka odpracuje dve techniky"] },
+    { num: "4", title: "Online kontrolné stretnutie", date: "8:00 – 9:00", items: ["analýza domácich prác (na latexe alebo klientkach)"] },
+    { num: "5", title: "Korekcia o mesiac", date: "9:00 – 18:00", items: ["analýza vyhojených prác", "porozumenie procesu hojenia", "dovedenie práce ku krásnemu a profesionálnemu výsledku"] },
+];
 
 function PhotoSection({ photo, flip = false, objectPosition, aspectClass, photoLabel, children }: { photo: string; flip?: boolean; objectPosition?: string; aspectClass?: string; photoLabel?: string; children: React.ReactNode }) {
+    const isVideo = /\.(mp4|mov|webm)$/i.test(photo);
     const isPortraitPNG = /\.png$/i.test(photo);
     const containerClass = aspectClass || (isPortraitPNG ? "aspect-[4/5]" : "min-h-[400px] md:min-h-[520px]");
     return (
         <div className={`grid grid-cols-1 md:grid-cols-2 gap-0 items-start ${flip ? "md:[&>*:first-child]:order-2 md:[&>*:last-child]:order-1" : ""}`}>
             <div className={`relative overflow-hidden rounded-2xl ${containerClass}`}>
-                <Image src={photo} alt="" fill className="object-cover" style={objectPosition ? { objectPosition } : undefined} />
+                {isVideo ? (
+                    <video src={photo} autoPlay muted loop playsInline className="absolute inset-0 h-full w-full object-cover" style={objectPosition ? { objectPosition } : undefined} />
+                ) : (
+                    <LightboxImage src={photo} alt="" fill className="object-cover" style={objectPosition ? { objectPosition } : undefined} />
+                )}
                 {photoLabel && (
                     <>
                         <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
@@ -43,8 +57,8 @@ export default function Kurz3Page() {
 
             {/* Section 1: Intro & Techniques */}
             <PhotoSection photo={PHOTOS[0]} flip={false}>
-                <div className="space-y-4 font-montserrat font-light text-[#1D0E22] leading-tight text-lg [&_p]:my-0">
-                    <h2 className="font-marcellus text-2xl md:text-3xl uppercase tracking-widest text-[#1D0E22] mb-4">
+                <div className="space-y-6 font-montserrat font-light text-[#1D0E22] leading-snug text-base">
+                    <h2 className="font-marcellus text-3xl uppercase tracking-widest text-[#1D0E22] mb-4">
                         MASTER CLASS — Permanentný make-up očných liniek
                     </h2>
                     <p>
@@ -66,18 +80,18 @@ export default function Kurz3Page() {
             </PhotoSection>
 
             {/* Section 2: What we will cover & Who it is for */}
-            <PhotoSection photo={PHOTOS[1]} flip={true} aspectClass="aspect-[4/5] w-full" objectPosition="50% 50%" photoLabel="Kórejské očné linky">
-                <div className="space-y-4 font-montserrat font-light text-[#1D0E22] leading-tight text-lg [&_p]:my-0">
-                    <p className="font-medium text-base uppercase tracking-wider">Počas kurzu sa budeme venovať:</p>
-                    <ul className="space-y-1.5 text-sm text-[#1D0E22]/80">
-                        <li className="flex gap-2"><span className="text-[#1D0E22]/25 shrink-0">—</span><span>správnemu nastaveniu ruky pre jemnú prácu na viečkach</span></li>
-                        <li className="flex gap-2"><span className="text-[#1D0E22]/25 shrink-0">—</span><span>technike natiahnutia pokožky</span></li>
-                        <li className="flex gap-2"><span className="text-[#1D0E22]/25 shrink-0">—</span><span>anatómii očí a viečok</span></li>
-                        <li className="flex gap-2"><span className="text-[#1D0E22]/25 shrink-0">—</span><span>korekcii formy oka</span></li>
-                        <li className="flex gap-2"><span className="text-[#1D0E22]/25 shrink-0">—</span><span>vyrovnávaniu asymetrie</span></li>
-                        <li className="flex gap-2"><span className="text-[#1D0E22]/25 shrink-0">—</span><span>vytváraniu harmonického mandľového tvaru oka</span></li>
-                        <li className="flex gap-2"><span className="text-[#1D0E22]/25 shrink-0">—</span><span>výberu vhodných ihiel a nastaveniu strojčeka</span></li>
-                        <li className="flex gap-2"><span className="text-[#1D0E22]/25 shrink-0">—</span><span>bezpečnej a šetrnej práci na citlivej pokožke viečok</span></li>
+            <PhotoSection photo="/academia/kurz-linky/IMG_1249.mp4" flip={true} aspectClass="aspect-[4/5] w-full" objectPosition="50% 50%">
+                <div className="space-y-6 font-montserrat font-light text-[#1D0E22] leading-snug text-base">
+                    <h3 className="font-marcellus text-2xl uppercase tracking-widest text-[#1D0E22]">Budeme sa venovať:</h3>
+                    <ul className="space-y-1 text-base text-[#1D0E22]/80">
+                        <li className="flex gap-2"><span className="text-gold shrink-0">✦</span><span>správnemu nastaveniu ruky pre jemnú prácu na viečkach</span></li>
+                        <li className="flex gap-2"><span className="text-gold shrink-0">✦</span><span>technike natiahnutia pokožky</span></li>
+                        <li className="flex gap-2"><span className="text-gold shrink-0">✦</span><span>anatómii očí a viečok</span></li>
+                        <li className="flex gap-2"><span className="text-gold shrink-0">✦</span><span>korekcii formy oka</span></li>
+                        <li className="flex gap-2"><span className="text-gold shrink-0">✦</span><span>vyrovnávaniu asymetrie</span></li>
+                        <li className="flex gap-2"><span className="text-gold shrink-0">✦</span><span>vytváraniu harmonického mandľového tvaru oka</span></li>
+                        <li className="flex gap-2"><span className="text-gold shrink-0">✦</span><span>výberu vhodných ihiel a nastaveniu strojčeka</span></li>
+                        <li className="flex gap-2"><span className="text-gold shrink-0">✦</span><span>bezpečnej a šetrnej práci na citlivej pokožke viečok</span></li>
                     </ul>
 
                     <p className="pt-4">
@@ -89,8 +103,55 @@ export default function Kurz3Page() {
                             ⚠️ Prosím, príďte s krátkymi prírodnými nechtami.
                         </p>
                     </div>
+
+                    <div className="relative aspect-[8/7] overflow-hidden rounded-2xl border border-black/10 shadow-sm">
+                        <LightboxImage src={PHOTOS[1]} alt="" fill className="object-cover object-[50%_44%]" />
+                        <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
+                        <p className="absolute bottom-6 left-6 font-marcellus text-base md:text-lg uppercase tracking-widest text-[#EEE3CE]">
+                            Kórejské očné linky
+                        </p>
+                    </div>
                 </div>
             </PhotoSection>
+
+            {/* Program kurzu */}
+            <div className="max-w-3xl mx-auto px-2 md:px-0 space-y-6">
+                <h2 className="font-marcellus text-2xl uppercase tracking-widest text-[#1D0E22]">Program kurzu</h2>
+                <div className="space-y-4">
+                    {SCHEDULE.map((block) => (
+                        <div key={block.num} className="flex gap-3">
+                            <span className="font-marcellus text-3xl text-[#1D0E22]/15 leading-none shrink-0">{block.num}</span>
+                            <div className="space-y-0.5">
+                                <div>
+                                    <p className="font-marcellus text-base uppercase tracking-widest text-[#1D0E22] leading-tight">{block.title}</p>
+                                    {block.date && <p className="font-montserrat text-xs text-[#1D0E22]/45 leading-tight mb-[3px]">{block.date}</p>}
+                                </div>
+                                <ul className="font-montserrat text-base font-light text-[#1D0E22]/70 leading-tight">
+                                    {block.items.map((item, i) => (
+                                        <li key={i} className="flex gap-1.5"><span className="text-gold shrink-0">✦</span><span>{item}</span></li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+
+            </div>
+
+            {/* Rozsah kurzu */}
+            <div className="border border-[#1D0E22]/10 rounded-2xl p-8 space-y-6">
+                <h2 className="font-marcellus text-2xl uppercase tracking-widest text-[#1D0E22]">Rozsah kurzu</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-center">
+                    <div>
+                        <p className="font-marcellus text-3xl text-[#1D0E22]">27 hod</p>
+                        <p className="font-montserrat text-[11px] uppercase tracking-wider text-[#1D0E22]/50">Prezenčne</p>
+                    </div>
+                    <div>
+                        <p className="font-marcellus text-3xl text-[#1D0E22]">2 hod</p>
+                        <p className="font-montserrat text-[11px] uppercase tracking-wider text-[#1D0E22]/50">Online</p>
+                    </div>
+                </div>
+            </div>
 
             {/* Pricing Section */}
             <div className="grid md:grid-cols-2 gap-6 md:max-w-[66.666%] md:mx-auto">

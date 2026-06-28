@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Reveal from "@/components/Reveal";
 
 export const metadata: Metadata = {
     title: "Blog | Salón Viktória",
@@ -44,17 +45,19 @@ export default function BlogPage() {
 
             <section className="pt-32 pb-20 px-4">
                 <div className="max-w-6xl mx-auto">
-                    <h1 className="font-alex text-6xl md:text-7xl text-[#1D0E22] text-center mb-4">
-                        Blog
-                    </h1>
-                    <p className="font-montserrat text-[#1D0E22]/70 text-center max-w-2xl mx-auto mb-16">
-                        Tipy, triky a novinky zo sveta permanentného make-upu a kozmetiky
-                    </p>
+                    <Reveal>
+                        <h1 className="font-alex text-6xl md:text-7xl text-[#1D0E22] text-center mb-4">
+                            Blog
+                        </h1>
+                        <p className="font-montserrat text-[#1D0E22]/70 text-center max-w-2xl mx-auto mb-16">
+                            Tipy, triky a novinky zo sveta permanentného make-upu a kozmetiky
+                        </p>
+                    </Reveal>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {BLOG_POSTS.map((post) => (
+                        {BLOG_POSTS.map((post, i) => (
+                            <Reveal key={post.id} delay={i * 0.1} className="block">
                             <Link
-                                key={post.id}
                                 href={`/blog/${post.slug}`}
                                 className="group block"
                             >
@@ -91,6 +94,7 @@ export default function BlogPage() {
                                     </div>
                                 </article>
                             </Link>
+                            </Reveal>
                         ))}
                     </div>
                 </div>

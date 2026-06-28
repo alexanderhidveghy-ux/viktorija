@@ -4,7 +4,8 @@ import PmuSubSidebar from "../../_components/PmuSubSidebar";
 import ContactForm from "../../_components/ContactForm";
 import StickyCennikButton from "../../_components/StickyCennikButton";
 import Link from "next/link";
-import Image from "next/image";
+import LightboxImage from "@/components/LightboxImage";
+import RevealGroup from "@/components/RevealGroup";
 
 export default function DermoContent() {
     return (
@@ -24,7 +25,7 @@ export default function DermoContent() {
 
                 {/* Hero Image */}
                 <div className="relative h-[300px] md:h-[500px] w-full rounded-xl overflow-hidden border border-white/10 shadow-2xl">
-                    <Image
+                    <LightboxImage
                         src="/sluzby/permanentny-makeup/dermopigmentacia/dermopigmentacia.webp"
                         alt="Dermopigmentácia"
                         fill
@@ -35,8 +36,8 @@ export default function DermoContent() {
                 </div>
 
                 {/* Content */}
-                <div className="font-montserrat font-light text-[#1D0E22] leading-snug text-lg">
-                    <div className="space-y-8">
+                <div className="font-montserrat font-light text-[#1D0E22] leading-snug text-base">
+                    <RevealGroup className="space-y-8">
                         <h3 className="font-marcellus text-3xl text-[#1D0E22] mb-4">Dermopigmentácia</h3>
 
                         <p>
@@ -53,7 +54,7 @@ export default function DermoContent() {
                                 <ContactForm />
                             </div>
                         </div>
-                    </div>
+                    </RevealGroup>
                 </div>
 
                 <StickyCennikButton />

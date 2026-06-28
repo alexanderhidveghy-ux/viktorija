@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
+import Reveal from "@/components/Reveal";
 
 const HERO_VIDEO_LEFT = "https://pub-60b685024baf4def829d5151d4dc320a.r2.dev/kozmetika.mp4";
 const HERO_VIDEO = "https://pub-60b685024baf4def829d5151d4dc320a.r2.dev/ritualy.mp4";
@@ -30,7 +31,7 @@ const PROCEDURES: Procedure[] = [
                 <p>Mezočipová transdermálna penetrácia v kombinácii s elektroporáciou umožňuje zapracovanie aktívnych látok koncentrátov Expert Lab do hlbších vrstiev pokožky neinvazívnym spôsobom.</p>
                 <div>
                     <p className="font-medium mb-2">Expert Lab kokteily:</p>
-                    <ul className="space-y-2">
+                    <ul className="space-y-1">
                         <li className="flex gap-2"><span className="text-gold">✦</span><span><strong>Liquid Collagen Complex</strong> – tvorené tekutými kolagénovými vláknami, komplexom biomimetických peptidov a DMAE. Spevňujúci a vypínací účinok.</span></li>
                         <li className="flex gap-2"><span className="text-gold">✦</span><span><strong>EGF Complex</strong> – nanopolyméry HLG a epidermálne rastové faktory podporujú tvorbu kolagénu a elastínu.</span></li>
                         <li className="flex gap-2"><span className="text-gold">✦</span><span><strong>HP Retinol</strong> – výrazná redukcia vrások a jemných liniek.</span></li>
@@ -58,7 +59,7 @@ const PROCEDURES: Procedure[] = [
                 <p>Je možné vypracovať formou Mezoboost alebo manuálne.</p>
                 <div>
                     <p className="font-medium mb-2">Na skincare routine sú k dispozícii:</p>
-                    <ul className="space-y-2">
+                    <ul className="space-y-1">
                         <li className="flex gap-2"><span className="text-gold">✦</span><span>Ampuly hydro-regeneračnej starostlivosti s Tecxosome a kyselinou hyalurónovou</span></li>
                         <li className="flex gap-2"><span className="text-gold">✦</span><span>Pokročilý hydro-regeneratívny krém s ultra vysokou koncentráciou biomimetických exozómov</span></li>
                     </ul>
@@ -453,7 +454,7 @@ export default function KozmetikaContent() {
     return (
         <div className="flex flex-col gap-8">
             {/* Hero: same as Rituály tváre page */}
-            <div className="font-montserrat font-light text-[#1D0E22] leading-tight text-lg">
+            <div className="font-montserrat font-light text-[#1D0E22] leading-tight text-base">
                 {/* Floated media block – desktop */}
                 <div className="hidden md:flex float-right ml-4 mb-4 gap-3 w-2/3">
                     <div
@@ -543,17 +544,17 @@ export default function KozmetikaContent() {
             </div>
 
             <div className="space-y-2">
-                <p className="font-montserrat font-light text-[#1D0E22] text-lg">
+                <p className="font-montserrat font-light text-[#1D0E22] text-base">
                     Kliknite na ošetrenie pre viac informácií.
                 </p>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <Reveal className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 {PROCEDURES.map((proc) => (
                     <button
                         key={proc.id}
                         onClick={() => setActive(proc)}
-                        className="group relative aspect-[3/4] overflow-hidden rounded-xl border border-white/10 shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-[1.02] text-left"
+                        className="group relative aspect-[3/4] overflow-hidden rounded-xl border border-white/10 shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-[1.02] text-left cursor-pointer"
                     >
                         <div className="absolute inset-0">
                             {proc.video ? (
@@ -588,7 +589,7 @@ export default function KozmetikaContent() {
                         </div>
                     </button>
                 ))}
-            </div>
+            </Reveal>
 
             {/* Video Lightbox */}
             <AnimatePresence>

@@ -23,7 +23,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         { path: "/sluzby/permanentny-makeup/dermopigmentacia", priority: 0.8, changeFrequency: "monthly" },
         { path: "/sluzby/odstranovanie-pmu", priority: 0.85, changeFrequency: "monthly" },
         { path: "/sluzby/nastrelovanie-nausnic", priority: 0.85, changeFrequency: "monthly" },
-        { path: "/sluzby/kozmetika", priority: 0.85, changeFrequency: "monthly" },
+        { path: "/sluzby/beauty-therapy", priority: 0.85, changeFrequency: "monthly" },
         { path: "/sluzby/kremy-sera", priority: 0.7, changeFrequency: "monthly" },
 
         // Academia

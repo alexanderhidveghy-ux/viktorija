@@ -1,6 +1,7 @@
 "use client";
 
-import Image from "next/image";
+import LightboxImage from "@/components/LightboxImage";
+import RevealGroup from "@/components/RevealGroup";
 import Link from "next/link";
 import PmuSubSidebar from "../../_components/PmuSubSidebar";
 import ContactForm from "../../_components/ContactForm";
@@ -24,7 +25,7 @@ export default function EyesContent() {
 
                 {/* Large Detail Image */}
                 <div className="relative h-[300px] md:h-[500px] w-full rounded-xl overflow-hidden border border-white/10 shadow-2xl">
-                    <Image
+                    <LightboxImage
                         src="/sluzby/permanentny-makeup/ocne-linky/PHOTO-2026-02-10-10-17-17.jpg"
                         alt="Permanentný make-up očných liniek"
                         fill
@@ -33,8 +34,8 @@ export default function EyesContent() {
                 </div>
 
                 {/* Content */}
-                <div className="font-montserrat font-light text-[#1D0E22] leading-snug text-lg">
-                    <div className="space-y-8">
+                <div className="font-montserrat font-light text-[#1D0E22] leading-snug text-base">
+                    <RevealGroup className="space-y-8">
                         <h3 className="font-marcellus text-3xl text-[#1D0E22] mb-4">Očné linky – permanentný make-up</h3>
 
                         {/* ═══ Tieňované očné linky ═══ */}
@@ -44,9 +45,9 @@ export default function EyesContent() {
                                 Tieňované očné linky sú technikou jemného vrstvenia pigmentu, ktorá modeluje tvar oka bez ostrých línií. Plynulý prechod farieb vytvára mäkký tieňovaný efekt a dodáva pohľadu hĺbku.
                             </p>
                             <p className="mt-4">Gradient sa volí individuálne podľa tvaru oka, hustoty rias a požadovaného výsledku:</p>
-                            <ul className="space-y-3 mt-2">
-                                <li className="flex gap-3"><span className="text-gold text-lg">✦</span><span>prechod od tmavšieho pigmentu k svetlejšiemu, medovému odtieňu zvýrazňuje líniu rias a opticky ich zahusťuje, výsledok je výraznejší,</span></li>
-                                <li className="flex gap-3"><span className="text-gold text-lg">✦</span><span>prechod od svetlého pieskového podkladu k tmavšiemu pigmentu vytvára dojem ľahkosti, objemu a otvoreného pohľadu. V tomto prípade pôsobí linka hnedo vďaka svetlej podložke.</span></li>
+                            <ul className="space-y-1 mt-2">
+                                <li className="flex gap-3"><span className="text-gold text-lg leading-none">✦</span><span>prechod od tmavšieho pigmentu k svetlejšiemu, medovému odtieňu zvýrazňuje líniu rias a opticky ich zahusťuje, výsledok je výraznejší,</span></li>
+                                <li className="flex gap-3"><span className="text-gold text-lg leading-none">✦</span><span>prechod od svetlého pieskového podkladu k tmavšiemu pigmentu vytvára dojem ľahkosti, objemu a otvoreného pohľadu. V tomto prípade pôsobí linka hnedo vďaka svetlej podložke.</span></li>
                             </ul>
                         </div>
 
@@ -77,7 +78,7 @@ export default function EyesContent() {
                                         className={`relative rounded-lg overflow-hidden border border-black/10 shadow-sm transition-all duration-500 hover:scale-[1.02] ${idx >= 3 ? "aspect-[4/3.9]" : "aspect-[4/3]"
                                             }`}
                                     >
-                                        <Image
+                                        <LightboxImage
                                             src={src}
                                             alt={`Očné linky ${idx + 1}`}
                                             fill
@@ -140,8 +141,8 @@ export default function EyesContent() {
                             </div>
                         </div>
 
-                        <StickyCennikButton />
-                    </div>
+                    </RevealGroup>
+                    <StickyCennikButton />
                 </div>
             </div>
 

@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { PlayCircle, PlayIcon, PauseIcon } from "lucide-react";
+import RevealGroup from "@/components/RevealGroup";
 
 const PMU_SUBTABS = [
     { label: "Obočie", href: "/sluzby/permanentny-makeup/obocie", image: "/sluzby/permanentny-makeup/m4.jpg", position: "70% center" },
@@ -36,7 +37,7 @@ export default function PmuOverviewContent() {
     };
 
     return (
-        <div className="space-y-12">
+        <RevealGroup className="space-y-12">
             {/* Service & Video Grid on Top */}
             <div>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
@@ -73,7 +74,7 @@ export default function PmuOverviewContent() {
                     <span className="block md:inline !font-alex normal-case tracking-normal text-5xl md:text-6xl align-middle md:mr-6 mb-2 md:mb-0">Premium</span>
                     <span className="block md:inline">Permanentný</span> <span className="block md:inline">Make-up</span>
                 </h3>
-                <p className="text-lg font-normal italic text-[#1D0E22]/80">
+                <p className="text-base font-normal italic text-[#1D0E22]/80">
                     Priebeh procedúry: hlavné sedenie, korekcia a kontrolná návšteva
                 </p>
                 <p>
@@ -87,11 +88,11 @@ export default function PmuOverviewContent() {
                             Na hlavnom sedení vytváram precízny predkres tvaru (obočie, pery alebo očné linky). Spoločne komunikujeme, hodnotíme proporcie tváre a volíme riešenie, ktoré vás skrášli a bude harmonizovať s vašimi črtami tváre a prirodzenou mimikou.
                         </p>
                         <p className="font-medium mt-4">Súčasťou sedenia je:</p>
-                        <ul className="space-y-3 mt-2">
-                            <li className="flex gap-3"><span className="text-gold text-lg">✦</span><span>analýza tváre a prirodzených línií,</span></li>
-                            <li className="flex gap-3"><span className="text-gold text-lg">✦</span><span>predkreslenie tvaru a jeho odsúhlasenie,</span></li>
-                            <li className="flex gap-3"><span className="text-gold text-lg">✦</span><span>konzultácia odtieňa pigmentu, jeho intenzity a voľba techniky (prirodzenejší vs. výraznejší efekt),</span></li>
-                            <li className="flex gap-3"><span className="text-gold text-lg">✦</span><span>samotná aplikácia pigmentu.</span></li>
+                        <ul className="space-y-1 mt-2">
+                            <li className="flex gap-3"><span className="text-gold text-lg leading-none">✦</span><span>analýza tváre a prirodzených línií,</span></li>
+                            <li className="flex gap-3"><span className="text-gold text-lg leading-none">✦</span><span>predkreslenie tvaru a jeho odsúhlasenie,</span></li>
+                            <li className="flex gap-3"><span className="text-gold text-lg leading-none">✦</span><span>konzultácia odtieňa pigmentu, jeho intenzity a voľba techniky (prirodzenejší vs. výraznejší efekt),</span></li>
+                            <li className="flex gap-3"><span className="text-gold text-lg leading-none">✦</span><span>samotná aplikácia pigmentu.</span></li>
                         </ul>
                         <p className="mt-4">Na hlavné sedenie odporúčam vyhradiť približne 3 hodiny.</p>
                         <p className="mt-4">
@@ -159,10 +160,10 @@ export default function PmuOverviewContent() {
                         Po prvom sedení prebieha hojenie a stabilizácia pigmentu. Keďže pokožka reaguje individuálne, je prirodzené, že sa pigment môže zahojiť miestami jemnejšie alebo nerovnomerne. Preto je štandardnou súčasťou permanentného make-upu korekcia, na ktorej výsledok profesionálne dotiahneme.
                     </p>
                     <p className="mt-4">Korekciu odporúčam zvyčajne po 4–8 týždňoch (podľa typu pleti a priebehu hojenia). Na korekcii:</p>
-                    <ul className="space-y-3 mt-2">
-                        <li className="flex gap-3"><span className="text-gold text-lg">✦</span><span>doplníme miesta, kde sa pigment zahojil svetlejšie,</span></li>
-                        <li className="flex gap-3"><span className="text-gold text-lg">✦</span><span>doladíme intenzitu alebo gradient,</span></li>
-                        <li className="flex gap-3"><span className="text-gold text-lg">✦</span><span>vyrovnáme drobné asymetrie a dotiahneme detail.</span></li>
+                    <ul className="space-y-1 mt-2">
+                        <li className="flex gap-3"><span className="text-gold text-lg leading-none">✦</span><span>doplníme miesta, kde sa pigment zahojil svetlejšie,</span></li>
+                        <li className="flex gap-3"><span className="text-gold text-lg leading-none">✦</span><span>doladíme intenzitu alebo gradient,</span></li>
+                        <li className="flex gap-3"><span className="text-gold text-lg leading-none">✦</span><span>vyrovnáme drobné asymetrie a dotiahneme detail.</span></li>
                     </ul>
                 </div>
 
@@ -172,10 +173,10 @@ export default function PmuOverviewContent() {
                     <p>
                         Po korekcii klientky v mojej praxi pozývam ešte na krátku kontrolnú návštevu, aby sme spolu overili, že výsledok je stabilný a ideálny:
                     </p>
-                    <ul className="space-y-3 mt-2">
-                        <li className="flex gap-3"><span className="text-gold text-lg">✦</span><span>či sa pigment zahojil rovnomerne,</span></li>
-                        <li className="flex gap-3"><span className="text-gold text-lg">✦</span><span>či nikde nevznikli drobné „výpadky",</span></li>
-                        <li className="flex gap-3"><span className="text-gold text-lg">✦</span><span>či ste s výsledkom spokojná aj v dennom svetle a pri bežnom fungovaní.</span></li>
+                    <ul className="space-y-1 mt-2">
+                        <li className="flex gap-3"><span className="text-gold text-lg leading-none">✦</span><span>či sa pigment zahojil rovnomerne,</span></li>
+                        <li className="flex gap-3"><span className="text-gold text-lg leading-none">✦</span><span>či nikde nevznikli drobné „výpadky",</span></li>
+                        <li className="flex gap-3"><span className="text-gold text-lg leading-none">✦</span><span>či ste s výsledkom spokojná aj v dennom svetle a pri bežnom fungovaní.</span></li>
                     </ul>
                     <p className="mt-4">
                         Ak je potrebné drobné technické doladenie (napríklad malé doplnenie detailu alebo jemné zjemnenie prechodu), vykonávam ho bezplatne v rámci mini úpravy v rozsahu približne do 15 minút práce. Celkový čas tejto návštevy spravidla nepresahuje 20 minút.
@@ -192,6 +193,6 @@ export default function PmuOverviewContent() {
                     </p>
                 </div>
             </div>
-        </div>
+        </RevealGroup>
     );
 }

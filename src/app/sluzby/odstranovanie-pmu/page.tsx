@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import LightboxImage from "@/components/LightboxImage";
+import RevealGroup from "@/components/RevealGroup";
 import ContactForm from "../_components/ContactForm";
 import StickyCennikButton from "../_components/StickyCennikButton";
 
@@ -14,7 +15,7 @@ export default function RemovalPage() {
         <div className="flex flex-col gap-8">
             <div className="grid grid-cols-3 gap-3 w-full">
                 <div className="relative h-[200px] md:h-[500px] rounded-xl overflow-hidden border border-white/10 shadow-2xl">
-                    <Image
+                    <LightboxImage
                         src="/sluzby/odstranovanie-pmu/1.jpg"
                         alt="Laserové odstraňovanie 1"
                         fill
@@ -32,7 +33,7 @@ export default function RemovalPage() {
                     />
                 </div>
                 <div className="relative h-[200px] md:h-[500px] rounded-xl overflow-hidden border border-white/10 shadow-2xl">
-                    <Image
+                    <LightboxImage
                         src="/sluzby/odstranovanie-pmu/2.jpg"
                         alt="Laserové odstraňovanie 3"
                         fill
@@ -41,8 +42,8 @@ export default function RemovalPage() {
                 </div>
             </div>
 
-            <div className="font-montserrat font-light text-[#1D0E22] leading-snug text-lg">
-                <div className="space-y-8">
+            <div className="font-montserrat font-light text-[#1D0E22] leading-snug text-base">
+                <RevealGroup className="space-y-8">
 
                     {/* ═══ Laserové odstraňovanie ═══ */}
                     <div className="space-y-0">
@@ -73,7 +74,7 @@ export default function RemovalPage() {
                                     key={idx}
                                     className="relative aspect-[10/11] rounded-lg overflow-hidden border border-black/10 shadow-sm"
                                 >
-                                    <Image
+                                    <LightboxImage
                                         src={src}
                                         alt={`Laserové odstraňovanie ${idx + 1}`}
                                         fill
@@ -92,16 +93,16 @@ export default function RemovalPage() {
                             Pred každým odstraňovaním prebieha individuálna konzultácia, kde posúdime typ pigmentu, jeho hĺbku a nastavíme realistický plán postupu.
                         </p>
                         <p>Počet sedení je vždy individuálny a ovplyvňuje ho viacero faktorov:</p>
-                        <ul className="space-y-0">
-                            <li className="flex gap-3"><span className="text-gold text-lg">✦</span><span>množstvo a hustota pigmentu</span></li>
-                            <li className="flex gap-3"><span className="text-gold text-lg">✦</span><span>hĺbka uloženia pigmentu v koži</span></li>
-                            <li className="flex gap-3"><span className="text-gold text-lg">✦</span><span>farba a kombinácia použitých odtieňov</span></li>
-                            <li className="flex gap-3"><span className="text-gold text-lg">✦</span><span>chemické zloženie pigmentu</span></li>
-                            <li className="flex gap-3"><span className="text-gold text-lg">✦</span><span>kvalita použitého laseru</span></li>
-                            <li className="flex gap-3"><span className="text-gold text-lg">✦</span><span>skúsenosti a technika špecialistu</span></li>
-                            <li className="flex gap-3"><span className="text-gold text-lg">✦</span><span>funkčnosť lymfatického systému klientky</span></li>
-                            <li className="flex gap-3"><span className="text-gold text-lg">✦</span><span>životný štýl a životospráva</span></li>
-                            <li className="flex gap-3"><span className="text-gold text-lg">✦</span><span>dôsledná domáca starostlivosť po zákroku</span></li>
+                        <ul className="space-y-1 my-2.5">
+                            <li className="flex gap-3"><span className="text-gold text-lg leading-none">✦</span><span>množstvo a hustota pigmentu</span></li>
+                            <li className="flex gap-3"><span className="text-gold text-lg leading-none">✦</span><span>hĺbka uloženia pigmentu v koži</span></li>
+                            <li className="flex gap-3"><span className="text-gold text-lg leading-none">✦</span><span>farba a kombinácia použitých odtieňov</span></li>
+                            <li className="flex gap-3"><span className="text-gold text-lg leading-none">✦</span><span>chemické zloženie pigmentu</span></li>
+                            <li className="flex gap-3"><span className="text-gold text-lg leading-none">✦</span><span>kvalita použitého laseru</span></li>
+                            <li className="flex gap-3"><span className="text-gold text-lg leading-none">✦</span><span>skúsenosti a technika špecialistu</span></li>
+                            <li className="flex gap-3"><span className="text-gold text-lg leading-none">✦</span><span>funkčnosť lymfatického systému klientky</span></li>
+                            <li className="flex gap-3"><span className="text-gold text-lg leading-none">✦</span><span>životný štýl a životospráva</span></li>
+                            <li className="flex gap-3"><span className="text-gold text-lg leading-none">✦</span><span>dôsledná domáca starostlivosť po zákroku</span></li>
                         </ul>
                         <p>Odstraňovanie pigmentu je spolupráca medzi technológiou, odborníkom a telom klientky.</p>
                     </div>
@@ -126,7 +127,7 @@ export default function RemovalPage() {
                                     key={idx}
                                     className="relative aspect-[4/3] rounded-lg overflow-hidden border border-black/10 shadow-sm"
                                 >
-                                    <Image
+                                    <LightboxImage
                                         src={src}
                                         alt={`Odstraňovanie očných liniek ${idx + 1}`}
                                         fill
@@ -147,7 +148,7 @@ export default function RemovalPage() {
                                     key={idx}
                                     className="relative aspect-[4/3] rounded-lg overflow-hidden border border-black/10 shadow-sm"
                                 >
-                                    <Image
+                                    <LightboxImage
                                         src={src}
                                         alt={`Odstraňovanie očných liniek ${idx + 1}`}
                                         fill
@@ -179,10 +180,10 @@ export default function RemovalPage() {
                         <p>
                             Ak je klientka spokojná s tvarom obočia, no farebný výsledok pôsobí neprirodzene – napríklad:
                         </p>
-                        <ul className="space-y-0">
-                            <li className="flex gap-3"><span className="text-gold text-lg">✦</span><span>studený sivý až antracitový tón</span></li>
-                            <li className="flex gap-3"><span className="text-gold text-lg">✦</span><span>bordovo-lososový nádych</span></li>
-                            <li className="flex gap-3"><span className="text-gold text-lg">✦</span><span>fialový podtón</span></li>
+                        <ul className="space-y-1 my-2.5">
+                            <li className="flex gap-3"><span className="text-gold text-lg leading-none">✦</span><span>studený sivý až antracitový tón</span></li>
+                            <li className="flex gap-3"><span className="text-gold text-lg leading-none">✦</span><span>bordovo-lososový nádych</span></li>
+                            <li className="flex gap-3"><span className="text-gold text-lg leading-none">✦</span><span>fialový podtón</span></li>
                         </ul>
                         <p>
                             vieme pigment cielene zosvetliť alebo farebne posunúť do nositeľnejšieho spektra.
@@ -202,7 +203,7 @@ export default function RemovalPage() {
                                     key={idx}
                                     className="relative aspect-[1/1] rounded-lg overflow-hidden border border-black/10 shadow-sm"
                                 >
-                                    <Image
+                                    <LightboxImage
                                         src={src}
                                         alt={`Korekcia odtieňa ${idx + 1}`}
                                         fill
@@ -236,12 +237,12 @@ export default function RemovalPage() {
                             Remover je samostatná odborná metóda odstraňovania pigmentu, ktorú využívam v situáciách, keď laser nie je optimálnym riešením alebo keď potrebujeme výsledok precízne doladiť.
                         </p>
                         <p>Remover používam:</p>
-                        <ul className="space-y-0">
-                            <li className="flex gap-3"><span className="text-gold text-lg">✦</span><span>keď po laserovej kúre ostane jemný tieň pigmentu, ktorý už laser neidentifikuje</span></li>
-                            <li className="flex gap-3"><span className="text-gold text-lg">✦</span><span>keď potrebujeme znížiť koncentráciu pigmentu bez úplného odstránenia</span></li>
-                            <li className="flex gap-3"><span className="text-gold text-lg">✦</span><span>pri odstraňovaní pigmentu z pier</span></li>
-                            <li className="flex gap-3"><span className="text-gold text-lg">✦</span><span>pri svetlých a problematických odtieňoch (biela, ružová, žltá, telové tóny), ktoré na laser reagujú nepredvídateľne</span></li>
-                            <li className="flex gap-3"><span className="text-gold text-lg">✦</span><span>pri farebnom vyrovnávaní jaziev po predchádzajúcich zákrokoch</span></li>
+                        <ul className="space-y-1 my-2.5">
+                            <li className="flex gap-3"><span className="text-gold text-lg leading-none">✦</span><span>keď po laserovej kúre ostane jemný tieň pigmentu, ktorý už laser neidentifikuje</span></li>
+                            <li className="flex gap-3"><span className="text-gold text-lg leading-none">✦</span><span>keď potrebujeme znížiť koncentráciu pigmentu bez úplného odstránenia</span></li>
+                            <li className="flex gap-3"><span className="text-gold text-lg leading-none">✦</span><span>pri odstraňovaní pigmentu z pier</span></li>
+                            <li className="flex gap-3"><span className="text-gold text-lg leading-none">✦</span><span>pri svetlých a problematických odtieňoch (biela, ružová, žltá, telové tóny), ktoré na laser reagujú nepredvídateľne</span></li>
+                            <li className="flex gap-3"><span className="text-gold text-lg leading-none">✦</span><span>pri farebnom vyrovnávaní jaziev po predchádzajúcich zákrokoch</span></li>
                         </ul>
                         <p>
                             Tieto dve metódy sa nevylučujú – v niektorých prípadoch ich kombinujem, aby sme dosiahli čo najčistejší a esteticky nositeľný výsledok.
@@ -269,7 +270,7 @@ export default function RemovalPage() {
                                     key={idx}
                                     className="relative aspect-[4/3] rounded-lg overflow-hidden border border-black/10 shadow-sm"
                                 >
-                                    <Image
+                                    <LightboxImage
                                         src={src}
                                         alt={`Výsledok odstraňovania ${idx + 1}`}
                                         fill
@@ -296,7 +297,7 @@ export default function RemovalPage() {
                                     key={idx}
                                     className="relative aspect-[4/3] rounded-lg overflow-hidden border border-black/10 shadow-sm"
                                 >
-                                    <Image
+                                    <LightboxImage
                                         src={src}
                                         alt={`Laserové odstraňovanie ${idx + 1}`}
                                         fill
@@ -319,11 +320,11 @@ export default function RemovalPage() {
                                 <h5 className="font-marcellus text-xl text-[#1D0E22] uppercase tracking-wider">1. Dlhoročná prax s pigmentom</h5>
                                 <p>Nie som len laserové pracovisko. Roky sa venujem permanentnému make-upu, preto detailne rozumiem práci s pigmentom.</p>
                                 <p>Viem:</p>
-                                <ul className="space-y-0">
-                                    <li className="flex gap-3"><span className="text-gold text-lg">✦</span><span>ako je pigment ukladaný</span></li>
-                                    <li className="flex gap-3"><span className="text-gold text-lg">✦</span><span>v akej hĺbke sa nachádza</span></li>
-                                    <li className="flex gap-3"><span className="text-gold text-lg">✦</span><span>z akých farebných zložiek sa skladá</span></li>
-                                    <li className="flex gap-3"><span className="text-gold text-lg">✦</span><span>ako sa správa v pokožke po rokoch</span></li>
+                                <ul className="space-y-1 my-2.5">
+                                    <li className="flex gap-3"><span className="text-gold text-lg leading-none">✦</span><span>ako je pigment ukladaný</span></li>
+                                    <li className="flex gap-3"><span className="text-gold text-lg leading-none">✦</span><span>v akej hĺbke sa nachádza</span></li>
+                                    <li className="flex gap-3"><span className="text-gold text-lg leading-none">✦</span><span>z akých farebných zložiek sa skladá</span></li>
+                                    <li className="flex gap-3"><span className="text-gold text-lg leading-none">✦</span><span>ako sa správa v pokožke po rokoch</span></li>
                                 </ul>
                                 <p>Táto skúsenosť mi umožňuje nastaviť presný a bezpečný postup odstraňovania.</p>
                             </div>
@@ -333,10 +334,10 @@ export default function RemovalPage() {
                                 <h5 className="font-marcellus text-xl text-[#1D0E22] uppercase tracking-wider">2. Kombinácia laser + remover</h5>
                                 <p>Nepracujem jednou univerzálnou metódou. Podľa konkrétnej situácie volím laser, remover alebo ich kombináciu.</p>
                                 <p>To znamená:</p>
-                                <ul className="space-y-0">
-                                    <li className="flex gap-3"><span className="text-gold text-lg">✦</span><span>efektívnejší postup</span></li>
-                                    <li className="flex gap-3"><span className="text-gold text-lg">✦</span><span>menšie riziko farebných nežiadaných reakcií</span></li>
-                                    <li className="flex gap-3"><span className="text-gold text-lg">✦</span><span>čistejší a kontrolovanejší výsledok</span></li>
+                                <ul className="space-y-1 my-2.5">
+                                    <li className="flex gap-3"><span className="text-gold text-lg leading-none">✦</span><span>efektívnejší postup</span></li>
+                                    <li className="flex gap-3"><span className="text-gold text-lg leading-none">✦</span><span>menšie riziko farebných nežiadaných reakcií</span></li>
+                                    <li className="flex gap-3"><span className="text-gold text-lg leading-none">✦</span><span>čistejší a kontrolovanejší výsledok</span></li>
                                 </ul>
                             </div>
 
@@ -352,10 +353,10 @@ export default function RemovalPage() {
                                 <h5 className="font-marcellus text-xl text-[#1D0E22] uppercase tracking-wider">4. Estetické myslenie</h5>
                                 <p>Cieľom nie je &ldquo;vymazať za každú cenu&rdquo;.</p>
                                 <p>Cieľom je:</p>
-                                <ul className="space-y-0">
-                                    <li className="flex gap-3"><span className="text-gold text-lg">✦</span><span>dosiahnuť nositeľný výsledok</span></li>
-                                    <li className="flex gap-3"><span className="text-gold text-lg">✦</span><span>pripraviť pokožku na nový, moderný permanentný make-up</span></li>
-                                    <li className="flex gap-3"><span className="text-gold text-lg">✦</span><span>alebo citlivo upraviť odtieň bez narušenia tvaru</span></li>
+                                <ul className="space-y-1 my-2.5">
+                                    <li className="flex gap-3"><span className="text-gold text-lg leading-none">✦</span><span>dosiahnuť nositeľný výsledok</span></li>
+                                    <li className="flex gap-3"><span className="text-gold text-lg leading-none">✦</span><span>pripraviť pokožku na nový, moderný permanentný make-up</span></li>
+                                    <li className="flex gap-3"><span className="text-gold text-lg leading-none">✦</span><span>alebo citlivo upraviť odtieň bez narušenia tvaru</span></li>
                                 </ul>
                                 <p>Odstraňovanie je súčasťou estetického procesu, nie jeho koniec.</p>
                             </div>
@@ -456,7 +457,7 @@ export default function RemovalPage() {
                             <ContactForm />
                         </div>
                     </div>
-                </div>
+                </RevealGroup>
             </div>
 
             <StickyCennikButton />

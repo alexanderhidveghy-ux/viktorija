@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WebinarButton from "./_components/WebinarButton";
 import HeroVideo from "./_components/HeroVideo";
+import RevealGroup from "@/components/RevealGroup";
 
 export const metadata: Metadata = {
     title: "Academia | Salón Viktória",
@@ -22,13 +23,13 @@ type Course = {
 };
 
 const COURSES: Course[] = [
-    { label: "The Art of PMU", href: "/academia/the-art-of-pmu", image: "/academia/kurz1/preview.PNG", sub: "Kurz pre Začiatočníkov", position: "center 40%" },
-    { label: "Tri Techniky Obočia", href: "/academia/tri-techniky-obocia", image: "/academia/kurz4/preview.PNG", sub: "Kurz pre Začiatočníkov aj pokročilých" },
+    { label: "The Art of PMU", href: "/academia/the-art-of-pmu", image: "/academia/kurz-art-of-pmu/preview.PNG", sub: "Kurz pre Začiatočníkov", position: "center 40%" },
+    { label: "Tri Techniky Obočia", href: "/academia/tri-techniky-obocia", image: "/academia/kurz-obocie/preview.PNG", sub: "Kurz pre Začiatočníkov aj pokročilých" },
     { label: "Estetické nastrelovanie náušníc", href: "/academia/esteticke-nastrelovanie-nausnic", video: "https://pub-60b685024baf4def829d5151d4dc320a.r2.dev/kurz7.mp4", sub: "Kurz" },
-    { label: "Laser Touch", href: "/academia/laser-touch", image: "/academia/kurz6/lasertouch_preview.PNG", sub: "Kurz" },
-    { label: "PMU Očných Liniek", href: "/academia/pmu-ocnych-liniek", image: "/academia/kurz3/linky_preview.PNG", sub: "Master Class pre Pokročilých" },
-    { label: "PMU Pier", href: "/academia/pmu-pier", image: "/academia/kurz2/pery_preview.PNG", sub: "Master Class pre Pokročilých" },
-    { label: "Hyperrealistické Obočie", href: "/academia/hyperrealisticke-obocie", image: "/academia/kurz5/preview.PNG", sub: "Master Class pre Pokročilých" },
+    { label: "Laser Touch", href: "/academia/laser-touch", image: "/academia/kurz-laser/lasertouch_preview.PNG", sub: "Kurz" },
+    { label: "PMU Očných Liniek", href: "/academia/pmu-ocnych-liniek", image: "/academia/kurz-linky/linky_preview.PNG", sub: "Master Class pre Pokročilých" },
+    { label: "PMU Pier", href: "/academia/pmu-pier", image: "/academia/kurz-pery/pery_preview.PNG", sub: "Master Class pre Pokročilých" },
+    { label: "Hyperrealistické Obočie", href: "/academia/hyperrealisticke-obocie", image: "/academia/kurz-hyperrealisticke-obocie/preview.PNG", sub: "Master Class pre Pokročilých" },
     { label: "Deň Otvorených Dverí", href: "/academia/dod", video: "https://pub-60b685024baf4def829d5151d4dc320a.r2.dev/dod.mp4", sub: "Príďte sa pozrieť", position: "center 20%" },
 ];
 
@@ -130,7 +131,7 @@ export default function AcademiaPage() {
                 </div>
             </section>
 
-                        <section className="mt-20 max-w-4xl mx-auto px-6 space-y-20 pb-32">
+                        <RevealGroup className="mt-20 max-w-4xl mx-auto px-6 space-y-20 pb-32">
                     {/* Question 1 */}
                     <div className="space-y-8">
                         <div className="text-center space-y-2">
@@ -188,10 +189,10 @@ export default function AcademiaPage() {
                                         <div className="space-y-1">
                                             <p className="font-montserrat text-base font-medium text-[#1D0E22]">Dokumenty potrebné pre Živnostenský úrad:</p>
                                             <ul className="space-y-1 font-montserrat text-base text-[#1D0E22]/70">
-                                                <li className="flex gap-2"><span>—</span> Občiansky preukaz (všeobecné podmienky: vek 18 rokov, spôsobilosť na právne úkony).</li>
-                                                <li className="flex gap-2"><span>—</span> Výpis z registra trestov (úrad si ho vyžiada sám, musíte byť bezúhonný/á).</li>
-                                                <li className="flex gap-2"><span>—</span> Doklad o odbornej spôsobilosti (vyššie spomínané Osvedčenie o úplnej kvalifikácii).</li>
-                                                <li className="flex gap-2"><span>—</span> Správny poplatok: 22 € za každú remeselnú živnosť (pri elektronickom ohlásení cez slovensko.sk je to 11 €).</li>
+                                                <li className="flex gap-2"><span className="text-gold">✦</span> Občiansky preukaz (všeobecné podmienky: vek 18 rokov, spôsobilosť na právne úkony).</li>
+                                                <li className="flex gap-2"><span className="text-gold">✦</span> Výpis z registra trestov (úrad si ho vyžiada sám, musíte byť bezúhonný/á).</li>
+                                                <li className="flex gap-2"><span className="text-gold">✦</span> Doklad o odbornej spôsobilosti (vyššie spomínané Osvedčenie o úplnej kvalifikácii).</li>
+                                                <li className="flex gap-2"><span className="text-gold">✦</span> Správny poplatok: 22 € za každú remeselnú živnosť (pri elektronickom ohlásení cez slovensko.sk je to 11 €).</li>
                                             </ul>
                                         </div>
                                     </div>
@@ -237,9 +238,9 @@ export default function AcademiaPage() {
                                     <h3 className="font-marcellus text-lg uppercase tracking-widest text-[#1D0E22]">1. Rozšírenie odbornosti (Akreditovaný kurz)</h3>
                                     <div className="space-y-1">
                                         <p className="font-montserrat text-base text-[#1D0E22]/70 leading-tight">Aj keď má „papiere“ na kozmetiku, stredné školy bežne PMU nevyučujú v potrebnom rozsahu. Pre her vlastnú ochranu a poistenie zodpovednosti za škodu musí absolvovať:</p>
-                                        <ul className="space-y-0.5 font-montserrat text-base text-[#1D0E22]/70">
-                                            <li>— <span className="font-medium">Špecializovaný akreditovaný kurz PMU:</span> Zameraný na mikropigmentáciu, koloristiku a prácu s prístrojom/čepieľkami.</li>
-                                            <li>— <span className="font-medium">Certifikát:</span> Po ukončení získa doklad, ktorý predkladá poisťovni a RÚVZ pri aktualizácii prevádzkového poriadku.</li>
+                                        <ul className="space-y-1 font-montserrat text-base text-[#1D0E22]/70">
+                                            <li><span className="text-gold">✦</span> <span className="font-medium">Špecializovaný akreditovaný kurz PMU:</span> Zameraný na mikropigmentáciu, koloristiku a prácu s prístrojom/čepieľkami.</li>
+                                            <li><span className="text-gold">✦</span> <span className="font-medium">Certifikát:</span> Po ukončení získa doklad, ktorý predkladá poisťovni a RÚVZ pri aktualizácii prevádzkového poriadku.</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -250,8 +251,8 @@ export default function AcademiaPage() {
                                     <div className="space-y-1">
                                         <p className="font-montserrat text-base text-[#1D0E22]/70 leading-tight">Súčasné povolenie na prevádzku kozmetiky pravdepodobne nezahŕňa činnosti, pri ktorých sa porušuje integrita kože.</p>
                                         <ul className="space-y-1 font-montserrat text-base text-[#1D0E22]/70">
-                                            <li>— <span className="font-medium text-[#1D0E22]">Doplnenie prevádzkového poriadku:</span> Musí doň dopísať procesy súvisiace s PMU (sterilizácia ihiel, používanie jednorazových pomôcok, nakladanie s nebezpečným odpadom, typy používaných pigmentov s certifikáciou REACH).</li>
-                                            <li>— <span className="font-medium text-[#1D0E22]">Ohlásenie zmeny:</span> Písomne oznámi na RÚVZ rozšírenie služieb o permanentný make-up.</li>
+                                            <li><span className="text-gold">✦</span> <span className="font-medium text-[#1D0E22]">Doplnenie prevádzkového poriadku:</span> Musí doň dopísať procesy súvisiace s PMU (sterilizácia ihiel, používanie jednorazových pomôcok, nakladanie s nebezpečným odpadom, typy používaných pigmentov s certifikáciou REACH).</li>
+                                            <li><span className="text-gold">✦</span> <span className="font-medium text-[#1D0E22]">Ohlásenie zmeny:</span> Písomne oznámi na RÚVZ rozšírenie služieb o permanentný make-up.</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -290,9 +291,9 @@ export default function AcademiaPage() {
                                     <h3 className="font-marcellus text-lg uppercase tracking-widest text-[#1D0E22]">4. Povinnosti podľa nariadenia EÚ (REACH)</h3>
                                     <div className="space-y-1">
                                         <p className="font-montserrat text-base text-[#1D0E22]/70 leading-tight">Ako odborníčka musí od roku 2022 prísne sledovať zloženie pigmentov:</p>
-                                        <ul className="space-y-0.5 font-montserrat text-base text-[#1D0E22]/70">
-                                            <li>— Používať výhradne pigmenty s kartou bezpečnostných údajov (SDS) v slovenčine.</li>
-                                            <li>— Povinnosť informovať klientku o zložení a rizikách (Informovaný súhlas).</li>
+                                        <ul className="space-y-1 font-montserrat text-base text-[#1D0E22]/70">
+                                            <li><span className="text-gold">✦</span> Používať výhradne pigmenty s kartou bezpečnostných údajov (SDS) v slovenčine.</li>
+                                            <li><span className="text-gold">✦</span> Povinnosť informovať klientku o zložení a rizikách (Informovaný súhlas).</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -341,8 +342,8 @@ export default function AcademiaPage() {
                                         Nie úplne. Má to vyššiu hodnotu než bežný "diplom" z necertifikovanej firmy:
                                     </p>
                                     <ul className="space-y-1 font-montserrat text-base text-[#1D0E22]/70">
-                                        <li>— <span className="font-medium text-[#1D0E22]">Dôveryhodnosť:</span> Dôkaz, že kurz absolvoval u subjektu pod dohľadom Ministerstva školstva.</li>
-                                        <li>— <span className="font-medium text-[#1D0E22]">Základ pre uznávanie:</span> Podklad pre budúce uznávanie výsledkov neformálneho vzdelávania.</li>
+                                        <li><span className="text-gold">✦</span> <span className="font-medium text-[#1D0E22]">Dôveryhodnosť:</span> Dôkaz, že kurz absolvoval u subjektu pod dohľadom Ministerstva školstva.</li>
+                                        <li><span className="text-gold">✦</span> <span className="font-medium text-[#1D0E22]">Základ pre uznávanie:</span> Podklad pre budúce uznávanie výsledkov neformálneho vzdelávania.</li>
                                     </ul>
                                 </div>
                             </div>
@@ -355,7 +356,7 @@ export default function AcademiaPage() {
                             </div>
                         </div>
                     </div>
-                </section>
+                </RevealGroup>
             <Footer />
             <WebinarButton />
         </main>

@@ -76,7 +76,7 @@ export default function Hero() {
     };
 
     return (
-        <section className="min-h-screen w-full relative pt-16 md:pt-32 pb-20 px-2 md:px-4 overflow-hidden">
+        <section className="min-h-screen w-full relative pt-16 md:pt-32 pb-0 px-2 md:px-4 overflow-hidden">
             {/* Cursor Follower Image */}
             <AnimatePresence>
                 {hoveredServiceImage && (
@@ -140,7 +140,7 @@ export default function Hero() {
                 </div>
 
                 {/* CENTER COLUMN: Video & About Text */}
-                <div className="flex flex-col items-center space-y-6">
+                <div className="flex flex-col items-center space-y-6 order-last lg:order-none">
                     {/* Video */}
                     <div className="relative w-full max-w-[350px] aspect-[9/16] rounded-2xl overflow-hidden shadow-2xl border border-white/20 group">
                         {/* Video element - hidden until started */}
@@ -199,7 +199,7 @@ export default function Hero() {
                     </div>
 
                     {/* About Text (Centered) - FULL Text */}
-                    <div id="omne" className="text-center max-w-4xl space-y-8 p-8 w-full">
+                    <div id="omne" className="text-center max-w-4xl space-y-8 px-0 md:px-8 pt-8 pb-0 w-full">
                         <h2 className="!font-alex text-5xl md:text-6xl text-[#1D0E22] mb-2">
                             Viktorija Kendra
                         </h2>

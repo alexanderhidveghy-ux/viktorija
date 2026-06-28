@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import LightboxImage from "@/components/LightboxImage";
 
 export const metadata: Metadata = {
     title: "The Art of PMU | Academia | Salón Viktória",
@@ -7,22 +8,39 @@ export const metadata: Metadata = {
     alternates: { canonical: "/academia/the-art-of-pmu" },
 };
 
-const PHOTOS = ["/academia/kurz1/main.PNG", "/academia/kurz1/vik2.jpg", "/academia/kurz1/vik3.jpg"];
+const PHOTOS = ["/academia/kurz-art-of-pmu/main.PNG", "/academia/kurz-art-of-pmu/vik2.jpg", "/academia/kurz-art-of-pmu/IMG_5740.MOV"];
 const SYSTEM_VIDEO = "https://pub-60b685024baf4def829d5151d4dc320a.r2.dev/kurz1.mp4";
+const STUDENT_WORKS = [
+    "/academia/kurz-art-of-pmu/prace/PHOTO-2026-05-12-14-11-03.jpg",
+    "/academia/kurz-art-of-pmu/prace/IMG_9186.MOV",
+    "/academia/kurz-art-of-pmu/prace/PHOTO-2026-05-12-13-54-40%202.jpg",
+];
 
-function PhotoSection({ photo, flip = false, children }: { photo: string; flip?: boolean; children: React.ReactNode }) {
+function PhotoSection({
+    photo,
+    flip = false,
+    contentBottomPadding = "pb-10",
+    contentClassName = "",
+    children
+}: {
+    photo: string;
+    flip?: boolean;
+    contentBottomPadding?: string;
+    contentClassName?: string;
+    children: React.ReactNode;
+}) {
     const isVideo = /\.(mp4|mov)$/i.test(photo);
     const isPortraitPNG = /\.png$/i.test(photo);
     return (
-        <div className={`grid grid-cols-1 md:grid-cols-2 gap-0 items-stretch ${flip ? "md:[&>*:first-child]:order-2 md:[&>*:last-child]:order-1" : ""}`}>
+        <div className={`grid grid-cols-1 md:grid-cols-2 gap-0 items-start ${flip ? "md:[&>*:first-child]:order-2 md:[&>*:last-child]:order-1" : ""}`}>
             <div className={`relative overflow-hidden rounded-2xl ${isPortraitPNG ? "aspect-[4/5]" : "min-h-[400px] md:min-h-[520px]"}`}>
                 {isVideo ? (
                     <video src={photo} autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover" />
                 ) : (
-                    <Image src={photo} alt="" fill className="object-cover" />
+                    <LightboxImage src={photo} alt="" fill className="object-cover" />
                 )}
             </div>
-            <div className="flex flex-col justify-center px-0 md:px-12 py-10">
+            <div className={`flex flex-col justify-start px-0 md:px-12 pt-6 md:pt-0 ${contentBottomPadding} ${contentClassName}`}>
                 {children}
             </div>
         </div>
@@ -59,10 +77,10 @@ export default function ArtOfPmuPage() {
     return (
         <AnimatedSpace className="space-y-16">
 
-            {/* Section 1: Estetika a biznis + photo */}
+            {/* Section 1: Profession + photo */}
             <PhotoSection photo={PHOTOS[0]} flip={false}>
-                <div className="space-y-4 font-montserrat font-light text-[#1D0E22] leading-tight text-lg [&_p]:my-0">
-                    <h2 className="font-marcellus text-2xl md:text-3xl uppercase tracking-widest text-[#1D0E22] mb-4">Estetika a biznis</h2>
+                <div className="space-y-6 font-montserrat font-light text-[#1D0E22] leading-snug text-base">
+                    <h2 className="font-marcellus text-3xl uppercase tracking-widest text-[#1D0E22] mb-4">Permanentný makeup ako profesia</h2>
                     <p>
                         Moderný permanentný make-up patrí medzi vyhľadávané procedúry aktívnych žien. Šetrí čas a pomáha ženám pôsobiť harmonicky, prirodzene a upravene každý deň.
                     </p>
@@ -88,25 +106,24 @@ export default function ArtOfPmuPage() {
             </div>
 
             {/* Section 2: Schedule + photo */}
-            <PhotoSection photo={PHOTOS[1]} flip={true}>
+            <PhotoSection photo={PHOTOS[1]} flip={true} contentBottomPadding="pb-0">
                 <div className="space-y-6">
                     <div>
-                        <h2 className="font-marcellus text-xl md:text-2xl uppercase tracking-widest text-[#1D0E22]">Štruktúra kurzu</h2>
+                        <h2 className="font-marcellus text-2xl uppercase tracking-widest text-[#1D0E22]">Program kurzu</h2>
                     </div>
-                    <div className="space-y-2">
+                    <div className="space-y-4">
                         {SCHEDULE.map((block) => (
                             <div key={block.num}>
                                 <div className="flex gap-3">
                                     <span className="font-marcellus text-3xl text-[#1D0E22]/15 leading-none shrink-0">{block.num}</span>
                                     <div className="space-y-0.5">
                                         <div>
-                                            <p className="font-marcellus text-sm uppercase tracking-widest text-[#1D0E22] leading-tight">{block.title}</p>
-                                            {block.date && <p className="font-montserrat text-xs text-[#1D0E22]/45 leading-tight">{block.date}</p>}
-                                            {block.bonus && <span className="inline-block mt-0.5 font-montserrat text-[10px] uppercase tracking-widest text-[#1D0E22] border border-[#1D0E22]/30 rounded-full px-2 py-0.5">Bonus</span>}
+                                            <p className="font-marcellus text-base uppercase tracking-widest text-[#1D0E22] leading-tight">{block.title}</p>
+                                            {block.date && <p className="font-montserrat text-xs text-[#1D0E22]/45 leading-tight mb-[3px]">{block.date}</p>}
                                         </div>
-                                        <ul className="font-montserrat text-sm font-light text-[#1D0E22]/70 leading-tight">
+                                        <ul className="font-montserrat text-base font-light text-[#1D0E22]/70 leading-tight">
                                             {block.items.map((item, i) => (
-                                                <li key={i} className="flex gap-1.5"><span className="text-[#1D0E22]/25 shrink-0">—</span><span>{item}</span></li>
+                                                <li key={i} className="flex gap-1.5"><span className="text-gold shrink-0">✦</span><span>{item}</span></li>
                                             ))}
                                         </ul>
                                     </div>
@@ -119,7 +136,7 @@ export default function ArtOfPmuPage() {
 
             {/* Section 3a: Training system */}
             <div className="space-y-6 text-center">
-                <h2 className="font-marcellus text-2xl md:text-3xl uppercase tracking-widest text-[#1D0E22]">Systém tréningu</h2>
+                <h2 className="font-marcellus text-2xl uppercase tracking-widest text-[#1D0E22]">Systém tréningu</h2>
                 <div className="flex flex-wrap items-center justify-center gap-y-4 gap-x-2 md:gap-x-3">
                     {["papier", "latex", "umelá koža", "transparentná koža", "umelá tvár", "modelka", "stáž", "korekcia"].map((step, i, arr) => (
                         <div key={step} className="flex items-center gap-2 md:gap-3 shrink-0">
@@ -133,12 +150,12 @@ export default function ArtOfPmuPage() {
             {/* Section 3b: Odborné semináre */}
             <div className="max-w-3xl mx-auto px-2 md:px-0 space-y-3">
                 <div className="flex items-center gap-3">
-                    <h3 className="font-marcellus text-sm uppercase tracking-[0.2em] text-[#1D0E22]">Odborné semináre</h3>
+                    <h3 className="font-marcellus text-2xl uppercase tracking-widest text-[#1D0E22]">Odborné semináre</h3>
                     <span className="font-montserrat text-[10px] uppercase tracking-widest text-[#1D0E22] border border-[#1D0E22]/30 rounded-full px-2 py-0.5">Bonus</span>
                 </div>
-                <ul className="space-y-1.5 font-montserrat text-sm font-light text-[#1D0E22]/80">
+                <ul className="space-y-1 font-montserrat text-base font-light text-[#1D0E22]/80">
                     {["právna zodpovednosť v PMU (rozhovor s právnikom)", "prvá pomoc v praxi (rozhovor s lekárom)", "psychológia práce s klientom (hranice a komunikácia)", "práca so strachom a budovanie istoty"].map((item, i) => (
-                        <li key={i} className="flex gap-3"><span className="text-[#1D0E22]/30">—</span><span>{item}</span></li>
+                        <li key={i} className="flex gap-3"><span className="text-gold">✦</span><span>{item}</span></li>
                     ))}
                 </ul>
             </div>
@@ -147,36 +164,36 @@ export default function ArtOfPmuPage() {
             <div className="space-y-8 max-w-3xl mx-auto px-2 md:px-0">
                 <div className="space-y-4">
                     <div>
-                        <h2 className="font-marcellus text-xl md:text-2xl uppercase tracking-widest text-[#1D0E22]">Profesia a prax</h2>
+                        <h2 className="font-marcellus text-2xl uppercase tracking-widest text-[#1D0E22]">Profesia a prax</h2>
                     </div>
-                    <p className="font-montserrat text-lg font-light text-[#1D0E22] leading-snug">Profesia PMU artistky je kreatívna, sociálna a zároveň líderská. Ponúka dlhodobý rast a možnosť budovať vlastnú klientelu.</p>
-                    <ul className="space-y-1.5 font-montserrat text-lg font-light text-[#1D0E22] leading-snug">
+                    <p className="font-montserrat text-base font-light text-[#1D0E22] leading-snug">Profesia PMU artistky je kreatívna, sociálna a zároveň líderská. Ponúka dlhodobý rast a možnosť budovať vlastnú klientelu.</p>
+                    <ul className="space-y-1 font-montserrat text-base font-light text-[#1D0E22] leading-snug">
                         {["foto a video", "sociálne siete", "marketing a cenotvorba", "spolupráce"].map((item, i) => (
-                            <li key={i} className="flex gap-3"><span className="text-[#1D0E22]/30">—</span><span>{item}</span></li>
+                            <li key={i} className="flex gap-3"><span className="text-gold">✦</span><span>{item}</span></li>
                         ))}
                     </ul>
                 </div>
                 <div className="space-y-3">
-                    <h3 className="font-marcellus text-sm uppercase tracking-[0.2em] text-[#1D0E22]">Čo získate</h3>
-                    <ul className="space-y-2 font-montserrat text-lg font-light text-[#1D0E22] leading-snug">
+                    <h3 className="font-marcellus text-2xl uppercase tracking-widest text-[#1D0E22]">Čo získate</h3>
+                    <ul className="space-y-1 font-montserrat text-base font-light text-[#1D0E22] leading-snug">
                         {["zvládnutie 3 základných techník PMU", "systém práce s pigmentom a pokožkou", "schopnosť navrhovať prirodzené a harmonické výsledky", "prax na modelkách pod vedením", "istotu pracovať samostatne"].map((item, i) => (
-                            <li key={i} className="flex gap-3"><span className="text-[#1D0E22]/30 shrink-0">✦</span><span>{item}</span></li>
+                            <li key={i} className="flex gap-3"><span className="text-gold shrink-0">✦</span><span>{item}</span></li>
                         ))}
                     </ul>
                 </div>
             </div>
 
             {/* Section 5: Starter kit + Bonus */}
-            <PhotoSection photo="/academia/kurz1/balik.JPG" flip={false}>
+            <PhotoSection photo="/academia/kurz-art-of-pmu/balik.JPG" flip={false}>
                 <div className="space-y-8">
                     <div className="space-y-4">
                         <div className="flex items-center gap-3">
-                            <h2 className="font-marcellus text-xl md:text-2xl uppercase tracking-widest text-[#1D0E22]">Štartovací balík</h2>
+                            <h2 className="font-marcellus text-2xl uppercase tracking-widest text-[#1D0E22]">Štartovací balík</h2>
                             <span className="font-montserrat text-[10px] uppercase tracking-widest text-[#1D0E22] border border-[#1D0E22]/30 rounded-full px-3 py-0.5 shrink-0">voliteľný</span>
                         </div>
-                        <ul className="space-y-2 font-montserrat text-lg font-light text-[#1D0E22] leading-snug">
+                        <ul className="space-y-1 font-montserrat text-base font-light text-[#1D0E22] leading-snug">
                             {["strojček Mast", "40 ks kartridží", "5 pigmentov", "2 druhy anestézie", "50 ks kelímkov", "2 ceruzky na predkreslenie"].map((item, i) => (
-                                <li key={i} className="flex gap-3"><span className="text-[#1D0E22]/30">—</span><span>{item}</span></li>
+                                <li key={i} className="flex gap-3"><span className="text-gold">✦</span><span>{item}</span></li>
                             ))}
                         </ul>
                     </div>
@@ -187,15 +204,15 @@ export default function ArtOfPmuPage() {
             <PhotoSection photo={PHOTOS[2]} flip={true}>
                 <div className="space-y-6">
                     <div>
-                        <h2 className="font-marcellus text-xl md:text-2xl uppercase tracking-widest text-[#1D0E22]">Čo vám program otvorí</h2>
-                        <p className="font-montserrat text-lg font-light text-[#1D0E22] leading-snug mt-3">
+                        <h2 className="font-marcellus text-2xl uppercase tracking-widest text-[#1D0E22]">Čo vám program otvorí</h2>
+                        <p className="font-montserrat text-base font-light text-[#1D0E22] leading-snug mt-3">
                             Mesiac intenzívnej práce, ktorý vám otvorí nový pohľad na vlastný potenciál, rozvoj talentu a smer, ktorým sa môže uberať vaša budúcnosť v tejto profesii.
                         </p>
                     </div>
-                    <ul className="space-y-2">
+                    <ul className="space-y-1">
                         {DIRECTIONS.map((item, i) => (
-                            <li key={i} className="flex gap-3 font-montserrat text-lg font-light text-[#1D0E22] leading-snug">
-                                <span className="text-[#1D0E22]/25 shrink-0 mt-0.5">→</span>
+                            <li key={i} className="flex gap-3 font-montserrat text-base font-light text-[#1D0E22] leading-snug">
+                                <span className="text-gold shrink-0 mt-0.5">✦</span>
                                 <span>{item}</span>
                             </li>
                         ))}
@@ -206,10 +223,28 @@ export default function ArtOfPmuPage() {
                 </div>
             </PhotoSection>
 
+            <div className="space-y-6">
+                <h2 className="font-marcellus text-2xl uppercase tracking-widest text-[#1D0E22] text-center">Práce študentiek</h2>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    {STUDENT_WORKS.map((item, i) => {
+                        const isVideo = /\.(mp4|mov|webm)$/i.test(item);
+                        return (
+                            <div key={item} className="relative aspect-square overflow-hidden rounded-2xl border border-black/10 shadow-sm bg-[#1D0E22]/5">
+                                {isVideo ? (
+                                    <video src={item} autoPlay muted loop playsInline className="absolute inset-0 h-full w-full object-cover" />
+                                ) : (
+                                    <LightboxImage src={item} alt="Práca študentky" fill className="object-cover" group={STUDENT_WORKS.filter((src) => !/\.(mp4|mov|webm)$/i.test(src))} groupIndex={i === 0 ? 0 : 1} />
+                                )}
+                            </div>
+                        );
+                    })}
+                </div>
+            </div>
+
             {/* Hours + Pricing */}
             <div className="space-y-8">
                 <div className="border border-[#1D0E22]/10 rounded-2xl p-8 space-y-6">
-                    <h2 className="font-marcellus text-sm uppercase tracking-[0.2em] text-[#1D0E22]">Rozsah programu</h2>
+                    <h2 className="font-marcellus text-2xl uppercase tracking-widest text-[#1D0E22]">Rozsah programu</h2>
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                         {[{ label: "Prezenčná výučba a prax", value: "102 hod" }, { label: "Online LIVE stretnutia", value: "6 hod" }, { label: "Odborné semináre", value: "4 hod" }, { label: "Nahraté lekcie", value: "5 hod" }].map((row, i) => (
                             <div key={i} className="text-center space-y-1">

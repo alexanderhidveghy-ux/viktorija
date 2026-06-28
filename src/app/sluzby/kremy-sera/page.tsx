@@ -4,25 +4,32 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 import Image from "next/image";
+import Reveal from "@/components/Reveal";
+import { useLightbox } from "@/components/lightbox/LightboxContext";
 
 // Note: metadata is exported from layout or a server wrapper if needed
 
 const PRODUCTS = [
-    { name: "Sérum", video: "https://pub-60b685024baf4def829d5151d4dc320a.r2.dev/serum.mp4" },
-    { name: "Produkt", image: "/sluzby/kremy-sera/prod1.jpg" },
-    { name: "Produkt", image: "/sluzby/kremy-sera/prod2.jpg" },
-    { name: "Produkt", image: "/sluzby/kremy-sera/prod3.jpg" },
-    { name: "Produkt", image: "/sluzby/kremy-sera/prod4.jpg" },
-    { name: "Produkt", image: "/sluzby/kremy-sera/prod5.jpg" },
-    { name: "Produkt", image: "/sluzby/kremy-sera/prod6.jpg" },
-    { name: "Produkt", image: "/sluzby/kremy-sera/prod7.jpg" },
-    { name: "Produkt", image: "/sluzby/kremy-sera/prod8.jpg" },
-    { name: "Produkt", image: "/sluzby/kremy-sera/prod9.jpg" },
-    { name: "Produkt", image: "/sluzby/kremy-sera/10.jpg" },
-    { name: "Produkt", image: "/sluzby/kremy-sera/11.jpg" },
+    { name: "Hyaluronic 3D sérum pre maximálnu hydratáciu a výplňový efekt", video: "https://pub-60b685024baf4def829d5151d4dc320a.r2.dev/serum.mp4" },
+    { name: "Tonizačná esencia z jasmínu", image: "/sluzby/kremy-sera/prod1.jpg" },
+    { name: "Nočná maska pre revitalizáciu, zbavenie toxínov, jemnú exfoliáciu, regeneráciu, spevnenie a vyhladzovanie", image: "/sluzby/kremy-sera/prod2.jpg" },
+    { name: "Očný krém s kmeňovými bunkami a rastlinnou plazmou z orchidei rieši vrásky, spevnenie, tmavé kruhy, opuchy a rozjasňuje očné okolie", image: "/sluzby/kremy-sera/prod3.jpg" },
+    { name: "Intenzívny upokojujúci krém na citlivú pleť", image: "/sluzby/kremy-sera/prod4.jpg" },
+    { name: "Spevňujúci výživný krém na suchú starnúcu pleť, 45+", image: "/sluzby/kremy-sera/prod5.jpg" },
+    { name: "Kolagénové sérum proti vráskam", image: "/sluzby/kremy-sera/prod6.jpg" },
+    { name: "Elixír na posilňovanie funkcie buniek", image: "/sluzby/kremy-sera/prod7.jpg" },
+    { name: "Korekčný krém na mimické aj hlboké vrásky v okolí pier", image: "/sluzby/kremy-sera/prod8.jpg" },
+    { name: "Krém na tvár pre výplň vrások, Sérum pre zjemnenie vrások a krém na očné okolie pre výplň vrások", image: "/sluzby/kremy-sera/prod9.jpg" },
+    { name: "Regeneračný krém a sérum - omladzujúci účinok, 30+", image: "/sluzby/kremy-sera/10.jpg" },
+    { name: "PREMIER krém pre suchú a veľmi suchú pleť", image: "/sluzby/kremy-sera/11.jpg" },
 ];
 
+const PRODUCT_IMAGES = PRODUCTS.map((p) => ("image" in p ? p.image : null)).filter(
+    (s): s is string => !!s
+);
+
 export default function CreamsPage() {
+    const { open } = useLightbox();
     const [videoLightbox, setVideoLightbox] = useState<{ isOpen: boolean; src: string }>({ isOpen: false, src: "" });
     const videoLightboxRef = useRef<HTMLVideoElement>(null);
 
@@ -86,7 +93,7 @@ export default function CreamsPage() {
             </div>
 
             {/* Moje odporúčané produkty */}
-            <div className="space-y-4">
+            <Reveal className="space-y-4">
                 <div className="space-y-2">
                     <h3 className="font-marcellus text-4xl text-[#1D0E22] uppercase">Moje odporúčané produkty</h3>
                     <p className="font-montserrat text-base font-light text-[#1D0E22]/75 max-w-2xl">
@@ -98,7 +105,7 @@ export default function CreamsPage() {
                         <div
                             key={i}
                             className="group relative aspect-square rounded-xl overflow-hidden border border-white/10 shadow-md bg-white/5 cursor-pointer"
-                            onClick={() => product.video && openVideoLightbox(product.video)}
+                            onClick={() => product.video ? openVideoLightbox(product.video) : product.image ? open(PRODUCT_IMAGES, PRODUCT_IMAGES.indexOf(product.image)) : undefined}
                         >
                             {product.video ? (
                                 <>
@@ -123,10 +130,10 @@ export default function CreamsPage() {
                         </div>
                     ))}
                 </div>
-            </div>
+            </Reveal>
 
             {/* Moja rutina */}
-            <div className="flex flex-col md:flex-row gap-8 items-center">
+            <Reveal className="flex flex-col md:flex-row gap-8 items-center">
                 <div className="flex-1 space-y-3 font-montserrat font-light text-[#1D0E22]">
                     <h3 className="font-marcellus text-4xl text-[#1D0E22] uppercase">Moja rutina</h3>
                     <p className="text-base text-[#1D0E22]/75">
@@ -144,7 +151,7 @@ export default function CreamsPage() {
                         </div>
                     </div>
                 </div>
-            </div>
+            </Reveal>
 
             {/* Video Lightbox */}
             <AnimatePresence>
