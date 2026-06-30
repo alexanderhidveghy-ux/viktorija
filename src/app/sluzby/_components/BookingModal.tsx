@@ -4,8 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Phone, CheckCircle, AlertCircle, Loader2, MessageSquare } from "lucide-react";
 import Image from "next/image";
-import CalendarPicker from "./CalendarPicker";
-import { supabase, TimeSlot } from "@/lib/supabase";
+import { supabase } from "@/lib/supabase";
 import TurnstileWidget, { TURNSTILE_ENABLED } from "@/components/TurnstileWidget";
 
 const MONTHS_SK = [
@@ -21,10 +20,7 @@ interface BookingModalProps {
 }
 
 export default function BookingModal({ isOpen, onClose, title = "Objednať sa", defaultMessage = "" }: BookingModalProps) {
-    const [selectedDate, setSelectedDate] = useState<Date | null>(null);
-    const [selectedSlot, setSelectedSlot] = useState<TimeSlot | null>(null);
-    const [wantCustomDate, setWantCustomDate] = useState(false);
-    const [customDate, setCustomDate] = useState("");
+    const [preferredDate, setPreferredDate] = useState("");
     const [name, setName] = useState("");
     const [phone, setPhone] = useState("");
     const [message, setMessage] = useState(defaultMessage);
@@ -52,10 +48,7 @@ export default function BookingModal({ isOpen, onClose, title = "Objednať sa", 
     // Reset form when modal closes
     useEffect(() => {
         if (!isOpen) {
-            setSelectedDate(null);
-            setSelectedSlot(null);
-            setWantCustomDate(false);
-            setCustomDate("");
+            setPreferredDate("");
             setName("");
             setPhone("");
             setMessage(defaultMessage);
@@ -65,18 +58,11 @@ export default function BookingModal({ isOpen, onClose, title = "Objednať sa", 
         }
     }, [isOpen, defaultMessage]);
 
-    const formatDate = (date: Date) => {
-        return `${date.getDate()}. ${MONTHS_SK[date.getMonth()]} ${date.getFullYear()}`;
-    };
-
-    const formatTime = (time: string) => time.slice(0, 5);
-
-    const formatTimeRange = (time: string, durationMinutes: number) => {
-        const [h, m] = time.split(":").map(Number);
-        const totalMin = h * 60 + m + durationMinutes;
-        const endH = String(Math.floor(totalMin / 60) % 24).padStart(2, "0");
-        const endM = String(totalMin % 60).padStart(2, "0");
-        return `${formatTime(time)} - ${endH}:${endM}`;
+    // Format an ISO date (YYYY-MM-DD from the date input) into a Slovak label.
+    const formatPreferredDate = (iso: string) => {
+        if (!iso) return "";
+        const [y, m, d] = iso.split("-").map(Number);
+        return `${d}. ${MONTHS_SK[m - 1]} ${y}`;
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -99,29 +85,26 @@ export default function BookingModal({ isOpen, onClose, title = "Objednať sa", 
                 }
             }
 
-            // Insert booking
-            const bookingData: Record<string, unknown> = {
-                client_name: name,
-                client_phone: phone,
-                message: message || null,
-                time_slot_id: selectedSlot?.id || null,
-            };
+            // Insert booking (preferred date stored in the message — no time slot)
+            const fullMessage = [
+                preferredDate ? `Preferovaný termín: ${formatPreferredDate(preferredDate)}` : null,
+                message || null,
+            ]
+                .filter(Boolean)
+                .join("\n\n");
 
             const { data: booking, error: bookingError } = await supabase
                 .from("viktorija_bookings")
-                .insert(bookingData)
+                .insert({
+                    client_name: name,
+                    client_phone: phone,
+                    message: fullMessage || null,
+                    time_slot_id: null,
+                })
                 .select()
                 .single();
 
             if (bookingError) throw bookingError;
-
-            // Mark slot as unavailable if a slot was selected
-            if (selectedSlot) {
-                await supabase
-                    .from("viktorija_time_slots")
-                    .update({ is_available: false })
-                    .eq("id", selectedSlot.id);
-            }
 
             // Create notification
             await supabase
@@ -141,8 +124,8 @@ export default function BookingModal({ isOpen, onClose, title = "Objednať sa", 
                         name,
                         phone,
                         message: message || null,
-                        dateLabel: selectedDate ? formatDate(selectedDate) : wantCustomDate ? "Individuálny termín" : null,
-                        timeLabel: selectedSlot ? formatTimeRange(selectedSlot.time, selectedSlot.duration_minutes) : customDate || null,
+                        dateLabel: preferredDate ? formatPreferredDate(preferredDate) : null,
+                        timeLabel: null,
                     }),
                 });
             } catch (mailErr) {
@@ -161,11 +144,10 @@ export default function BookingModal({ isOpen, onClose, title = "Objednať sa", 
     };
 
     const handleWhatsAppRedirect = () => {
-        const dateStr = selectedDate ? formatDate(selectedDate) : "Individuálny termín";
-        const timeStr = selectedSlot ? formatTime(selectedSlot.time) : customDate;
-        
-        const text = `Dobrý deň, rada by som si potvrdila rezerváciu v Salóne Viktória.\n\n👤 Meno: ${name}\n📞 Telefón: ${phone}\n📅 Termín: ${dateStr}\n⏰ Čas: ${timeStr}${message ? `\n\n💬 Správa: ${message}` : ''}`;
-        
+        const dateStr = preferredDate ? formatPreferredDate(preferredDate) : "Individuálny termín";
+
+        const text = `Dobrý deň, rada by som si potvrdila rezerváciu v Salóne Viktória.\n\n👤 Meno: ${name}\n📞 Telefón: ${phone}\n📅 Preferovaný termín: ${dateStr}${message ? `\n\n💬 Správa: ${message}` : ''}`;
+
         const encodedText = encodeURIComponent(text);
         const whatsappUrl = `https://wa.me/421907796562?text=${encodedText}`;
         window.open(whatsappUrl, "_blank");
@@ -187,7 +169,7 @@ export default function BookingModal({ isOpen, onClose, title = "Objednať sa", 
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.95, y: 20 }}
                         transition={{ duration: 0.3, ease: "easeOut" }}
-                        className="bg-[#1D0E22] border border-gold/30 w-full max-w-4xl rounded-xl shadow-2xl max-h-[90vh] overflow-y-auto"
+                        className="bg-[#1D0E22] border border-gold/30 w-full max-w-lg rounded-xl shadow-2xl max-h-[90vh] overflow-y-auto"
                         onClick={(e) => e.stopPropagation()}
                     >
                         {/* Header */}
@@ -235,22 +217,11 @@ export default function BookingModal({ isOpen, onClose, title = "Objednať sa", 
                                     </div>
                                 </motion.div>
                             ) : (
-                                <div className="grid grid-cols-1 md:grid-cols-[280px_1fr] gap-8">
-                                    {/* Left: Calendar only */}
-                                    <div>
-                                        <CalendarPicker
-                                            selectedDate={selectedDate}
-                                            onSelectDate={setSelectedDate}
-                                            selectedSlot={selectedSlot}
-                                            onSelectSlot={setSelectedSlot}
-                                        />
-                                    </div>
-
-                                    {/* Right: Contact + Form */}
-                                    <div className="flex flex-col space-y-5 md:border-l md:border-white/10 md:pl-8">
+                                <div className="max-w-md mx-auto">
+                                    <div className="flex flex-col space-y-5">
                                         <div className="flex flex-col items-center text-center space-y-4">
                                             <p className="font-montserrat text-white/70 text-sm leading-relaxed">
-                                                V prípade že voľné termíny Vám nevyhovujú ma kľudne kontaktujte telefonicky
+                                                Vyberte preferovaný termín a vyplňte kontaktné údaje. V prípade potreby ma môžete kontaktovať aj telefonicky.
                                             </p>
                                             <div className="relative w-32 h-32 rounded-full overflow-hidden border-2 border-gold/40 shadow-lg">
                                                 <Image
@@ -273,46 +244,19 @@ export default function BookingModal({ isOpen, onClose, title = "Objednať sa", 
 
                                         {/* Form */}
                                         <form onSubmit={handleSubmit} className="space-y-4">
-                                            {/* Selected slot + custom date checkbox on right */}
-                                            <div className="flex items-center gap-3">
-                                                <div className="flex-1 bg-white/5 border border-gold/30 rounded-lg px-4 py-3 font-montserrat text-sm">
-                                                    {wantCustomDate ? (
-                                                        <input
-                                                            type="text"
-                                                            placeholder="Napíšte preferovaný termín"
-                                                            value={customDate}
-                                                            onChange={(e) => setCustomDate(e.target.value)}
-                                                            className="w-full bg-transparent text-white placeholder-white/30 font-light text-sm focus:outline-none"
-                                                            autoFocus
-                                                        />
-                                                    ) : (
-                                                        <span className="text-gold">
-                                                            {selectedSlot ? (
-                                                                <>
-                                                                    <span className="font-bold">{formatDate(selectedDate!)}</span>
-                                                                    {" o "}
-                                                                    <span className="font-bold">{formatTimeRange(selectedSlot.time, selectedSlot.duration_minutes)}</span>
-                                                                </>
-                                                            ) : (
-                                                                <span className="text-white/30">Vyberte termín</span>
-                                                            )}
-                                                        </span>
-                                                    )}
-                                                </div>
-                                                <label className="flex items-center gap-1.5 cursor-pointer group shrink-0">
-                                                    <input
-                                                        type="checkbox"
-                                                        checked={wantCustomDate}
-                                                        onChange={(e) => {
-                                                            setWantCustomDate(e.target.checked);
-                                                            if (e.target.checked) setSelectedSlot(null);
-                                                        }}
-                                                        className="w-3.5 h-3.5 rounded border-white/20 bg-white/5 text-gold accent-[#EEE3CE] cursor-pointer"
-                                                    />
-                                                    <span className="font-montserrat text-white/50 text-xs group-hover:text-white/70 transition-colors whitespace-nowrap">
-                                                        Iný termín
-                                                    </span>
+                                            {/* Preferred date */}
+                                            <div className="space-y-1">
+                                                <label className="font-montserrat text-[11px] uppercase tracking-widest text-white/50 ml-1">
+                                                    Preferovaný termín
                                                 </label>
+                                                <input
+                                                    type="date"
+                                                    value={preferredDate}
+                                                    onChange={(e) => setPreferredDate(e.target.value)}
+                                                    required
+                                                    min={new Date().toISOString().split("T")[0]}
+                                                    className="w-full bg-white/5 border border-gold/30 rounded-lg px-4 py-3 text-white font-montserrat font-light text-sm focus:border-gold focus:outline-none transition-colors [color-scheme:dark]"
+                                                />
                                             </div>
 
                                             <input
@@ -352,7 +296,7 @@ export default function BookingModal({ isOpen, onClose, title = "Objednať sa", 
 
                                             <button
                                                 type="submit"
-                                                disabled={status === "submitting" || (!wantCustomDate && !selectedSlot) || (TURNSTILE_ENABLED && !turnstileToken)}
+                                                disabled={status === "submitting" || !preferredDate || (TURNSTILE_ENABLED && !turnstileToken)}
                                                 className="w-full bg-gold text-[#1D0E22] font-marcellus uppercase tracking-widest py-3 rounded-lg hover:bg-gold/90 transition-colors text-sm disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                                             >
                                                 {status === "submitting" ? (
