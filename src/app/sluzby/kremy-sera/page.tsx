@@ -64,6 +64,8 @@ export default function CreamsPage() {
     return (
         <div className="flex flex-col gap-10">
 
+            <h1 className="sr-only">Krémy a séra na starostlivosť o pleť</h1>
+
             {/* Top: shop.mp4 + serum.mp4 side by side */}
             <div className="flex flex-col md:flex-row gap-4">
                 <div

@@ -6,9 +6,11 @@ import { useState } from "react";
 import { Loader2, CheckCircle, AlertCircle } from "lucide-react";
 import GoogleMap from "@/components/GoogleMap";
 import LightboxImage from "@/components/LightboxImage";
+import TurnstileWidget, { TURNSTILE_ENABLED } from "@/components/TurnstileWidget";
 
 export default function KontaktPage() {
     const [formData, setFormData] = useState({ name: "", email: "", phone: "", message: "" });
+    const [turnstileToken, setTurnstileToken] = useState("");
     const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -21,12 +23,13 @@ export default function KontaktPage() {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(formData),
+                body: JSON.stringify({ ...formData, turnstileToken }),
             });
 
             if (response.ok) {
                 setStatus("success");
                 setFormData({ name: "", email: "", phone: "", message: "" });
+                setTurnstileToken("");
             } else {
                 setStatus("error");
             }
@@ -39,6 +42,7 @@ export default function KontaktPage() {
     return (
         <main className="min-h-screen text-[#1D0E22]">
             <Header />
+            <h1 className="sr-only">Kontakt</h1>
 
             <div className="pt-32 pb-24 w-[90vw] md:w-[95vw] mx-auto min-h-screen grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
 
@@ -125,9 +129,11 @@ export default function KontaktPage() {
                             </div>
                         )}
 
+                        <TurnstileWidget onVerify={setTurnstileToken} onExpire={() => setTurnstileToken("")} theme="light" />
+
                         <button
                             type="submit"
-                            disabled={status === "submitting" || status === "success"}
+                            disabled={status === "submitting" || status === "success" || (TURNSTILE_ENABLED && !turnstileToken)}
                             className="px-12 py-4 bg-[#1D0E22] text-gold font-marcellus font-bold tracking-widest hover:bg-opacity-90 transition-colors duration-300 w-full md:w-auto disabled:opacity-50 flex items-center justify-center gap-2"
                         >
                             {status === "submitting" ? (

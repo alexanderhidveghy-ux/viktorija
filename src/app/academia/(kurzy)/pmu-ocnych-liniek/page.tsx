@@ -164,14 +164,9 @@ export default function Kurz3Page() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Tatra banka – Online podnikateľský úver"
-                    className="relative block overflow-hidden rounded-2xl border border-gold/30 bg-gold/5 h-full min-h-[180px]"
+                    className="block self-center overflow-hidden rounded-2xl border border-gold/30 bg-gold/5"
                 >
-                    <Image
-                        src="/_unused/tb-opu/TB-OPU_1000x450px-ucto_1.jpg"
-                        alt="Tatra banka – Online podnikateľský úver"
-                        fill
-                        className="object-cover"
-                    />
+                    <Image src="/academia/tb-opu-banner.jpg" alt="Tatra banka – Online podnikateľský úver" width={1000} height={450} className="w-full h-auto" />
                 </a>
             </div>
 

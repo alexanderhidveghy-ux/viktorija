@@ -52,9 +52,9 @@ export default function Kurz5Page() {
         <AnimatedSpace className="space-y-16">
             <PhotoSection photo={PHOTOS[0]} flip={false}>
                 <div className="space-y-6">
-                    <h2 className="font-marcellus text-3xl uppercase tracking-widest text-[#1D0E22] mb-4">
+                    <h1 className="font-marcellus text-3xl uppercase tracking-widest text-[#1D0E22] mb-4">
                         HYPERREALISTICKÉ OBOČIE / HAIRSTROKE
-                    </h2>
+                    </h1>
                     
                     <p className="font-montserrat text-base font-light text-[#1D0E22] leading-snug">
                         Technika kreslenia chĺpkov a schéma ich ukladania, ktorú učím, je vytvorená predovšetkým pre klientsku prax.
@@ -134,14 +134,9 @@ export default function Kurz5Page() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Tatra banka – Online podnikateľský úver"
-                    className="relative block overflow-hidden rounded-2xl border border-gold/30 bg-gold/5 h-full min-h-[180px]"
+                    className="block self-center overflow-hidden rounded-2xl border border-gold/30 bg-gold/5"
                 >
-                    <Image
-                        src="/_unused/tb-opu/TB-OPU_1000x450px-ucto_1.jpg"
-                        alt="Tatra banka – Online podnikateľský úver"
-                        fill
-                        className="object-cover"
-                    />
+                    <Image src="/academia/tb-opu-banner.jpg" alt="Tatra banka – Online podnikateľský úver" width={1000} height={450} className="w-full h-auto" />
                 </a>
             </div>
             

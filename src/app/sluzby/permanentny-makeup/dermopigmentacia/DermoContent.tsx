@@ -38,7 +38,7 @@ export default function DermoContent() {
                 {/* Content */}
                 <div className="font-montserrat font-light text-[#1D0E22] leading-snug text-base">
                     <RevealGroup className="space-y-8">
-                        <h3 className="font-marcellus text-3xl text-[#1D0E22] mb-4">Dermopigmentácia</h3>
+                        <h1 className="font-marcellus text-3xl text-[#1D0E22] mb-4">Dermopigmentácia</h1>
 
                         <p>
                             Obsah sa pripravuje... Dermopigmentácia je odborná technika zameraná na estetickú a medicínsku mikropigmentáciu pokožky.

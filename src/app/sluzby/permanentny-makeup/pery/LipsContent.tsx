@@ -72,7 +72,7 @@ export default function LipsContent() {
                     {/* Content */}
                     <div className="font-montserrat font-light text-[#1D0E22] leading-snug text-base">
                         <RevealGroup className="space-y-8">
-                            <h3 className="font-marcellus text-3xl text-[#1D0E22] mb-4">Permanentný make-up pier</h3>
+                            <h1 className="font-marcellus text-3xl text-[#1D0E22] mb-4">Permanentný make-up pier</h1>
 
                             <div className="space-y-2">
                                 <p>

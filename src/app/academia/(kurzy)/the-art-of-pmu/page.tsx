@@ -8,11 +8,11 @@ export const metadata: Metadata = {
     alternates: { canonical: "/academia/the-art-of-pmu" },
 };
 
-const PHOTOS = ["/academia/kurz-art-of-pmu/main.PNG", "/academia/kurz-art-of-pmu/vik2.jpg", "/academia/kurz-art-of-pmu/IMG_5740.MOV"];
+const PHOTOS = ["/academia/kurz-art-of-pmu/main.PNG", "/academia/kurz-art-of-pmu/vik2.jpg", "/academia/kurz-art-of-pmu/IMG_5740.mp4"];
 const SYSTEM_VIDEO = "https://pub-60b685024baf4def829d5151d4dc320a.r2.dev/kurz1.mp4";
 const STUDENT_WORKS = [
     "/academia/kurz-art-of-pmu/prace/PHOTO-2026-05-12-14-11-03.jpg",
-    "/academia/kurz-art-of-pmu/prace/IMG_9186.MOV",
+    "/academia/kurz-art-of-pmu/prace/IMG_9186.mp4",
     "/academia/kurz-art-of-pmu/prace/PHOTO-2026-05-12-13-54-40%202.jpg",
 ];
 
@@ -80,7 +80,7 @@ export default function ArtOfPmuPage() {
             {/* Section 1: Profession + photo */}
             <PhotoSection photo={PHOTOS[0]} flip={false}>
                 <div className="space-y-6 font-montserrat font-light text-[#1D0E22] leading-snug text-base">
-                    <h2 className="font-marcellus text-3xl uppercase tracking-widest text-[#1D0E22] mb-4">Permanentný makeup ako profesia</h2>
+                    <h1 className="font-marcellus text-3xl uppercase tracking-widest text-[#1D0E22] mb-4">Permanentný makeup ako profesia</h1>
                     <p>
                         Moderný permanentný make-up patrí medzi vyhľadávané procedúry aktívnych žien. Šetrí čas a pomáha ženám pôsobiť harmonicky, prirodzene a upravene každý deň.
                     </p>
@@ -272,14 +272,9 @@ export default function ArtOfPmuPage() {
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="Tatra banka – Online podnikateľský úver"
-                        className="relative block overflow-hidden rounded-2xl border border-gold/30 bg-gold/5 h-full min-h-[180px]"
+                        className="block self-center overflow-hidden rounded-2xl border border-gold/30 bg-gold/5"
                     >
-                        <Image
-                            src="/_unused/tb-opu/TB-OPU_1000x450px-ucto_1.jpg"
-                            alt="Tatra banka – Online podnikateľský úver"
-                            fill
-                            className="object-cover"
-                        />
+                        <Image src="/academia/tb-opu-banner.jpg" alt="Tatra banka – Online podnikateľský úver" width={1000} height={450} className="w-full h-auto" />
                     </a>
                 </div>
             </div>

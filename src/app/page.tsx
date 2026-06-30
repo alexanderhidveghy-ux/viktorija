@@ -15,6 +15,7 @@ export default function Home() {
   return (
     <main className="min-h-screen">
       <Header />
+      <h1 className="sr-only">Salón Viktória – Permanentný make-up a kozmetika v Bratislave</h1>
       <div className="relative isolate">
         <Hero />
         <BlogSection />

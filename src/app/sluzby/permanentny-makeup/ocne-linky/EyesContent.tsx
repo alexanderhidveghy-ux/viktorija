@@ -36,7 +36,7 @@ export default function EyesContent() {
                 {/* Content */}
                 <div className="font-montserrat font-light text-[#1D0E22] leading-snug text-base">
                     <RevealGroup className="space-y-8">
-                        <h3 className="font-marcellus text-3xl text-[#1D0E22] mb-4">Očné linky – permanentný make-up</h3>
+                        <h1 className="font-marcellus text-3xl text-[#1D0E22] mb-4">Očné linky – permanentný make-up</h1>
 
                         {/* ═══ Tieňované očné linky ═══ */}
                         <div className="space-y-2">

@@ -1,6 +1,6 @@
 import { MetadataRoute } from "next";
 
-const BASE_URL = "https://salonviktoria.sk";
+const BASE_URL = "https://viktorija.sk";
 
 // Blog post slugs kept in sync with src/app/blog/[slug]/page.tsx BLOG_POSTS array.
 const BLOG_SLUGS = [

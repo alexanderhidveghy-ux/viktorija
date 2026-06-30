@@ -30,7 +30,7 @@ const prociono = Prociono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://salonviktoria.sk"),
+  metadataBase: new URL("https://viktorija.sk"),
   title: "Salón Viktória | Profesionálny Kozmetický Salón Bratislava",
   description: "Exkluzívny kozmetický salón v Bratislave. Ponúkame permanentný make-up (PMU), estetické rituály tváre, nastreľovanie náušníc a odborné kurzy v našej akadémii.",
   keywords: ["kozmetický salón Bratislava", "permanentný make-up Bratislava", "PMU Bratislava", "estetická kozmetika", "nastreľovanie náušníc", "kurzy permanentného make-upu", "Salón Viktória"],
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Salón Viktória | Kozmetický Salón Bratislava",
     description: "Profesionálny permanentný make-up a estetické služby v srdci Bratislavy.",
-    url: "https://salonviktoria.sk",
+    url: "https://viktorija.sk",
     siteName: "Salón Viktória",
     locale: "sk_SK",
     type: "website",
@@ -67,9 +67,9 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "BeautySalon",
   "name": "Salón Viktória",
-  "image": "https://salonviktoria.sk/shared/IMG_1422.JPG",
-  "@id": "https://salonviktoria.sk",
-  "url": "https://salonviktoria.sk",
+  "image": "https://viktorija.sk/shared/IMG_1422.JPG",
+  "@id": "https://viktorija.sk",
+  "url": "https://viktorija.sk",
   "telephone": "+421907796562",
   "address": {
     "@type": "PostalAddress",

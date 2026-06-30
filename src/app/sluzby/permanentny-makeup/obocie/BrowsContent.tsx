@@ -72,7 +72,7 @@ export default function BrowsContent() {
                         <RevealGroup className="space-y-8">
                             {/* Intro + 3 Navigation Boxes */}
                             <div>
-                                <h3 className="font-marcellus text-3xl text-[#1D0E22] mb-4">Permanentný make-up obočia</h3>
+                                <h1 className="font-marcellus text-3xl text-[#1D0E22] mb-4">Permanentný make-up obočia</h1>
                                 <p>
                                     Hyperrealistické chĺpky alebo jemné Púdrové tieňovanie – zvolíme techniku podľa vašich čŕt, aby výsledok pôsobil prirodzene a harmonicky.
                                 </p>

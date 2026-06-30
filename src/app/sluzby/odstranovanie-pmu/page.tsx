@@ -47,7 +47,7 @@ export default function RemovalPage() {
 
                     {/* ═══ Laserové odstraňovanie ═══ */}
                     <div className="space-y-0">
-                        <h3 className="font-marcellus text-3xl text-[#1D0E22] uppercase">Laserové odstraňovanie pigmentov</h3>
+                        <h1 className="font-marcellus text-3xl text-[#1D0E22] uppercase">Laserové odstraňovanie pigmentov</h1>
                         <p>
                             Je veľkým prínosom modernej estetiky, že dnes vieme bezpečne odstrániť nežiaduci permanentný make-up alebo pigment. V minulosti by človek musel dožívať s výsledkom, v ktorom sa necítil prirodzene ani komfortne.
                         </p>

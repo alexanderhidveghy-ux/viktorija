@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, CheckCircle, AlertCircle, Loader2 } from "lucide-react";
 import Image from "next/image";
-import { supabase } from "@/lib/supabase";
+import TurnstileWidget, { TURNSTILE_ENABLED } from "@/components/TurnstileWidget";
 
 const COURSES = [
     { name: "The Art of PMU", term: "2. 10. – 13. 11. 2026" },
@@ -33,6 +33,7 @@ export default function CourseApplicationModal({ isOpen, onClose, courseName: in
     const [beautyField, setBeautyField] = useState("");
     const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
     const [errorMsg, setErrorMsg] = useState("");
+    const [turnstileToken, setTurnstileToken] = useState("");
 
     // Update selected course when prop changes (e.g. user opens modal from different page)
     useEffect(() => {
@@ -52,6 +53,7 @@ export default function CourseApplicationModal({ isOpen, onClose, courseName: in
             document.addEventListener("keydown", handleKeyDown);
         } else {
             document.body.style.overflow = "";
+            setTurnstileToken("");
         }
         return () => {
             document.body.style.overflow = "";
@@ -65,30 +67,35 @@ export default function CourseApplicationModal({ isOpen, onClose, courseName: in
         setErrorMsg("");
 
         try {
-            const extraData = {
-                instagram: instagram || null,
-                facebook: facebook || null,
-                experience_level: experienceLevel,
-                practice_scope: practiceScope || null,
-                works_in_beauty: worksInBeauty,
-                beauty_field: beautyField || null,
-            };
+            // Save to CMS + send email confirmation (anti-bot verified server-side)
+            const res = await fetch("/api/course-application", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    courseName: selectedCourse.name,
+                    selectedTerm: selectedCourse.term,
+                    name,
+                    email,
+                    phone,
+                    instagram,
+                    facebook,
+                    experienceLevel,
+                    practiceScope,
+                    worksInBeauty,
+                    beautyField,
+                    turnstileToken,
+                }),
+            });
 
-            const { error } = await supabase
-                .from("viktorija_course_applications")
-                .insert({
-                    course_name: selectedCourse.name,
-                    client_name: name,
-                    client_email: email,
-                    client_phone: phone,
-                    message: JSON.stringify(extraData),
-                    selected_term: selectedCourse.term,
-                });
-
-            if (error) throw error;
+            if (!res.ok) {
+                const data = await res.json().catch(() => ({}));
+                setStatus("error");
+                setErrorMsg(data.error || "Niečo sa pokazilo. Skúste to znova neskôr.");
+                return;
+            }
 
             setStatus("success");
-        } catch (err: any) {
+        } catch (err) {
             console.error("Error submitting application:", err);
             setStatus("error");
             setErrorMsg("Niečo sa pokazilo. Skúste to znova neskôr.");
@@ -255,7 +262,7 @@ export default function CourseApplicationModal({ isOpen, onClose, courseName: in
                                                 </div>
                                                 {(experienceLevel === "intermediate" || experienceLevel === "advanced") && (
                                                     <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} className="space-y-1">
-                                                        <label className="font-montserrat text-[10px] uppercase tracking-widest text-white/40 ml-1">Uveďte prosím rozsah vašej praxe (počet klientiek ročne)</label>
+                                                        <label className="font-montserrat text-[10px] uppercase tracking-widest text-white/40 ml-1">Uveďte prosím rozsah vašej praxe (počet klientiek mesačne)</label>
                                                         <input type="text" value={practiceScope} onChange={(e) => setPracticeScope(e.target.value)} className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white font-montserrat text-sm focus:border-gold outline-none transition-all" />
                                                     </motion.div>
                                                 )}
@@ -294,9 +301,13 @@ export default function CourseApplicationModal({ isOpen, onClose, courseName: in
                                             </div>
                                         )}
 
+                                        {TURNSTILE_ENABLED && (
+                                            <TurnstileWidget onVerify={setTurnstileToken} onExpire={() => setTurnstileToken("")} theme="dark" className="flex justify-center" />
+                                        )}
+
                                         <button
                                             type="submit"
-                                            disabled={status === "submitting"}
+                                            disabled={status === "submitting" || (TURNSTILE_ENABLED && !turnstileToken)}
                                             className="w-full py-5 bg-gold text-[#1D0E22] font-marcellus uppercase tracking-[0.2em] rounded-xl hover:bg-white transition-all shadow-xl hover:shadow-gold/20 flex items-center justify-center gap-3 disabled:opacity-50"
                                         >
                                             {status === "submitting" ? (

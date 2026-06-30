@@ -9,7 +9,7 @@ export default function robots(): MetadataRoute.Robots {
                 disallow: ["/api/", "/osobne-udaje"],
             },
         ],
-        sitemap: "https://salonviktoria.sk/sitemap.xml",
-        host: "https://salonviktoria.sk",
+        sitemap: "https://viktorija.sk/sitemap.xml",
+        host: "https://viktorija.sk",
     };
 }

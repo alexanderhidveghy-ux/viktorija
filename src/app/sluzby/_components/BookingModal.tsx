@@ -6,6 +6,7 @@ import { X, Phone, CheckCircle, AlertCircle, Loader2, MessageSquare } from "luci
 import Image from "next/image";
 import CalendarPicker from "./CalendarPicker";
 import { supabase, TimeSlot } from "@/lib/supabase";
+import TurnstileWidget, { TURNSTILE_ENABLED } from "@/components/TurnstileWidget";
 
 const MONTHS_SK = [
     "januára", "februára", "marca", "apríla", "mája", "júna",
@@ -29,6 +30,7 @@ export default function BookingModal({ isOpen, onClose, title = "Objednať sa", 
     const [message, setMessage] = useState(defaultMessage);
     const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
     const [errorMsg, setErrorMsg] = useState("");
+    const [turnstileToken, setTurnstileToken] = useState("");
 
     const handleKeyDown = useCallback((e: KeyboardEvent) => {
         if (e.key === "Escape") onClose();
@@ -59,6 +61,7 @@ export default function BookingModal({ isOpen, onClose, title = "Objednať sa", 
             setMessage(defaultMessage);
             setStatus("idle");
             setErrorMsg("");
+            setTurnstileToken("");
         }
     }, [isOpen, defaultMessage]);
 
@@ -82,6 +85,20 @@ export default function BookingModal({ isOpen, onClose, title = "Objednať sa", 
         setErrorMsg("");
 
         try {
+            // Anti-bot verification before writing to the database
+            if (TURNSTILE_ENABLED) {
+                const verifyRes = await fetch("/api/verify-turnstile", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ token: turnstileToken }),
+                });
+                if (!verifyRes.ok) {
+                    setStatus("error");
+                    setErrorMsg("Overenie proti robotom zlyhalo. Skúste to znova.");
+                    return;
+                }
+            }
+
             // Insert booking
             const bookingData: Record<string, unknown> = {
                 client_name: name,
@@ -114,7 +131,29 @@ export default function BookingModal({ isOpen, onClose, title = "Objednať sa", 
                     type: "new_booking",
                 });
 
+            // Besides the CMS, email the salon (await before any WhatsApp app-switch
+            // so a mobile navigation can't interrupt the request). Best-effort.
+            try {
+                await fetch("/api/booking-email", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        name,
+                        phone,
+                        message: message || null,
+                        dateLabel: selectedDate ? formatDate(selectedDate) : wantCustomDate ? "Individuálny termín" : null,
+                        timeLabel: selectedSlot ? formatTimeRange(selectedSlot.time, selectedSlot.duration_minutes) : customDate || null,
+                    }),
+                });
+            } catch (mailErr) {
+                console.error("Booking email failed:", mailErr);
+            }
+
             setStatus("success");
+            // Besides saving to the CMS, open a prefilled WhatsApp message to the salon.
+            // (Booking is already saved at this point; on desktop pop-up blockers may
+            //  defer this to the manual WhatsApp button on the success screen.)
+            handleWhatsAppRedirect();
         } catch {
             setStatus("error");
             setErrorMsg("Niečo sa pokazilo. Skúste to znova alebo zavolajte.");
@@ -307,9 +346,13 @@ export default function BookingModal({ isOpen, onClose, title = "Objednať sa", 
                                                 </div>
                                             )}
 
+                                            {TURNSTILE_ENABLED && (
+                                                <TurnstileWidget onVerify={setTurnstileToken} onExpire={() => setTurnstileToken("")} theme="dark" className="flex justify-center" />
+                                            )}
+
                                             <button
                                                 type="submit"
-                                                disabled={status === "submitting" || (!wantCustomDate && !selectedSlot)}
+                                                disabled={status === "submitting" || (!wantCustomDate && !selectedSlot) || (TURNSTILE_ENABLED && !turnstileToken)}
                                                 className="w-full bg-gold text-[#1D0E22] font-marcellus uppercase tracking-widest py-3 rounded-lg hover:bg-gold/90 transition-colors text-sm disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                                             >
                                                 {status === "submitting" ? (

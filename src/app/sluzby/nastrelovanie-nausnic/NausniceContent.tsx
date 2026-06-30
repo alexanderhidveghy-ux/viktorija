@@ -134,7 +134,7 @@ export default function NausniceContent() {
 
                     {/* ═══ Úvod ═══ */}
                     <div className="space-y-1">
-                        <h3 className="font-marcellus text-3xl text-[#1D0E22] uppercase">Nastreľovanie náušníc</h3>
+                        <h1 className="font-marcellus text-3xl text-[#1D0E22] uppercase">Nastreľovanie náušníc</h1>
                         <p>
                             Náušnice sú často prvým jemným detailom, ktorým žena alebo dieťa vyjadruje svoju osobnosť, štýl a estetické cítenie.
                         </p>

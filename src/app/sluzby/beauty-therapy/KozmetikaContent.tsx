@@ -515,7 +515,7 @@ export default function KozmetikaContent() {
                     </div>
                 </div>
 
-                <h3 className="font-marcellus text-4xl text-[#1D0E22] mb-6 uppercase">Beauty therapy</h3>
+                <h1 className="font-marcellus text-4xl text-[#1D0E22] mb-6 uppercase">Beauty therapy</h1>
                 <h4 className="font-marcellus text-2xl text-[#1D0E22] mb-4 uppercase tracking-wider">Protokol ošetrenia</h4>
                 <p className="mb-4">
                     Každé ošetrenie je individuálny rituál prispôsobený aktuálnemu stavu pleti.

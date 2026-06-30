@@ -1,8 +1,19 @@
 import { NextResponse } from "next/server";
+import { verifyTurnstile, getClientIp } from "@/lib/turnstile";
+import { supabase } from "@/lib/supabase";
 
 export async function POST(request: Request) {
     try {
-        const { name, email, phone, message } = await request.json();
+        const { name, email, phone, message, turnstileToken } = await request.json();
+
+        // Anti-bot verification (Cloudflare Turnstile)
+        const human = await verifyTurnstile(turnstileToken, getClientIp(request));
+        if (!human) {
+            return NextResponse.json(
+                { error: "Overenie proti robotom zlyhalo. Skúste to znova." },
+                { status: 400 }
+            );
+        }
 
         // Validate required fields
         if (!name || !email || !message) {
@@ -10,6 +21,17 @@ export async function POST(request: Request) {
                 { error: "Meno, email a správa sú povinné polia." },
                 { status: 400 }
             );
+        }
+
+        // Save to CMS (viktorija_contact_messages) so it shows in the admin "Messages"
+        // tab. Best-effort: a DB failure must not prevent the email from being sent.
+        try {
+            const { error: dbError } = await supabase
+                .from("viktorija_contact_messages")
+                .insert({ name, email, phone: phone || null, message });
+            if (dbError) console.error("Failed to save contact message to Supabase:", dbError);
+        } catch (dbErr) {
+            console.error("Supabase contact insert threw:", dbErr);
         }
 
         const apiKey = process.env.SMTP2GO_API_KEY;

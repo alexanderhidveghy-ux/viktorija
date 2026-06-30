@@ -37,6 +37,7 @@ export default function AcademiaPage() {
     return (
         <main className="min-h-screen">
             <Header />
+            <h1 className="sr-only">Akadémia permanentného make-upu</h1>
 
             <section className="pt-40 pb-20 px-6">
                 <div className="max-w-[1800px] mx-auto flex flex-col lg:flex-row items-center justify-center gap-10 xl:gap-16">
