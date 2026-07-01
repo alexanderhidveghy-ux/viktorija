@@ -7,7 +7,6 @@ import Reveal from "@/components/Reveal";
 
 const HERO_VIDEO_LEFT = "https://pub-60b685024baf4def829d5151d4dc320a.r2.dev/kozmetika.mp4";
 const HERO_VIDEO = "https://pub-60b685024baf4def829d5151d4dc320a.r2.dev/ritualy.mp4";
-const HERO_IMAGE = "/sluzby/kozmetika/kozmetika.webp";
 
 interface Procedure {
     id: string;

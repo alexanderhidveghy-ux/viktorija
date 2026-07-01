@@ -112,14 +112,14 @@ export default function BrowsContent() {
                             <div id="section-hyperrealisticke" className="space-y-2 pt-8 border-t border-black/5 scroll-mt-32">
                                 <h4 className="font-marcellus text-2xl text-[#1D0E22] uppercase tracking-wider">Hyperrealistické obočie</h4>
                                 <p>
-                                    Hyperrealistická technika spočíva vo vykresľovaní jednotlivých „chĺpkov" v 3D efekte a v ich precíznom rozmiestnení tak, aby napodobňovali prirodzený smer a hustotu rastu obočia. Hrúbku, dĺžku a intenzitu ťahov prispôsobujem konkrétnym zónam obočia: tam, kde sú prirodzené chĺpky výraznejšie, pracujem plnšie; tam, kde je potrebná jemnosť, volím svetlejšie a tenšie ťahy. Výsledok je veľmi prirodzený, „čistý", s optikou reálneho chĺpku.
+                                    Hyperrealistická technika spočíva vo vykresľovaní jednotlivých „chĺpkov&quot; v 3D efekte a v ich precíznom rozmiestnení tak, aby napodobňovali prirodzený smer a hustotu rastu obočia. Hrúbku, dĺžku a intenzitu ťahov prispôsobujem konkrétnym zónam obočia: tam, kde sú prirodzené chĺpky výraznejšie, pracujem plnšie; tam, kde je potrebná jemnosť, volím svetlejšie a tenšie ťahy. Výsledok je veľmi prirodzený, „čistý&quot;, s optikou reálneho chĺpku.
                                 </p>
                                 <div className="space-y-2">
                                     <p className="font-medium">Pre koho je vhodné:</p>
                                     <ul className="space-y-1">
                                         <li className="flex gap-3"><span className="text-gold text-lg leading-none">✦</span><span>pri riedkom alebo chýbajúcom obočí (medzery, asymetria, vypadávanie chĺpkov),</span></li>
                                         <li className="flex gap-3"><span className="text-gold text-lg leading-none">✦</span><span>pre klientky, ktoré preferujú maximálne prirodzený vzhľad,</span></li>
-                                        <li className="flex gap-3"><span className="text-gold text-lg leading-none">✦</span><span>pre ženy, ktoré chcú doplniť tvar bez viditeľného „make-up" efektu.</span></li>
+                                        <li className="flex gap-3"><span className="text-gold text-lg leading-none">✦</span><span>pre ženy, ktoré chcú doplniť tvar bez viditeľného „make-up&quot; efektu.</span></li>
                                     </ul>
                                 </div>
                                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -213,7 +213,7 @@ export default function BrowsContent() {
                             <div id="section-pudrove" className="space-y-2 pt-8 border-t-2 border-gold/20 scroll-mt-32">
                                 <h4 className="font-marcellus text-2xl text-[#1D0E22] uppercase tracking-wider">Púdrové obočie</h4>
                                 <p>
-                                    Púdrová technika je vrstvené, vzdušné tieňovanie pigmentu. Obočie je v začiatkoch ľahké a jemné, smerom k telu a chvostíku postupne prechádza do tmavšieho gradientu. Tvar a rozloženie tieňa vytváram podľa anatómie tváre a očného okolia tak, aby obočie pôsobilo harmonicky a „otvorilo vzhľad".
+                                    Púdrová technika je vrstvené, vzdušné tieňovanie pigmentu. Obočie je v začiatkoch ľahké a jemné, smerom k telu a chvostíku postupne prechádza do tmavšieho gradientu. Tvar a rozloženie tieňa vytváram podľa anatómie tváre a očného okolia tak, aby obočie pôsobilo harmonicky a „otvorilo vzhľad&quot;.
                                     <br />
                                     Pri navrhovaní pracujem s optikou tváre: napríklad pri mierne navisnutom viečku je spodná línia obočia jemnejšia a gradient smerujem viac do stredu obočia, aby vznikol prirodzený objem a liftingový efekt bez tvrdých kontúr.
                                 </p>

@@ -2,6 +2,61 @@
 
 import { useEffect, useRef } from "react";
 
+type FogCloudState = {
+    ctx: CanvasRenderingContext2D;
+    width: number;
+    height: number;
+};
+
+class FogCloud {
+    x!: number;
+    y!: number;
+    radiusX!: number;
+    radiusY!: number;
+    speed!: number;
+    opacity!: number;
+    wobble!: number;
+    wobbleSpeed!: number;
+
+    constructor(private getState: () => FogCloudState) {
+        this.reset(true);
+    }
+
+    reset(initial = false) {
+        const { width, height } = this.getState();
+        this.x = initial ? Math.random() * (width + 1200) - 600 : -1000;
+        this.y = Math.random() * height;
+        this.radiusX = Math.random() * 700 + 500; // Even larger clouds
+        this.radiusY = Math.random() * 400 + 300;
+        this.speed = Math.random() * 0.8 + 0.4;
+        this.opacity = Math.random() * 0.12 + 0.04; // Very subtle
+        this.wobble = Math.random() * Math.PI * 2;
+        this.wobbleSpeed = Math.random() * 0.008;
+    }
+
+    update() {
+        const { width } = this.getState();
+        this.x += this.speed;
+        this.wobble += this.wobbleSpeed;
+        if (this.x > width + 1000) this.reset();
+    }
+
+    draw() {
+        const { ctx } = this.getState();
+        const gradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.radiusX);
+        // Multi-stop gradient for a natural fog fade without using filters
+        gradient.addColorStop(0, `rgba(255, 255, 255, ${this.opacity})`);
+        gradient.addColorStop(0.3, `rgba(255, 255, 255, ${this.opacity * 0.8})`);
+        gradient.addColorStop(0.6, `rgba(255, 255, 255, ${this.opacity * 0.3})`);
+        gradient.addColorStop(1, "transparent");
+
+        ctx.fillStyle = gradient;
+        ctx.beginPath();
+        ctx.ellipse(this.x, this.y, this.radiusX, this.radiusY, 0, 0, Math.PI * 2);
+        ctx.fill();
+    }
+}
+
 export default function WindParticles() {
     const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -15,60 +70,10 @@ export default function WindParticles() {
         let animationFrameId: number;
         let width: number;
         let height: number;
+        const getCloudState = () => ({ ctx, width, height });
 
         const clouds: FogCloud[] = [];
         const cloudCount = 50;
-
-
-
-        class FogCloud {
-            x!: number;
-            y!: number;
-            radiusX!: number;
-            radiusY!: number;
-            speed!: number;
-            opacity!: number;
-            wobble!: number;
-            wobbleSpeed!: number;
-
-            constructor() {
-                this.reset(true);
-            }
-
-            reset(initial = false) {
-                this.x = initial ? Math.random() * (width + 1200) - 600 : -1000;
-                this.y = Math.random() * height;
-                this.radiusX = Math.random() * 700 + 500; // Even larger clouds
-                this.radiusY = Math.random() * 400 + 300;
-                this.speed = Math.random() * 0.8 + 0.4;
-                this.opacity = Math.random() * 0.12 + 0.04; // Very subtle
-                this.wobble = Math.random() * Math.PI * 2;
-                this.wobbleSpeed = Math.random() * 0.008;
-            }
-
-            update() {
-                this.x += this.speed;
-                this.wobble += this.wobbleSpeed;
-                if (this.x > width + 1000) this.reset();
-            }
-
-            draw() {
-                if (!ctx) return;
-                const gradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.radiusX);
-                // Multi-stop gradient for a natural fog fade without using filters
-                gradient.addColorStop(0, `rgba(255, 255, 255, ${this.opacity})`);
-                gradient.addColorStop(0.3, `rgba(255, 255, 255, ${this.opacity * 0.8})`);
-                gradient.addColorStop(0.6, `rgba(255, 255, 255, ${this.opacity * 0.3})`);
-                gradient.addColorStop(1, "transparent");
-
-                ctx.fillStyle = gradient;
-                ctx.beginPath();
-                ctx.ellipse(this.x, this.y, this.radiusX, this.radiusY, 0, 0, Math.PI * 2);
-                ctx.fill();
-            }
-        }
-
-
 
         const resize = () => {
             const container = canvas.parentElement;
@@ -79,7 +84,7 @@ export default function WindParticles() {
             canvas.height = height;
 
             clouds.length = 0;
-            for (let i = 0; i < cloudCount; i++) clouds.push(new FogCloud());
+            for (let i = 0; i < cloudCount; i++) clouds.push(new FogCloud(getCloudState));
         };
 
         const render = () => {

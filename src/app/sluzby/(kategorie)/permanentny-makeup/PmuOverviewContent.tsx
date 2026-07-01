@@ -175,7 +175,7 @@ export default function PmuOverviewContent() {
                     </p>
                     <ul className="space-y-1 mt-2">
                         <li className="flex gap-3"><span className="text-gold text-lg leading-none">✦</span><span>či sa pigment zahojil rovnomerne,</span></li>
-                        <li className="flex gap-3"><span className="text-gold text-lg leading-none">✦</span><span>či nikde nevznikli drobné „výpadky",</span></li>
+                        <li className="flex gap-3"><span className="text-gold text-lg leading-none">✦</span><span>či nikde nevznikli drobné „výpadky&quot;,</span></li>
                         <li className="flex gap-3"><span className="text-gold text-lg leading-none">✦</span><span>či ste s výsledkom spokojná aj v dennom svetle a pri bežnom fungovaní.</span></li>
                     </ul>
                     <p className="mt-4">

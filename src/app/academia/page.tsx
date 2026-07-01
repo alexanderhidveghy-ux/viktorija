@@ -326,7 +326,7 @@ export default function AcademiaPage() {
                                     Áno, ak ste certifikovanou vzdelávacou inštitúciou. Zákon č. 292/2024 Z. z. v § 4 ods. 2 definuje, že ak vzdelávanie dospelých poskytuje certifikovaná inštitúcia, vydáva toto osvedčenie.
                                 </p>
                                 <p className="font-montserrat text-base text-[#1D0E22]/70 leading-tight">
-                                    Tento vzor používate pre tie kurzy, ktoré nie sú akreditované ako samostatné programy (teda tie "neakreditované"), ale poskytujete ich vy ako "preverená/certifikovaná" firma. V hlavičke uvádzate svoje evidenčné číslo certifikovanej inštitúcie, čím garantujete kvalitu.
+                                    Tento vzor používate pre tie kurzy, ktoré nie sú akreditované ako samostatné programy (teda tie &quot;neakreditované&quot;), ale poskytujete ich vy ako &quot;preverená/certifikovaná&quot; firma. V hlavičke uvádzate svoje evidenčné číslo certifikovanej inštitúcie, čím garantujete kvalitu.
                                 </p>
                             </div>
 
@@ -340,7 +340,7 @@ export default function AcademiaPage() {
                                 <div className="space-y-2">
                                     <h4 className="font-marcellus text-sm uppercase tracking-widest text-[#1D0E22]">Je to len pre toho človeka, že ovláda niečo nové?</h4>
                                     <p className="font-montserrat text-base text-[#1D0E22]/70 leading-tight">
-                                        Nie úplne. Má to vyššiu hodnotu než bežný "diplom" z necertifikovanej firmy:
+                                        Nie úplne. Má to vyššiu hodnotu než bežný &quot;diplom&quot; z necertifikovanej firmy:
                                     </p>
                                     <ul className="space-y-1 font-montserrat text-base text-[#1D0E22]/70">
                                         <li><span className="text-gold">✦</span> <span className="font-medium text-[#1D0E22]">Dôveryhodnosť:</span> Dôkaz, že kurz absolvoval u subjektu pod dohľadom Ministerstva školstva.</li>
@@ -352,7 +352,7 @@ export default function AcademiaPage() {
                             <div className="p-5 bg-[#1D0E22] text-white rounded-2xl shadow-xl">
                                 <p className="font-montserrat text-sm leading-tight italic text-center text-white/80">
                                     <span className="text-gold font-bold not-italic uppercase tracking-widest block mb-1 text-sm">Dôležité upozornenie k PMU:</span>
-                                    Hoci na tento vzor môžete napísať "Permanentný mejkap", toto konkrétne osvedčenie stále <span className="underline decoration-gold text-white font-medium">nestačí na otvorenie viazanej živnosti</span>. Na to absolvent potrebuje osvedčenie o akreditovanom vzdelávacom programe. Tento vzor slúži na doplnkové zručnosti.
+                                    Hoci na tento vzor môžete napísať &quot;Permanentný mejkap&quot;, toto konkrétne osvedčenie stále <span className="underline decoration-gold text-white font-medium">nestačí na otvorenie viazanej živnosti</span>. Na to absolvent potrebuje osvedčenie o akreditovanom vzdelávacom programe. Tento vzor slúži na doplnkové zručnosti.
                                 </p>
                             </div>
                         </div>

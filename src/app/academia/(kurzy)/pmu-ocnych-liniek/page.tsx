@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import LightboxImage from "@/components/LightboxImage";
+import PhotoSection from "@/app/academia/_components/PhotoSection";
+import CourseProgram from "@/app/academia/_components/CourseProgram";
+import TatraBankaBanner from "@/app/academia/_components/TatraBankaBanner";
 
 export const metadata: Metadata = {
     title: "Master Class: PMU Očných Liniek | Academia | Salón Viktória",
@@ -18,33 +20,6 @@ const SCHEDULE = [
     { num: "5", title: "Korekcia o mesiac", date: "9:00 – 18:00", items: ["analýza vyhojených prác", "porozumenie procesu hojenia", "dovedenie práce ku krásnemu a profesionálnemu výsledku"] },
 ];
 
-function PhotoSection({ photo, flip = false, objectPosition, aspectClass, photoLabel, children }: { photo: string; flip?: boolean; objectPosition?: string; aspectClass?: string; photoLabel?: string; children: React.ReactNode }) {
-    const isVideo = /\.(mp4|mov|webm)$/i.test(photo);
-    const isPortraitPNG = /\.png$/i.test(photo);
-    const containerClass = aspectClass || (isPortraitPNG ? "aspect-[4/5]" : "min-h-[400px] md:min-h-[520px]");
-    return (
-        <div className={`grid grid-cols-1 md:grid-cols-2 gap-0 items-start ${flip ? "md:[&>*:first-child]:order-2 md:[&>*:last-child]:order-1" : ""}`}>
-            <div className={`relative overflow-hidden rounded-2xl ${containerClass}`}>
-                {isVideo ? (
-                    <video src={photo} autoPlay muted loop playsInline className="absolute inset-0 h-full w-full object-cover" style={objectPosition ? { objectPosition } : undefined} />
-                ) : (
-                    <LightboxImage src={photo} alt="" fill className="object-cover" style={objectPosition ? { objectPosition } : undefined} />
-                )}
-                {photoLabel && (
-                    <>
-                        <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
-                        <p className="absolute bottom-6 left-6 font-marcellus text-base md:text-lg uppercase tracking-widest text-[#EEE3CE]">
-                            {photoLabel}
-                        </p>
-                    </>
-                )}
-            </div>
-            <div className="flex flex-col justify-start px-0 md:px-12 pt-6 md:pt-0 pb-10">
-                {children}
-            </div>
-        </div>
-    );
-}
 
 import CourseBookingSection from "@/app/academia/_components/CourseBookingSection";
 import AnimatedSpace from "@/app/academia/_components/AnimatedSpace";
@@ -80,7 +55,7 @@ export default function Kurz3Page() {
             </PhotoSection>
 
             {/* Section 2: What we will cover & Who it is for */}
-            <PhotoSection photo="/academia/kurz-linky/IMG_1249.mp4" flip={true} aspectClass="aspect-[4/5] w-full" objectPosition="50% 50%">
+            <PhotoSection photo="https://pub-60b685024baf4def829d5151d4dc320a.r2.dev/IMG_1249.mp4" flip={true} aspectClass="aspect-[4/5] w-full" objectPosition="50% 50%">
                 <div className="space-y-6 font-montserrat font-light text-[#1D0E22] leading-snug text-base">
                     <h3 className="font-marcellus text-2xl uppercase tracking-widest text-[#1D0E22]">Budeme sa venovať:</h3>
                     <ul className="space-y-1 text-base text-[#1D0E22]/80">
@@ -116,25 +91,7 @@ export default function Kurz3Page() {
 
             {/* Program kurzu */}
             <div className="max-w-3xl mx-auto px-2 md:px-0 space-y-6">
-                <h2 className="font-marcellus text-2xl uppercase tracking-widest text-[#1D0E22]">Program kurzu</h2>
-                <div className="space-y-4">
-                    {SCHEDULE.map((block) => (
-                        <div key={block.num} className="flex gap-3">
-                            <span className="font-marcellus text-3xl text-[#1D0E22]/15 leading-none shrink-0">{block.num}</span>
-                            <div className="space-y-0.5">
-                                <div>
-                                    <p className="font-marcellus text-base uppercase tracking-widest text-[#1D0E22] leading-tight">{block.title}</p>
-                                    {block.date && <p className="font-montserrat text-xs text-[#1D0E22]/45 leading-tight mb-[3px]">{block.date}</p>}
-                                </div>
-                                <ul className="font-montserrat text-base font-light text-[#1D0E22]/70 leading-tight">
-                                    {block.items.map((item, i) => (
-                                        <li key={i} className="flex gap-1.5"><span className="text-gold shrink-0">✦</span><span>{item}</span></li>
-                                    ))}
-                                </ul>
-                            </div>
-                        </div>
-                    ))}
-                </div>
+                <CourseProgram schedule={SCHEDULE} />
 
             </div>
 
@@ -159,15 +116,7 @@ export default function Kurz3Page() {
                     <p className="font-montserrat text-xs uppercase tracking-[0.2em] text-[#1D0E22]/50">Cena kurzu</p>
                     <p className="font-marcellus text-5xl text-[#1D0E22]">1 268 €</p>
                 </div>
-                <a
-                    href="https://www.tatrabanka.sk/sk/business/uvery-financovanie/online-podnikatelsky-uver/?utm_medium=banner&utm_campaign=opu2026&utm_source=viktorijakendra"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Tatra banka – Online podnikateľský úver"
-                    className="block self-center overflow-hidden rounded-2xl border border-gold/30 bg-gold/5"
-                >
-                    <Image src="/academia/tb-opu-banner.jpg" alt="Tatra banka – Online podnikateľský úver" width={1000} height={450} className="w-full h-auto" />
-                </a>
+                <TatraBankaBanner />
             </div>
 
             <CourseBookingSection courseName="Master Class: PMU Očných Liniek" />

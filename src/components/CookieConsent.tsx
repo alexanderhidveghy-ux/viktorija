@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { X, ChevronDown, ChevronUp } from "lucide-react";
+import { X } from "lucide-react";
 
 export default function CookieConsent() {
     const [show, setShow] = useState(false);
@@ -13,11 +13,14 @@ export default function CookieConsent() {
     });
 
     useEffect(() => {
+        let cancelled = false;
         const consent = localStorage.getItem("cookie_consent");
         // Open logic: if no consent found, show bar. 
         // Also listen for a custom event 'openCookieSettings' to re-open from footer.
         if (!consent) {
-            setShow(true);
+            window.setTimeout(() => {
+                if (!cancelled) setShow(true);
+            }, 0);
         }
 
         const handleOpenSettings = () => {
@@ -25,8 +28,11 @@ export default function CookieConsent() {
             setShowSettings(true);
         };
 
-        window.addEventListener('openCookieSettings', handleOpenSettings);
-        return () => window.removeEventListener('openCookieSettings', handleOpenSettings);
+        window.addEventListener("openCookieSettings", handleOpenSettings);
+        return () => {
+            cancelled = true;
+            window.removeEventListener("openCookieSettings", handleOpenSettings);
+        };
     }, []);
 
     const handleAcceptAll = () => {

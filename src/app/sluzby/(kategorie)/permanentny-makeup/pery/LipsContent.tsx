@@ -129,7 +129,7 @@ export default function LipsContent() {
                                 {/* ═══ SECTION 2: Kórejské pery ═══ */}
                                 <div id="section-korejske-pery" className="space-y-2 pt-4 scroll-mt-32">
                                     <h4 className="font-marcellus text-2xl text-[#1D0E22] uppercase tracking-wider">Kórejské pery</h4>
-                                    <p className="text-sm italic text-[#1D0E22]/70">efekt jemne „pokusaných" pier</p>
+                                    <p className="text-sm italic text-[#1D0E22]/70">efekt jemne „pokusaných&quot; pier</p>
                                     <p>
                                         Moderná technika, pri ktorej je stred pier výraznejší a farba sa smerom k okrajom postupne stráca. Bez ostrej kontúry, s mäkkým prechodom. Výsledok pôsobí sviežo, mladistvo a veľmi žensky.
                                     </p>
@@ -139,7 +139,7 @@ export default function LipsContent() {
                                 <div id="section-obnova-kontury" className="space-y-2 pt-4 scroll-mt-32">
                                     <h4 className="font-marcellus text-2xl text-[#1D0E22] uppercase tracking-wider">Obnova kontúry pier</h4>
                                     <p>
-                                        Ideálna voľba pri stratenej alebo rozmazanej kontúre pier. Pery získajú jasne definovaný tvar, harmonicky prepojené kútiky a jemne vykreslený stred („srdiečko"). Technika obnovuje proporcie pier a navracia im upravený, elegantný vzhľad.
+                                        Ideálna voľba pri stratenej alebo rozmazanej kontúre pier. Pery získajú jasne definovaný tvar, harmonicky prepojené kútiky a jemne vykreslený stred („srdiečko&quot;). Technika obnovuje proporcie pier a navracia im upravený, elegantný vzhľad.
                                     </p>
                                 </div>
                             </div>

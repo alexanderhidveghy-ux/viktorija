@@ -70,16 +70,16 @@ export default function NausniceContent() {
         }, 50);
     };
 
-    const closeVideoLightbox = () => {
+    const closeVideoLightbox = useCallback(() => {
         setVideoLightbox({ isOpen: false, src: "" });
-    };
+    }, []);
 
     const handleKeyDown = useCallback((e: KeyboardEvent) => {
         if (e.key === "Escape") {
             closeVideoLightbox();
             setIsInfoPopupOpen(false);
         }
-    }, []);
+    }, [closeVideoLightbox]);
 
     useEffect(() => {
         if (videoLightbox.isOpen || isInfoPopupOpen) {

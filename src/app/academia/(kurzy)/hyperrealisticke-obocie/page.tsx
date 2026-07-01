@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import Image from "next/image";
-import LightboxImage from "@/components/LightboxImage";
+import PhotoSection from "@/app/academia/_components/PhotoSection";
+import CourseProgram from "@/app/academia/_components/CourseProgram";
+import TatraBankaBanner from "@/app/academia/_components/TatraBankaBanner";
 
 export const metadata: Metadata = {
     title: "Hyperrealistické Obočie | Academia | Salón Viktória",
@@ -10,32 +11,6 @@ export const metadata: Metadata = {
 
 const PHOTOS = ["/academia/kurz-hyperrealisticke-obocie/5.png", "/academia/kurz-hyperrealisticke-obocie/d58b22d3-0299-4126-b2de-dbe420480e95.JPG", "/academia/kurz-hyperrealisticke-obocie/IMG_4090%201.jpg"];
 
-function PhotoSection({
-    photo,
-    flip = false,
-    aspectClass = "",
-    imageClass = "object-cover",
-    children
-}: {
-    photo: string;
-    flip?: boolean;
-    aspectClass?: string;
-    imageClass?: string;
-    children: React.ReactNode;
-}) {
-    const isPortraitPNG = /\.png$/i.test(photo);
-    const resolvedAspect = aspectClass || (isPortraitPNG ? "aspect-[4/5]" : "min-h-[400px] md:min-h-[520px]");
-    return (
-        <div className={`grid grid-cols-1 md:grid-cols-2 gap-0 items-start ${flip ? "md:[&>*:first-child]:order-2 md:[&>*:last-child]:order-1" : ""}`}>
-            <div className={`relative overflow-hidden rounded-2xl ${resolvedAspect}`}>
-                <LightboxImage src={photo} alt="" fill className={imageClass} />
-            </div>
-            <div className="flex flex-col justify-start px-0 md:px-12 pt-6 md:pt-0 pb-10">
-                {children}
-            </div>
-        </div>
-    );
-}
 
 const SCHEDULE = [
     { num: "1", title: "ONLINE ŠTART", date: "20.10.", items: ["4 online stretnutia po 60 min – teória, systém práce"] },
@@ -98,29 +73,7 @@ export default function Kurz5Page() {
 
             <PhotoSection photo={PHOTOS[2]} flip={false}>
                 <div className="space-y-6">
-                    <div>
-                        <h2 className="font-marcellus text-2xl uppercase tracking-widest text-[#1D0E22]">Program kurzu</h2>
-                    </div>
-                    <div className="space-y-4">
-                        {SCHEDULE.map((block) => (
-                            <div key={block.num}>
-                                <div className="flex gap-3">
-                                    <span className="font-marcellus text-3xl text-[#1D0E22]/15 leading-none shrink-0">{block.num}</span>
-                                    <div className="space-y-0.5">
-                                        <div>
-                                            <p className="font-marcellus text-base uppercase tracking-widest text-[#1D0E22] leading-tight">{block.title}</p>
-                                            {block.date && <p className="font-montserrat text-xs text-[#1D0E22]/45 leading-tight mb-[3px]">{block.date}</p>}
-                                        </div>
-                                        <ul className="font-montserrat text-base font-light text-[#1D0E22]/70 leading-tight">
-                                            {block.items.map((item, i) => (
-                                                <li key={i} className="flex gap-1.5"><span className="text-gold shrink-0">✦</span><span>{item}</span></li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
+                    <CourseProgram schedule={SCHEDULE} />
                 </div>
             </PhotoSection>
 
@@ -129,15 +82,7 @@ export default function Kurz5Page() {
                     <p className="font-montserrat text-xs uppercase tracking-[0.2em] text-[#1D0E22]/50">Cena kurzu</p>
                     <p className="font-marcellus text-5xl text-[#1D0E22]">1 680 €</p>
                 </div>
-                <a
-                    href="https://www.tatrabanka.sk/sk/business/uvery-financovanie/online-podnikatelsky-uver/?utm_medium=banner&utm_campaign=opu2026&utm_source=viktorijakendra"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Tatra banka – Online podnikateľský úver"
-                    className="block self-center overflow-hidden rounded-2xl border border-gold/30 bg-gold/5"
-                >
-                    <Image src="/academia/tb-opu-banner.jpg" alt="Tatra banka – Online podnikateľský úver" width={1000} height={450} className="w-full h-auto" />
-                </a>
+                <TatraBankaBanner />
             </div>
             
             <div className="p-8 bg-[#1D0E22]/5 rounded-2xl text-center italic font-montserrat text-sm text-[#1D0E22]/70">

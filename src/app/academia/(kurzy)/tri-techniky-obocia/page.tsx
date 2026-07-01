@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import LightboxImage from "@/components/LightboxImage";
+import PhotoSection from "@/app/academia/_components/PhotoSection";
+import TatraBankaBanner from "@/app/academia/_components/TatraBankaBanner";
 
 export const metadata: Metadata = {
     title: "Tri Techniky Obočia | Academia | Salón Viktória",
@@ -10,32 +11,6 @@ export const metadata: Metadata = {
 
 const PHOTOS = ["/academia/kurz-obocie/2.png", "/academia/kurz-obocie/3d72931a-081c-427a-8a31-07c8d8fea3ff.JPG", "/academia/kurz-obocie/vik3.jpg"];
 
-function PhotoSection({ photo, flip = false, label, children }: { photo: string; flip?: boolean; label?: string; children: React.ReactNode }) {
-    const isVideo = /\.(mp4|mov|webm)$/i.test(photo);
-    const isPortraitPNG = /\.png$/i.test(photo);
-    return (
-        <div className={`grid grid-cols-1 md:grid-cols-2 gap-0 items-start ${flip ? "md:[&>*:first-child]:order-2 md:[&>*:last-child]:order-1" : ""}`}>
-            <div className={`relative overflow-hidden rounded-2xl ${isPortraitPNG ? "aspect-[4/5]" : "min-h-[400px] md:min-h-[520px]"}`}>
-                {isVideo ? (
-                    <video src={photo} autoPlay muted loop playsInline className="absolute inset-0 h-full w-full object-cover" />
-                ) : (
-                    <LightboxImage src={photo} alt="" fill className="object-cover" />
-                )}
-                {label && (
-                    <>
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent pointer-events-none" />
-                        <p className="absolute bottom-4 left-4 font-marcellus text-sm md:text-base uppercase tracking-widest text-[#EEE3CE] drop-shadow-lg">
-                            {label}
-                        </p>
-                    </>
-                )}
-            </div>
-            <div className="flex flex-col justify-start px-0 md:px-12 pt-6 md:pt-0 pb-10">
-                {children}
-            </div>
-        </div>
-    );
-}
 
 const SCHEDULE = [
     { num: "1", title: "ONLINE ŠTART", date: "21.9.", items: ["4 online stretnutia – teória, systém práce, príprava"] },
@@ -106,7 +81,7 @@ export default function Kurz4Page() {
                 </div>
             </PhotoSection>
 
-            <PhotoSection photo="/academia/kurz-obocie/IMG_3405.mp4" flip={true} label="Práca absolventky Moniky">
+            <PhotoSection photo="https://pub-60b685024baf4def829d5151d4dc320a.r2.dev/IMG_3405.mp4" flip={true} photoLabel="Práca absolventky Moniky">
                 <div className="space-y-6 font-montserrat font-light text-[#1D0E22] leading-snug text-base">
                     <h2 className="font-marcellus text-2xl uppercase tracking-widest text-[#1D0E22] mb-6">
                         Komplexný špecialista na obočie
@@ -174,15 +149,7 @@ export default function Kurz4Page() {
                     <p className="font-montserrat text-xs uppercase tracking-[0.2em] text-[#1D0E22]/50">Cena kurzu</p>
                     <p className="font-marcellus text-5xl text-[#1D0E22]">2 280 €</p>
                 </div>
-                <a
-                    href="https://www.tatrabanka.sk/sk/business/uvery-financovanie/online-podnikatelsky-uver/?utm_medium=banner&utm_campaign=opu2026&utm_source=viktorijakendra"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Tatra banka – Online podnikateľský úver"
-                    className="block self-center overflow-hidden rounded-2xl border border-gold/30 bg-gold/5"
-                >
-                    <Image src="/academia/tb-opu-banner.jpg" alt="Tatra banka – Online podnikateľský úver" width={1000} height={450} className="w-full h-auto" />
-                </a>
+                <TatraBankaBanner />
             </div>
 
             <CourseBookingSection courseName="Tri Techniky Obočia" />

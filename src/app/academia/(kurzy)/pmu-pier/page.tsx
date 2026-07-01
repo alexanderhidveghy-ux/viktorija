@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import LightboxImage from "@/components/LightboxImage";
+import PhotoSection from "@/app/academia/_components/PhotoSection";
+import CourseProgram from "@/app/academia/_components/CourseProgram";
+import TatraBankaBanner from "@/app/academia/_components/TatraBankaBanner";
 
 export const metadata: Metadata = {
     title: "Master Class: Permanentný Make-up Pier | Academia | Salón Viktória",
@@ -10,48 +12,6 @@ export const metadata: Metadata = {
 
 const PHOTOS = ["/academia/kurz-pery/4.png", "/academia/kurz-pery/kozmetika.webp", "/academia/kurz-pery/vik2.jpg"];
 
-function PhotoSection({
-    photo,
-    flip = false,
-    contentClassName = "md:px-12",
-    videoFallback,
-    children
-}: {
-    photo: string;
-    flip?: boolean;
-    contentClassName?: string;
-    videoFallback?: string;
-    children: React.ReactNode;
-}) {
-    const isPortraitPNG = /\.png$/i.test(photo);
-    const isVideo = /\.(mov|mp4|webm)$/i.test(photo);
-    const getVideoType = (src: string) => /\.webm$/i.test(src) ? "video/webm" : /\.mp4$/i.test(src) ? "video/mp4" : "video/quicktime";
-    return (
-        <div className={`grid grid-cols-1 md:grid-cols-2 gap-0 items-start ${flip ? "md:[&>*:first-child]:order-2 md:[&>*:last-child]:order-1" : ""}`}>
-            <div className={`relative overflow-hidden rounded-2xl ${isPortraitPNG ? "aspect-[4/5]" : "min-h-[400px] md:min-h-[520px]"}`}>
-                {isVideo ? (
-                    <video
-                        aria-hidden="true"
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                        preload="metadata"
-                        className="absolute inset-0 h-full w-full object-cover"
-                    >
-                        {videoFallback && <source src={videoFallback} type={getVideoType(videoFallback)} />}
-                        <source src={photo} type={getVideoType(photo)} />
-                    </video>
-                ) : (
-                    <LightboxImage src={photo} alt="" fill className="object-cover" />
-                )}
-            </div>
-            <div className={`flex flex-col justify-start px-0 ${contentClassName} pt-6 md:pt-0 pb-10`}>
-                {children}
-            </div>
-        </div>
-    );
-}
 
 const STUDENT_WORKS = [
     "/academia/kurz-pery/081a3ef1-727c-45b5-8bef-4c47d01c3b52.JPG",
@@ -140,7 +100,7 @@ export default function Kurz2Page() {
                 </div>
                 <div className="relative overflow-hidden rounded-2xl min-h-[400px] md:min-h-[520px]">
                     <video
-                        src="/academia/kurz-pery/PERY.mp4"
+                        src="https://pub-60b685024baf4def829d5151d4dc320a.r2.dev/PERY.mp4"
                         autoPlay
                         muted
                         loop
@@ -158,7 +118,7 @@ export default function Kurz2Page() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-0 items-stretch">
                 <div className="relative overflow-hidden rounded-2xl min-h-[400px] md:min-h-[520px]">
                     <video
-                        src="/academia/kurz-pery/IMG_1254.mp4"
+                        src="https://pub-60b685024baf4def829d5151d4dc320a.r2.dev/IMG_1254.mp4"
                         autoPlay
                         muted
                         loop
@@ -168,25 +128,7 @@ export default function Kurz2Page() {
                 </div>
                 <div className="flex flex-col justify-start px-0 md:px-12 pt-6 md:pt-0 pb-10">
                     <div className="space-y-6">
-                        <h2 className="font-marcellus text-2xl uppercase tracking-widest text-[#1D0E22]">Program kurzu</h2>
-                        <div className="space-y-4">
-                            {SCHEDULE.map((block) => (
-                                <div key={block.num} className="flex gap-3">
-                                    <span className="font-marcellus text-3xl text-[#1D0E22]/15 leading-none shrink-0">{block.num}</span>
-                                    <div className="space-y-0.5">
-                                        <div>
-                                            <p className="font-marcellus text-base uppercase tracking-widest text-[#1D0E22] leading-tight">{block.title}</p>
-                                            {block.date && <p className="font-montserrat text-xs text-[#1D0E22]/45 leading-tight mb-[3px]">{block.date}</p>}
-                                        </div>
-                                        <ul className="font-montserrat text-base font-light text-[#1D0E22]/70 leading-tight">
-                                            {block.items.map((item, i) => (
-                                                <li key={i} className="flex gap-1.5"><span className="text-gold shrink-0">✦</span><span>{item}</span></li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
+                        <CourseProgram schedule={SCHEDULE} />
                     </div>
                 </div>
             </div>
@@ -202,7 +144,7 @@ export default function Kurz2Page() {
                     ))}
                     <div className="relative aspect-square overflow-hidden rounded-2xl border border-black/10 shadow-sm bg-[#1D0E22]/5">
                         <video
-                            src="/academia/kurz-pery/IMG_3039.mp4"
+                            src="https://pub-60b685024baf4def829d5151d4dc320a.r2.dev/IMG_3039.mp4"
                             autoPlay
                             muted
                             loop
@@ -237,15 +179,7 @@ export default function Kurz2Page() {
                     <p className="font-montserrat text-xs uppercase tracking-[0.2em] text-[#1D0E22]/50">Cena kurzu</p>
                     <p className="font-marcellus text-5xl text-[#1D0E22]">1 268 €</p>
                 </div>
-                <a
-                    href="https://www.tatrabanka.sk/sk/business/uvery-financovanie/online-podnikatelsky-uver/?utm_medium=banner&utm_campaign=opu2026&utm_source=viktorijakendra"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Tatra banka – Online podnikateľský úver"
-                    className="block self-center overflow-hidden rounded-2xl border border-gold/30 bg-gold/5"
-                >
-                    <Image src="/academia/tb-opu-banner.jpg" alt="Tatra banka – Online podnikateľský úver" width={1000} height={450} className="w-full h-auto" />
-                </a>
+                <TatraBankaBanner />
             </div>
             </div>
 

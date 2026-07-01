@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import TatraBankaBanner from "@/app/academia/_components/TatraBankaBanner";
 import LightboxImage from "@/components/LightboxImage";
 import AnimatedSpace from "@/app/academia/_components/AnimatedSpace";
 import ContactCTA from "@/app/academia/_components/ContactCTA";
@@ -104,15 +104,7 @@ export default function Kurz7Page() {
                     <p className="font-montserrat text-xs uppercase tracking-[0.2em] text-[#1D0E22]/50">Cena kurzu</p>
                     <p className="font-marcellus text-5xl text-[#1D0E22]">458 €</p>
                 </div>
-                <a
-                    href="https://www.tatrabanka.sk/sk/business/uvery-financovanie/online-podnikatelsky-uver/?utm_medium=banner&utm_campaign=opu2026&utm_source=viktorijakendra"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Tatra banka – Online podnikateľský úver"
-                    className="block self-center overflow-hidden rounded-2xl border border-gold/30 bg-gold/5"
-                >
-                    <Image src="/academia/tb-opu-banner.jpg" alt="Tatra banka – Online podnikateľský úver" width={1000} height={450} className="w-full h-auto" />
-                </a>
+                <TatraBankaBanner />
             </div>
 
             <CourseBookingSection courseName="Nastreľovanie Náušníc" />

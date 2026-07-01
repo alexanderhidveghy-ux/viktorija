@@ -272,8 +272,27 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
         );
     }
 
+    const articleJsonLd = {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        headline: post.title,
+        description: post.excerpt,
+        image: `https://viktorija.sk${post.image}`,
+        author: { "@type": "Person", name: "Viktorija Kendra" },
+        publisher: {
+            "@type": "Organization",
+            name: "Salón Viktória",
+            logo: { "@type": "ImageObject", url: "https://viktorija.sk/shared/favicon.png" },
+        },
+        mainEntityOfPage: `https://viktorija.sk/blog/${post.slug}`,
+    };
+
     return (
         <main className="min-h-screen">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+            />
             <Header />
 
             <div className="pt-32 pb-24 w-[90vw] md:w-[95vw] max-w-7xl mx-auto">

@@ -3,7 +3,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, CheckCircle, AlertCircle, Loader2 } from "lucide-react";
-import Image from "next/image";
 import TurnstileWidget, { TURNSTILE_ENABLED } from "@/components/TurnstileWidget";
 
 const COURSES = [
@@ -35,17 +34,14 @@ export default function CourseApplicationModal({ isOpen, onClose, courseName: in
     const [errorMsg, setErrorMsg] = useState("");
     const [turnstileToken, setTurnstileToken] = useState("");
 
-    // Update selected course when prop changes (e.g. user opens modal from different page)
-    useEffect(() => {
-        if (isOpen) {
-            const course = COURSES.find(c => c.name === initialCourseName);
-            if (course) setSelectedCourse(course);
-        }
-    }, [initialCourseName, isOpen]);
+    const closeModal = useCallback(() => {
+        setTurnstileToken("");
+        onClose();
+    }, [onClose]);
 
     const handleKeyDown = useCallback((e: KeyboardEvent) => {
-        if (e.key === "Escape") onClose();
-    }, [onClose]);
+        if (e.key === "Escape") closeModal();
+    }, [closeModal]);
 
     useEffect(() => {
         if (isOpen) {
@@ -53,7 +49,6 @@ export default function CourseApplicationModal({ isOpen, onClose, courseName: in
             document.addEventListener("keydown", handleKeyDown);
         } else {
             document.body.style.overflow = "";
-            setTurnstileToken("");
         }
         return () => {
             document.body.style.overflow = "";
@@ -110,7 +105,7 @@ export default function CourseApplicationModal({ isOpen, onClose, courseName: in
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-xl p-4"
-                    onClick={onClose}
+                    onClick={closeModal}
                 >
                     <motion.div
                         initial={{ opacity: 0, scale: 0.95, y: 20 }}
@@ -121,9 +116,9 @@ export default function CourseApplicationModal({ isOpen, onClose, courseName: in
                     >
                         {/* Header Area */}
                         <div className="p-6 border-b border-gold/20 flex justify-between items-center bg-black/20">
-                            <h3 className="font-marcellus text-gold text-xl uppercase tracking-widest">Prihláška na kurz PMU</h3>
+                            <h3 className="font-marcellus text-gold text-xl uppercase tracking-widest">Prihláška</h3>
                             <button
-                                onClick={onClose}
+                                onClick={closeModal}
                                 className="w-10 h-10 flex items-center justify-center rounded-full text-white/50 hover:text-white hover:bg-white/10 transition-all"
                             >
                                 <X className="w-6 h-6" />
@@ -146,7 +141,7 @@ export default function CourseApplicationModal({ isOpen, onClose, courseName: in
                                         </p>
                                     </div>
                                     <button
-                                        onClick={onClose}
+                                        onClick={closeModal}
                                         className="px-12 py-4 bg-gold text-[#1D0E22] font-marcellus uppercase tracking-widest rounded-full hover:bg-white transition-colors"
                                     >
                                         Zavrieť
@@ -157,9 +152,7 @@ export default function CourseApplicationModal({ isOpen, onClose, courseName: in
                                     {/* Left Side: Course Selector */}
                                     <div className="space-y-8">
                                         <div>
-                                            <p className="font-montserrat text-xs uppercase tracking-[0.3em] text-gold/60 mb-2">Výber kurzu</p>
-                                            <h2 className="font-marcellus text-2xl text-white uppercase tracking-widest">Program vzdelávania</h2>
-                                            <div className="h-px w-16 bg-gold/40 mt-4" />
+                                            <h2 className="font-marcellus text-2xl text-white uppercase tracking-widest">Výber kurzu</h2>
                                         </div>
 
                                         <div className="space-y-3">
@@ -250,7 +243,7 @@ export default function CourseApplicationModal({ isOpen, onClose, courseName: in
                                                             <button
                                                                 key={level.id}
                                                                 type="button"
-                                                                onClick={() => setExperienceLevel(level.id as any)}
+                                                                onClick={() => setExperienceLevel(level.id as "beginner" | "intermediate" | "advanced")}
                                                                 className={`py-3 px-4 rounded-xl border transition-all text-[10px] font-montserrat uppercase tracking-widest ${
                                                                     experienceLevel === level.id ? "bg-gold text-[#1D0E22] border-gold" : "bg-white/5 border-white/10 text-white/40 hover:border-white/20"
                                                                 }`}
@@ -329,4 +322,3 @@ export default function CourseApplicationModal({ isOpen, onClose, courseName: in
         </AnimatePresence>
     );
 }
-

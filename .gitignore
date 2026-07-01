@@ -40,11 +40,10 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# Large video files
+# Large video files (hosted on Cloudflare R2, not committed)
 *.MOV
 *.MP4
 *.mp4
-!public/academia/kurz2/PERY.mp4
 
 # Quarantined / unused media (kept locally for review, do not commit)
 /public/_unused/

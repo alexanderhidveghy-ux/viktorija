@@ -21,6 +21,7 @@ export default function LightboxImage({
     className,
     onClick,
     src,
+    alt,
     ...rest
 }: LightboxImageProps) {
     const { open } = useLightbox();
@@ -30,6 +31,7 @@ export default function LightboxImage({
     return (
         <Image
             src={src}
+            alt={alt}
             {...rest}
             onClick={(e) => {
                 onClick?.(e);

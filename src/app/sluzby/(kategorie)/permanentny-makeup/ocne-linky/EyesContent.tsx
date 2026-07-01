@@ -55,7 +55,7 @@ export default function EyesContent() {
                         <div className="space-y-2 pt-8">
                             <h4 className="font-marcellus text-2xl text-[#1D0E22] uppercase tracking-wider">Očné linky medzi riasy</h4>
                             <p>
-                                Táto technika vytvára optickú hustotu rias a jemne podkresľuje mandľový tvar očí. Podľa proporcií oka môže byť doplnená o veľmi jemný „chvostík", ak očiam pristane. Priestor medzi riasami je pigmentovaný nahusto, aby vznikol objem.
+                                Táto technika vytvára optickú hustotu rias a jemne podkresľuje mandľový tvar očí. Podľa proporcií oka môže byť doplnená o veľmi jemný „chvostík&quot;, ak očiam pristane. Priestor medzi riasami je pigmentovaný nahusto, aby vznikol objem.
                             </p>
                         </div>
 

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import LightboxImage from "@/components/LightboxImage";
+import PhotoSection from "@/app/academia/_components/PhotoSection";
+import CourseProgram from "@/app/academia/_components/CourseProgram";
+import TatraBankaBanner from "@/app/academia/_components/TatraBankaBanner";
 
 export const metadata: Metadata = {
     title: "The Art of PMU | Academia | Salón Viktória",
@@ -8,44 +10,14 @@ export const metadata: Metadata = {
     alternates: { canonical: "/academia/the-art-of-pmu" },
 };
 
-const PHOTOS = ["/academia/kurz-art-of-pmu/main.PNG", "/academia/kurz-art-of-pmu/vik2.jpg", "/academia/kurz-art-of-pmu/IMG_5740.mp4"];
+const PHOTOS = ["/academia/kurz-art-of-pmu/main.PNG", "/academia/kurz-art-of-pmu/vik2.jpg", "https://pub-60b685024baf4def829d5151d4dc320a.r2.dev/IMG_5740.mp4"];
 const SYSTEM_VIDEO = "https://pub-60b685024baf4def829d5151d4dc320a.r2.dev/kurz1.mp4";
 const STUDENT_WORKS = [
     "/academia/kurz-art-of-pmu/prace/PHOTO-2026-05-12-14-11-03.jpg",
-    "/academia/kurz-art-of-pmu/prace/IMG_9186.mp4",
+    "https://pub-60b685024baf4def829d5151d4dc320a.r2.dev/IMG_9186.mp4",
     "/academia/kurz-art-of-pmu/prace/PHOTO-2026-05-12-13-54-40%202.jpg",
 ];
 
-function PhotoSection({
-    photo,
-    flip = false,
-    contentBottomPadding = "pb-10",
-    contentClassName = "",
-    children
-}: {
-    photo: string;
-    flip?: boolean;
-    contentBottomPadding?: string;
-    contentClassName?: string;
-    children: React.ReactNode;
-}) {
-    const isVideo = /\.(mp4|mov)$/i.test(photo);
-    const isPortraitPNG = /\.png$/i.test(photo);
-    return (
-        <div className={`grid grid-cols-1 md:grid-cols-2 gap-0 items-start ${flip ? "md:[&>*:first-child]:order-2 md:[&>*:last-child]:order-1" : ""}`}>
-            <div className={`relative overflow-hidden rounded-2xl ${isPortraitPNG ? "aspect-[4/5]" : "min-h-[400px] md:min-h-[520px]"}`}>
-                {isVideo ? (
-                    <video src={photo} autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover" />
-                ) : (
-                    <LightboxImage src={photo} alt="" fill className="object-cover" />
-                )}
-            </div>
-            <div className={`flex flex-col justify-start px-0 md:px-12 pt-6 md:pt-0 ${contentBottomPadding} ${contentClassName}`}>
-                {children}
-            </div>
-        </div>
-    );
-}
 
 const SCHEDULE = [
     { num: "1", title: "ONLINE ŠTART", date: "2. 10. 2026 | 08:00 – 10:00", items: ["úvodné stretnutie", "nastavenie programu", "organizácia výučby", "Prvý týždeň: teoretické lekcie, kreslenie a šrafovanie (face charty), kontrola domácich úloh"] },
@@ -108,29 +80,7 @@ export default function ArtOfPmuPage() {
             {/* Section 2: Schedule + photo */}
             <PhotoSection photo={PHOTOS[1]} flip={true} contentBottomPadding="pb-0">
                 <div className="space-y-6">
-                    <div>
-                        <h2 className="font-marcellus text-2xl uppercase tracking-widest text-[#1D0E22]">Program kurzu</h2>
-                    </div>
-                    <div className="space-y-4">
-                        {SCHEDULE.map((block) => (
-                            <div key={block.num}>
-                                <div className="flex gap-3">
-                                    <span className="font-marcellus text-3xl text-[#1D0E22]/15 leading-none shrink-0">{block.num}</span>
-                                    <div className="space-y-0.5">
-                                        <div>
-                                            <p className="font-marcellus text-base uppercase tracking-widest text-[#1D0E22] leading-tight">{block.title}</p>
-                                            {block.date && <p className="font-montserrat text-xs text-[#1D0E22]/45 leading-tight mb-[3px]">{block.date}</p>}
-                                        </div>
-                                        <ul className="font-montserrat text-base font-light text-[#1D0E22]/70 leading-tight">
-                                            {block.items.map((item, i) => (
-                                                <li key={i} className="flex gap-1.5"><span className="text-gold shrink-0">✦</span><span>{item}</span></li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
+                    <CourseProgram schedule={SCHEDULE} />
                 </div>
             </PhotoSection>
 
@@ -267,15 +217,7 @@ export default function ArtOfPmuPage() {
                         <p className="font-marcellus text-5xl text-[#1D0E22]">2 980 €</p>
                         <span className="inline-block font-montserrat text-[10px] uppercase tracking-widest text-[#1D0E22] border border-[#1D0E22]/30 rounded-full px-3 py-0.5">Odporúčané</span>
                     </div>
-                    <a
-                        href="https://www.tatrabanka.sk/sk/business/uvery-financovanie/online-podnikatelsky-uver/?utm_medium=banner&utm_campaign=opu2026&utm_source=viktorijakendra"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="Tatra banka – Online podnikateľský úver"
-                        className="block self-center overflow-hidden rounded-2xl border border-gold/30 bg-gold/5"
-                    >
-                        <Image src="/academia/tb-opu-banner.jpg" alt="Tatra banka – Online podnikateľský úver" width={1000} height={450} className="w-full h-auto" />
-                    </a>
+                    <TatraBankaBanner />
                 </div>
             </div>
 

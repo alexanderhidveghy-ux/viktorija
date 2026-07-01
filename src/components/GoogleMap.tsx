@@ -38,10 +38,61 @@ const MAP_STYLES = [
     },
 ];
 
+type LatLngLiteral = {
+    lat: number;
+    lng: number;
+};
+
+type MapInstance = object;
+
+type MarkerInstance = {
+    map: MapInstance | null;
+    addListener: (eventName: string, handler: () => void) => void;
+};
+
+type InfoWindowInstance = {
+    setContent: (content: string) => void;
+    open: (options: { anchor: MarkerInstance; map: MapInstance }) => void;
+};
+
+type MapsLibrary = {
+    Map: new (el: HTMLElement, options: Record<string, unknown>) => MapInstance;
+    InfoWindow: new (options: Record<string, unknown>) => InfoWindowInstance;
+};
+
+type MarkerLibrary = {
+    AdvancedMarkerElement: new (options: {
+        map: MapInstance;
+        position: LatLngLiteral;
+        title: string;
+        content: HTMLElement;
+    }) => MarkerInstance;
+    PinElement: new (options: {
+        background: string;
+        borderColor: string;
+        glyphColor: string;
+        glyph: string;
+    }) => { element: HTMLElement };
+};
+
+type GoogleMapsApi = {
+    importLibrary: (libraryName: "maps" | "marker") => Promise<unknown>;
+};
+
+function getGoogleMapsApi(): GoogleMapsApi {
+    const maps = window.google?.maps;
+    if (!maps) {
+        throw new Error("Google Maps API did not initialize.");
+    }
+    return maps;
+}
+
 declare global {
     interface Window {
-        google?: any;
-        __googleMapsLoaderPromise?: Promise<any>;
+        google?: {
+            maps?: GoogleMapsApi;
+        };
+        __googleMapsLoaderPromise?: Promise<GoogleMapsApi>;
         __googleMapsLoaderCallback__?: () => void;
     }
 }
@@ -52,7 +103,7 @@ function loadGoogleMaps(apiKey: string, mapId: string) {
     }
 
     if (window.google?.maps?.importLibrary) {
-        return Promise.resolve(window.google.maps);
+        return Promise.resolve(getGoogleMapsApi());
     }
 
     if (window.__googleMapsLoaderPromise) {
@@ -65,7 +116,13 @@ function loadGoogleMaps(apiKey: string, mapId: string) {
         );
 
         if (existingScript) {
-            existingScript.addEventListener("load", () => resolve(window.google?.maps), {
+            existingScript.addEventListener("load", () => {
+                try {
+                    resolve(getGoogleMapsApi());
+                } catch (error) {
+                    reject(error);
+                }
+            }, {
                 once: true,
             });
             existingScript.addEventListener("error", () => reject(new Error("Failed to load Google Maps.")), {
@@ -75,7 +132,11 @@ function loadGoogleMaps(apiKey: string, mapId: string) {
         }
 
         window.__googleMapsLoaderCallback__ = () => {
-            resolve(window.google?.maps);
+            try {
+                resolve(getGoogleMapsApi());
+            } catch (error) {
+                reject(error);
+            }
             delete window.__googleMapsLoaderCallback__;
         };
 
@@ -118,24 +179,28 @@ export default function GoogleMap({
     const [loadState, setLoadState] = useState<"loading" | "ready" | "error">("loading");
 
     useEffect(() => {
+        let isCancelled = false;
         const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
         const mapId = process.env.NEXT_PUBLIC_GOOGLE_MAP_ID;
 
         if (!apiKey || !mapId || !mapRef.current) {
-            setLoadState("error");
-            return;
+            window.setTimeout(() => {
+                if (!isCancelled) setLoadState("error");
+            }, 0);
+            return () => {
+                isCancelled = true;
+            };
         }
 
-        let isCancelled = false;
-        let marker: any;
-        const extraMarkerInstances: any[] = [];
+        let marker: MarkerInstance | null = null;
+        const extraMarkerInstances: MarkerInstance[] = [];
 
         const initMap = async () => {
             try {
                 const maps = await loadGoogleMaps(apiKey, mapId);
                 const [{ Map, InfoWindow }, { AdvancedMarkerElement, PinElement }] = await Promise.all([
-                    maps.importLibrary("maps"),
-                    maps.importLibrary("marker"),
+                    maps.importLibrary("maps") as Promise<MapsLibrary>,
+                    maps.importLibrary("marker") as Promise<MarkerLibrary>,
                 ]);
 
                 if (isCancelled || !mapRef.current) {
@@ -167,16 +232,17 @@ export default function GoogleMap({
                 pin.innerHTML =
                     '<span class="google-map-pin__badge"></span><img class="google-map-pin__image" src="/shared/output-onlinepngtools-removebg-preview.png" alt="" />';
 
-                marker = new AdvancedMarkerElement({
+                const primaryMarker = new AdvancedMarkerElement({
                     map,
                     position: SALON_LOCATION,
                     title: "Salón Viktória",
                     content: pin,
                 });
+                marker = primaryMarker;
 
-                marker.addListener("click", () => {
+                primaryMarker.addListener("click", () => {
                     infoWindow.setContent(makeInfoContent("Salón Viktória", "Mlynské Nivy 10, 821 09 Bratislava", "/shared/Gemini_Generated_Image_3tbp373tbp373tbp.png"));
-                    infoWindow.open({ anchor: marker, map });
+                    infoWindow.open({ anchor: primaryMarker, map });
                 });
 
                 for (const extra of extraMarkers) {

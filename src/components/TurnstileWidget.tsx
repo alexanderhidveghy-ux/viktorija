@@ -62,10 +62,13 @@ export default function TurnstileWidget({
     const widgetIdRef = useRef<string | null>(null);
     const onVerifyRef = useRef(onVerify);
     const onExpireRef = useRef(onExpire);
-    onVerifyRef.current = onVerify;
-    onExpireRef.current = onExpire;
 
     const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
+
+    useEffect(() => {
+        onVerifyRef.current = onVerify;
+        onExpireRef.current = onExpire;
+    }, [onVerify, onExpire]);
 
     useEffect(() => {
         if (!siteKey) return;
