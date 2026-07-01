@@ -13,7 +13,7 @@ const PRODUCTS = [
     { name: "Hyaluronic 3D sérum pre maximálnu hydratáciu a výplňový efekt", video: "https://pub-60b685024baf4def829d5151d4dc320a.r2.dev/serum.mp4" },
     { name: "Tonizačná esencia z jasmínu", image: "/sluzby/kremy-sera/prod1.jpg" },
     { name: "Nočná maska pre revitalizáciu, zbavenie toxínov, jemnú exfoliáciu, regeneráciu, spevnenie a vyhladzovanie", image: "/sluzby/kremy-sera/prod2.jpg" },
-    { name: "Očný krém s kmeňovými bunkami a rastlinnou plazmou z orchidei rieši vrásky, spevnenie, tmavé kruhy, opuchy a rozjasňuje očné okolie", image: "/sluzby/kremy-sera/prod3.jpg" },
+    { name: "Krém s kmeňovými bunkami a rastlinnou plazmou z orchidei na vrásky, tmavé kruhy a rozjasňuje očné okolie", image: "/sluzby/kremy-sera/prod3.jpg" },
     { name: "Intenzívny upokojujúci krém na citlivú pleť", image: "/sluzby/kremy-sera/prod4.jpg" },
     { name: "Spevňujúci výživný krém na suchú starnúcu pleť, 45+", image: "/sluzby/kremy-sera/prod5.jpg" },
     { name: "Kolagénové sérum proti vráskam", image: "/sluzby/kremy-sera/prod6.jpg" },

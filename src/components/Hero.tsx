@@ -41,6 +41,8 @@ const ACHIEVEMENTS = [
     "Neustále sa odborne vzdelávam; absolvovala som školenia na Slovensku aj v zahraničí (Poľsko, Česko, Taliansko, Rusko, Ukrajina)."
 ];
 
+const SERVICE_HOVER_PREVIEW_QUERY = "(hover: hover) and (pointer: fine) and (min-width: 1024px)";
+
 export default function Hero() {
     const [isPlaying, setIsPlaying] = useState(false);
     const [videoStarted, setVideoStarted] = useState(false);
@@ -57,6 +59,22 @@ export default function Hero() {
         window.addEventListener("mousemove", handleMouseMove);
         return () => window.removeEventListener("mousemove", handleMouseMove);
     }, []);
+
+    useEffect(() => {
+        const media = window.matchMedia(SERVICE_HOVER_PREVIEW_QUERY);
+        const clearHoverPreview = () => {
+            if (!media.matches) setHoveredServiceImage(null);
+        };
+
+        media.addEventListener("change", clearHoverPreview);
+        return () => media.removeEventListener("change", clearHoverPreview);
+    }, []);
+
+    const handleServiceMouseEnter = (image: string) => {
+        if (window.matchMedia(SERVICE_HOVER_PREVIEW_QUERY).matches) {
+            setHoveredServiceImage(image);
+        }
+    };
 
     const startVideo = () => {
         if (!videoRef.current) return;
@@ -90,7 +108,7 @@ export default function Hero() {
                         }}
                         exit={{ opacity: 0, scale: 0.8 }}
                         transition={{ type: "spring", stiffness: 150, damping: 15 }}
-                        className="fixed top-0 left-0 z-50 w-64 h-40 rounded-lg overflow-hidden border-2 border-[#EEE3CE] shadow-2xl pointer-events-none"
+                        className="fixed top-0 left-0 z-50 hidden h-40 w-64 overflow-hidden rounded-lg border-2 border-[#EEE3CE] shadow-2xl pointer-events-none lg:block"
                     >
                         <Image
                             src={hoveredServiceImage}
@@ -127,7 +145,7 @@ export default function Hero() {
                             <Link
                                 href="/sluzby"
                                 key={idx}
-                                onMouseEnter={() => setHoveredServiceImage(service.image)}
+                                onMouseEnter={() => handleServiceMouseEnter(service.image)}
                                 onMouseLeave={() => setHoveredServiceImage(null)}
                                 className="cursor-pointer group/item block"
                             >
