@@ -41,7 +41,7 @@ function NavLink({ label, href }: NavItem) {
 
 const NAV_LEFT: NavItem[] = [
     { label: "Domov", href: "/" },
-    { label: "ŠTÚDIO", href: "/sluzby" },
+    { label: "ŠTÚDIO", href: "/sluzby/permanentny-makeup" },
 ];
 
 const NAV_RIGHT: NavItem[] = [

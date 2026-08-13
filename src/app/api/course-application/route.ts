@@ -26,6 +26,7 @@ export async function POST(request: Request) {
             worksInBeauty,
             beautyField,
             turnstileToken,
+            privacyConsent,
         } = body;
 
         // Anti-bot verification (Cloudflare Turnstile)
@@ -38,6 +39,10 @@ export async function POST(request: Request) {
             return NextResponse.json({ error: "Chýbajú povinné polia." }, { status: 400 });
         }
 
+        if (privacyConsent !== true) {
+            return NextResponse.json({ error: "Súhlas so spracovaním osobných údajov je povinný." }, { status: 400 });
+        }
+
         const extraData = {
             instagram: instagram || null,
             facebook: facebook || null,
@@ -45,6 +50,7 @@ export async function POST(request: Request) {
             practice_scope: practiceScope || null,
             works_in_beauty: worksInBeauty,
             beauty_field: beautyField || null,
+            privacy_consent: true,
         };
 
         // 1. Save to CMS
@@ -83,7 +89,8 @@ export async function POST(request: Request) {
                     `Instagram: ${instagram || "Neuvedené"}\nFacebook: ${facebook || "Neuvedené"}\n\n` +
                     `Úroveň zručnosti: ${lvl}\n` +
                     `Rozsah praxe (klientiek mesačne): ${practiceScope || "Neuvedené"}\n` +
-                    `Pracuje v skrášľujúcich službách: ${beauty}`;
+                    `Pracuje v skrášľujúcich službách: ${beauty}\n` +
+                    `Súhlas so spracovaním osobných údajov: áno`;
 
                 const htmlBody = `
                     <h3>Nová prihláška na kurz</h3>
@@ -99,6 +106,7 @@ export async function POST(request: Request) {
                     <p><strong>Úroveň zručnosti:</strong> ${lvl}</p>
                     <p><strong>Rozsah praxe (klientiek mesačne):</strong> ${practiceScope || "<em>Neuvedené</em>"}</p>
                     <p><strong>Pracuje v skrášľujúcich službách:</strong> ${beauty}</p>
+                    <p><strong>Súhlas so spracovaním osobných údajov:</strong> áno</p>
                 `;
 
                 await fetch("https://api.smtp2go.com/v3/email/send", {

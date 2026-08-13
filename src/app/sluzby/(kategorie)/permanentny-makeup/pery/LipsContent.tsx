@@ -197,7 +197,7 @@ export default function LipsContent() {
                                             <div className="space-y-2">
                                                 <div className="flex justify-between items-end gap-4">
                                                     <h5 className="font-marcellus text-lg uppercase tracking-wider">Hlavná procedúra</h5>
-                                                    <span className="font-bold text-lg whitespace-nowrap">380 €</span>
+                                                    <span className="font-bold text-lg whitespace-nowrap">365 €</span>
                                                 </div>
                                                 <p className="text-sm opacity-80 italic">3 – 3,5 hodiny</p>
                                                 <p className="text-sm">Rekonštrukcia a predkreslenie tvaru pier, miešanie individuálne zvoleného odtieňa, aplikácia permanentného make-upu.</p>
@@ -206,7 +206,7 @@ export default function LipsContent() {
                                             <div className="space-y-2">
                                                 <div className="flex justify-between items-end gap-4">
                                                     <h5 className="font-marcellus text-lg uppercase tracking-wider">Korekcia po 4–6 týždňoch</h5>
-                                                    <span className="font-bold text-lg whitespace-nowrap">120 €</span>
+                                                    <span className="font-bold text-lg whitespace-nowrap">115 €</span>
                                                 </div>
                                                 <p className="text-sm opacity-80 italic">30 min – 1,5 hodiny</p>
                                                 <p className="text-sm">Doladenie farby, tvaru a intenzity podľa hojenia.</p>
@@ -216,12 +216,12 @@ export default function LipsContent() {
                                                 <h5 className="font-marcellus text-lg uppercase tracking-wider">Druhá korekcia</h5>
                                                 <div className="space-y-2 pl-4 border-l-2 border-gold/20">
                                                     <div className="flex justify-between items-end gap-4">
-                                                        <span className="text-sm">drobná úprava do 15 minút</span>
+                                                        <span className="text-sm">drobná úprava do 30 minút</span>
                                                         <span className="font-bold whitespace-nowrap">Bezplatne</span>
                                                     </div>
                                                     <div className="flex justify-between items-end gap-4">
                                                         <span className="text-sm">väčší zásah</span>
-                                                        <span className="font-bold whitespace-nowrap">120 €</span>
+                                                        <span className="font-bold whitespace-nowrap">45 €</span>
                                                     </div>
                                                 </div>
                                                 <p className="text-xs italic opacity-60">Korekcia umožňuje finálne doladenie výsledku po zahojení.</p>

@@ -8,6 +8,27 @@ import Reveal from "@/components/Reveal";
 const HERO_VIDEO_LEFT = "https://pub-60b685024baf4def829d5151d4dc320a.r2.dev/kozmetika.mp4";
 const HERO_VIDEO = "https://pub-60b685024baf4def829d5151d4dc320a.r2.dev/ritualy.mp4";
 
+const BEAUTY_PRICE_LIST = [
+    {
+        title: "Čistenie pleti / Skin Reset",
+        duration: "75 min",
+        price: "125 €",
+        description: "Hĺbkové čistenie alebo obnova a aktivácia energie pleti.",
+    },
+    {
+        title: "Komplexné ošetrenie & terapia pleti",
+        duration: "105 min",
+        price: "150 €",
+        description: "Komplexnú starostlivosť volíme podľa aktuálnych potrieb pleti a želania klientky.",
+    },
+    {
+        title: "Mesoboost",
+        duration: "90 min",
+        price: "198 €",
+        description: "Kozmeticko-estetické ošetrenie. Remodeluje, regeneruje, omladzuje a spevňuje.",
+    },
+];
+
 interface Procedure {
     id: string;
     title: string;
@@ -40,8 +61,8 @@ const PROCEDURES: Procedure[] = [
                 </div>
                 <div className="pt-2 space-y-1 text-sm border-t border-black/10">
                     <p><span className="font-medium">Značka:</span> Germaine de Capuccini</p>
-                    <p><span className="font-medium">Trvanie:</span> 1 h 30 min · <strong>198 €</strong></p>
-                    <p><span className="font-medium">S rádiofrekvenčnou maskou:</span> 2 h · <strong>250 €</strong></p>
+                    <p><span className="font-medium">Trvanie:</span> 1 h 30 min</p>
+                    <p><span className="font-medium">S rádiofrekvenčnou maskou:</span> 2 h</p>
                 </div>
             </div>
         ),
@@ -65,7 +86,7 @@ const PROCEDURES: Procedure[] = [
                 </div>
                 <div className="pt-2 space-y-1 text-sm border-t border-black/10">
                     <p><span className="font-medium">Značka:</span> Germaine de Capuccini, MCCM</p>
-                    <p><span className="font-medium">Manuálny rituál:</span> 1 h 45 min · <strong>180 €</strong></p>
+                    <p><span className="font-medium">Manuálny rituál:</span> 1 h 45 min</p>
                 </div>
             </div>
         ),
@@ -79,7 +100,7 @@ const PROCEDURES: Procedure[] = [
             <div className="space-y-4">
                 <p>Carbonový peeling sa vykonáva Q-switched Nd:YAG laserom. Odporúča sa pri mastnej, zmiešanej a aknóznej pleti, pri jazvičkách po akné a pri pigmentových škvrnách.</p>
                 <div className="pt-2 space-y-1 text-sm border-t border-black/10">
-                    <p><span className="font-medium">Trvanie:</span> 1 h · <strong>148 €</strong></p>
+                    <p><span className="font-medium">Trvanie:</span> 1 h</p>
                 </div>
             </div>
         ),
@@ -96,9 +117,9 @@ const PROCEDURES: Procedure[] = [
                 <p>Viditeľne sa zlepšuje pevnosť, pružnosť a hustota pleti.</p>
                 <div className="pt-2 space-y-1 text-sm border-t border-black/10">
                     <p><span className="font-medium">Značka:</span> Casmara · Trvanie: 1 h 30 min</p>
-                    <p>Tvár – <strong>118 €</strong></p>
-                    <p>Tvár a krk – <strong>135 €</strong></p>
-                    <p>Tvár, krk a dekolt – <strong>145 €</strong></p>
+                    <p>Tvár</p>
+                    <p>Tvár a krk</p>
+                    <p>Tvár, krk a dekolt</p>
                 </div>
             </div>
         ),
@@ -115,7 +136,7 @@ const PROCEDURES: Procedure[] = [
                 <p>Omladzujúci účinok vzhľadu a kvality pleti.</p>
                 <div className="pt-2 space-y-1 text-sm border-t border-black/10">
                     <p><span className="font-medium">Značka:</span> Skeyndor</p>
-                    <p><span className="font-medium">Trvanie:</span> 1 h 45 min · <strong>180 €</strong></p>
+                    <p><span className="font-medium">Trvanie:</span> 1 h 45 min</p>
                 </div>
             </div>
         ),
@@ -130,9 +151,7 @@ const PROCEDURES: Procedure[] = [
                 <p>Hĺbkové čistenie, detoxikácia, okysličenie, upokojenie.</p>
                 <div className="pt-2 space-y-1 text-sm border-t border-black/10">
                     <p><span className="font-medium">Značka:</span> Germaine de Capuccini</p>
-                    <p>1 h – <strong>89 €</strong></p>
-                    <p>1 h 30 min – <strong>118 €</strong></p>
-                    <p>2 h – <strong>135 €</strong></p>
+                    <p>Trvanie sa prispôsobuje aktuálnym potrebám pleti.</p>
                 </div>
             </div>
         ),
@@ -163,7 +182,7 @@ const PROCEDURES: Procedure[] = [
                 </div>
                 <div className="pt-2 space-y-1 text-sm border-t border-black/10">
                     <p><span className="font-medium">Značka:</span> Skeyndor</p>
-                    <p><span className="font-medium">Trvanie:</span> 1 h 45 min · <strong>168 €</strong></p>
+                    <p><span className="font-medium">Trvanie:</span> 1 h 45 min</p>
                 </div>
             </div>
         ),
@@ -193,7 +212,7 @@ const PROCEDURES: Procedure[] = [
                 </div>
                 <div className="pt-2 space-y-1 text-sm border-t border-black/10">
                     <p><span className="font-medium">Značka:</span> Casmara</p>
-                    <p><span className="font-medium">Trvanie:</span> 1 h 45 min · <strong>145 €</strong></p>
+                    <p><span className="font-medium">Trvanie:</span> 1 h 45 min</p>
                 </div>
             </div>
         ),
@@ -209,9 +228,9 @@ const PROCEDURES: Procedure[] = [
                 <p>Vyrovnáva prirodzenú hydrodynamiku pleti a pomáha dosiahnuť optimálnu úroveň hydratácie. Hydratovaná pleť funguje správne.</p>
                 <div className="pt-2 space-y-1 text-sm border-t border-black/10">
                     <p><span className="font-medium">Značka:</span> Skeyndor</p>
-                    <p>Tvár – 60 min · <strong>98 €</strong></p>
-                    <p>Tvár a krk – 1 h 30 min · <strong>118 €</strong></p>
-                    <p>Tvár, krk a dekolt – 1 h 45 min · <strong>135 €</strong></p>
+                    <p>Tvár – 60 min</p>
+                    <p>Tvár a krk – 1 h 30 min</p>
+                    <p>Tvár, krk a dekolt – 1 h 45 min</p>
                 </div>
             </div>
         ),
@@ -228,7 +247,7 @@ const PROCEDURES: Procedure[] = [
                 <p>Vhodné pre všetky typy pleti, vrátane citlivej. Hlavnou zložkou tejto ekologickej rady je koncentrovaná morská voda a výťažky z morských rias. Ošetrenie je porovnateľné s efektom plazmy bohatej na krvné doštičky (PRP).</p>
                 <div className="pt-2 space-y-1 text-sm border-t border-black/10">
                     <p><span className="font-medium">Značka:</span> Casmara</p>
-                    <p><span className="font-medium">Trvanie:</span> 1 h 45 min · <strong>145 €</strong></p>
+                    <p><span className="font-medium">Trvanie:</span> 1 h 45 min</p>
                 </div>
             </div>
         ),
@@ -246,7 +265,7 @@ const PROCEDURES: Procedure[] = [
                 <p>Rituál pre ženy aj mužov.</p>
                 <div className="pt-2 space-y-1 text-sm border-t border-black/10">
                     <p><span className="font-medium">Značka:</span> Casmara</p>
-                    <p><span className="font-medium">Trvanie:</span> 1 h 45 min · <strong>145 €</strong></p>
+                    <p><span className="font-medium">Trvanie:</span> 1 h 45 min</p>
                 </div>
             </div>
         ),
@@ -266,7 +285,7 @@ const PROCEDURES: Procedure[] = [
                 <p><span className="font-medium">Výsledok:</span> intenzívne vyživená a šťavnatá pleť s pocitom komfortu. Vyhladenie vrások, pleť je viditeľne pevnejšia, pružnejšia a pôsobí mladšie.</p>
                 <div className="pt-2 space-y-1 text-sm border-t border-black/10">
                     <p><span className="font-medium">Značka:</span> Casmara</p>
-                    <p><span className="font-medium">Trvanie:</span> 1 h 45 min · <strong>145 €</strong></p>
+                    <p><span className="font-medium">Trvanie:</span> 1 h 45 min</p>
                 </div>
             </div>
         ),
@@ -287,7 +306,7 @@ const PROCEDURES: Procedure[] = [
                 <p>Zahaľuje pleť do závoja svetla a mladosti.</p>
                 <div className="pt-2 space-y-1 text-sm border-t border-black/10">
                     <p><span className="font-medium">Značka:</span> Casmara</p>
-                    <p><span className="font-medium">Trvanie:</span> 1 h 45 min · <strong>145 €</strong></p>
+                    <p><span className="font-medium">Trvanie:</span> 1 h 45 min</p>
                 </div>
             </div>
         ),
@@ -305,7 +324,7 @@ const PROCEDURES: Procedure[] = [
                 <p>Výsledkom je viditeľne pevnejšia, intenzívne hydratovaná a rozjasnená pleť s hladšou štruktúrou a mladistvým vzhľadom.</p>
                 <div className="pt-2 space-y-1 text-sm border-t border-black/10">
                     <p><span className="font-medium">Značka:</span> Vegánska biotech kozmetika · Casmara</p>
-                    <p><span className="font-medium">Trvanie:</span> 1 h 45 min · <strong>160 €</strong></p>
+                    <p><span className="font-medium">Trvanie:</span> 1 h 45 min</p>
                 </div>
             </div>
         ),
@@ -333,7 +352,7 @@ const PROCEDURES: Procedure[] = [
                 </div>
                 <div className="pt-2 space-y-1 text-sm border-t border-black/10">
                     <p><span className="font-medium">Značka:</span> Casmara</p>
-                    <p><span className="font-medium">Trvanie:</span> 1 h 45 min · <strong>145 €</strong></p>
+                    <p><span className="font-medium">Trvanie:</span> 1 h 45 min</p>
                 </div>
             </div>
         ),
@@ -354,10 +373,10 @@ const PROCEDURES: Procedure[] = [
                 </div>
                 <div className="pt-2 space-y-1 text-sm border-t border-black/10">
                     <p><span className="font-medium">Značka:</span> Casmara</p>
-                    <p><span className="font-medium">Trvanie:</span> 1 h 45 min · <strong>145 €</strong></p>
+                    <p><span className="font-medium">Trvanie:</span> 1 h 45 min</p>
                     <p className="font-medium mt-2">Na doma:</p>
-                    <p>Hydratačný a regeneračný krém RENOVATING, 50 ml · <strong>89 €</strong></p>
-                    <p>Regeneračné anti-aging sérum RENOVATING, 50 ml · <strong>98 €</strong></p>
+                    <p>Hydratačný a regeneračný krém RENOVATING, 50 ml</p>
+                    <p>Regeneračné anti-aging sérum RENOVATING, 50 ml</p>
                 </div>
             </div>
         ),
@@ -376,7 +395,7 @@ const PROCEDURES: Procedure[] = [
                 <p>Odporúčam pre mestskú pleť vystavenú znečisteniu (smog, prach) a modrému svetlu (blue light) z telefónu, počítača a tabletu.</p>
                 <div className="pt-2 space-y-1 text-sm border-t border-black/10">
                     <p><span className="font-medium">Značka:</span> Germaine de Capuccini</p>
-                    <p><span className="font-medium">Trvanie:</span> 1 h 15 min · <strong>130 €</strong></p>
+                    <p><span className="font-medium">Trvanie:</span> 1 h 15 min</p>
                 </div>
             </div>
         ),
@@ -390,9 +409,9 @@ const PROCEDURES: Procedure[] = [
                 <p>Minerálna voda stimuluje metabolické funkcie pleti, najmä funkciu kožnej bariéry. Hlbokomorská voda obohatená o mikrozemské a stopové prvky podporuje prirodzenú rovnováhu pleti.</p>
                 <p>Jedinečné zloženie ideálne pre citlivú pleť. Upokojuje zápalové procesy, znižuje príznaky spojené s atopickou dermatitídou a tlmí imunitné reakcie pokožky. Zároveň intenzívne hydratuje.</p>
                 <div className="pt-2 space-y-1 text-sm border-t border-black/10">
-                    <p>Tvár – 60 min · <strong>98 €</strong></p>
-                    <p>Tvár a krk – 90 min · <strong>118 €</strong></p>
-                    <p>Tvár, krk a dekolt – 90 min · <strong>135 €</strong></p>
+                    <p>Tvár – 60 min</p>
+                    <p>Tvár a krk – 90 min</p>
+                    <p>Tvár, krk a dekolt – 90 min</p>
                 </div>
             </div>
         ),
@@ -541,6 +560,26 @@ export default function KozmetikaContent() {
                     Skutočná krása pleti vzniká vtedy, keď pracujeme v súlade s jej biológiou a podporujeme ju pravidelnou profesionálnou starostlivosťou.
                 </p>
             </div>
+
+            <Reveal className="rounded-2xl border border-white/20 bg-white/35 p-6 md:p-8 shadow-xl">
+                <div className="space-y-6">
+                    <div className="text-center space-y-2">
+                        <p className="font-montserrat text-[10px] uppercase tracking-[0.3em] text-[#1D0E22]/50">Cenník</p>
+                        <h2 className="font-marcellus text-3xl text-[#1D0E22] uppercase tracking-widest">Kozmetika</h2>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        {BEAUTY_PRICE_LIST.map((item) => (
+                            <div key={item.title} className="rounded-xl border border-[#1D0E22]/10 bg-white/35 p-5 space-y-3">
+                                <div className="space-y-1">
+                                    <h3 className="font-marcellus text-lg text-[#1D0E22] uppercase tracking-wider leading-tight">{item.title}</h3>
+                                    <p className="font-montserrat text-sm text-[#1D0E22]/70">{item.duration} · <strong>{item.price}</strong></p>
+                                </div>
+                                <p className="font-montserrat text-sm text-[#1D0E22]/75 leading-relaxed">{item.description}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </Reveal>
 
             <div className="space-y-2">
                 <p className="font-montserrat font-light text-[#1D0E22] text-base">

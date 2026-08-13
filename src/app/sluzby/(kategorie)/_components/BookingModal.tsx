@@ -6,6 +6,7 @@ import { X, Phone, CheckCircle, AlertCircle, Loader2, MessageSquare } from "luci
 import Image from "next/image";
 import { supabase } from "@/lib/supabase";
 import TurnstileWidget, { TURNSTILE_ENABLED } from "@/components/TurnstileWidget";
+import PrivacyConsentCheckbox from "@/components/PrivacyConsentCheckbox";
 
 const MONTHS_SK = [
     "januára", "februára", "marca", "apríla", "mája", "júna",
@@ -27,6 +28,7 @@ export default function BookingModal({ isOpen, onClose, title = "Objednať sa", 
     const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
     const [errorMsg, setErrorMsg] = useState("");
     const [turnstileToken, setTurnstileToken] = useState("");
+    const [privacyConsent, setPrivacyConsent] = useState(false);
 
     const handleKeyDown = useCallback((e: KeyboardEvent) => {
         if (e.key === "Escape") onClose();
@@ -55,6 +57,7 @@ export default function BookingModal({ isOpen, onClose, title = "Objednať sa", 
             setStatus("idle");
             setErrorMsg("");
             setTurnstileToken("");
+            setPrivacyConsent(false);
         }
     }, [isOpen, defaultMessage]);
 
@@ -71,6 +74,12 @@ export default function BookingModal({ isOpen, onClose, title = "Objednať sa", 
         setErrorMsg("");
 
         try {
+            if (!privacyConsent) {
+                setStatus("error");
+                setErrorMsg("Pre odoslanie je potrebný súhlas so spracovaním osobných údajov.");
+                return;
+            }
+
             // Anti-bot verification before writing to the database
             if (TURNSTILE_ENABLED) {
                 const verifyRes = await fetch("/api/verify-turnstile", {
@@ -89,6 +98,7 @@ export default function BookingModal({ isOpen, onClose, title = "Objednať sa", 
             const fullMessage = [
                 preferredDate ? `Preferovaný termín: ${formatPreferredDate(preferredDate)}` : null,
                 message || null,
+                "Súhlas so spracovaním osobných údajov: áno",
             ]
                 .filter(Boolean)
                 .join("\n\n");
@@ -126,6 +136,7 @@ export default function BookingModal({ isOpen, onClose, title = "Objednať sa", 
                         message: message || null,
                         dateLabel: preferredDate ? formatPreferredDate(preferredDate) : null,
                         timeLabel: null,
+                        privacyConsent,
                     }),
                 });
             } catch (mailErr) {
@@ -293,10 +304,16 @@ export default function BookingModal({ isOpen, onClose, title = "Objednať sa", 
                                             {TURNSTILE_ENABLED && (
                                                 <TurnstileWidget onVerify={setTurnstileToken} onExpire={() => setTurnstileToken("")} theme="dark" className="flex justify-center" />
                                             )}
+                                            <PrivacyConsentCheckbox
+                                                id="booking-privacy-consent"
+                                                checked={privacyConsent}
+                                                onChange={setPrivacyConsent}
+                                                theme="dark"
+                                            />
 
                                             <button
                                                 type="submit"
-                                                disabled={status === "submitting" || !preferredDate || (TURNSTILE_ENABLED && !turnstileToken)}
+                                                disabled={status === "submitting" || !preferredDate || !privacyConsent || (TURNSTILE_ENABLED && !turnstileToken)}
                                                 className="w-full bg-gold text-[#1D0E22] font-marcellus uppercase tracking-widest py-3 rounded-lg hover:bg-gold/90 transition-colors text-sm disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                                             >
                                                 {status === "submitting" ? (

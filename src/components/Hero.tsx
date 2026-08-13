@@ -11,22 +11,27 @@ import { PlayCircle } from "lucide-react";
 const SERVICES = [
     {
         title: "PERMANENTNÝ MAKE-UP",
+        href: "/sluzby/permanentny-makeup",
         image: "/homepage/PHOTO-2026-02-10-14-41-10.jpg",
     },
     {
         title: "ODSTRAŇOVANIE PMU",
+        href: "/sluzby/odstranovanie-pmu",
         image: "/homepage/odstranenie.jpeg",
     },
     {
         title: "NASTREĽOVANIE NÁUŠNÍC",
+        href: "/sluzby/nastrelovanie-nausnic",
         image: "/homepage/e38dda3c-d932-43cb-8f1d-3b15663e716d.JPG",
     },
     {
         title: "BEAUTY THERAPY",
+        href: "/sluzby/beauty-therapy",
         image: "/sluzby/kozmetika.webp",
     },
     {
         title: "SKINCARE ROUTINE",
+        href: "/sluzby/kremy-sera",
         image: "/sluzby/kremy-sera/serum-sidebar.jpg",
     },
 ];
@@ -123,7 +128,7 @@ export default function Hero() {
             <div className="w-full lg:w-[98vw] mx-auto px-4 lg:px-0 grid grid-cols-1 lg:grid-cols-[1fr_1.2fr_1fr] gap-4 items-start relative z-10">
 
                 {/* LEFT COLUMN: Studio Services */}
-                <div id="sluzby" className="border border-white/10 p-8 h-[70vh] md:h-[90vh] flex flex-col items-center justify-start pt-12 md:pt-48 text-center relative overflow-hidden group">
+                <div id="sluzby" className="order-3 lg:order-1 border border-white/10 p-8 h-[70vh] md:h-[90vh] flex flex-col items-center justify-start pt-12 md:pt-48 text-center relative overflow-hidden group">
                     {/* Background Image */}
                     <div className="absolute inset-0 transition-transform duration-700 md:group-hover:scale-110">
                         <Image
@@ -143,7 +148,7 @@ export default function Hero() {
                     <div className="space-y-6 w-full max-w-md p-6 relative z-10">
                         {SERVICES.map((service, idx) => (
                             <Link
-                                href="/sluzby"
+                                href={service.href}
                                 key={idx}
                                 onMouseEnter={() => handleServiceMouseEnter(service.image)}
                                 onMouseLeave={() => setHoveredServiceImage(null)}
@@ -158,9 +163,9 @@ export default function Hero() {
                 </div>
 
                 {/* CENTER COLUMN: Video & About Text */}
-                <div className="flex flex-col items-center space-y-6 order-last lg:order-none">
+                <div className="order-1 lg:order-2 flex flex-col items-center space-y-6">
                     {/* Video */}
-                    <div className="relative w-full max-w-[350px] aspect-[9/16] rounded-2xl overflow-hidden shadow-2xl border border-white/20 group">
+                    <div className="relative w-full max-w-[420px] lg:max-w-[350px] aspect-[9/16] rounded-2xl overflow-hidden shadow-2xl border border-white/20 group">
                         {/* Video element - hidden until started */}
                         <motion.div
                             initial={{ opacity: 0 }}
@@ -221,11 +226,22 @@ export default function Hero() {
                         <h2 className="!font-alex text-5xl md:text-6xl text-[#1D0E22] mb-2">
                             Viktorija Kendra
                         </h2>
+                        <div className="space-y-5">
+                            <p className="font-montserrat text-[#1D0E22]/85 text-sm md:text-base font-medium tracking-[0.22em] uppercase">
+                                VIKTORIJA KENDRA
+                                <span className="block mt-2 tracking-[0.16em]">Permanent makeup • Beauty • Academy</span>
+                            </p>
+                            <div className="font-montserrat text-[#1D0E22]/85 text-base md:text-lg font-light leading-relaxed space-y-2">
+                                <p>Môj estetický rukopis.</p>
+                                <p>Nevytváram novú tvár. Zvýrazňujem krásu, ktorá je v nej už daná.</p>
+                            </div>
+                        </div>
+
+                        <div className="h-px w-20 bg-[#1D0E22]/30 mx-auto my-6" />
+
                         <p className="font-montserrat text-[#1D0E22]/80 text-lg font-light tracking-wide uppercase">
                             Permanent make-up artistka, kozmetička a školiteľka od roku 2001
                         </p>
-
-                        <div className="h-px w-20 bg-[#1D0E22]/30 mx-auto my-6" />
 
                         <div className="font-montserrat text-[#1D0E22]/90 text-sm md:text-base font-light leading-relaxed space-y-4 text-center">
                             {ACHIEVEMENTS.map((item, i) => (
@@ -238,7 +254,7 @@ export default function Hero() {
                 </div>
 
                 {/* RIGHT COLUMN: Academia (from Services.tsx) */}
-                <Link href="/academia" id="academy" className="group relative w-full h-[50vh] md:h-[90vh] overflow-hidden border border-white/10 cursor-pointer block">
+                <Link href="/academia" id="academy" className="order-2 lg:order-3 group relative w-full h-[70vh] md:h-[90vh] overflow-hidden border border-white/10 cursor-pointer block">
                     {/* Background Image */}
                     <div className="absolute inset-0 transition-transform duration-700 md:group-hover:scale-110">
                         <Image

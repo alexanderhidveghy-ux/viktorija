@@ -329,7 +329,7 @@ export default function BrowsContent() {
                                             <div className="space-y-2">
                                                 <div className="flex justify-between items-end gap-4">
                                                     <h5 className="font-marcellus text-lg uppercase tracking-wider">Hyperrealistické obočie – Hair Stroke</h5>
-                                                    <span className="font-bold text-lg whitespace-nowrap">400 €</span>
+                                                    <span className="font-bold text-lg whitespace-nowrap">385 €</span>
                                                 </div>
                                                 <p className="text-sm opacity-80 italic">Hlavná procedúra | 3 – 3,5 hodiny</p>
                                                 <p className="text-sm">Vysoko precízna chĺpková technika najvyššej úrovne, vytvárajúca ilúziu prirodzeného rastu obočia.</p>
@@ -338,7 +338,7 @@ export default function BrowsContent() {
                                             <div className="space-y-2">
                                                 <div className="flex justify-between items-end gap-4">
                                                     <h5 className="font-marcellus text-lg uppercase tracking-wider">Púdrové obočie</h5>
-                                                    <span className="font-bold text-lg whitespace-nowrap">320 €</span>
+                                                    <span className="font-bold text-lg whitespace-nowrap">315 €</span>
                                                 </div>
                                                 <p className="text-sm opacity-80 italic">Hybridné alebo minerálne pigmenty</p>
                                                 <p className="text-sm opacity-80 italic">Hlavná procedúra | 2,5 – 3 hodiny</p>
@@ -351,14 +351,14 @@ export default function BrowsContent() {
                                                     <div className="space-y-1">
                                                         <div className="flex justify-between items-end gap-4">
                                                             <span className="font-bold text-sm">Prvá korekcia</span>
-                                                            <span className="font-bold whitespace-nowrap">120 €</span>
+                                                            <span className="font-bold whitespace-nowrap">115 €</span>
                                                         </div>
                                                         <p className="text-sm opacity-70">45 minút – 2 hodiny</p>
                                                     </div>
                                                     <div className="space-y-1">
                                                         <div className="flex justify-between items-end gap-4">
                                                             <span className="font-bold text-sm">Druhá korekcia</span>
-                                                            <span className="font-bold whitespace-nowrap">Zdarma</span>
+                                                            <span className="font-bold whitespace-nowrap">45 €</span>
                                                         </div>
                                                         <p className="text-sm opacity-70">15 – 30 minút</p>
                                                     </div>

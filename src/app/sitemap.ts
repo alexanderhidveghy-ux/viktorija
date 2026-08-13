@@ -16,7 +16,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
         { path: "/", priority: 1.0, changeFrequency: "monthly" },
 
         // Services
-        { path: "/sluzby", priority: 0.9, changeFrequency: "monthly" },
         { path: "/sluzby/permanentny-makeup", priority: 0.9, changeFrequency: "monthly" },
         { path: "/sluzby/permanentny-makeup/obocie", priority: 0.85, changeFrequency: "monthly" },
         { path: "/sluzby/permanentny-makeup/pery", priority: 0.85, changeFrequency: "monthly" },

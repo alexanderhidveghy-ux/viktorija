@@ -4,7 +4,7 @@ import { supabase } from "@/lib/supabase";
 
 export async function POST(request: Request) {
     try {
-        const { name, email, phone, message, turnstileToken } = await request.json();
+        const { name, email, phone, message, turnstileToken, privacyConsent } = await request.json();
 
         // Anti-bot verification (Cloudflare Turnstile)
         const human = await verifyTurnstile(turnstileToken, getClientIp(request));
@@ -19,6 +19,13 @@ export async function POST(request: Request) {
         if (!name || !email || !message) {
             return NextResponse.json(
                 { error: "Meno, email a správa sú povinné polia." },
+                { status: 400 }
+            );
+        }
+
+        if (privacyConsent !== true) {
+            return NextResponse.json(
+                { error: "Súhlas so spracovaním osobných údajov je povinný." },
                 { status: 400 }
             );
         }
@@ -51,12 +58,13 @@ export async function POST(request: Request) {
             sender: sender,
             to: [recipient],
             subject: `Nová správa z kontaktného formulára od: ${name}`,
-            text_body: `Nová kontaktná správa z webu:\n\nMeno: ${name}\nEmail: ${email}\nTelefón: ${phone || "Neuvedené"}\n\nSpráva:\n${message}`,
+            text_body: `Nová kontaktná správa z webu:\n\nMeno: ${name}\nEmail: ${email}\nTelefón: ${phone || "Neuvedené"}\nSúhlas so spracovaním osobných údajov: áno\n\nSpráva:\n${message}`,
             html_body: `
                 <h3>Nová kontaktná správa z webu</h3>
                 <p><strong>Meno:</strong> ${name}</p>
                 <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
                 <p><strong>Telefón:</strong> ${phone || "<em>Neuvedené</em>"}</p>
+                <p><strong>Súhlas so spracovaním osobných údajov:</strong> áno</p>
                 <br />
                 <p><strong>Správa:</strong></p>
                 <p style="white-space: pre-line; background-color: #f9f9f9; padding: 15px; border-left: 4px solid #b68d57; border-radius: 4px;">${message}</p>

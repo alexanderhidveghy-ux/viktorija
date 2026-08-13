@@ -4,7 +4,11 @@ import { NextResponse } from "next/server";
 // Best-effort: the booking is already persisted client-side before this is called.
 export async function POST(request: Request) {
     try {
-        const { name, phone, message, dateLabel, timeLabel } = await request.json();
+        const { name, phone, message, dateLabel, timeLabel, privacyConsent } = await request.json();
+
+        if (privacyConsent !== true) {
+            return NextResponse.json({ error: "Súhlas so spracovaním osobných údajov je povinný." }, { status: 400 });
+        }
 
         const apiKey = process.env.SMTP2GO_API_KEY;
         const sender = process.env.SMTP2GO_SENDER;
@@ -19,6 +23,7 @@ export async function POST(request: Request) {
             `Nová rezervácia zo štúdia\n\n` +
             `Meno: ${name}\nTelefón: ${phone}\n` +
             `Termín: ${dateLabel || "Neuvedené"}\nČas: ${timeLabel || "Neuvedené"}\n\n` +
+            `Súhlas so spracovaním osobných údajov: áno\n\n` +
             `Správa:\n${message || "Neuvedené"}`;
 
         const htmlBody = `
@@ -27,6 +32,7 @@ export async function POST(request: Request) {
             <p><strong>Telefón:</strong> ${phone}</p>
             <p><strong>Termín:</strong> ${dateLabel || "<em>Neuvedené</em>"}</p>
             <p><strong>Čas:</strong> ${timeLabel || "<em>Neuvedené</em>"}</p>
+            <p><strong>Súhlas so spracovaním osobných údajov:</strong> áno</p>
             <br />
             <p><strong>Správa:</strong></p>
             <p style="white-space: pre-line; background-color: #f9f9f9; padding: 15px; border-left: 4px solid #b68d57; border-radius: 4px;">${message || "<em>Neuvedené</em>"}</p>

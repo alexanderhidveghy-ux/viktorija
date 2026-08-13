@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, CheckCircle, AlertCircle, Loader2 } from "lucide-react";
 import TurnstileWidget, { TURNSTILE_ENABLED } from "@/components/TurnstileWidget";
+import PrivacyConsentCheckbox from "@/components/PrivacyConsentCheckbox";
 
 const COURSES = [
     { name: "The Art of PMU", term: "2. 10. – 13. 11. 2026" },
@@ -33,9 +34,11 @@ export default function CourseApplicationModal({ isOpen, onClose, courseName: in
     const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
     const [errorMsg, setErrorMsg] = useState("");
     const [turnstileToken, setTurnstileToken] = useState("");
+    const [privacyConsent, setPrivacyConsent] = useState(false);
 
     const closeModal = useCallback(() => {
         setTurnstileToken("");
+        setPrivacyConsent(false);
         onClose();
     }, [onClose]);
 
@@ -62,6 +65,12 @@ export default function CourseApplicationModal({ isOpen, onClose, courseName: in
         setErrorMsg("");
 
         try {
+            if (!privacyConsent) {
+                setStatus("error");
+                setErrorMsg("Pre odoslanie je potrebný súhlas so spracovaním osobných údajov.");
+                return;
+            }
+
             // Save to CMS + send email confirmation (anti-bot verified server-side)
             const res = await fetch("/api/course-application", {
                 method: "POST",
@@ -79,6 +88,7 @@ export default function CourseApplicationModal({ isOpen, onClose, courseName: in
                     worksInBeauty,
                     beautyField,
                     turnstileToken,
+                    privacyConsent,
                 }),
             });
 
@@ -297,10 +307,16 @@ export default function CourseApplicationModal({ isOpen, onClose, courseName: in
                                         {TURNSTILE_ENABLED && (
                                             <TurnstileWidget onVerify={setTurnstileToken} onExpire={() => setTurnstileToken("")} theme="dark" className="flex justify-center" />
                                         )}
+                                        <PrivacyConsentCheckbox
+                                            id="course-privacy-consent"
+                                            checked={privacyConsent}
+                                            onChange={setPrivacyConsent}
+                                            theme="dark"
+                                        />
 
                                         <button
                                             type="submit"
-                                            disabled={status === "submitting" || (TURNSTILE_ENABLED && !turnstileToken)}
+                                            disabled={status === "submitting" || !privacyConsent || (TURNSTILE_ENABLED && !turnstileToken)}
                                             className="w-full py-5 bg-gold text-[#1D0E22] font-marcellus uppercase tracking-[0.2em] rounded-xl hover:bg-white transition-all shadow-xl hover:shadow-gold/20 flex items-center justify-center gap-3 disabled:opacity-50"
                                         >
                                             {status === "submitting" ? (

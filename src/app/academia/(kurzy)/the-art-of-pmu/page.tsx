@@ -70,9 +70,12 @@ export default function ArtOfPmuPage() {
                 <video
                     src={SYSTEM_VIDEO}
                     autoPlay
+                    controls
                     muted
                     loop
                     playsInline
+                    preload="metadata"
+                    poster="/academia/kurz-art-of-pmu/main.PNG"
                     className="absolute inset-0 w-full h-full object-cover"
                 />
             </div>

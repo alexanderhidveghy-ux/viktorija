@@ -106,32 +106,32 @@ export default function EyesContent() {
                                         <div className="border-b border-gold/10 w-24 mx-auto" />
                                         <div className="space-y-2">
                                             <div className="flex justify-between items-end gap-4">
-                                                <h5 className="font-marcellus text-lg uppercase tracking-wider">Tieňované očné linky</h5>
-                                                <span className="font-bold text-lg whitespace-nowrap">300 €</span>
+                                                    <h5 className="font-marcellus text-lg uppercase tracking-wider">Tieňované očné linky</h5>
+                                                    <span className="font-bold text-lg whitespace-nowrap">295 €</span>
                                             </div>
                                             <p className="text-sm opacity-80 italic">2,5 – 3 hodiny</p>
                                         </div>
                                         <div className="border-b border-gold/10 w-24 mx-auto" />
                                         <div className="space-y-2">
                                             <div className="flex justify-between items-end gap-4">
-                                                <h5 className="font-marcellus text-lg uppercase tracking-wider">Očné linky medzi riasy</h5>
-                                                <span className="font-bold text-lg whitespace-nowrap">260 €</span>
+                                                    <h5 className="font-marcellus text-lg uppercase tracking-wider">Očné linky medzi riasy</h5>
+                                                    <span className="font-bold text-lg whitespace-nowrap">255 €</span>
                                             </div>
                                             <p className="text-sm opacity-80 italic">2 hodiny</p>
                                         </div>
                                         <div className="border-b border-gold/10 w-24 mx-auto" />
                                         <div className="space-y-2">
                                             <div className="flex justify-between items-end gap-4">
-                                                <h5 className="font-marcellus text-lg uppercase tracking-wider">Očné linky medzi riasy s chvostíkom</h5>
-                                                <span className="font-bold text-lg whitespace-nowrap">280 €</span>
+                                                    <h5 className="font-marcellus text-lg uppercase tracking-wider">Kórejské očné linky</h5>
+                                                    <span className="font-bold text-lg whitespace-nowrap">265 €</span>
                                             </div>
                                             <p className="text-sm opacity-80 italic">2 – 2,5 hodiny</p>
                                         </div>
                                         <div className="border-b border-gold/10 w-24 mx-auto" />
                                         <div className="space-y-2">
                                             <div className="flex justify-between items-end gap-4">
-                                                <h5 className="font-marcellus text-lg uppercase tracking-wider">Korekcia</h5>
-                                                <span className="font-bold text-lg whitespace-nowrap">120 €</span>
+                                                    <h5 className="font-marcellus text-lg uppercase tracking-wider">Korekcia</h5>
+                                                <span className="font-bold text-lg whitespace-nowrap">115 €</span>
                                             </div>
                                             <p className="text-sm opacity-80 italic">do 1 hodiny</p>
                                         </div>

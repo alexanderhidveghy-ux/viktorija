@@ -45,8 +45,8 @@ export default function Footer() {
                             <h4 className="font-marcellus text-[#EEE3CE] tracking-[0.2em] text-sm uppercase">NAVIGÁCIA</h4>
                             <nav className="flex flex-col gap-3">
                                 <NavLink href="/" label="Domov" pathname={pathname} />
-                                <NavLink href="/sluzby" label="Štúdio" pathname={pathname} />
-                                <NavLink href="#academy" label="Academy" pathname={pathname} />
+                                <NavLink href="/sluzby/permanentny-makeup" label="Štúdio" pathname={pathname} />
+                                <NavLink href="/#academy" label="Academy" pathname={pathname} />
                                 <NavLink href="/kontakt" label="Kontakt" pathname={pathname} />
                             </nav>
                         </div>

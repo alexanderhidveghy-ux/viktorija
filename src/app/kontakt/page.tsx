@@ -7,14 +7,20 @@ import { Loader2, CheckCircle, AlertCircle } from "lucide-react";
 import GoogleMap from "@/components/GoogleMap";
 import LightboxImage from "@/components/LightboxImage";
 import TurnstileWidget, { TURNSTILE_ENABLED } from "@/components/TurnstileWidget";
+import PrivacyConsentCheckbox from "@/components/PrivacyConsentCheckbox";
 
 export default function KontaktPage() {
     const [formData, setFormData] = useState({ name: "", email: "", phone: "", message: "" });
     const [turnstileToken, setTurnstileToken] = useState("");
+    const [privacyConsent, setPrivacyConsent] = useState(false);
     const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        if (!privacyConsent) {
+            setStatus("error");
+            return;
+        }
         setStatus("submitting");
 
         try {
@@ -23,13 +29,14 @@ export default function KontaktPage() {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ ...formData, turnstileToken }),
+                body: JSON.stringify({ ...formData, turnstileToken, privacyConsent }),
             });
 
             if (response.ok) {
                 setStatus("success");
                 setFormData({ name: "", email: "", phone: "", message: "" });
                 setTurnstileToken("");
+                setPrivacyConsent(false);
             } else {
                 setStatus("error");
             }
@@ -130,10 +137,16 @@ export default function KontaktPage() {
                         )}
 
                         <TurnstileWidget onVerify={setTurnstileToken} onExpire={() => setTurnstileToken("")} theme="light" />
+                        <PrivacyConsentCheckbox
+                            id="contact-privacy-consent"
+                            checked={privacyConsent}
+                            onChange={setPrivacyConsent}
+                            theme="light"
+                        />
 
                         <button
                             type="submit"
-                            disabled={status === "submitting" || status === "success" || (TURNSTILE_ENABLED && !turnstileToken)}
+                            disabled={status === "submitting" || status === "success" || !privacyConsent || (TURNSTILE_ENABLED && !turnstileToken)}
                             className="px-12 py-4 bg-[#1D0E22] text-gold font-marcellus font-bold tracking-widest hover:bg-opacity-90 transition-colors duration-300 w-full md:w-auto disabled:opacity-50 flex items-center justify-center gap-2"
                         >
                             {status === "submitting" ? (

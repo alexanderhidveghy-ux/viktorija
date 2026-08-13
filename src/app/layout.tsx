@@ -115,7 +115,7 @@ export default function RootLayout({
       </head>
       <body
         className={`${marcellus.variable} ${montserrat.variable} ${alexBrush.variable} ${prociono.variable} antialiased`}
-        style={{ backgroundColor: "#9da0aa" }}
+        style={{ backgroundColor: "#B3B7C2" }}
       >
         <SiteBackdrop />
         <SmoothScroller>
