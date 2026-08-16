@@ -650,34 +650,33 @@ html.lenis body {
   position: absolute;
   pointer-events: none;
   mix-blend-mode: screen;
-  filter: blur(140px);
-  will-change: transform, opacity, border-radius;
+  will-change: transform, opacity;
 }
 
 .test2-page-background__pearl-wave--primary {
-  width: 94vw;
-  height: 70vh;
-  left: -18vw;
-  top: 2vh;
-  background: radial-gradient(ellipse at 48% 50%, rgba(255,255,255,0.95) 0%, rgba(246,248,252,0.62) 34%, rgba(232,236,245,0.24) 58%, rgba(232,236,245,0) 78%);
+  width: 120vw;
+  height: 84vh;
+  left: -30vw;
+  top: -4vh;
+  background: radial-gradient(ellipse at 48% 50%, rgba(255,255,255,0.16) 0%, rgba(246,248,252,0.1) 34%, rgba(232,236,245,0.04) 58%, rgba(232,236,245,0) 78%);
   animation: pearl-wave-primary 24s ease-in-out infinite;
 }
 
 .test2-page-background__pearl-wave--secondary {
-  width: 82vw;
-  height: 62vh;
-  right: -20vw;
-  bottom: -6vh;
-  background: radial-gradient(ellipse at 52% 46%, rgba(255,255,255,0.86) 0%, rgba(241,244,250,0.5) 36%, rgba(222,228,240,0.18) 62%, rgba(222,228,240,0) 80%);
+  width: 108vw;
+  height: 74vh;
+  right: -28vw;
+  bottom: -10vh;
+  background: radial-gradient(ellipse at 52% 46%, rgba(255,255,255,0.12) 0%, rgba(241,244,250,0.08) 36%, rgba(222,228,240,0.03) 62%, rgba(222,228,240,0) 80%);
   animation: pearl-wave-secondary 21s ease-in-out infinite;
 }
 
 .test2-page-background__silk-sheen {
   position: absolute;
   inset: -24% -18%;
-  background: linear-gradient(118deg, rgba(255,255,255,0) 18%, rgba(255,255,255,0.1) 42%, rgba(255,255,255,0.22) 50%, rgba(255,255,255,0.1) 58%, rgba(255,255,255,0) 82%);
+  background: linear-gradient(118deg, rgba(255,255,255,0) 18%, rgba(255,255,255,0.035) 42%, rgba(255,255,255,0.07) 50%, rgba(255,255,255,0.035) 58%, rgba(255,255,255,0) 82%);
   mix-blend-mode: screen;
-  filter: blur(120px);
+  will-change: transform, opacity;
   animation: pearl-silk-sheen 25s ease-in-out infinite;
 }
 
