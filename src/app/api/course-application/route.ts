@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { verifyTurnstile, getClientIp } from "@/lib/turnstile";
 import { supabase } from "@/lib/supabase";
+import { escapeHtml, sendEmail, confirmationLayout, CONFIRMATION_TEXT_FOOTER } from "@/lib/email";
 
 const LEVEL_LABELS: Record<string, string> = {
     beginner: "Začiatočník",
@@ -9,7 +10,8 @@ const LEVEL_LABELS: Record<string, string> = {
 };
 
 // Handles a course (kurz) application: anti-bot check -> save to CMS
-// (viktorija_course_applications) -> email confirmation to the academy inbox.
+// (viktorija_course_applications) -> notification to the academy inbox and a
+// confirmation to the applicant.
 export async function POST(request: Request) {
     try {
         const body = await request.json();
@@ -67,64 +69,88 @@ export async function POST(request: Request) {
             return NextResponse.json({ error: "Nepodarilo sa uložiť prihlášku." }, { status: 500 });
         }
 
-        // 2. Email confirmation (best-effort — never block a saved application)
+        // 2. Emails (best-effort — never block a saved application)
         try {
-            const apiKey = process.env.SMTP2GO_API_KEY;
-            const sender = process.env.SMTP2GO_SENDER;
             const recipient = process.env.COURSE_FORM_RECIPIENT || "viktorijakendra.pmu@gmail.com";
 
-            if (apiKey && sender) {
-                const lvl = experienceLevel ? LEVEL_LABELS[experienceLevel] || experienceLevel : "Neuvedené";
-                const beauty =
-                    worksInBeauty === true
-                        ? `Áno${beautyField ? ` (${beautyField})` : ""}`
-                        : worksInBeauty === false
-                          ? "Nie"
-                          : "Neuvedené";
+            const lvl = experienceLevel ? LEVEL_LABELS[experienceLevel] || experienceLevel : "Neuvedené";
+            const beauty =
+                worksInBeauty === true
+                    ? `Áno${beautyField ? ` (${beautyField})` : ""}`
+                    : worksInBeauty === false
+                      ? "Nie"
+                      : "Neuvedené";
+            const termLabel = selectedTerm || "Neuvedené";
 
-                const textBody =
-                    `Nová prihláška na kurz\n\n` +
-                    `Kurz: ${courseName}\nTermín: ${selectedTerm || "Neuvedené"}\n\n` +
-                    `Meno: ${name}\nEmail: ${email}\nTelefón: ${phone}\n` +
-                    `Instagram: ${instagram || "Neuvedené"}\nFacebook: ${facebook || "Neuvedené"}\n\n` +
-                    `Úroveň zručnosti: ${lvl}\n` +
-                    `Rozsah praxe (klientiek mesačne): ${practiceScope || "Neuvedené"}\n` +
-                    `Pracuje v skrášľujúcich službách: ${beauty}\n` +
-                    `Súhlas so spracovaním osobných údajov: áno`;
+            // 2a. Notification to the academy
+            const textBody =
+                `Nová prihláška na kurz\n\n` +
+                `Kurz: ${courseName}\nTermín: ${termLabel}\n\n` +
+                `Meno: ${name}\nEmail: ${email}\nTelefón: ${phone}\n` +
+                `Instagram: ${instagram || "Neuvedené"}\nFacebook: ${facebook || "Neuvedené"}\n\n` +
+                `Úroveň zručnosti: ${lvl}\n` +
+                `Rozsah praxe (klientiek mesačne): ${practiceScope || "Neuvedené"}\n` +
+                `Pracuje v skrášľujúcich službách: ${beauty}\n` +
+                `Súhlas so spracovaním osobných údajov: áno`;
 
-                const htmlBody = `
-                    <h3>Nová prihláška na kurz</h3>
-                    <p><strong>Kurz:</strong> ${courseName}</p>
-                    <p><strong>Termín:</strong> ${selectedTerm || "Neuvedené"}</p>
-                    <hr />
-                    <p><strong>Meno:</strong> ${name}</p>
-                    <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
-                    <p><strong>Telefón:</strong> ${phone}</p>
-                    <p><strong>Instagram:</strong> ${instagram || "<em>Neuvedené</em>"}</p>
-                    <p><strong>Facebook:</strong> ${facebook || "<em>Neuvedené</em>"}</p>
-                    <hr />
-                    <p><strong>Úroveň zručnosti:</strong> ${lvl}</p>
-                    <p><strong>Rozsah praxe (klientiek mesačne):</strong> ${practiceScope || "<em>Neuvedené</em>"}</p>
-                    <p><strong>Pracuje v skrášľujúcich službách:</strong> ${beauty}</p>
-                    <p><strong>Súhlas so spracovaním osobných údajov:</strong> áno</p>
-                `;
+            const htmlBody = `
+                <h3>Nová prihláška na kurz</h3>
+                <p><strong>Kurz:</strong> ${escapeHtml(courseName)}</p>
+                <p><strong>Termín:</strong> ${escapeHtml(termLabel)}</p>
+                <hr />
+                <p><strong>Meno:</strong> ${escapeHtml(name)}</p>
+                <p><strong>Email:</strong> <a href="mailto:${escapeHtml(email)}">${escapeHtml(email)}</a></p>
+                <p><strong>Telefón:</strong> ${escapeHtml(phone)}</p>
+                <p><strong>Instagram:</strong> ${instagram ? escapeHtml(instagram) : "<em>Neuvedené</em>"}</p>
+                <p><strong>Facebook:</strong> ${facebook ? escapeHtml(facebook) : "<em>Neuvedené</em>"}</p>
+                <hr />
+                <p><strong>Úroveň zručnosti:</strong> ${escapeHtml(lvl)}</p>
+                <p><strong>Rozsah praxe (klientiek mesačne):</strong> ${practiceScope ? escapeHtml(practiceScope) : "<em>Neuvedené</em>"}</p>
+                <p><strong>Pracuje v skrášľujúcich službách:</strong> ${escapeHtml(beauty)}</p>
+                <p><strong>Súhlas so spracovaním osobných údajov:</strong> áno</p>
+            `;
 
-                await fetch("https://api.smtp2go.com/v3/email/send", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({
-                        api_key: apiKey,
-                        sender,
-                        to: [recipient],
-                        subject: `Nová prihláška na kurz: ${courseName} — ${name}`,
-                        text_body: textBody,
-                        html_body: htmlBody,
-                        custom_headers: [{ header: "Reply-To", value: `${name} <${email}>` }],
-                    }),
-                });
-            } else {
-                console.error("Missing SMTP2GO configuration — course email skipped.");
-            }
+            await sendEmail({
+                to: recipient,
+                subject: `Nová prihláška na kurz: ${courseName} — ${name}`,
+                textBody,
+                htmlBody,
+                replyTo: `${name} <${email}>`,
+                label: "course admin",
+            });
+
+            // 2b. Confirmation to the applicant
+            const confirmationText =
+                `Dobrý deň,\n\n` +
+                `ďakujeme za vašu prihlášku na kurz ${courseName}.\n\n` +
+                `Kurz: ${courseName}\n` +
+                `Termín: ${termLabel}\n\n` +
+                `Vašu prihlášku sme prijali a čoskoro vás budeme kontaktovať s ďalšími informáciami ` +
+                `o priebehu kurzu a platbe.\n\n` +
+                `Tešíme sa na vás,\n` +
+                `Viktorija Kendra Academy` +
+                CONFIRMATION_TEXT_FOOTER;
+
+            const confirmationHtml = confirmationLayout(
+                "Ďakujeme za vašu prihlášku",
+                `
+                    <p>Dobrý deň,</p>
+                    <p>ďakujeme za vašu prihlášku na kurz <strong>${escapeHtml(courseName)}</strong>.</p>
+                    <p><strong>Kurz:</strong> ${escapeHtml(courseName)}</p>
+                    <p><strong>Termín:</strong> ${escapeHtml(termLabel)}</p>
+                    <p>Vašu prihlášku sme prijali a čoskoro vás budeme kontaktovať s ďalšími informáciami o priebehu kurzu a platbe.</p>
+                    <br />
+                    <p>Tešíme sa na vás,<br />Viktorija Kendra Academy</p>
+                `
+            );
+
+            await sendEmail({
+                to: email,
+                subject: `Potvrdenie prihlášky na kurz: ${courseName}`,
+                textBody: confirmationText,
+                htmlBody: confirmationHtml,
+                label: "course confirmation",
+            });
         } catch (emailErr) {
             console.error("Course application email failed:", emailErr);
         }

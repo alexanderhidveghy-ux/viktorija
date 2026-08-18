@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { verifyTurnstile, getClientIp } from "@/lib/turnstile";
 import { supabase } from "@/lib/supabase";
+import { escapeHtml, sendEmail, hasEmailConfig, confirmationLayout, CONFIRMATION_TEXT_FOOTER } from "@/lib/email";
 
 export async function POST(request: Request) {
     try {
@@ -41,11 +42,9 @@ export async function POST(request: Request) {
             console.error("Supabase contact insert threw:", dbErr);
         }
 
-        const apiKey = process.env.SMTP2GO_API_KEY;
         const recipient = process.env.CONTACT_FORM_RECIPIENT;
-        const sender = process.env.SMTP2GO_SENDER;
 
-        if (!apiKey || !recipient || !sender) {
+        if (!hasEmailConfig() || !recipient) {
             console.error("Missing SMTP2GO configuration variables.");
             return NextResponse.json(
                 { error: "Konfigurácia e-mailového odosielateľa chýba." },
@@ -53,47 +52,60 @@ export async function POST(request: Request) {
             );
         }
 
-        const payload = {
-            api_key: apiKey,
-            sender: sender,
-            to: [recipient],
+        // Notification to the salon — a failure here is reported to the sender.
+        const sent = await sendEmail({
+            to: recipient,
             subject: `Nová správa z kontaktného formulára od: ${name}`,
-            text_body: `Nová kontaktná správa z webu:\n\nMeno: ${name}\nEmail: ${email}\nTelefón: ${phone || "Neuvedené"}\nSúhlas so spracovaním osobných údajov: áno\n\nSpráva:\n${message}`,
-            html_body: `
+            textBody: `Nová kontaktná správa z webu:\n\nMeno: ${name}\nEmail: ${email}\nTelefón: ${phone || "Neuvedené"}\nSúhlas so spracovaním osobných údajov: áno\n\nSpráva:\n${message}`,
+            htmlBody: `
                 <h3>Nová kontaktná správa z webu</h3>
-                <p><strong>Meno:</strong> ${name}</p>
-                <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
-                <p><strong>Telefón:</strong> ${phone || "<em>Neuvedené</em>"}</p>
+                <p><strong>Meno:</strong> ${escapeHtml(name)}</p>
+                <p><strong>Email:</strong> <a href="mailto:${escapeHtml(email)}">${escapeHtml(email)}</a></p>
+                <p><strong>Telefón:</strong> ${phone ? escapeHtml(phone) : "<em>Neuvedené</em>"}</p>
                 <p><strong>Súhlas so spracovaním osobných údajov:</strong> áno</p>
                 <br />
                 <p><strong>Správa:</strong></p>
-                <p style="white-space: pre-line; background-color: #f9f9f9; padding: 15px; border-left: 4px solid #b68d57; border-radius: 4px;">${message}</p>
+                <p style="white-space: pre-line; background-color: #f9f9f9; padding: 15px; border-left: 4px solid #b68d57; border-radius: 4px;">${escapeHtml(message)}</p>
             `,
-            custom_headers: [
-                {
-                    header: "Reply-To",
-                    value: `${name} <${email}>`
-                }
-            ]
-        };
-
-        const response = await fetch("https://api.smtp2go.com/v3/email/send", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(payload),
+            replyTo: `${name} <${email}>`,
+            label: "contact admin",
         });
 
-        const data = await response.json();
-
-        if (!response.ok || data.data?.error) {
-            console.error("SMTP2GO send error:", data);
+        if (!sent) {
             return NextResponse.json(
                 { error: "Chyba pri odosielaní e-mailu." },
                 { status: 500 }
             );
         }
+
+        // Confirmation to the sender (best-effort — the message is already delivered).
+        const confirmationText =
+            `Dobrý deň,\n\n` +
+            `ďakujeme za vašu správu. Prijali sme ju a ozveme sa vám čo najskôr.\n\n` +
+            `Vaša správa:\n${message}\n\n` +
+            `S pozdravom,\n` +
+            `Viktorija Kendra` +
+            CONFIRMATION_TEXT_FOOTER;
+
+        const confirmationHtml = confirmationLayout(
+            "Ďakujeme za vašu správu",
+            `
+                <p>Dobrý deň,</p>
+                <p>ďakujeme za vašu správu. Prijali sme ju a ozveme sa vám čo najskôr.</p>
+                <p><strong>Vaša správa:</strong></p>
+                <p style="white-space: pre-line; background-color: #f9f9f9; padding: 15px; border-left: 4px solid #b68d57; border-radius: 4px;">${escapeHtml(message)}</p>
+                <br />
+                <p>S pozdravom,<br />Viktorija Kendra</p>
+            `
+        );
+
+        await sendEmail({
+            to: email,
+            subject: "Potvrdenie: prijali sme vašu správu",
+            textBody: confirmationText,
+            htmlBody: confirmationHtml,
+            label: "contact confirmation",
+        });
 
         return NextResponse.json({ success: true });
     } catch (error) {
