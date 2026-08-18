@@ -31,16 +31,16 @@ const prociono = Prociono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://viktorija.sk"),
-  title: "Salón Viktória | Profesionálny Kozmetický Salón Bratislava",
+  title: "Viktorija Kendra | Permanentný make-up a kozmetika Bratislava",
   description: "Exkluzívny kozmetický salón v Bratislave. Ponúkame permanentný make-up (PMU), estetické rituály tváre, nastreľovanie náušníc a odborné kurzy v našej akadémii.",
-  keywords: ["kozmetický salón Bratislava", "permanentný make-up Bratislava", "PMU Bratislava", "estetická kozmetika", "nastreľovanie náušníc", "kurzy permanentného make-upu", "Salón Viktória"],
+  keywords: ["kozmetický salón Bratislava", "permanentný make-up Bratislava", "PMU Bratislava", "estetická kozmetika", "nastreľovanie náušníc", "kurzy permanentného make-upu", "Viktorija Kendra", "Viktorija Kendra Bratislava", "Salón Viktória"],
   authors: [{ name: "Viktorija Kendra" }],
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Salón Viktória | Kozmetický Salón Bratislava",
+    title: "Viktorija Kendra | Permanent makeup • Beauty • Academy",
     description: "Profesionálny permanentný make-up a estetické služby v srdci Bratislavy.",
     url: "https://viktorija.sk",
-    siteName: "Salón Viktória",
+    siteName: "Viktorija Kendra",
     locale: "sk_SK",
     type: "website",
     images: [
@@ -48,13 +48,13 @@ export const metadata: Metadata = {
         url: "/shared/IMG_1422.JPG",
         width: 1200,
         height: 630,
-        alt: "Salón Viktória - Profesionálna kozmetika",
+        alt: "Viktorija Kendra – permanentný make-up a kozmetika",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Salón Viktória | Kozmetický Salón Bratislava",
+    title: "Viktorija Kendra | Permanent makeup • Beauty • Academy",
     description: "Profesionálny permanentný make-up a estetické služby v srdci Bratislavy.",
     images: ["/shared/IMG_1422.JPG"],
   },
@@ -66,7 +66,8 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "BeautySalon",
-  "name": "Salón Viktória",
+  "name": "Viktorija Kendra",
+  "alternateName": "Salón Viktória",
   "image": "https://viktorija.sk/shared/IMG_1422.JPG",
   "@id": "https://viktorija.sk",
   "url": "https://viktorija.sk",

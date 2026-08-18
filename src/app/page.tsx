@@ -6,7 +6,7 @@ import Reviews from "@/components/Reviews";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-    title: "Salón Viktória | Permanentný Make-up a Kozmetický Salón Bratislava",
+    title: "Viktorija Kendra | Permanentný make-up a kozmetika Bratislava",
     description: "Profesionálny permanentný make-up, estetická kozmetika, nastreľovanie náušníc a kurzy v akadémii. Viktorija Kendra – 20+ rokov skúseností v srdci Bratislavy.",
     alternates: { canonical: "/" },
 };
@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <main className="min-h-screen">
       <Header />
-      <h1 className="sr-only">Salón Viktória – Permanentný make-up a kozmetika v Bratislave</h1>
+      <h1 className="sr-only">Viktorija Kendra – permanentný make-up, kozmetika a PMU akadémia v Bratislave</h1>
       <div className="relative isolate">
         <Hero />
         <BlogSection />
