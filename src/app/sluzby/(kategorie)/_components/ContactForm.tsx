@@ -12,7 +12,7 @@ export default function ContactForm() {
             <div className="self-start h-fit bg-[#1D0E22] border border-gold/30 p-8 rounded-2xl space-y-6 text-center shadow-2xl">
                 <div className="space-y-3">
                     <h4 className="font-marcellus text-2xl text-gold uppercase tracking-widest">Objednať sa</h4>
-                    <p className="text-white/70 text-sm font-montserrat">Vyberte si termín online alebo nám nechajte správu v rezervačnom formulári.</p>
+                    <p className="text-white/70 text-sm font-montserrat">Vyberte si voľný termín priamo v online rezervačnom systéme.</p>
                 </div>
                 <button
                     type="button"
