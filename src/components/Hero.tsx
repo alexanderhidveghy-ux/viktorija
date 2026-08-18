@@ -6,6 +6,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { PlayIcon, PauseIcon } from "lucide-react";
 import { PlayCircle } from "lucide-react";
+import Credentials from "./Credentials";
 
 // Data from Services
 const SERVICES = [
@@ -227,21 +228,15 @@ export default function Hero() {
                             Viktorija Kendra
                         </h2>
                         <div className="space-y-5">
-                            <p className="font-montserrat text-[#1D0E22]/85 text-sm md:text-base font-medium tracking-[0.22em] uppercase">
-                                VIKTORIJA KENDRA
-                                <span className="block mt-2 tracking-[0.16em]">Permanent makeup • Beauty • Academy</span>
+                            <p className="font-montserrat text-[#1D0E22]/85 text-sm md:text-base font-medium tracking-[0.16em] uppercase">
+                                Permanent makeup • Beauty • Academy
                             </p>
-                            <div className="font-montserrat text-[#1D0E22]/85 text-base md:text-lg font-light leading-relaxed space-y-2">
-                                <p>Môj estetický rukopis.</p>
-                                <p>Nevytváram novú tvár. Zvýrazňujem krásu, ktorá je v nej už daná.</p>
+                            <div className="text-[#1D0E22]/90 text-2xl md:text-3xl leading-[1.2]">
+                                <p className="!font-alex">Môj estetický rukopis. Nevytváram novú tvár. Zvýrazňujem krásu, ktorá je v nej už daná.</p>
                             </div>
                         </div>
 
-                        <div className="h-px w-20 bg-[#1D0E22]/30 mx-auto my-6" />
-
-                        <p className="font-montserrat text-[#1D0E22]/80 text-lg font-light tracking-wide uppercase">
-                            Permanent make-up artistka, kozmetička a školiteľka od roku 2001
-                        </p>
+                        <Credentials />
 
                         <div className="font-montserrat text-[#1D0E22]/90 text-sm md:text-base font-light leading-relaxed space-y-4 text-center">
                             {ACHIEVEMENTS.map((item, i) => (
