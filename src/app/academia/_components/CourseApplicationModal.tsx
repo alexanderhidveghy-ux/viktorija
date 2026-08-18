@@ -200,15 +200,15 @@ export default function CourseApplicationModal({ isOpen, onClose, courseName: in
                                             </div>
                                             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                                                 <div className="space-y-1 md:col-span-2">
-                                                    <label className="font-montserrat text-[10px] uppercase tracking-widest text-white/40 ml-1">Meno a priezvisko</label>
+                                                    <label className="font-montserrat text-[11px] font-medium uppercase tracking-widest text-white/70 ml-1">Meno a priezvisko</label>
                                                     <input type="text" value={name} onChange={(e) => setName(e.target.value)} required className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white font-montserrat text-sm focus:border-gold outline-none transition-all" />
                                                 </div>
                                                 <div className="space-y-1">
-                                                    <label className="font-montserrat text-[10px] uppercase tracking-widest text-white/40 ml-1">Mobil</label>
+                                                    <label className="font-montserrat text-[11px] font-medium uppercase tracking-widest text-white/70 ml-1">Mobil</label>
                                                     <input type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} required className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white font-montserrat text-sm focus:border-gold outline-none transition-all" />
                                                 </div>
                                                 <div className="space-y-1">
-                                                    <label className="font-montserrat text-[10px] uppercase tracking-widest text-white/40 ml-1">E-mail</label>
+                                                    <label className="font-montserrat text-[11px] font-medium uppercase tracking-widest text-white/70 ml-1">E-mail</label>
                                                     <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white font-montserrat text-sm focus:border-gold outline-none transition-all" />
                                                 </div>
                                             </div>
@@ -223,11 +223,11 @@ export default function CourseApplicationModal({ isOpen, onClose, courseName: in
                                             </div>
                                             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                                                 <div className="space-y-1">
-                                                    <label className="font-montserrat text-[10px] uppercase tracking-widest text-white/40 ml-1">Instagram</label>
+                                                    <label className="font-montserrat text-[11px] font-medium uppercase tracking-widest text-white/70 ml-1">Instagram</label>
                                                     <input type="text" value={instagram} onChange={(e) => setInstagram(e.target.value)} className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white font-montserrat text-sm focus:border-gold outline-none transition-all" placeholder="@vas_profil" />
                                                 </div>
                                                 <div className="space-y-1">
-                                                    <label className="font-montserrat text-[10px] uppercase tracking-widest text-white/40 ml-1">Facebook</label>
+                                                    <label className="font-montserrat text-[11px] font-medium uppercase tracking-widest text-white/70 ml-1">Facebook</label>
                                                     <input type="text" value={facebook} onChange={(e) => setFacebook(e.target.value)} className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white font-montserrat text-sm focus:border-gold outline-none transition-all" />
                                                 </div>
                                             </div>
@@ -243,7 +243,7 @@ export default function CourseApplicationModal({ isOpen, onClose, courseName: in
 
                                             <div className="space-y-6">
                                                 <div className="space-y-3">
-                                                    <p className="font-montserrat text-[11px] uppercase tracking-widest text-white/60">Aká je Vaša úroveň zručnosti s permanentným makeupom?</p>
+                                                    <p className="font-montserrat text-xs font-medium uppercase tracking-widest text-white/85">Aká je Vaša úroveň zručnosti s permanentným makeupom?</p>
                                                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                                                         {[
                                                             { id: "beginner", label: "Som začiatočník" },
@@ -265,13 +265,13 @@ export default function CourseApplicationModal({ isOpen, onClose, courseName: in
                                                 </div>
                                                 {(experienceLevel === "intermediate" || experienceLevel === "advanced") && (
                                                     <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} className="space-y-1">
-                                                        <label className="font-montserrat text-[10px] uppercase tracking-widest text-white/40 ml-1">Uveďte prosím rozsah vašej praxe (počet klientiek mesačne)</label>
+                                                        <label className="font-montserrat text-[11px] font-medium uppercase tracking-widest text-white/70 ml-1">Uveďte prosím rozsah vašej praxe (počet klientiek mesačne)</label>
                                                         <input type="text" value={practiceScope} onChange={(e) => setPracticeScope(e.target.value)} className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white font-montserrat text-sm focus:border-gold outline-none transition-all" />
                                                     </motion.div>
                                                 )}
 
                                                 <div className="space-y-3 pt-2">
-                                                    <p className="font-montserrat text-[11px] uppercase tracking-widest text-white/60">Pracujete v skrášľujúcich službách?</p>
+                                                    <p className="font-montserrat text-xs font-medium uppercase tracking-widest text-white/85">Pracujete v skrášľujúcich službách?</p>
                                                     <div className="flex gap-4">
                                                         {[true, false].map((val) => (
                                                             <button
@@ -290,7 +290,7 @@ export default function CourseApplicationModal({ isOpen, onClose, courseName: in
 
                                                 {worksInBeauty === true && (
                                                     <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} className="space-y-1">
-                                                        <label className="font-montserrat text-[10px] uppercase tracking-widest text-white/40 ml-1">V akej oblasti</label>
+                                                        <label className="font-montserrat text-[11px] font-medium uppercase tracking-widest text-white/70 ml-1">V akej oblasti</label>
                                                         <input type="text" value={beautyField} onChange={(e) => setBeautyField(e.target.value)} className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white font-montserrat text-sm focus:border-gold outline-none transition-all" placeholder="napr. Kozmetika, Nechty..." />
                                                     </motion.div>
                                                 )}

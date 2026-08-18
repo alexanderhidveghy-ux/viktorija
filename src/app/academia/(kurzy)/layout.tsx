@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import AcademiaSidebar from "../_components/AcademiaSidebar";
+import WebinarButton from "../_components/WebinarButton";
 
 export default function KurzyLayout({ children }: { children: React.ReactNode }) {
     return (
@@ -15,6 +16,7 @@ export default function KurzyLayout({ children }: { children: React.ReactNode })
                 </div>
             </div>
             <Footer />
+            <WebinarButton />
         </main>
     );
 }

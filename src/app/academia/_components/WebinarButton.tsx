@@ -223,24 +223,24 @@ export default function WebinarButton() {
 
                                             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                                                 <div className="space-y-1 md:col-span-2">
-                                                    <label className="font-montserrat text-[10px] uppercase tracking-widest text-white/40 ml-1">Meno a priezvisko*</label>
+                                                    <label className="font-montserrat text-[11px] font-medium uppercase tracking-widest text-white/70 ml-1">Meno a priezvisko*</label>
                                                     <input type="text" value={name} onChange={(event) => setName(event.target.value)} required className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white font-montserrat text-sm focus:border-gold outline-none transition-all" />
                                                 </div>
                                                 <div className="space-y-1">
-                                                    <label className="font-montserrat text-[10px] uppercase tracking-widest text-white/40 ml-1">E-mail*</label>
+                                                    <label className="font-montserrat text-[11px] font-medium uppercase tracking-widest text-white/70 ml-1">E-mail*</label>
                                                     <input type="email" value={email} onChange={(event) => setEmail(event.target.value)} required className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white font-montserrat text-sm focus:border-gold outline-none transition-all" />
                                                     <p className="font-montserrat text-[11px] text-white/40 leading-relaxed pt-1">
                                                         Na tento e-mail vám pošleme potvrdenie registrácie a link na LIVE webinar.
                                                     </p>
                                                 </div>
                                                 <div className="space-y-1">
-                                                    <label className="font-montserrat text-[10px] uppercase tracking-widest text-white/40 ml-1">Telefónne číslo*</label>
+                                                    <label className="font-montserrat text-[11px] font-medium uppercase tracking-widest text-white/70 ml-1">Telefónne číslo*</label>
                                                     <input type="tel" value={phone} onChange={(event) => setPhone(event.target.value)} required className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white font-montserrat text-sm focus:border-gold outline-none transition-all" />
                                                 </div>
                                             </div>
 
                                             <div className="space-y-3">
-                                                <p className="font-montserrat text-[11px] uppercase tracking-widest text-white/60">Kde sa momentálne nachádzate?*</p>
+                                                <p className="font-montserrat text-xs font-medium uppercase tracking-widest text-white/85">Kde sa momentálne nachádzate?*</p>
                                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                                                     {POSITIONS.map((item) => (
                                                         <label key={item} className={`flex items-center gap-3 rounded-xl border p-4 font-montserrat text-xs cursor-pointer transition-all ${position === item ? "border-gold bg-gold/10 text-white" : "border-white/10 bg-white/5 text-white/60 hover:border-white/25"}`}>
@@ -252,7 +252,7 @@ export default function WebinarButton() {
                                             </div>
 
                                             <div className="space-y-3">
-                                                <p className="font-montserrat text-[11px] uppercase tracking-widest text-white/60">Čo vás na webinári zaujíma najviac?</p>
+                                                <p className="font-montserrat text-xs font-medium uppercase tracking-widest text-white/85">Čo vás na webinári zaujíma najviac?</p>
                                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                                                     {TOPICS.map((item) => (
                                                         <label key={item} className={`flex items-center gap-3 rounded-xl border p-4 font-montserrat text-xs cursor-pointer transition-all ${topics.includes(item) ? "border-gold bg-gold/10 text-white" : "border-white/10 bg-white/5 text-white/60 hover:border-white/25"}`}>
@@ -264,7 +264,7 @@ export default function WebinarButton() {
                                             </div>
 
                                             <div className="space-y-1">
-                                                <label className="font-montserrat text-[10px] uppercase tracking-widest text-white/40 ml-1">
+                                                <label className="font-montserrat text-[11px] font-medium uppercase tracking-widest text-white/70 ml-1">
                                                     Máte otázku, na ktorú by ste chceli počas webinára dostať odpoveď?
                                                 </label>
                                                 <textarea value={question} onChange={(event) => setQuestion(event.target.value)} rows={4} className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white font-montserrat text-sm focus:border-gold outline-none transition-all resize-none" />
