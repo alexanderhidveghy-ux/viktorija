@@ -231,8 +231,13 @@ export default function Hero() {
                             <p className="font-montserrat text-[#1D0E22]/85 text-sm md:text-base font-medium tracking-[0.16em] uppercase">
                                 Permanent makeup • Beauty • Academy
                             </p>
-                            <div className="text-[#1D0E22]/90 text-2xl md:text-3xl leading-[1.2]">
-                                <p className="!font-alex">Môj estetický rukopis. Nevytváram novú tvár. Zvýrazňujem krásu, ktorá je v nej už daná.</p>
+                            <div className="space-y-4">
+                                <p className="!font-montserrat text-[#1D0E22]/60 text-sm md:text-base font-light tracking-[0.08em]">
+                                    Môj estetický rukopis.
+                                </p>
+                                <p className="!font-garamond text-[#1D0E22] text-xl md:text-3xl leading-[1.35]">
+                                    Nevytváram novú tvár. Zvýrazňujem krásu, ktorá je v nej už daná.
+                                </p>
                             </div>
                         </div>
 

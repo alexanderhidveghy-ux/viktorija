@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Marcellus_SC, Montserrat, Alex_Brush, Prociono } from "next/font/google";
+import { Marcellus_SC, Montserrat, Alex_Brush, Prociono, EB_Garamond } from "next/font/google";
 import "./globals.css";
 import SmoothScroller from "@/components/SmoothScroller";
 import CookieConsent from "@/components/CookieConsent";
@@ -27,6 +27,11 @@ const prociono = Prociono({
   variable: "--font-prociono",
   weight: "400",
   subsets: ["latin"],
+});
+
+const ebGaramond = EB_Garamond({
+  variable: "--font-garamond",
+  subsets: ["latin", "latin-ext"],
 });
 
 export const metadata: Metadata = {
@@ -115,8 +120,8 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${marcellus.variable} ${montserrat.variable} ${alexBrush.variable} ${prociono.variable} antialiased`}
-        style={{ backgroundColor: "#B3B7C2" }}
+        className={`${marcellus.variable} ${montserrat.variable} ${alexBrush.variable} ${prociono.variable} ${ebGaramond.variable} antialiased`}
+        style={{ backgroundColor: "#D4D5DE" }}
       >
         <SiteBackdrop />
         <SmoothScroller>

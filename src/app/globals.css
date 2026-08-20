@@ -17,7 +17,7 @@
 }
 
 @theme {
-  --color-main-bg: #B3B7C2;
+  --color-main-bg: #D4D5DE;
   --color-gold: #EEE3CE;
   --color-gold-light: #EEE3CE;
   --color-heading: #1D0E22;
@@ -26,6 +26,7 @@
   --font-montserrat: var(--font-montserrat);
   --font-alex: var(--font-alex);
   --font-prociono: var(--font-prociono);
+  --font-garamond: var(--font-garamond);
 }
 
 .font-saol {
@@ -33,8 +34,8 @@
 }
 
 :root {
-  --primary: #B3B7C2;
-  --secondary: #BEC0CC;
+  --primary: #D4D5DE;
+  --secondary: #D4D5DE;
   --heading-color: #1D0E22;
   --gold-gradient: linear-gradient(90deg, #EEE3CE 0%, #EEE3CE 100%);
   --site-atmosphere-base:
@@ -58,7 +59,7 @@
 }
 
 body {
-  background: linear-gradient(180deg, #BEC0CC 0%, #B3B7C2 52%, #B7BBC6 100%);
+  background: #D4D5DE;
   min-height: 100vh;
   color: #333;
   overflow-x: hidden;
@@ -106,7 +107,7 @@ html.lenis body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #B3B7C2;
+  background: #D4D5DE;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -590,9 +591,7 @@ html.lenis body {
 .test2-page-background__base {
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(110% 82% at 18% 0%, rgba(238,241,247,0.34) 0%, rgba(190,192,204,0.5) 34%, rgba(190,192,204,0) 62%),
-    linear-gradient(180deg, #BEC0CC 0%, #B3B7C2 52%, #B7BBC6 100%);
+  background: #D4D5DE;
 }
 
 @keyframes pearl-wave-primary {
