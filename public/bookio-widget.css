@@ -30,6 +30,19 @@ textarea,
   font-family: "Montserrat", Arial, sans-serif !important;
 }
 
+.service-widget i,
+.service-widget .fa,
+.service-widget .fas,
+.service-widget [class^="fa-"],
+.service-widget [class*=" fa-"] {
+  font-family: "Font Awesome 5 Free", "FontAwesome" !important;
+  font-weight: 900 !important;
+}
+
+.service-widget .material-symbols-outlined {
+  font-family: "Material Symbols Outlined" !important;
+}
+
 .navbar-bookio.widget {
   background: var(--vk-ink) !important;
   border: 0 !important;
@@ -114,7 +127,7 @@ textarea,
   font-size: clamp(16px, 2.1vw, 19px) !important;
   font-weight: 400 !important;
   line-height: 1.55 !important;
-  padding: clamp(24px, 4vw, 44px) clamp(24px, 5vw, 56px) !important;
+  padding: clamp(26px, 4vw, 44px) clamp(24px, 5vw, 56px) clamp(26px, 4vw, 44px) clamp(34px, 6vw, 72px) !important;
   white-space: pre-line !important;
 }
 
@@ -278,12 +291,28 @@ footer .content .buttons .button#create-res,
   text-transform: uppercase !important;
 }
 
+footer .content .buttons .button#create-res {
+  background: #fff !important;
+  border-color: #fff !important;
+  color: var(--vk-ink) !important;
+  font-family: "Marcellus SC", "Prociono", Georgia, serif !important;
+  font-size: clamp(22px, 3.3vw, 34px) !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.18em !important;
+}
+
 .btn-teal:hover,
 footer .content .buttons .button#create-res:hover,
 .service-widget .discount-coupon-apply:hover:not(:disabled) {
   background: rgba(238, 227, 206, 0.08) !important;
   box-shadow: none !important;
   color: var(--vk-cream) !important;
+}
+
+footer .content .buttons .button#create-res:hover {
+  background: var(--vk-cream) !important;
+  border-color: var(--vk-cream) !important;
+  color: var(--vk-ink) !important;
 }
 
 .powered-by {
@@ -303,9 +332,9 @@ footer .content .buttons,
 footer .content .buttons .button#create-res,
 footer .content .buttons .button#create-res.disabled,
 footer .content .buttons .button#create-res.disabled:hover {
-  background: transparent !important;
-  border: 1px solid rgba(238, 227, 206, 0.34) !important;
-  color: var(--vk-cream) !important;
+  background: #fff !important;
+  border: 1px solid #fff !important;
+  color: var(--vk-ink) !important;
   opacity: 1 !important;
 }
 
@@ -404,6 +433,53 @@ footer .content .buttons .button#create-res.disabled:hover {
 .service-widget .date-time .choose-date-time .widget-time .times .hours .hour *,
 .service-widget .date-time .choose-date-time .widget-time .times .hours .hour span {
   color: var(--vk-cream) !important;
+}
+
+.service-widget .choose-service .widget-services .service .icon,
+.service-widget .choose-service .widget-services .service .icons,
+.service-widget .choose-service .widget-services .service i:last-child,
+.service-widget .choose-worker .widget-workers .worker i:last-child,
+.service-widget .choose-terms .widget-terms .term i:last-child {
+  display: none !important;
+}
+
+.service-widget .choose-service .widget-services .service span[class*="icon"],
+.service-widget .choose-service .widget-services .service span[class*="chevron"],
+.service-widget .choose-service .widget-services .service span[class*="arrow"],
+.service-widget .choose-worker .widget-workers .worker span[class*="icon"],
+.service-widget .choose-terms .widget-terms .term span[class*="icon"] {
+  display: none !important;
+}
+
+.ui-calendar .ui-datepicker .ui-datepicker-header .ui-datepicker-prev,
+.ui-calendar .ui-datepicker .ui-datepicker-header .ui-datepicker-next {
+  background: transparent !important;
+  border: 1px solid rgba(238, 227, 206, 0.34) !important;
+  border-radius: 999px !important;
+  color: var(--vk-cream) !important;
+  height: 38px !important;
+  width: 38px !important;
+}
+
+.ui-calendar .ui-datepicker .ui-datepicker-header .ui-datepicker-prev::before,
+.ui-calendar .ui-datepicker .ui-datepicker-header .ui-datepicker-next::before {
+  color: var(--vk-cream) !important;
+  font-family: Arial, sans-serif !important;
+  font-size: 22px !important;
+  line-height: 1 !important;
+}
+
+.ui-calendar .ui-datepicker .ui-datepicker-header .ui-datepicker-prev::before {
+  content: "‹" !important;
+}
+
+.ui-calendar .ui-datepicker .ui-datepicker-header .ui-datepicker-next::before {
+  content: "›" !important;
+}
+
+.ui-calendar .ui-datepicker .ui-datepicker-header .ui-datepicker-prev *,
+.ui-calendar .ui-datepicker .ui-datepicker-header .ui-datepicker-next * {
+  display: none !important;
 }
 
 .service-widget .widget-categories .category .category,
