@@ -104,12 +104,12 @@ textarea,
 .service-widget .custom-message .alert,
 .service-widget #customMessage .alert-notice {
   background:
-    radial-gradient(circle at 10% 0%, rgba(255, 255, 255, 0.32), transparent 28%),
-    linear-gradient(135deg, rgba(238, 227, 206, 0.98), rgba(238, 227, 206, 0.88)) !important;
-  border: 1px solid rgba(255, 255, 255, 0.36) !important;
+    radial-gradient(circle at 12% 0%, rgba(238, 227, 206, 0.06), transparent 30%),
+    transparent !important;
+  border: 1px solid rgba(238, 227, 206, 0.22) !important;
   border-radius: 24px !important;
-  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.2) !important;
-  color: var(--vk-ink) !important;
+  box-shadow: none !important;
+  color: var(--vk-cream) !important;
   font-size: clamp(16px, 2.1vw, 19px) !important;
   font-weight: 400 !important;
   line-height: 1.55 !important;
@@ -127,17 +127,28 @@ textarea,
 }
 
 .service-widget .step {
-  background: var(--vk-cream) !important;
-  border: 1px solid rgba(238, 227, 206, 0.22) !important;
-  border-radius: 0 0 22px 0 !important;
-  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.22) !important;
-  color: var(--vk-ink) !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  color: var(--vk-cream) !important;
   font-family: "Marcellus SC", Georgia, serif !important;
   font-size: 30px !important;
   font-weight: 400 !important;
-  height: 78px !important;
-  line-height: 78px !important;
-  width: 66px !important;
+  height: auto !important;
+  line-height: 1 !important;
+  opacity: 0.92 !important;
+  width: auto !important;
+}
+
+.service-widget .step-line,
+.service-widget .step-line *,
+.service-widget .step-line-hour-1,
+.service-widget .step-line-hour-1 * {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  display: none !important;
 }
 
 .service-widget .widget-categories .header,
@@ -148,8 +159,8 @@ textarea,
 .service-widget .personal-information .header,
 .service-widget .summary .header {
   align-items: center !important;
-  min-height: 78px !important;
-  padding-left: 86px !important;
+  min-height: 66px !important;
+  padding-left: 54px !important;
 }
 
 .service-widget .widget-categories .header h3,
@@ -178,11 +189,11 @@ textarea,
 .service-widget .choose-worker .widget-workers .worker,
 .service-widget .choose-terms .widget-terms .term,
 .service-widget .date-time .choose-date-time .widget-time .times .hours .hour {
-  background: rgba(255, 255, 255, 0.92) !important;
-  border: 1px solid rgba(238, 227, 206, 0.34) !important;
+  background: transparent !important;
+  border: 1px solid rgba(238, 227, 206, 0.52) !important;
   border-radius: 999px !important;
-  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.13) !important;
-  color: var(--vk-ink) !important;
+  box-shadow: none !important;
+  color: var(--vk-cream) !important;
   min-height: 58px !important;
   opacity: 1 !important;
   transition: border-color 0.22s ease, box-shadow 0.22s ease, transform 0.22s ease, background 0.22s ease !important;
@@ -193,9 +204,9 @@ textarea,
 .service-widget .choose-worker .widget-workers .worker:hover,
 .service-widget .choose-terms .widget-terms .term:hover,
 .service-widget .date-time .choose-date-time .widget-time .times .hours .hour:hover {
-  background: #fff !important;
+  background: rgba(238, 227, 206, 0.06) !important;
   border-color: rgba(238, 227, 206, 0.78) !important;
-  box-shadow: 0 20px 42px rgba(0, 0, 0, 0.18) !important;
+  box-shadow: none !important;
   transform: translateY(-2px) !important;
 }
 
@@ -204,7 +215,7 @@ textarea,
 .service-widget .choose-worker .widget-workers .worker.selected,
 .service-widget .choose-terms .widget-terms .term.selected,
 .service-widget .date-time .choose-date-time .widget-time .times .hours .hour.selected {
-  background: var(--vk-ink) !important;
+  background: transparent !important;
   border-color: var(--vk-cream) !important;
   color: var(--vk-cream) !important;
 }
@@ -213,7 +224,7 @@ textarea,
 .service-widget .choose-service .widget-services .service .name,
 .service-widget .choose-worker .widget-workers .worker .worker-item .name,
 .service-widget .choose-terms .widget-terms .term .name {
-  color: var(--vk-ink) !important;
+  color: var(--vk-cream) !important;
   font-size: 17px !important;
   font-weight: 600 !important;
   letter-spacing: 0.01em !important;
@@ -241,20 +252,20 @@ textarea,
 .service-widget select,
 .service-widget .select2-container .select2-choice,
 .field-with-icon {
-  background: rgba(238, 227, 206, 0.96) !important;
-  border: 1px solid rgba(238, 227, 206, 0.32) !important;
+  background: transparent !important;
+  border: 1px solid rgba(238, 227, 206, 0.42) !important;
   border-radius: 14px !important;
-  color: var(--vk-ink) !important;
+  color: var(--vk-cream) !important;
   font-size: 15px !important;
 }
 
 .btn-teal,
 footer .content .buttons .button#create-res,
 .service-widget .discount-coupon-apply {
-  background: var(--vk-cream) !important;
+  background: transparent !important;
   border-color: var(--vk-cream) !important;
   border-radius: 999px !important;
-  color: var(--vk-ink) !important;
+  color: var(--vk-cream) !important;
   font-weight: 600 !important;
   letter-spacing: 0.12em !important;
   text-transform: uppercase !important;
@@ -263,13 +274,88 @@ footer .content .buttons .button#create-res,
 .btn-teal:hover,
 footer .content .buttons .button#create-res:hover,
 .service-widget .discount-coupon-apply:hover:not(:disabled) {
-  background: #fff !important;
-  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.22) !important;
-  color: var(--vk-ink) !important;
+  background: rgba(238, 227, 206, 0.08) !important;
+  box-shadow: none !important;
+  color: var(--vk-cream) !important;
 }
 
 .powered-by {
   opacity: 0.42 !important;
+}
+
+.service-widget a,
+.service-widget p,
+.service-widget span,
+.service-widget label,
+.service-widget strong,
+.service-widget .description,
+.service-widget .service-info,
+.service-widget .price,
+.service-widget .duration,
+.service-widget .calendar,
+.service-widget .ui-calendar,
+.service-widget .ui-datepicker,
+.service-widget .ui-datepicker a,
+.service-widget .ui-datepicker span,
+.service-widget .widget-time,
+.service-widget .widget-time *,
+.service-widget .personal-information *,
+.service-widget .summary *,
+.service-widget .confirmation * {
+  color: var(--vk-cream) !important;
+}
+
+.service-widget .choose-service .widget-services .service *,
+.service-widget .choose-worker .widget-workers .worker *,
+.service-widget .choose-terms .widget-terms .term *,
+.service-widget .date-time .choose-date-time .widget-time .times .hours .hour *,
+.service-widget .widget-categories .category .category * {
+  color: var(--vk-cream) !important;
+}
+
+.service-widget input::placeholder,
+.service-widget textarea::placeholder {
+  color: rgba(238, 227, 206, 0.62) !important;
+  opacity: 1 !important;
+}
+
+.service-widget input[type="checkbox"],
+.service-widget input[type="radio"] {
+  accent-color: var(--vk-cream) !important;
+}
+
+.ui-calendar .ui-datepicker,
+.service-widget .date-time .choose-date-time .widget-time,
+.service-widget .date-time .choose-date-time .widget-time .times,
+.service-widget .date-time .choose-date-time .widget-time .titles,
+.service-widget .summary .summary-panel,
+.service-widget .personal-information .information {
+  background: transparent !important;
+  border-color: rgba(238, 227, 206, 0.22) !important;
+  box-shadow: none !important;
+}
+
+.ui-calendar .ui-datepicker .ui-datepicker-calendar tbody tr td.ui-datepicker-current-day a.ui-state-active,
+.ui-calendar .ui-datepicker .ui-datepicker-calendar tbody tr td a:hover,
+.service-widget .date-time .choose-date-time .widget-time .times .hours .hour.selected {
+  background: rgba(238, 227, 206, 0.1) !important;
+  border-color: var(--vk-cream) !important;
+  color: var(--vk-cream) !important;
+}
+
+.service-widget .personal-information .information .customer-info,
+.service-widget .personal-information .information .customer-info.highlighted,
+.service-widget .personal-information .information .field,
+.service-widget .personal-information .information .phone-field {
+  background: transparent !important;
+  border-color: rgba(238, 227, 206, 0.42) !important;
+}
+
+.service-widget .widget-categories .category .category,
+.service-widget .choose-service .widget-services .service,
+.service-widget .choose-worker .widget-workers .worker,
+.service-widget .choose-terms .widget-terms .term {
+  min-height: 60px !important;
 }
 
 @media (max-width: 767px) {
