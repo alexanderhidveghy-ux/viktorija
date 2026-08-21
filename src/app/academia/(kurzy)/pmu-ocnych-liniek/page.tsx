@@ -55,7 +55,7 @@ export default function Kurz3Page() {
             </PhotoSection>
 
             {/* Section 2: What we will cover & Who it is for */}
-            <PhotoSection photo="https://pub-60b685024baf4def829d5151d4dc320a.r2.dev/IMG_1249.mp4" flip={true} aspectClass="aspect-[4/5] w-full" objectPosition="50% 50%" playable>
+            <PhotoSection photo="https://pub-60b685024baf4def829d5151d4dc320a.r2.dev/link.mp4" flip={true} aspectClass="aspect-[4/5] w-full" objectPosition="50% 50%" playable>
                 <div className="space-y-6 font-montserrat font-light text-[#1D0E22] leading-snug text-base">
                     <h3 className="font-marcellus text-2xl uppercase tracking-widest text-[#1D0E22]">Budeme sa venovať:</h3>
                     <ul className="space-y-1 text-base text-[#1D0E22]/80">

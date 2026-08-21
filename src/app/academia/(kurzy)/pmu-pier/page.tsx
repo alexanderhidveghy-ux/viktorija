@@ -111,7 +111,7 @@ export default function Kurz2Page() {
             {/* Program kurzu + video */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-0 items-stretch">
                 <div className="relative overflow-hidden rounded-2xl min-h-[400px] md:min-h-[520px]">
-                    <PlayableVideo src="https://pub-60b685024baf4def829d5151d4dc320a.r2.dev/IMG_1254.mp4" />
+                    <PlayableVideo src="https://pub-60b685024baf4def829d5151d4dc320a.r2.dev/pery-academy.mp4" />
                 </div>
                 <div className="flex flex-col justify-start px-0 md:px-12 pt-6 md:pt-0 pb-10">
                     <div className="space-y-6">

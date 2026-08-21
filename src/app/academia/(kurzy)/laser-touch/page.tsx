@@ -65,7 +65,7 @@ export default function Kurz6Page() {
             </PhotoSection>
 
             {/* Section 2: Video + Učíme sa pracovať s & 2. časť */}
-            <PhotoSection photo="https://pub-60b685024baf4def829d5151d4dc320a.r2.dev/IMG_1270.mp4" flip={true} aspectClass="aspect-square" playable>
+            <PhotoSection photo="https://pub-60b685024baf4def829d5151d4dc320a.r2.dev/lasertouch-academy.mp4" flip={true} aspectClass="aspect-square" playable>
                 <div className="space-y-6 font-montserrat font-light text-[#1D0E22] leading-tight text-base">
                     <div>
                         <h2 className="font-marcellus text-2xl uppercase tracking-widest text-[#1D0E22]">Učíme sa pracovať s:</h2>
