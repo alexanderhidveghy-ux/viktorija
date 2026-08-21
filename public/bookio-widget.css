@@ -3,15 +3,18 @@
 :root {
   --vk-ink: #1d0e22;
   --vk-cream: #eee3ce;
-  --vk-pearl: #f8f5f1;
-  --vk-muted: rgba(29, 14, 34, 0.62);
-  --vk-line: rgba(29, 14, 34, 0.14);
+  --vk-plum: #2f1738;
+  --vk-muted: rgba(238, 227, 206, 0.68);
+  --vk-line: rgba(238, 227, 206, 0.22);
+  --vk-soft: rgba(238, 227, 206, 0.08);
 }
 
 html,
 body {
-  background: transparent !important;
-  color: var(--vk-ink) !important;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(238, 227, 206, 0.08), transparent 32%),
+    linear-gradient(180deg, #1d0e22 0%, #241128 100%) !important;
+  color: var(--vk-cream) !important;
   font-family: "Montserrat", Arial, sans-serif !important;
   letter-spacing: 0.01em;
 }
@@ -27,56 +30,55 @@ textarea,
 }
 
 .navbar-bookio.widget {
-  background: rgba(248, 245, 241, 0.96) !important;
+  background: var(--vk-ink) !important;
   border: 0 !important;
+  border-bottom: 1px solid rgba(238, 227, 206, 0.18) !important;
   box-shadow: none !important;
 }
 
 .navbar-bookio.widget .navbar-content {
-  min-height: 108px !important;
+  display: grid !important;
+  grid-template-columns: 1fr auto 1fr !important;
   align-items: center !important;
-  padding: 18px 0 14px !important;
+  min-height: 118px !important;
+  padding: 18px 0 !important;
+  position: relative !important;
+}
+
+.navbar-bookio.widget .widget-header-side-left {
+  grid-column: 2 !important;
+  justify-self: center !important;
+  text-align: center !important;
 }
 
 .navbar-bookio.widget .logo {
-  max-width: 118px !important;
-  max-height: 42px !important;
+  display: block !important;
+  filter: brightness(1.08) contrast(0.96) !important;
+  max-width: 168px !important;
+  max-height: 64px !important;
   object-fit: contain !important;
 }
 
 .navbar-bookio.widget .brand {
-  text-align: center !important;
+  display: none !important;
 }
 
-.navbar-bookio.widget .facility-name {
-  color: var(--vk-ink) !important;
-  display: block !important;
-  font-family: "Marcellus SC", "Prociono", Georgia, serif !important;
-  font-size: clamp(20px, 3.5vw, 34px) !important;
-  font-weight: 400 !important;
-  letter-spacing: 0.03em !important;
-  line-height: 1.08 !important;
-  text-transform: uppercase !important;
-}
-
+.navbar-bookio.widget .facility-name,
 .navbar-bookio.widget .facility-web {
-  color: var(--vk-ink) !important;
-  display: inline-block !important;
-  font-size: 12px !important;
-  font-weight: 500 !important;
-  letter-spacing: 0.16em !important;
-  margin-top: 8px !important;
-  opacity: 0.74 !important;
-  text-decoration: none !important;
-  text-transform: uppercase !important;
+  display: none !important;
+}
+
+.navbar-bookio.widget .widget-header-side-right {
+  grid-column: 3 !important;
+  justify-self: end !important;
 }
 
 .navbar-bookio.widget .navbar-info > li > a,
 .navbar-bookio.widget #langSelector {
-  background: rgba(29, 14, 34, 0.04) !important;
+  background: rgba(238, 227, 206, 0.08) !important;
   border: 1px solid var(--vk-line) !important;
   border-radius: 999px !important;
-  color: var(--vk-ink) !important;
+  color: var(--vk-cream) !important;
   min-height: 42px !important;
   padding: 9px 14px !important;
 }
@@ -88,6 +90,12 @@ textarea,
   padding-right: 24px !important;
 }
 
+.service-widget,
+.service-widget > widget-form > div {
+  background: transparent !important;
+  color: var(--vk-cream) !important;
+}
+
 .service-widget .custom-message {
   margin-top: 18px !important;
   margin-bottom: 44px !important;
@@ -96,12 +104,12 @@ textarea,
 .service-widget .custom-message .alert,
 .service-widget #customMessage .alert-notice {
   background:
-    radial-gradient(circle at 16% 0%, rgba(238, 227, 206, 0.09), transparent 34%),
-    linear-gradient(135deg, #1d0e22 0%, #241128 100%) !important;
-  border: 1px solid rgba(238, 227, 206, 0.16) !important;
-  border-radius: 0 !important;
-  box-shadow: 0 20px 60px rgba(29, 14, 34, 0.16) !important;
-  color: var(--vk-cream) !important;
+    radial-gradient(circle at 10% 0%, rgba(255, 255, 255, 0.32), transparent 28%),
+    linear-gradient(135deg, rgba(238, 227, 206, 0.98), rgba(238, 227, 206, 0.88)) !important;
+  border: 1px solid rgba(255, 255, 255, 0.36) !important;
+  border-radius: 24px !important;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.2) !important;
+  color: var(--vk-ink) !important;
   font-size: clamp(16px, 2.1vw, 19px) !important;
   font-weight: 400 !important;
   line-height: 1.55 !important;
@@ -119,11 +127,11 @@ textarea,
 }
 
 .service-widget .step {
-  background: var(--vk-ink) !important;
+  background: var(--vk-cream) !important;
   border: 1px solid rgba(238, 227, 206, 0.22) !important;
   border-radius: 0 0 22px 0 !important;
-  box-shadow: 0 12px 26px rgba(29, 14, 34, 0.18) !important;
-  color: #fff !important;
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.22) !important;
+  color: var(--vk-ink) !important;
   font-family: "Marcellus SC", Georgia, serif !important;
   font-size: 30px !important;
   font-weight: 400 !important;
@@ -151,8 +159,8 @@ textarea,
 .service-widget .date-time .header h3,
 .service-widget .personal-information .header h3,
 .service-widget .summary .header h3 {
-  color: var(--vk-ink) !important;
   font-family: "Marcellus SC", "Prociono", Georgia, serif !important;
+  color: var(--vk-cream) !important;
   font-size: clamp(27px, 4vw, 42px) !important;
   font-weight: 400 !important;
   letter-spacing: 0.04em !important;
@@ -171,9 +179,9 @@ textarea,
 .service-widget .choose-terms .widget-terms .term,
 .service-widget .date-time .choose-date-time .widget-time .times .hours .hour {
   background: rgba(255, 255, 255, 0.92) !important;
-  border: 1px solid rgba(29, 14, 34, 0.16) !important;
-  border-radius: 14px !important;
-  box-shadow: 0 10px 26px rgba(29, 14, 34, 0.055) !important;
+  border: 1px solid rgba(238, 227, 206, 0.34) !important;
+  border-radius: 999px !important;
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.13) !important;
   color: var(--vk-ink) !important;
   min-height: 58px !important;
   opacity: 1 !important;
@@ -186,8 +194,8 @@ textarea,
 .service-widget .choose-terms .widget-terms .term:hover,
 .service-widget .date-time .choose-date-time .widget-time .times .hours .hour:hover {
   background: #fff !important;
-  border-color: rgba(29, 14, 34, 0.42) !important;
-  box-shadow: 0 18px 34px rgba(29, 14, 34, 0.09) !important;
+  border-color: rgba(238, 227, 206, 0.78) !important;
+  box-shadow: 0 20px 42px rgba(0, 0, 0, 0.18) !important;
   transform: translateY(-2px) !important;
 }
 
@@ -197,8 +205,8 @@ textarea,
 .service-widget .choose-terms .widget-terms .term.selected,
 .service-widget .date-time .choose-date-time .widget-time .times .hours .hour.selected {
   background: var(--vk-ink) !important;
-  border-color: var(--vk-ink) !important;
-  color: #fff !important;
+  border-color: var(--vk-cream) !important;
+  color: var(--vk-cream) !important;
 }
 
 .service-widget .widget-categories .category .category .white-text,
@@ -216,7 +224,7 @@ textarea,
 .service-widget .choose-worker .widget-workers .worker.selected .worker-item .name,
 .service-widget .choose-terms .widget-terms .term.selected .name,
 .service-widget .date-time .choose-date-time .widget-time .times .hours .hour.selected {
-  color: #fff !important;
+  color: var(--vk-cream) !important;
 }
 
 .service-widget .choose-service .widget-services .service .duration,
@@ -233,8 +241,8 @@ textarea,
 .service-widget select,
 .service-widget .select2-container .select2-choice,
 .field-with-icon {
-  background: #fff !important;
-  border: 1px solid rgba(29, 14, 34, 0.18) !important;
+  background: rgba(238, 227, 206, 0.96) !important;
+  border: 1px solid rgba(238, 227, 206, 0.32) !important;
   border-radius: 14px !important;
   color: var(--vk-ink) !important;
   font-size: 15px !important;
@@ -243,10 +251,10 @@ textarea,
 .btn-teal,
 footer .content .buttons .button#create-res,
 .service-widget .discount-coupon-apply {
-  background: var(--vk-ink) !important;
-  border-color: var(--vk-ink) !important;
+  background: var(--vk-cream) !important;
+  border-color: var(--vk-cream) !important;
   border-radius: 999px !important;
-  color: #fff !important;
+  color: var(--vk-ink) !important;
   font-weight: 600 !important;
   letter-spacing: 0.12em !important;
   text-transform: uppercase !important;
@@ -255,9 +263,9 @@ footer .content .buttons .button#create-res,
 .btn-teal:hover,
 footer .content .buttons .button#create-res:hover,
 .service-widget .discount-coupon-apply:hover:not(:disabled) {
-  background: #2a1730 !important;
-  box-shadow: 0 14px 30px rgba(29, 14, 34, 0.18) !important;
-  color: #fff !important;
+  background: #fff !important;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.22) !important;
+  color: var(--vk-ink) !important;
 }
 
 .powered-by {
