@@ -166,7 +166,7 @@ export default function Hero() {
                 {/* CENTER COLUMN: Video & About Text */}
                 <div className="order-1 lg:order-2 flex flex-col items-center space-y-6">
                     {/* Video */}
-                    <div className="relative w-full max-w-[420px] lg:max-w-[350px] aspect-[9/16] rounded-2xl overflow-hidden shadow-2xl border border-white/20 group">
+                    <div className="relative w-full max-w-[420px] lg:max-w-[350px] h-[70vh] md:h-auto md:aspect-[9/16] overflow-hidden shadow-2xl border border-white/20 group">
                         {/* Video element - hidden until started */}
                         <motion.div
                             initial={{ opacity: 0 }}
@@ -231,9 +231,9 @@ export default function Hero() {
                             <p className="font-montserrat text-[#1D0E22]/85 text-sm md:text-base font-medium tracking-[0.16em] uppercase">
                                 Permanent makeup • Beauty • Academy
                             </p>
-                            <div className="space-y-4">
-                                <p className="!font-montserrat text-[#1D0E22]/60 text-sm md:text-base font-light tracking-[0.08em]">
-                                    Môj estetický rukopis.
+                            <div className="space-y-1">
+                                <p className="!font-garamond text-[#1D0E22] text-xl md:text-3xl leading-[1.35]">
+                                    Môj estetický rukopis
                                 </p>
                                 <p className="!font-garamond text-[#1D0E22] text-xl md:text-3xl leading-[1.35]">
                                     Nevytváram novú tvár. Zvýrazňujem krásu, ktorá je v nej už daná.

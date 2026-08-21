@@ -84,7 +84,7 @@ export default function AcademiaPage() {
                     </div>
 
                     {/* Center: Main Video */}
-                    <div className="max-w-[450px] w-full rounded-[2rem] overflow-hidden shadow-2xl relative aspect-[9/16] group shrink-0 border border-white/20">
+                    <div className="max-w-[450px] w-full h-[70vh] md:h-auto overflow-hidden shadow-2xl relative md:aspect-[9/16] group shrink-0 border border-white/20">
                         <HeroVideo src="https://pub-60b685024baf4def829d5151d4dc320a.r2.dev/academia.mp4" />
                     </div>
 
