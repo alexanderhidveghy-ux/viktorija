@@ -231,8 +231,8 @@ export default function Hero() {
                             <p className="font-montserrat text-[#1D0E22]/85 text-sm md:text-base font-medium tracking-[0.16em] uppercase">
                                 Permanent makeup • Beauty • Academy
                             </p>
-                            <div className="space-y-1">
-                                <p className="!font-garamond text-[#1D0E22] text-xl md:text-3xl leading-[1.35]">
+                            <div className="space-y-0">
+                                <p className="!font-garamond text-[#1D0E22] text-xl md:text-3xl leading-[1.1]">
                                     Môj estetický rukopis
                                 </p>
                                 <p className="!font-garamond text-[#1D0E22] text-xl md:text-3xl leading-[1.35]">
