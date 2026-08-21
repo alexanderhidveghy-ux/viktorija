@@ -39,7 +39,7 @@ export default function AcademiaPage() {
             <Header />
             <h1 className="sr-only">Akadémia permanentného make-upu</h1>
 
-            <section className="pt-40 pb-20 px-6">
+            <section className="pt-40 pb-8 px-6">
                 <div className="max-w-[1800px] mx-auto flex flex-col lg:flex-row items-center justify-center gap-10 xl:gap-16">
                     {/* Left Side: 3 Cards Stacked */}
                     <div className="flex flex-col gap-8 w-full lg:w-[380px] xl:w-[500px]">
@@ -132,7 +132,7 @@ export default function AcademiaPage() {
                 </div>
             </section>
 
-                        <RevealGroup className="mt-20 max-w-4xl mx-auto px-6 space-y-20 pb-32">
+                        <RevealGroup className="mt-4 max-w-4xl mx-auto px-6 space-y-20 pb-32">
                     {/* Question 1 */}
                     <div className="space-y-8">
                         <div className="text-center space-y-2">
@@ -349,10 +349,10 @@ export default function AcademiaPage() {
                                 </div>
                             </div>
 
-                            <div className="p-5 bg-[#1D0E22] text-white rounded-2xl shadow-xl">
-                                <p className="font-montserrat text-sm leading-tight italic text-center text-white/80">
-                                    <span className="text-gold font-bold not-italic uppercase tracking-widest block mb-1 text-sm">Dôležité upozornenie k PMU:</span>
-                                    Hoci na tento vzor môžete napísať &quot;Permanentný mejkap&quot;, toto konkrétne osvedčenie stále <span className="underline decoration-gold text-white font-medium">nestačí na otvorenie viazanej živnosti</span>. Na to absolvent potrebuje osvedčenie o akreditovanom vzdelávacom programe. Tento vzor slúži na doplnkové zručnosti.
+                            <div className="space-y-1">
+                                <p className="font-montserrat text-base font-medium text-[#1D0E22]">Dôležité upozornenie k PMU:</p>
+                                <p className="font-montserrat text-base text-[#1D0E22]/70 leading-tight">
+                                    Hoci na tento vzor môžete napísať &quot;Permanentný mejkap&quot;, toto konkrétne osvedčenie stále <span className="font-medium text-[#1D0E22]">nestačí na otvorenie viazanej živnosti</span>. Na to absolvent potrebuje osvedčenie o akreditovanom vzdelávacom programe. Tento vzor slúži na doplnkové zručnosti.
                                 </p>
                             </div>
                         </div>
