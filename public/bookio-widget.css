@@ -67,7 +67,7 @@ textarea,
 
 .navbar-bookio.widget .logo {
   display: block !important;
-  filter: brightness(1.08) contrast(0.96) !important;
+  filter: brightness(0) invert(1) contrast(1.08) !important;
   max-width: 168px !important;
   max-height: 64px !important;
   object-fit: contain !important;
@@ -453,20 +453,37 @@ footer .content .buttons .button#create-res.disabled:hover {
 
 .ui-calendar .ui-datepicker .ui-datepicker-header .ui-datepicker-prev,
 .ui-calendar .ui-datepicker .ui-datepicker-header .ui-datepicker-next {
+  align-items: center !important;
   background: transparent !important;
   border: 1px solid rgba(238, 227, 206, 0.34) !important;
   border-radius: 999px !important;
   color: var(--vk-cream) !important;
+  display: inline-flex !important;
+  font-size: 0 !important;
   height: 38px !important;
+  justify-content: center !important;
+  line-height: 1 !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  text-align: center !important;
+  text-indent: 0 !important;
   width: 38px !important;
 }
 
 .ui-calendar .ui-datepicker .ui-datepicker-header .ui-datepicker-prev::before,
 .ui-calendar .ui-datepicker .ui-datepicker-header .ui-datepicker-next::before {
+  align-items: center !important;
   color: var(--vk-cream) !important;
+  display: flex !important;
   font-family: Arial, sans-serif !important;
   font-size: 22px !important;
+  height: 100% !important;
+  justify-content: center !important;
   line-height: 1 !important;
+  position: static !important;
+  text-indent: 0 !important;
+  transform: translateY(-1px) !important;
+  width: 100% !important;
 }
 
 .ui-calendar .ui-datepicker .ui-datepicker-header .ui-datepicker-prev::before {
@@ -475,6 +492,12 @@ footer .content .buttons .button#create-res.disabled:hover {
 
 .ui-calendar .ui-datepicker .ui-datepicker-header .ui-datepicker-next::before {
   content: "›" !important;
+}
+
+.ui-calendar .ui-datepicker .ui-datepicker-header .ui-datepicker-prev::after,
+.ui-calendar .ui-datepicker .ui-datepicker-header .ui-datepicker-next::after {
+  content: "" !important;
+  display: none !important;
 }
 
 .ui-calendar .ui-datepicker .ui-datepicker-header .ui-datepicker-prev *,
