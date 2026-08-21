@@ -254,6 +254,38 @@ textarea,
   text-transform: uppercase !important;
 }
 
+.service-widget .widget-categories .sub-categories .category .category,
+.service-widget .widget-categories .sub-categories widget-category .category {
+  background: transparent !important;
+  border: 1px solid rgba(238, 227, 206, 0.28) !important;
+  border-radius: 999px !important;
+  color: var(--vk-cream) !important;
+  opacity: 1 !important;
+}
+
+.service-widget .widget-categories .sub-categories .category .category:hover,
+.service-widget .widget-categories .sub-categories .category .category.selected {
+  background: rgba(238, 227, 206, 0.06) !important;
+  border-color: var(--vk-cream) !important;
+  color: var(--vk-cream) !important;
+}
+
+.service-widget .widget-categories .sub-categories .category .category *,
+.service-widget .widget-categories .sub-categories .category .category .white-text,
+.service-widget .widget-categories .sub-categories .category .category span,
+.service-widget .widget-categories .sub-categories .category .category div {
+  color: var(--vk-cream) !important;
+  opacity: 1 !important;
+  text-shadow: none !important;
+}
+
+.service-widget .widget-categories .sub-categories .category .category .white-text {
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.18em !important;
+  text-transform: uppercase !important;
+}
+
 .service-widget .widget-categories .category .category.selected .white-text,
 .service-widget .choose-service .widget-services .service.selected .name,
 .service-widget .choose-worker .widget-workers .worker.selected .worker-item .name,
