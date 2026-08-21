@@ -68,8 +68,8 @@ textarea,
 .navbar-bookio.widget .logo {
   display: block !important;
   filter: brightness(0) invert(1) contrast(1.08) !important;
-  max-width: 168px !important;
-  max-height: 64px !important;
+  max-width: 240px !important;
+  max-height: 88px !important;
   object-fit: contain !important;
 }
 
@@ -519,8 +519,8 @@ footer .content .buttons .button#create-res.disabled:hover {
   }
 
   .navbar-bookio.widget .logo {
-    max-width: 86px !important;
-    max-height: 34px !important;
+    max-width: 140px !important;
+    max-height: 54px !important;
   }
 
   .navbar-bookio.widget .facility-name {
