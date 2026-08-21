@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { PlayIcon, PauseIcon } from "lucide-react";
-import { PlayCircle } from "lucide-react";
 import Credentials from "./Credentials";
 
 // Data from Services
@@ -51,7 +50,6 @@ const SERVICE_HOVER_PREVIEW_QUERY = "(hover: hover) and (pointer: fine) and (min
 
 export default function Hero() {
     const [isPlaying, setIsPlaying] = useState(false);
-    const [videoStarted, setVideoStarted] = useState(false);
     const videoRef = useRef<HTMLVideoElement>(null);
 
     // Cursor Follower Logic
@@ -80,13 +78,6 @@ export default function Hero() {
         if (window.matchMedia(SERVICE_HOVER_PREVIEW_QUERY).matches) {
             setHoveredServiceImage(image);
         }
-    };
-
-    const startVideo = () => {
-        if (!videoRef.current) return;
-        setVideoStarted(true);
-        videoRef.current.play();
-        setIsPlaying(true);
     };
 
     const togglePlay = () => {
@@ -167,59 +158,31 @@ export default function Hero() {
                 <div className="order-1 lg:order-2 flex flex-col items-center space-y-6">
                     {/* Video */}
                     <div className="relative w-full max-w-[420px] lg:max-w-[350px] h-[70vh] md:h-auto md:aspect-[9/16] overflow-hidden shadow-2xl border border-white/20 group">
-                        {/* Video element - hidden until started */}
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: videoStarted ? 1 : 0 }}
-                            transition={{ duration: 0.5 }}
-                            className="absolute inset-0"
+                        <video
+                            ref={videoRef}
+                            src="https://pub-60b685024baf4def829d5151d4dc320a.r2.dev/homehero.mp4#t=0.1"
+                            loop
+                            playsInline
+                            preload="metadata"
+                            onPlay={() => setIsPlaying(true)}
+                            onPause={() => setIsPlaying(false)}
+                            className="absolute inset-0 w-full h-full object-cover"
+                        />
+
+                        {/* Play/Pause - visible while paused, fades out during playback */}
+                        <div
+                            className={`absolute inset-0 flex items-center justify-center bg-black/20 transition-opacity duration-300 ${
+                                isPlaying ? "opacity-0 group-hover:opacity-100" : "opacity-100"
+                            }`}
                         >
-                            <video
-                                ref={videoRef}
-                                src="https://pub-60b685024baf4def829d5151d4dc320a.r2.dev/homehero.mp4"
-                                loop
-                                playsInline
-                                className="w-full h-full object-cover"
-                            />
-                        </motion.div>
-
-                        {/* Poster Image - shown until video starts */}
-                        <AnimatePresence>
-                            {!videoStarted && (
-                                <motion.div
-                                    initial={{ opacity: 1 }}
-                                    exit={{ opacity: 0 }}
-                                    transition={{ duration: 0.5 }}
-                                    className="absolute inset-0 cursor-pointer"
-                                    onClick={startVideo}
-                                >
-                                    <Image
-                                        src="/shared/IMG_1422.JPG"
-                                        alt="Video Preview"
-                                        fill
-                                        className="object-cover"
-                                    />
-                                    {/* Play Icon Overlay */}
-                                    <div className="absolute inset-0 flex items-center justify-center bg-black/30 hover:bg-black/20 transition-colors duration-300">
-                                        <div className="w-20 h-20 rounded-full bg-white/20 backdrop-blur-md border-2 border-white/60 flex items-center justify-center text-white hover:scale-110 transition-transform duration-300">
-                                            <PlayCircle size={48} strokeWidth={1.5} />
-                                        </div>
-                                    </div>
-                                </motion.div>
-                            )}
-                        </AnimatePresence>
-
-                        {/* Play/Pause control - only shows when video is playing */}
-                        {videoStarted && (
-                            <div className="absolute inset-0 flex items-center justify-center bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                <button
-                                    onClick={togglePlay}
-                                    className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-md border border-white/50 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all duration-300"
-                                >
-                                    {isPlaying ? <PauseIcon size={24} fill="currentColor" /> : <PlayIcon size={24} fill="currentColor" />}
-                                </button>
-                            </div>
-                        )}
+                            <button
+                                onClick={togglePlay}
+                                aria-label={isPlaying ? "Pozastaviť video" : "Prehrať video"}
+                                className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-md border border-white/50 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all duration-300"
+                            >
+                                {isPlaying ? <PauseIcon size={24} fill="currentColor" /> : <PlayIcon size={24} fill="currentColor" />}
+                            </button>
+                        </div>
                     </div>
 
                     {/* About Text (Centered) - FULL Text */}
@@ -236,7 +199,7 @@ export default function Hero() {
                                     Môj estetický rukopis
                                 </p>
                                 <p className="!font-garamond text-[#1D0E22] text-xl md:text-3xl leading-[1.35]">
-                                    Nevytváram novú tvár. Zvýrazňujem krásu, ktorá je v nej už daná.
+                                    Nevytváram novú tvár, zvýrazňujem krásu, ktorá je v nej už daná.
                                 </p>
                             </div>
                         </div>

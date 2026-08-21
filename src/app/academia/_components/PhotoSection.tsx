@@ -1,4 +1,5 @@
 import LightboxImage from "@/components/LightboxImage";
+import PlayableVideo from "@/components/PlayableVideo";
 
 function getVideoType(src: string) {
     if (/\.webm$/i.test(src)) return "video/webm";
@@ -16,6 +17,7 @@ export default function PhotoSection({
     objectPosition,
     photoLabel,
     videoFallback,
+    playable = false,
     imageClass = "object-cover",
     contentClassName = "md:px-12",
     contentBottomPadding = "pb-10",
@@ -27,6 +29,7 @@ export default function PhotoSection({
     objectPosition?: string;
     photoLabel?: string;
     videoFallback?: string;
+    playable?: boolean;
     imageClass?: string;
     contentClassName?: string;
     contentBottomPadding?: string;
@@ -44,7 +47,9 @@ export default function PhotoSection({
             }`}
         >
             <div className={`relative overflow-hidden rounded-2xl ${containerClass}`}>
-                {isVideo ? (
+                {isVideo && playable ? (
+                    <PlayableVideo src={photo} style={posStyle} />
+                ) : isVideo ? (
                     <video
                         aria-hidden="true"
                         autoPlay

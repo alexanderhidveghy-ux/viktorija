@@ -3,8 +3,7 @@
 import { useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
-import { PlayCircle, PlayIcon, PauseIcon } from "lucide-react";
+import { PlayIcon, PauseIcon } from "lucide-react";
 import RevealGroup from "@/components/RevealGroup";
 
 const PMU_SUBTABS = [
@@ -16,15 +15,7 @@ const PMU_SUBTABS = [
 
 export default function PmuOverviewContent() {
     const [isPlaying, setIsPlaying] = useState(false);
-    const [videoStarted, setVideoStarted] = useState(false);
     const videoRef = useRef<HTMLVideoElement>(null);
-
-    const startVideo = () => {
-        if (!videoRef.current) return;
-        setVideoStarted(true);
-        videoRef.current.play();
-        setIsPlaying(true);
-    };
 
     const togglePlay = () => {
         if (!videoRef.current) return;
@@ -102,55 +93,31 @@ export default function PmuOverviewContent() {
 
                     {/* Video */}
                     <div className="relative aspect-[3/4] rounded-xl overflow-hidden shadow-lg border border-white/10 group">
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: videoStarted ? 1 : 0 }}
-                            transition={{ duration: 0.5 }}
-                            className="absolute inset-0"
+                        <video
+                            ref={videoRef}
+                            src="https://pub-60b685024baf4def829d5151d4dc320a.r2.dev/pmu.mp4#t=0.1"
+                            loop
+                            playsInline
+                            preload="metadata"
+                            onPlay={() => setIsPlaying(true)}
+                            onPause={() => setIsPlaying(false)}
+                            className="absolute inset-0 w-full h-full object-cover"
+                        />
+
+                        {/* Play/Pause - visible while paused, fades out during playback */}
+                        <div
+                            className={`absolute inset-0 flex items-center justify-center bg-black/20 transition-opacity duration-300 ${
+                                isPlaying ? "opacity-0 group-hover:opacity-100" : "opacity-100"
+                            }`}
                         >
-                            <video
-                                ref={videoRef}
-                                src="https://pub-60b685024baf4def829d5151d4dc320a.r2.dev/pmu.mp4"
-                                loop
-                                playsInline
-                                className="w-full h-full object-cover"
-                            />
-                        </motion.div>
-
-                        <AnimatePresence>
-                            {!videoStarted && (
-                                <motion.div
-                                    initial={{ opacity: 1 }}
-                                    exit={{ opacity: 0 }}
-                                    transition={{ duration: 0.5 }}
-                                    className="absolute inset-0 cursor-pointer"
-                                    onClick={startVideo}
-                                >
-                                    <Image
-                                        src="/shared/IMG_1422.JPG"
-                                        alt="Video Preview"
-                                        fill
-                                        className="object-cover"
-                                    />
-                                    <div className="absolute inset-0 flex items-center justify-center bg-black/30 hover:bg-black/20 transition-colors duration-300">
-                                        <div className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-md border-2 border-white/60 flex items-center justify-center text-white hover:scale-110 transition-transform duration-300">
-                                            <PlayCircle className="w-8 h-8" strokeWidth={1.5} />
-                                        </div>
-                                    </div>
-                                </motion.div>
-                            )}
-                        </AnimatePresence>
-
-                        {videoStarted && (
-                            <div className="absolute inset-0 flex items-center justify-center bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                <button
-                                    onClick={togglePlay}
-                                    className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-md border border-white/50 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all duration-300"
-                                >
-                                    {isPlaying ? <PauseIcon size={20} fill="currentColor" /> : <PlayIcon size={20} fill="currentColor" />}
-                                </button>
-                            </div>
-                        )}
+                            <button
+                                onClick={togglePlay}
+                                aria-label={isPlaying ? "Pozastaviť video" : "Prehrať video"}
+                                className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-md border border-white/50 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all duration-300"
+                            >
+                                {isPlaying ? <PauseIcon size={20} fill="currentColor" /> : <PlayIcon size={20} fill="currentColor" />}
+                            </button>
+                        </div>
                     </div>
                 </div>
 

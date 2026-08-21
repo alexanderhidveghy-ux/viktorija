@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { PlayIcon } from "lucide-react";
 
 import Image from "next/image";
 import Reveal from "@/components/Reveal";
@@ -147,9 +148,9 @@ export default function CreamsPage() {
                     onClick={() => openVideoLightbox("https://pub-60b685024baf4def829d5151d4dc320a.r2.dev/moja_rutina.mp4")}
                 >
                     <video src="https://pub-60b685024baf4def829d5151d4dc320a.r2.dev/moja_rutina.mp4" autoPlay muted loop playsInline className="w-full object-cover" />
-                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/20">
-                        <div className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-md border border-white/50 flex items-center justify-center text-white">
-                            <svg className="w-6 h-6 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/20 transition-opacity duration-300">
+                        <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-md border border-white/50 flex items-center justify-center text-white group-hover:bg-white group-hover:text-black transition-all duration-300">
+                            <PlayIcon size={24} fill="currentColor" />
                         </div>
                     </div>
                 </div>

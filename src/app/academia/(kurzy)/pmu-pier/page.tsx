@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import LightboxImage from "@/components/LightboxImage";
 import PhotoSection from "@/app/academia/_components/PhotoSection";
 import CourseProgram from "@/app/academia/_components/CourseProgram";
+import PlayableVideo from "@/components/PlayableVideo";
 import TatraBankaBanner from "@/app/academia/_components/TatraBankaBanner";
 
 export const metadata: Metadata = {
@@ -99,14 +100,7 @@ export default function Kurz2Page() {
                     </p>
                 </div>
                 <div className="relative overflow-hidden rounded-2xl min-h-[400px] md:min-h-[520px]">
-                    <video
-                        src="https://pub-60b685024baf4def829d5151d4dc320a.r2.dev/PERY.mp4"
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
-                        className="absolute inset-0 h-full w-full object-cover"
-                    />
+                    <PlayableVideo src="https://pub-60b685024baf4def829d5151d4dc320a.r2.dev/PERY.mp4" />
                     <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
                     <p className="absolute bottom-6 left-6 font-marcellus text-base md:text-lg uppercase tracking-widest text-[#EEE3CE]">
                         Šrafovanie
@@ -117,14 +111,7 @@ export default function Kurz2Page() {
             {/* Program kurzu + video */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-0 items-stretch">
                 <div className="relative overflow-hidden rounded-2xl min-h-[400px] md:min-h-[520px]">
-                    <video
-                        src="https://pub-60b685024baf4def829d5151d4dc320a.r2.dev/IMG_1254.mp4"
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
-                        className="absolute inset-0 h-full w-full object-cover"
-                    />
+                    <PlayableVideo src="https://pub-60b685024baf4def829d5151d4dc320a.r2.dev/IMG_1254.mp4" />
                 </div>
                 <div className="flex flex-col justify-start px-0 md:px-12 pt-6 md:pt-0 pb-10">
                     <div className="space-y-6">
@@ -143,14 +130,7 @@ export default function Kurz2Page() {
                         </div>
                     ))}
                     <div className="relative aspect-square overflow-hidden rounded-2xl border border-black/10 shadow-sm bg-[#1D0E22]/5">
-                        <video
-                            src="https://pub-60b685024baf4def829d5151d4dc320a.r2.dev/IMG_3039.mp4"
-                            autoPlay
-                            muted
-                            loop
-                            playsInline
-                            className="absolute inset-0 h-full w-full object-cover"
-                        />
+                        <PlayableVideo src="https://pub-60b685024baf4def829d5151d4dc320a.r2.dev/IMG_3039.mp4" small />
                     </div>
                 </div>
             </div>
