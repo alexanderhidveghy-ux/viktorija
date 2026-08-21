@@ -1,0 +1,340 @@
+@import url("https://fonts.googleapis.com/css2?family=Marcellus+SC&family=Montserrat:wght@300;400;500;600;700&family=Prociono&display=swap");
+
+:root {
+  --vk-ink: #1d0e22;
+  --vk-cream: #eee3ce;
+  --vk-pearl: #f8f5f1;
+  --vk-muted: rgba(29, 14, 34, 0.62);
+  --vk-line: rgba(29, 14, 34, 0.14);
+}
+
+html,
+body {
+  background: transparent !important;
+  color: var(--vk-ink) !important;
+  font-family: "Montserrat", Arial, sans-serif !important;
+  letter-spacing: 0.01em;
+}
+
+body,
+button,
+input,
+select,
+textarea,
+.service-widget,
+.service-widget * {
+  font-family: "Montserrat", Arial, sans-serif !important;
+}
+
+.navbar-bookio.widget {
+  background: rgba(248, 245, 241, 0.96) !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.navbar-bookio.widget .navbar-content {
+  min-height: 108px !important;
+  align-items: center !important;
+  padding: 18px 0 14px !important;
+}
+
+.navbar-bookio.widget .logo {
+  max-width: 118px !important;
+  max-height: 42px !important;
+  object-fit: contain !important;
+}
+
+.navbar-bookio.widget .brand {
+  text-align: center !important;
+}
+
+.navbar-bookio.widget .facility-name {
+  color: var(--vk-ink) !important;
+  display: block !important;
+  font-family: "Marcellus SC", "Prociono", Georgia, serif !important;
+  font-size: clamp(20px, 3.5vw, 34px) !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.03em !important;
+  line-height: 1.08 !important;
+  text-transform: uppercase !important;
+}
+
+.navbar-bookio.widget .facility-web {
+  color: var(--vk-ink) !important;
+  display: inline-block !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.16em !important;
+  margin-top: 8px !important;
+  opacity: 0.74 !important;
+  text-decoration: none !important;
+  text-transform: uppercase !important;
+}
+
+.navbar-bookio.widget .navbar-info > li > a,
+.navbar-bookio.widget #langSelector {
+  background: rgba(29, 14, 34, 0.04) !important;
+  border: 1px solid var(--vk-line) !important;
+  border-radius: 999px !important;
+  color: var(--vk-ink) !important;
+  min-height: 42px !important;
+  padding: 9px 14px !important;
+}
+
+.service-widget > widget-form > div > .container,
+.service-widget .container {
+  max-width: 980px !important;
+  padding-left: 24px !important;
+  padding-right: 24px !important;
+}
+
+.service-widget .custom-message {
+  margin-top: 18px !important;
+  margin-bottom: 44px !important;
+}
+
+.service-widget .custom-message .alert,
+.service-widget #customMessage .alert-notice {
+  background:
+    radial-gradient(circle at 16% 0%, rgba(238, 227, 206, 0.09), transparent 34%),
+    linear-gradient(135deg, #1d0e22 0%, #241128 100%) !important;
+  border: 1px solid rgba(238, 227, 206, 0.16) !important;
+  border-radius: 0 !important;
+  box-shadow: 0 20px 60px rgba(29, 14, 34, 0.16) !important;
+  color: var(--vk-cream) !important;
+  font-size: clamp(16px, 2.1vw, 19px) !important;
+  font-weight: 400 !important;
+  line-height: 1.55 !important;
+  padding: clamp(24px, 4vw, 44px) clamp(24px, 5vw, 56px) !important;
+  white-space: pre-line !important;
+}
+
+.service-widget .custom-message .alert::first-line,
+.service-widget #customMessage .alert-notice::first-line {
+  font-weight: 600 !important;
+}
+
+.service-widget section {
+  margin-top: 0 !important;
+}
+
+.service-widget .step {
+  background: var(--vk-ink) !important;
+  border: 1px solid rgba(238, 227, 206, 0.22) !important;
+  border-radius: 0 0 22px 0 !important;
+  box-shadow: 0 12px 26px rgba(29, 14, 34, 0.18) !important;
+  color: #fff !important;
+  font-family: "Marcellus SC", Georgia, serif !important;
+  font-size: 30px !important;
+  font-weight: 400 !important;
+  height: 78px !important;
+  line-height: 78px !important;
+  width: 66px !important;
+}
+
+.service-widget .widget-categories .header,
+.service-widget .choose-service .header,
+.service-widget .choose-worker .header,
+.service-widget .choose-terms .header,
+.service-widget .date-time .header,
+.service-widget .personal-information .header,
+.service-widget .summary .header {
+  align-items: center !important;
+  min-height: 78px !important;
+  padding-left: 86px !important;
+}
+
+.service-widget .widget-categories .header h3,
+.service-widget .choose-service .header h3,
+.service-widget .choose-worker .header h3,
+.service-widget .choose-terms .header h3,
+.service-widget .date-time .header h3,
+.service-widget .personal-information .header h3,
+.service-widget .summary .header h3 {
+  color: var(--vk-ink) !important;
+  font-family: "Marcellus SC", "Prociono", Georgia, serif !important;
+  font-size: clamp(27px, 4vw, 42px) !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.04em !important;
+  line-height: 1 !important;
+  margin: 0 !important;
+  text-transform: uppercase !important;
+}
+
+.service-widget .widget-categories widget-category {
+  margin-bottom: 14px !important;
+}
+
+.service-widget .widget-categories .category .category,
+.service-widget .choose-service .widget-services .service,
+.service-widget .choose-worker .widget-workers .worker,
+.service-widget .choose-terms .widget-terms .term,
+.service-widget .date-time .choose-date-time .widget-time .times .hours .hour {
+  background: rgba(255, 255, 255, 0.92) !important;
+  border: 1px solid rgba(29, 14, 34, 0.16) !important;
+  border-radius: 14px !important;
+  box-shadow: 0 10px 26px rgba(29, 14, 34, 0.055) !important;
+  color: var(--vk-ink) !important;
+  min-height: 58px !important;
+  opacity: 1 !important;
+  transition: border-color 0.22s ease, box-shadow 0.22s ease, transform 0.22s ease, background 0.22s ease !important;
+}
+
+.service-widget .widget-categories .category .category:hover,
+.service-widget .choose-service .widget-services .service:hover,
+.service-widget .choose-worker .widget-workers .worker:hover,
+.service-widget .choose-terms .widget-terms .term:hover,
+.service-widget .date-time .choose-date-time .widget-time .times .hours .hour:hover {
+  background: #fff !important;
+  border-color: rgba(29, 14, 34, 0.42) !important;
+  box-shadow: 0 18px 34px rgba(29, 14, 34, 0.09) !important;
+  transform: translateY(-2px) !important;
+}
+
+.service-widget .widget-categories .category .category.selected,
+.service-widget .choose-service .widget-services .service.selected,
+.service-widget .choose-worker .widget-workers .worker.selected,
+.service-widget .choose-terms .widget-terms .term.selected,
+.service-widget .date-time .choose-date-time .widget-time .times .hours .hour.selected {
+  background: var(--vk-ink) !important;
+  border-color: var(--vk-ink) !important;
+  color: #fff !important;
+}
+
+.service-widget .widget-categories .category .category .white-text,
+.service-widget .choose-service .widget-services .service .name,
+.service-widget .choose-worker .widget-workers .worker .worker-item .name,
+.service-widget .choose-terms .widget-terms .term .name {
+  color: var(--vk-ink) !important;
+  font-size: 17px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.01em !important;
+}
+
+.service-widget .widget-categories .category .category.selected .white-text,
+.service-widget .choose-service .widget-services .service.selected .name,
+.service-widget .choose-worker .widget-workers .worker.selected .worker-item .name,
+.service-widget .choose-terms .widget-terms .term.selected .name,
+.service-widget .date-time .choose-date-time .widget-time .times .hours .hour.selected {
+  color: #fff !important;
+}
+
+.service-widget .choose-service .widget-services .service .duration,
+.service-widget .choose-service .widget-services .service .price,
+.service-widget .choose-service .widget-services .service .description,
+.service-widget .summary,
+.service-widget .personal-information,
+.service-widget .date-time {
+  color: var(--vk-muted) !important;
+}
+
+.service-widget input,
+.service-widget textarea,
+.service-widget select,
+.service-widget .select2-container .select2-choice,
+.field-with-icon {
+  background: #fff !important;
+  border: 1px solid rgba(29, 14, 34, 0.18) !important;
+  border-radius: 14px !important;
+  color: var(--vk-ink) !important;
+  font-size: 15px !important;
+}
+
+.btn-teal,
+footer .content .buttons .button#create-res,
+.service-widget .discount-coupon-apply {
+  background: var(--vk-ink) !important;
+  border-color: var(--vk-ink) !important;
+  border-radius: 999px !important;
+  color: #fff !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+}
+
+.btn-teal:hover,
+footer .content .buttons .button#create-res:hover,
+.service-widget .discount-coupon-apply:hover:not(:disabled) {
+  background: #2a1730 !important;
+  box-shadow: 0 14px 30px rgba(29, 14, 34, 0.18) !important;
+  color: #fff !important;
+}
+
+.powered-by {
+  opacity: 0.42 !important;
+}
+
+@media (max-width: 767px) {
+  .navbar-bookio.widget .navbar-content {
+    min-height: 88px !important;
+    padding: 12px 0 !important;
+  }
+
+  .navbar-bookio.widget .logo {
+    max-width: 86px !important;
+    max-height: 34px !important;
+  }
+
+  .navbar-bookio.widget .facility-name {
+    font-size: 17px !important;
+    line-height: 1.12 !important;
+  }
+
+  .navbar-bookio.widget .facility-web {
+    font-size: 10px !important;
+    letter-spacing: 0.1em !important;
+  }
+
+  .service-widget > widget-form > div > .container,
+  .service-widget .container {
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+  }
+
+  .service-widget .custom-message {
+    margin-bottom: 34px !important;
+  }
+
+  .service-widget .custom-message .alert,
+  .service-widget #customMessage .alert-notice {
+    font-size: 14px !important;
+    line-height: 1.52 !important;
+    padding: 22px 18px !important;
+  }
+
+  .service-widget .step {
+    border-radius: 0 0 18px 0 !important;
+    font-size: 24px !important;
+    height: 62px !important;
+    line-height: 62px !important;
+    width: 54px !important;
+  }
+
+  .service-widget .widget-categories .header,
+  .service-widget .choose-service .header,
+  .service-widget .choose-worker .header,
+  .service-widget .choose-terms .header,
+  .service-widget .date-time .header,
+  .service-widget .personal-information .header,
+  .service-widget .summary .header {
+    min-height: 62px !important;
+    padding-left: 68px !important;
+  }
+
+  .service-widget .widget-categories .header h3,
+  .service-widget .choose-service .header h3,
+  .service-widget .choose-worker .header h3,
+  .service-widget .choose-terms .header h3,
+  .service-widget .date-time .header h3,
+  .service-widget .personal-information .header h3,
+  .service-widget .summary .header h3 {
+    font-size: 26px !important;
+  }
+
+  .service-widget .widget-categories .category .category,
+  .service-widget .choose-service .widget-services .service,
+  .service-widget .choose-worker .widget-workers .worker,
+  .service-widget .choose-terms .widget-terms .term {
+    min-height: 54px !important;
+  }
+}
