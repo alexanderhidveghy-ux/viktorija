@@ -8,7 +8,8 @@ import { useLenis } from "lenis/react";
 
 const BOOKIO_SCRIPT = "https://bookio-services-eu.s3.eu-central-1.amazonaws.com/assets/widget.bookio.js";
 const BOOKIO_WIDGET =
-    "https://services.bookio.com/viktorija-kendra-permanent-makeup-academy-beauty-studio/widget?lang=sk";
+    "https://services.bookio.com/viktorija-kendra-permanent-makeup-academy-beauty-studio/widget?lang=sk" +
+    "&css=https://www.viktorija.sk/bookio-widget.css";
 
 const PHONE = "+421907796562";
 const WHATSAPP = "https://wa.me/421907796562";
