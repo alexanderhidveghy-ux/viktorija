@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { ChevronDown } from "lucide-react";
 
 interface NavItem {
     label: string;
@@ -52,8 +53,50 @@ const NAV_RIGHT: NavItem[] = [
     { label: "Kontakt", href: "/kontakt" },
 ];
 
+// The mobile menu carries the full tree; the desktop bar stays a flat four links.
+type MobileNavItem = {
+    label: string;
+    href?: string;
+    children?: { label: string; href: string }[];
+};
+
+const MOBILE_NAV: MobileNavItem[] = [
+    { label: "Domov", href: "/" },
+    {
+        label: "ŠTÚDIO",
+        children: [
+            { label: "Permanentný Make-up", href: "/sluzby/permanentny-makeup" },
+            { label: "Odstraňovanie PMU", href: "/sluzby/odstranovanie-pmu" },
+            { label: "Nastreľovanie náušníc", href: "/sluzby/nastrelovanie-nausnic" },
+            { label: "Beauty therapy", href: "/sluzby/beauty-therapy" },
+            { label: "Skincare routine", href: "/sluzby/kremy-sera" },
+        ],
+    },
+    {
+        label: "ACADEMY",
+        children: [
+            { label: "Prehľad kurzov", href: "/academia" },
+            { label: "The Art of PMU", href: "/academia/the-art-of-pmu" },
+            { label: "Tri Techniky Obočia", href: "/academia/tri-techniky-obocia" },
+            { label: "Hyperrealistické Obočie", href: "/academia/hyperrealisticke-obocie" },
+            { label: "PMU Očných Liniek", href: "/academia/pmu-ocnych-liniek" },
+            { label: "PMU Pier", href: "/academia/pmu-pier" },
+            { label: "Laser Touch", href: "/academia/laser-touch" },
+            { label: "Deň Otvorených Dverí", href: "/academia/dod" },
+            { label: "Estetické nastrelovanie náušníc", href: "/academia/esteticke-nastrelovanie-nausnic" },
+        ],
+    },
+    { label: "Kontakt", href: "/kontakt" },
+];
+
 export default function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [openSection, setOpenSection] = useState<string | null>(null);
+
+    const closeMenu = () => {
+        setIsMenuOpen(false);
+        setOpenSection(null);
+    };
 
     // Prevent scroll when menu is open
     useEffect(() => {
@@ -112,7 +155,7 @@ export default function Header() {
 
                 {/* Mobile Hamburger (Right) */}
                 <button
-                    onClick={() => setIsMenuOpen(!isMenuOpen)}
+                    onClick={() => (isMenuOpen ? closeMenu() : setIsMenuOpen(true))}
                     className="md:hidden relative z-[70] w-10 h-10 flex flex-col items-center justify-center gap-1.5 focus:outline-none"
                     aria-label="Toggle Menu"
                 >
@@ -138,25 +181,76 @@ export default function Header() {
                             animate={{ opacity: 1, x: 0 }}
                             exit={{ opacity: 0, x: "100%" }}
                             transition={{ type: "spring", damping: 25, stiffness: 200 }}
-                            className="fixed top-0 left-0 w-full h-dvh z-[60] bg-[#F5F5F0] flex flex-col items-center justify-center py-20"
+                            className="fixed top-0 left-0 w-full h-dvh z-[60] bg-[#F5F5F0] overflow-y-auto overscroll-contain"
+                            data-lenis-prevent
                         >
-                            <nav className="flex flex-col items-center gap-10">
-                                {[...NAV_LEFT, ...NAV_RIGHT].map((item, idx) => (
-                                    <motion.div
-                                        key={item.href}
-                                        initial={{ opacity: 0, y: 20 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        transition={{ delay: 0.1 * idx }}
-                                    >
-                                        <Link
-                                            href={item.href}
-                                            onClick={() => setIsMenuOpen(false)}
-                                            className="relative font-marcellus uppercase tracking-widest text-3xl text-[#1D0E22] hover:text-gold transition-colors after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-px after:w-full after:bg-current after:origin-left after:scale-x-0 after:transition-transform after:duration-300 hover:after:scale-x-100"
+                            {/* min-h-full keeps a short menu centred while letting an expanded one scroll */}
+                            <nav className="flex min-h-full flex-col items-center justify-center gap-7 px-8 py-24">
+                                {MOBILE_NAV.map((item, idx) => {
+                                    const isOpen = openSection === item.label;
+
+                                    return (
+                                        <motion.div
+                                            key={item.label}
+                                            initial={{ opacity: 0, y: 20 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            transition={{ delay: 0.06 * idx }}
+                                            className="w-full flex flex-col items-center"
                                         >
-                                            {item.label}
-                                        </Link>
-                                    </motion.div>
-                                ))}
+                                            {item.children ? (
+                                                <>
+                                                    <button
+                                                        onClick={() => setOpenSection(isOpen ? null : item.label)}
+                                                        aria-expanded={isOpen}
+                                                        className="flex items-center gap-2 font-marcellus uppercase tracking-widest text-3xl text-[#1D0E22] transition-colors hover:text-gold"
+                                                    >
+                                                        {item.label}
+                                                        <motion.span
+                                                            animate={{ rotate: isOpen ? 180 : 0 }}
+                                                            transition={{ duration: 0.25 }}
+                                                            className="flex"
+                                                        >
+                                                            <ChevronDown size={22} strokeWidth={1.5} />
+                                                        </motion.span>
+                                                    </button>
+
+                                                    <AnimatePresence initial={false}>
+                                                        {isOpen && (
+                                                            <motion.div
+                                                                initial={{ height: 0, opacity: 0 }}
+                                                                animate={{ height: "auto", opacity: 1 }}
+                                                                exit={{ height: 0, opacity: 0 }}
+                                                                transition={{ duration: 0.25 }}
+                                                                className="w-full overflow-hidden"
+                                                            >
+                                                                <div className="flex flex-col items-center gap-4 pt-5">
+                                                                    {item.children.map((sub) => (
+                                                                        <Link
+                                                                            key={sub.href}
+                                                                            href={sub.href}
+                                                                            onClick={closeMenu}
+                                                                            className="font-marcellus text-lg text-[#1D0E22]/75 text-center transition-colors hover:text-gold"
+                                                                        >
+                                                                            {sub.label}
+                                                                        </Link>
+                                                                    ))}
+                                                                </div>
+                                                            </motion.div>
+                                                        )}
+                                                    </AnimatePresence>
+                                                </>
+                                            ) : (
+                                                <Link
+                                                    href={item.href!}
+                                                    onClick={closeMenu}
+                                                    className="relative font-marcellus uppercase tracking-widest text-3xl text-[#1D0E22] hover:text-gold transition-colors after:content-[\'\'] after:absolute after:bottom-0 after:left-0 after:h-px after:w-full after:bg-current after:origin-left after:scale-x-0 after:transition-transform after:duration-300 hover:after:scale-x-100"
+                                                >
+                                                    {item.label}
+                                                </Link>
+                                            )}
+                                        </motion.div>
+                                    );
+                                })}
                             </nav>
                         </motion.div>
                     )}
