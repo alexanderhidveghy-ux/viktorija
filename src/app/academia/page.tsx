@@ -26,11 +26,11 @@ const COURSES: Course[] = [
     { label: "The Art of PMU", href: "/academia/the-art-of-pmu", image: "/academia/kurz-art-of-pmu/preview.PNG", sub: "Kurz pre Začiatočníkov", position: "center 40%" },
     { label: "Tri Techniky Obočia", href: "/academia/tri-techniky-obocia", image: "/academia/kurz-obocie/preview.PNG", sub: "Kurz pre Začiatočníkov aj pokročilých" },
     { label: "Laser Touch", href: "/academia/laser-touch", image: "/academia/kurz-laser/lasertouch_preview.PNG", sub: "Kurz" },
-    { label: "Estetické nastrelovanie náušníc", href: "/academia/esteticke-nastrelovanie-nausnic", video: "https://pub-60b685024baf4def829d5151d4dc320a.r2.dev/kurz7.mp4", sub: "Kurz" },
+    { label: "Deň Otvorených Dverí", href: "/academia/dod", video: "https://pub-60b685024baf4def829d5151d4dc320a.r2.dev/dod.mp4", sub: "Príďte sa pozrieť", position: "center 20%" },
     { label: "PMU Očných Liniek", href: "/academia/pmu-ocnych-liniek", image: "/academia/kurz-linky/linky_preview.PNG", sub: "Master Class pre Pokročilých" },
     { label: "PMU Pier", href: "/academia/pmu-pier", image: "/academia/kurz-pery/pery_preview.PNG", sub: "Master Class pre Pokročilých" },
     { label: "Hyperrealistické Obočie", href: "/academia/hyperrealisticke-obocie", image: "/academia/kurz-hyperrealisticke-obocie/preview.PNG", sub: "Master Class pre Pokročilých" },
-    { label: "Deň Otvorených Dverí", href: "/academia/dod", video: "https://pub-60b685024baf4def829d5151d4dc320a.r2.dev/dod.mp4", sub: "Príďte sa pozrieť", position: "center 20%" },
+    { label: "Estetické nastrelovanie náušníc", href: "/academia/esteticke-nastrelovanie-nausnic", video: "https://pub-60b685024baf4def829d5151d4dc320a.r2.dev/kurz7.mp4", sub: "Kurz" },
 ];
 
 export default function AcademiaPage() {
