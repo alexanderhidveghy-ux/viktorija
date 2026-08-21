@@ -7,6 +7,7 @@
   --vk-muted: rgba(238, 227, 206, 0.68);
   --vk-line: rgba(238, 227, 206, 0.22);
   --vk-soft: rgba(238, 227, 206, 0.08);
+  --vk-border: rgba(238, 227, 206, 0.34);
 }
 
 html,
@@ -190,7 +191,7 @@ textarea,
 .service-widget .choose-terms .widget-terms .term,
 .service-widget .date-time .choose-date-time .widget-time .times .hours .hour {
   background: transparent !important;
-  border: 1px solid rgba(238, 227, 206, 0.52) !important;
+  border: 1px solid rgba(238, 227, 206, 0.28) !important;
   border-radius: 999px !important;
   box-shadow: none !important;
   color: var(--vk-cream) !important;
@@ -230,6 +231,12 @@ textarea,
   letter-spacing: 0.01em !important;
 }
 
+.service-widget .widget-categories .category .category .white-text {
+  font-size: 14px !important;
+  letter-spacing: 0.18em !important;
+  text-transform: uppercase !important;
+}
+
 .service-widget .widget-categories .category .category.selected .white-text,
 .service-widget .choose-service .widget-services .service.selected .name,
 .service-widget .choose-worker .widget-workers .worker.selected .worker-item .name,
@@ -252,8 +259,8 @@ textarea,
 .service-widget select,
 .service-widget .select2-container .select2-choice,
 .field-with-icon {
-  background: transparent !important;
-  border: 1px solid rgba(238, 227, 206, 0.42) !important;
+  background: rgba(238, 227, 206, 0.035) !important;
+  border: 1px solid rgba(238, 227, 206, 0.34) !important;
   border-radius: 14px !important;
   color: var(--vk-cream) !important;
   font-size: 15px !important;
@@ -281,6 +288,30 @@ footer .content .buttons .button#create-res:hover,
 
 .powered-by {
   opacity: 0.42 !important;
+}
+
+footer,
+footer .content,
+footer .content .buttons,
+.service-widget footer,
+.service-widget footer .content {
+  background: var(--vk-ink) !important;
+  color: var(--vk-cream) !important;
+  border-color: rgba(238, 227, 206, 0.16) !important;
+}
+
+footer .content .buttons .button#create-res,
+footer .content .buttons .button#create-res.disabled,
+footer .content .buttons .button#create-res.disabled:hover {
+  background: transparent !important;
+  border: 1px solid rgba(238, 227, 206, 0.34) !important;
+  color: var(--vk-cream) !important;
+  opacity: 1 !important;
+}
+
+footer .content .buttons .button#create-res.disabled,
+footer .content .buttons .button#create-res.disabled:hover {
+  opacity: 0.48 !important;
 }
 
 .service-widget a,
@@ -327,6 +358,7 @@ footer .content .buttons .button#create-res:hover,
 .ui-calendar .ui-datepicker,
 .service-widget .date-time .choose-date-time .widget-time,
 .service-widget .date-time .choose-date-time .widget-time .times,
+.service-widget .date-time .choose-date-time .widget-time .times .hours,
 .service-widget .date-time .choose-date-time .widget-time .titles,
 .service-widget .summary .summary-panel,
 .service-widget .personal-information .information {
@@ -347,8 +379,31 @@ footer .content .buttons .button#create-res:hover,
 .service-widget .personal-information .information .customer-info.highlighted,
 .service-widget .personal-information .information .field,
 .service-widget .personal-information .information .phone-field {
+  background: rgba(238, 227, 206, 0.035) !important;
+  border: 1px solid rgba(238, 227, 206, 0.34) !important;
+  border-radius: 14px !important;
+  box-shadow: none !important;
+}
+
+.service-widget .date-time .choose-date-time .widget-time .times .hours,
+.service-widget .date-time .choose-date-time .widget-time .times .hours > *,
+.service-widget .date-time .choose-date-time .widget-time .times .hours .hour-wrapper,
+.service-widget .date-time .choose-date-time .widget-time .times .hours .hour-container {
   background: transparent !important;
-  border-color: rgba(238, 227, 206, 0.42) !important;
+  border-color: rgba(238, 227, 206, 0.22) !important;
+}
+
+.service-widget .date-time .choose-date-time .widget-time .times .hours .hour {
+  background: transparent !important;
+  border: 1px solid rgba(238, 227, 206, 0.34) !important;
+  border-radius: 999px !important;
+  color: var(--vk-cream) !important;
+  min-width: 112px !important;
+}
+
+.service-widget .date-time .choose-date-time .widget-time .times .hours .hour *,
+.service-widget .date-time .choose-date-time .widget-time .times .hours .hour span {
+  color: var(--vk-cream) !important;
 }
 
 .service-widget .widget-categories .category .category,
@@ -397,11 +452,10 @@ footer .content .buttons .button#create-res:hover,
   }
 
   .service-widget .step {
-    border-radius: 0 0 18px 0 !important;
     font-size: 24px !important;
-    height: 62px !important;
-    line-height: 62px !important;
-    width: 54px !important;
+    height: auto !important;
+    line-height: 1 !important;
+    width: auto !important;
   }
 
   .service-widget .widget-categories .header,
@@ -412,7 +466,7 @@ footer .content .buttons .button#create-res:hover,
   .service-widget .personal-information .header,
   .service-widget .summary .header {
     min-height: 62px !important;
-    padding-left: 68px !important;
+    padding-left: 48px !important;
   }
 
   .service-widget .widget-categories .header h3,
