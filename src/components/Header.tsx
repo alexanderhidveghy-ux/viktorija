@@ -138,7 +138,7 @@ export default function Header() {
                             animate={{ opacity: 1, x: 0 }}
                             exit={{ opacity: 0, x: "100%" }}
                             transition={{ type: "spring", damping: 25, stiffness: 200 }}
-                            className="fixed top-0 left-0 w-full h-screen z-[60] bg-[#F5F5F0] flex flex-col items-center justify-center pt-20"
+                            className="fixed top-0 left-0 w-full h-dvh z-[60] bg-[#F5F5F0] flex flex-col items-center justify-center py-20"
                         >
                             <nav className="flex flex-col items-center gap-10">
                                 {[...NAV_LEFT, ...NAV_RIGHT].map((item, idx) => (
