@@ -881,3 +881,52 @@ footer .content .buttons .button#create-res.disabled:hover {
     padding-left: 32px !important;
   }
 }
+
+/* Date/time steps are nested differently in Bookio, so align them separately. */
+.service-widget .date-time .choose-date-time,
+.service-widget .date-time .choose-date-time .widget-date,
+.service-widget .date-time .choose-date-time .widget-time {
+  display: block !important;
+  position: relative !important;
+}
+
+.service-widget .date-time .choose-date-time > .step,
+.service-widget .date-time .choose-date-time .widget-date > .step,
+.service-widget .date-time .choose-date-time .widget-time > .step {
+  display: block !important;
+  left: 0 !important;
+  line-height: 1 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  position: absolute !important;
+  text-align: left !important;
+  top: 0.08em !important;
+  transform: none !important;
+  width: 34px !important;
+}
+
+.service-widget .date-time .choose-date-time > .header,
+.service-widget .date-time .choose-date-time .widget-date > .header,
+.service-widget .date-time .choose-date-time .widget-time > .header {
+  align-items: baseline !important;
+  display: flex !important;
+  margin: 0 0 34px !important;
+  min-height: 0 !important;
+  padding: 0 0 0 42px !important;
+}
+
+@media (max-width: 767px) {
+  .service-widget .date-time .choose-date-time > .step,
+  .service-widget .date-time .choose-date-time .widget-date > .step,
+  .service-widget .date-time .choose-date-time .widget-time > .step {
+    top: 0.06em !important;
+    width: 28px !important;
+  }
+
+  .service-widget .date-time .choose-date-time > .header,
+  .service-widget .date-time .choose-date-time .widget-date > .header,
+  .service-widget .date-time .choose-date-time .widget-time > .header {
+    margin-bottom: 28px !important;
+    padding-left: 32px !important;
+  }
+}
