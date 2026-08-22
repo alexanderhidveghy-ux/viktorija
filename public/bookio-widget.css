@@ -186,6 +186,9 @@ textarea,
 .service-widget .summary {
   border-left: 0 !important;
   box-shadow: none !important;
+  column-gap: 22px !important;
+  display: grid !important;
+  grid-template-columns: 34px minmax(0, 1fr) !important;
 }
 
 .service-widget .widget-categories::before,
@@ -214,8 +217,35 @@ textarea,
 .service-widget .personal-information .header,
 .service-widget .summary .header {
   align-items: center !important;
+  display: flex !important;
+  grid-column: 2 !important;
+  grid-row: 1 !important;
   min-height: 66px !important;
   padding-left: 0 !important;
+}
+
+.service-widget .widget-categories > .step,
+.service-widget .choose-service > .step,
+.service-widget .choose-worker > .step,
+.service-widget .choose-terms > .step,
+.service-widget .date-time > .step,
+.service-widget .personal-information > .step,
+.service-widget .summary > .step {
+  align-self: center !important;
+  grid-column: 1 !important;
+  grid-row: 1 !important;
+  justify-self: center !important;
+  margin: 0 !important;
+}
+
+.service-widget .widget-categories > :not(.step):not(.step-line):not(.header),
+.service-widget .choose-service > :not(.step):not(.step-line):not(.header),
+.service-widget .choose-worker > :not(.step):not(.step-line):not(.header),
+.service-widget .choose-terms > :not(.step):not(.step-line):not(.header),
+.service-widget .date-time > :not(.step):not(.step-line):not(.header),
+.service-widget .personal-information > :not(.step):not(.step-line):not(.header),
+.service-widget .summary > :not(.step):not(.step-line):not(.header) {
+  grid-column: 1 / -1 !important;
 }
 
 .service-widget .widget-categories .header h3,
@@ -342,8 +372,25 @@ textarea,
 
 .service-widget .choose-service .widget-services .service .name {
   font-size: 16px !important;
-  font-weight: 500 !important;
+  font-weight: 400 !important;
   letter-spacing: 0.005em !important;
+}
+
+.service-widget .choose-service .widget-services .service,
+.service-widget .choose-service .widget-services .service:hover,
+.service-widget .choose-service .widget-services .service.selected {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  min-height: auto !important;
+}
+
+.service-widget .choose-service .widget-services .service .name,
+.service-widget .choose-service .widget-services .service .name *,
+.service-widget .choose-service .widget-services .service strong,
+.service-widget .choose-service .widget-services .service b {
+  font-weight: 400 !important;
 }
 
 .service-widget input,
@@ -591,6 +638,14 @@ footer .content .buttons .button#create-res.disabled:hover {
   min-height: 60px !important;
 }
 
+.service-widget .choose-service .widget-services .service,
+.service-widget .choose-service .widget-services .service:hover,
+.service-widget .choose-service .widget-services .service.selected {
+  border: 0 !important;
+  border-radius: 0 !important;
+  min-height: auto !important;
+}
+
 @media (max-width: 767px) {
   .navbar-bookio.widget .navbar-content {
     min-height: 88px !important;
@@ -650,6 +705,17 @@ footer .content .buttons .button#create-res.disabled:hover {
     padding-left: 0 !important;
   }
 
+  .service-widget .widget-categories,
+  .service-widget .choose-service,
+  .service-widget .choose-worker,
+  .service-widget .choose-terms,
+  .service-widget .date-time,
+  .service-widget .personal-information,
+  .service-widget .summary {
+    column-gap: 16px !important;
+    grid-template-columns: 30px minmax(0, 1fr) !important;
+  }
+
   .service-widget .widget-categories .header h3,
   .service-widget .choose-service .header h3,
   .service-widget .choose-worker .header h3,
@@ -665,5 +731,13 @@ footer .content .buttons .button#create-res.disabled:hover {
   .service-widget .choose-worker .widget-workers .worker,
   .service-widget .choose-terms .widget-terms .term {
     min-height: 54px !important;
+  }
+
+  .service-widget .choose-service .widget-services .service,
+  .service-widget .choose-service .widget-services .service:hover,
+  .service-widget .choose-service .widget-services .service.selected {
+    border: 0 !important;
+    border-radius: 0 !important;
+    min-height: auto !important;
   }
 }
