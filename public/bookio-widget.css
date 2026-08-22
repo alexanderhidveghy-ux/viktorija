@@ -150,12 +150,20 @@ textarea,
   border-radius: 0 !important;
   box-shadow: none !important;
   color: var(--vk-cream) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex: 0 0 34px !important;
   font-family: "Marcellus SC", Georgia, serif !important;
   font-size: 30px !important;
   font-weight: 400 !important;
   height: auto !important;
   line-height: 1 !important;
+  margin: 0 22px 0 0 !important;
   opacity: 0.92 !important;
+  padding: 0 !important;
+  position: relative !important;
+  top: 0 !important;
   width: auto !important;
 }
 
@@ -169,6 +177,35 @@ textarea,
   display: none !important;
 }
 
+.service-widget .widget-categories,
+.service-widget .choose-service,
+.service-widget .choose-worker,
+.service-widget .choose-terms,
+.service-widget .date-time,
+.service-widget .personal-information,
+.service-widget .summary {
+  border-left: 0 !important;
+  box-shadow: none !important;
+}
+
+.service-widget .widget-categories::before,
+.service-widget .widget-categories::after,
+.service-widget .choose-service::before,
+.service-widget .choose-service::after,
+.service-widget .choose-worker::before,
+.service-widget .choose-worker::after,
+.service-widget .choose-terms::before,
+.service-widget .choose-terms::after,
+.service-widget .date-time::before,
+.service-widget .date-time::after,
+.service-widget .personal-information::before,
+.service-widget .personal-information::after,
+.service-widget .summary::before,
+.service-widget .summary::after {
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
 .service-widget .widget-categories .header,
 .service-widget .choose-service .header,
 .service-widget .choose-worker .header,
@@ -178,7 +215,7 @@ textarea,
 .service-widget .summary .header {
   align-items: center !important;
   min-height: 66px !important;
-  padding-left: 54px !important;
+  padding-left: 0 !important;
 }
 
 .service-widget .widget-categories .header h3,
@@ -301,6 +338,12 @@ textarea,
 .service-widget .personal-information,
 .service-widget .date-time {
   color: var(--vk-muted) !important;
+}
+
+.service-widget .choose-service .widget-services .service .name {
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.005em !important;
 }
 
 .service-widget input,
@@ -588,8 +631,11 @@ footer .content .buttons .button#create-res.disabled:hover {
 
   .service-widget .step {
     font-size: 24px !important;
+    flex-basis: 30px !important;
     height: auto !important;
     line-height: 1 !important;
+    margin: 0 18px 0 0 !important;
+    padding: 0 !important;
     width: auto !important;
   }
 
@@ -601,7 +647,7 @@ footer .content .buttons .button#create-res.disabled:hover {
   .service-widget .personal-information .header,
   .service-widget .summary .header {
     min-height: 62px !important;
-    padding-left: 48px !important;
+    padding-left: 0 !important;
   }
 
   .service-widget .widget-categories .header h3,
