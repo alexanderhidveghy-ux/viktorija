@@ -812,3 +812,72 @@ footer .content .buttons .button#create-res.disabled:hover {
   -webkit-text-fill-color: var(--vk-cream) !important;
   opacity: 1 !important;
 }
+
+/* Final step geometry: same baseline for every Bookio section. */
+.service-widget .widget-categories,
+.service-widget .choose-service,
+.service-widget .choose-worker,
+.service-widget .choose-terms,
+.service-widget .date-time,
+.service-widget .personal-information,
+.service-widget .summary {
+  display: block !important;
+  position: relative !important;
+}
+
+.service-widget .widget-categories > .step,
+.service-widget .choose-service > .step,
+.service-widget .choose-worker > .step,
+.service-widget .choose-terms > .step,
+.service-widget .date-time > .step,
+.service-widget .personal-information > .step,
+.service-widget .summary > .step {
+  display: block !important;
+  left: 0 !important;
+  line-height: 1 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  position: absolute !important;
+  text-align: left !important;
+  top: 0.08em !important;
+  transform: none !important;
+  width: 34px !important;
+}
+
+.service-widget .widget-categories > .header,
+.service-widget .choose-service > .header,
+.service-widget .choose-worker > .header,
+.service-widget .choose-terms > .header,
+.service-widget .date-time > .header,
+.service-widget .personal-information > .header,
+.service-widget .summary > .header {
+  align-items: baseline !important;
+  display: flex !important;
+  margin: 0 0 34px !important;
+  min-height: 0 !important;
+  padding: 0 0 0 42px !important;
+}
+
+@media (max-width: 767px) {
+  .service-widget .widget-categories > .step,
+  .service-widget .choose-service > .step,
+  .service-widget .choose-worker > .step,
+  .service-widget .choose-terms > .step,
+  .service-widget .date-time > .step,
+  .service-widget .personal-information > .step,
+  .service-widget .summary > .step {
+    top: 0.06em !important;
+    width: 28px !important;
+  }
+
+  .service-widget .widget-categories > .header,
+  .service-widget .choose-service > .header,
+  .service-widget .choose-worker > .header,
+  .service-widget .choose-terms > .header,
+  .service-widget .date-time > .header,
+  .service-widget .personal-information > .header,
+  .service-widget .summary > .header {
+    margin-bottom: 28px !important;
+    padding-left: 32px !important;
+  }
+}
