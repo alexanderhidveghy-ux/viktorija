@@ -741,3 +741,74 @@ footer .content .buttons .button#create-res.disabled:hover {
     min-height: auto !important;
   }
 }
+
+/* Final Bookio overrides: keep step numbers inline and active subcategories readable. */
+.service-widget .widget-categories,
+.service-widget .choose-service,
+.service-widget .choose-worker,
+.service-widget .choose-terms,
+.service-widget .date-time,
+.service-widget .personal-information,
+.service-widget .summary {
+  align-items: baseline !important;
+  column-gap: 12px !important;
+  display: grid !important;
+  grid-template-columns: max-content minmax(0, 1fr) !important;
+}
+
+.service-widget .widget-categories > .step,
+.service-widget .choose-service > .step,
+.service-widget .choose-worker > .step,
+.service-widget .choose-terms > .step,
+.service-widget .date-time > .step,
+.service-widget .personal-information > .step,
+.service-widget .summary > .step {
+  align-self: baseline !important;
+  display: block !important;
+  grid-column: 1 !important;
+  grid-row: 1 !important;
+  justify-self: start !important;
+  line-height: 1 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  transform: translateY(0.08em) !important;
+}
+
+.service-widget .widget-categories > .header,
+.service-widget .choose-service > .header,
+.service-widget .choose-worker > .header,
+.service-widget .choose-terms > .header,
+.service-widget .date-time > .header,
+.service-widget .personal-information > .header,
+.service-widget .summary > .header {
+  align-self: baseline !important;
+  grid-column: 2 !important;
+  grid-row: 1 !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+}
+
+.service-widget .widget-categories .sub-categories .category .category,
+.service-widget .widget-categories .sub-categories .category .category:hover,
+.service-widget .widget-categories .sub-categories .category .category.selected,
+.service-widget .widget-categories .sub-categories .category .category.active,
+.service-widget .widget-categories .sub-categories .category.active .category,
+.service-widget .widget-categories .sub-categories .category.selected .category,
+.service-widget .widget-categories .sub-categories [class*="active"] .category,
+.service-widget .widget-categories .sub-categories [class*="selected"] .category {
+  color: var(--vk-cream) !important;
+  -webkit-text-fill-color: var(--vk-cream) !important;
+}
+
+.service-widget .widget-categories .sub-categories .category .category *,
+.service-widget .widget-categories .sub-categories .category .category:hover *,
+.service-widget .widget-categories .sub-categories .category .category.selected *,
+.service-widget .widget-categories .sub-categories .category .category.active *,
+.service-widget .widget-categories .sub-categories .category.active .category *,
+.service-widget .widget-categories .sub-categories .category.selected .category *,
+.service-widget .widget-categories .sub-categories [class*="active"] .category *,
+.service-widget .widget-categories .sub-categories [class*="selected"] .category * {
+  color: var(--vk-cream) !important;
+  -webkit-text-fill-color: var(--vk-cream) !important;
+  opacity: 1 !important;
+}
