@@ -129,7 +129,7 @@ export default function PrivacyPage() {
                             <li>Obmedzenie spracovania</li>
                             <li>Prenosnosť údajov</li>
                             <li>Odvolanie súhlasu – stane sa účinným dňom odvolania</li>
-                            <li>Podanie sťažnosti u Úradu na ochranu osobných údajov SR (Hraničná 12, 820 07 Bratislava, www.dataprotection.gov.sk)</li>
+                            <li>Podanie sťažnosti u Úradu na ochranu osobných údajov SR (Galvaniho Business Centrum II, Galvaniho 7/B, 821 04 Bratislava, www.dataprotection.gov.sk)</li>
                         </ul>
 
                         <p className="mt-8 pt-8 border-t border-[#1D0E22]/10">

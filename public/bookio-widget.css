@@ -930,3 +930,76 @@ footer .content .buttons .button#create-res.disabled:hover {
     padding-left: 32px !important;
   }
 }
+
+/* ==========================================================================
+   Doplnky podľa skutočnej štruktúry widgetu
+   Bookio renderuje službu ako:
+     <service class="service [selected]">
+       <div class="mobile">
+         <div class="head">
+           <div class="title">
+             <div class="radio-button"><input class="item" type="radio"></div>
+             <div class="item">Názov (30min.) - 44 €</div>
+           </div>
+           <i class="fa fa-chevron-down|up"></i>
+         </div>
+         <div class="content [displayed]"><div class="item">Popis…</div></div>
+       </div>
+     </service>
+   Popis je teda vždy v DOM, len ho drží zbalený accordion – triedu
+   `displayed` dostane až vybraná položka. Kategória je
+   <div class="category [selected]"><div class="white-text">…</div></div>.
+   ========================================================================== */
+
+/* --- Vybraná služba a kategória: biele pozadie, tmavý text ---------------- */
+
+.service-widget .choose-service .widget-services .service.selected,
+.service-widget .widget-categories .category .category.selected {
+  background: #ffffff !important;
+  border-color: #ffffff !important;
+}
+
+.service-widget .choose-service .widget-services .service.selected .title .item,
+.service-widget .choose-service .widget-services .service.selected .content .item,
+.service-widget .choose-service .widget-services .service.selected .head,
+.service-widget .choose-service .widget-services .service.selected i,
+.service-widget .widget-categories .category .category.selected .white-text {
+  color: var(--vk-ink) !important;
+}
+
+/* Popis vybranej služby o odtieň jemnejšie, nech názov drží prednosť. */
+.service-widget .choose-service .widget-services .service.selected .content .item {
+  color: rgba(29, 14, 34, 0.72) !important;
+}
+
+/* Prepínač na bielom podklade. */
+.service-widget .choose-service .widget-services .service.selected .radio-button input {
+  accent-color: var(--vk-ink) !important;
+}
+
+/* --- Popis viditeľný vždy, nielen po výbere ------------------------------- */
+/* `.content` je zbalený accordion; `.displayed` ho otvára. Otvárame všetky. */
+
+.service-widget .choose-service .widget-services .service .content {
+  display: block !important;
+  max-height: none !important;
+  height: auto !important;
+  overflow: visible !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  padding-top: 0.35rem !important;
+}
+
+.service-widget .choose-service .widget-services .service .content .item {
+  color: rgba(238, 227, 206, 0.82) !important;
+}
+
+/* Názov a cena nevybranej služby v plnej krémovej, aby boli čitateľné hneď. */
+.service-widget .choose-service .widget-services .service:not(.selected) .title .item {
+  color: var(--vk-cream) !important;
+}
+
+/* Keď je popis vždy otvorený, šípka accordionu už nič nehovorí. */
+.service-widget .choose-service .widget-services .service .head > i.fa {
+  display: none !important;
+}

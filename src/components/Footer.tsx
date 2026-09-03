@@ -4,6 +4,18 @@ import { usePathname } from "next/navigation";
 import Image from "next/image";
 import GoogleMap from "@/components/GoogleMap";
 
+// Otváracie hodiny podľa pútača na prevádzke (Twin City Tower).
+// Pozor: JSON-LD v app/layout.tsx uvádza Po–Pi 09:00–18:00, čo im nezodpovedá.
+const openingHours = [
+    { day: "Po", hours: "zatvorené" },
+    { day: "Ut", hours: "8:00 – 12:00" },
+    { day: "St", hours: "10:00 – 19:00" },
+    { day: "Št", hours: "10:00 – 19:00" },
+    { day: "Pi", hours: "9:00 – 13:00" },
+    { day: "So", hours: "zatvorené" },
+    { day: "Ne", hours: "zatvorené" },
+];
+
 function NavLink({ href, label, pathname }: { href: string; label: string; pathname: string }) {
     const isActive = pathname === href || (href.startsWith('/#') && pathname === '/');
 
@@ -29,9 +41,9 @@ export default function Footer() {
             <div className="w-[95vw] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
                 {/* LEFT SIDE - Content */}
                 <div className="flex flex-col justify-between h-full">
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left items-start">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-[minmax(0,0.75fr)_repeat(3,minmax(0,1fr))] gap-8 lg:gap-10 text-center md:text-left items-start">
                         {/* Brand */}
-                        <div className="relative w-full h-32 md:h-48">
+                        <div className="relative w-full h-24 md:h-32">
                             <Image
                                 src="/shared/output-onlinepngtools-removebg-preview.png"
                                 alt="Viktorija Kendra"
@@ -59,6 +71,19 @@ export default function Footer() {
                                 <a href="tel:+421907796562" className="block hover:text-white transition-all duration-300 text-[#EEE3CE]">+421 907 796 562</a>
                                 <a href="mailto:viktorija@viktorija.sk" className="block hover:[text-shadow:0_0_10px_rgba(238,227,206,0.6)] transition-all duration-300 text-[#EEE3CE]">viktorija@viktorija.sk</a>
                             </div>
+                        </div>
+
+                        {/* Opening hours */}
+                        <div className="space-y-6 pt-4">
+                            <h4 className="font-marcellus text-[#EEE3CE] tracking-[0.2em] text-sm uppercase">OTVÁRACIE HODINY</h4>
+                            <dl className="font-montserrat text-[#EEE3CE] font-light text-sm space-y-2">
+                                {openingHours.map(({ day, hours }) => (
+                                    <div key={day} className="flex items-baseline justify-center gap-3 md:justify-between">
+                                        <dt className="uppercase tracking-[0.12em] text-[11px] text-[#EEE3CE]/70">{day}</dt>
+                                        <dd className="whitespace-nowrap text-[#EEE3CE]">{hours}</dd>
+                                    </div>
+                                ))}
+                            </dl>
                         </div>
                     </div>
 
