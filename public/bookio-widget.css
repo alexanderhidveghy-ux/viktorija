@@ -1003,3 +1003,25 @@ footer .content .buttons .button#create-res.disabled:hover {
 .service-widget .choose-service .widget-services .service .head > i.fa {
   display: none !important;
 }
+
+/* --- Riadok s názvom a cenou: typografia ako pri výbere kategórie --------- */
+/* Kategórie idú 14px / 0.18em / uppercase; služby to preberajú, len tenšie.  */
+/* Potomkovia sú v selektore zámerne: staršie pravidlo vyššie tlačí `strong`  */
+/* a `b` na 400, čo by tenký rez v názve prebilo.                             */
+.service-widget .choose-service .widget-services .service .title .item,
+.service-widget .choose-service .widget-services .service .title .item *,
+.service-widget .choose-service .widget-services .service.selected .title .item,
+.service-widget .choose-service .widget-services .service.selected .title .item * {
+  font-size: 14px !important;
+  font-weight: 300 !important;
+  letter-spacing: 0.18em !important;
+  text-transform: uppercase !important;
+}
+
+/* Popis drží veľkosť, uberá sa mu len váha, nech názov ostane dominantný. */
+.service-widget .choose-service .widget-services .service .content .item,
+.service-widget .choose-service .widget-services .service .content .item *,
+.service-widget .choose-service .widget-services .service.selected .content .item,
+.service-widget .choose-service .widget-services .service.selected .content .item * {
+  font-weight: 300 !important;
+}
