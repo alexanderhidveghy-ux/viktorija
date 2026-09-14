@@ -277,9 +277,7 @@ export default function WebinarButton() {
                                                     checked={privacyConsent}
                                                     onChange={setPrivacyConsent}
                                                     theme="dark"
-                                                >
-                                                    Súhlasím so spracovaním osobných údajov na účely registrácie a účasti na webinári podľa
-                                                </PrivacyConsentCheckbox>
+                                                />
                                                 <label className="flex items-start gap-3 rounded-xl border border-white/10 bg-white/5 p-4 font-montserrat text-xs leading-relaxed text-white/70">
                                                     <input
                                                         type="checkbox"

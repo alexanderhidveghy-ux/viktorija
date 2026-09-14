@@ -51,38 +51,38 @@ export default function KontaktPage() {
             <Header />
             <h1 className="sr-only">Kontakt</h1>
 
-            <div className="pt-32 pb-24 w-[90vw] md:w-[95vw] mx-auto min-h-screen grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
+            <div className="pt-20 pb-8 md:pt-32 md:pb-24 w-[90vw] md:w-[95vw] mx-auto md:min-h-screen grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
 
                 {/* Contact Text & Form */}
-                <div className="lg:col-span-4 space-y-12 animate-fade-in-up">
+                <div className="lg:col-span-4 space-y-4 md:space-y-10 animate-fade-in-up">
                     <div>
-                        <p className="font-montserrat text-lg md:text-xl text-[#1D0E22]/80 font-light max-w-lg leading-relaxed border-l-2 border-gold pl-6">
+                        <p className="font-montserrat text-sm md:text-xl text-[#1D0E22]/80 font-light max-w-lg leading-relaxed border-l-2 border-[#1D0E22] pl-4 md:pl-6">
                             Máte otázky alebo sa chcete objednať? Neváhajte ma kontaktovať.
                         </p>
                     </div>
 
-                    <div className="space-y-6 font-montserrat font-light text-lg">
+                    <div className="space-y-2 md:space-y-5 font-montserrat font-light text-sm md:text-lg">
                         <div className="flex flex-col gap-1">
-                            <span className="text-gold uppercase tracking-widest text-sm font-bold">Adresa</span>
+                            <span className="text-[#1D0E22] uppercase tracking-widest text-xs md:text-sm font-bold">Adresa</span>
                             <p>Twin City Tower<br />Mlynské Nivy 10, 821 09 Bratislava</p>
                         </div>
                         <div className="flex flex-col gap-1">
-                            <span className="text-gold uppercase tracking-widest text-sm font-bold">Telefón</span>
+                            <span className="text-[#1D0E22] uppercase tracking-widest text-xs md:text-sm font-bold">Telefón</span>
                             <a href="tel:+421907796562" className="hover:text-gold transition-colors">+421 907 796 562</a>
                         </div>
                         <div className="flex flex-col gap-1">
-                            <span className="text-gold uppercase tracking-widest text-sm font-bold">Email</span>
+                            <span className="text-[#1D0E22] uppercase tracking-widest text-xs md:text-sm font-bold">Email</span>
                             <a href="mailto:viktorija@viktorija.sk" className="hover:text-gold transition-colors">viktorija@viktorija.sk</a>
                         </div>
                     </div>
 
 
-                    <form onSubmit={handleSubmit} className="space-y-6 max-w-md pt-8">
+                    <form onSubmit={handleSubmit} className="space-y-2 md:space-y-5 max-w-md pt-0 md:pt-6">
                         <div>
                             <input
                                 type="text"
                                 placeholder="Vaše Meno"
-                                className="w-full bg-transparent border-b border-[#1D0E22]/20 py-4 text-[#1D0E22] placeholder-[#1D0E22]/50 focus:outline-none focus:border-gold transition-colors font-montserrat font-light"
+                                className="w-full bg-transparent border-b border-[#1D0E22]/20 py-2 md:py-3 text-sm md:text-base text-[#1D0E22] placeholder-[#1D0E22]/80 focus:outline-none focus:border-[#1D0E22] transition-colors font-montserrat font-light"
                                 required
                                 value={formData.name}
                                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -93,7 +93,7 @@ export default function KontaktPage() {
                             <input
                                 type="email"
                                 placeholder="Vaša E-mailová Adresa"
-                                className="w-full bg-transparent border-b border-[#1D0E22]/20 py-4 text-[#1D0E22] placeholder-[#1D0E22]/50 focus:outline-none focus:border-gold transition-colors font-montserrat font-light"
+                                className="w-full bg-transparent border-b border-[#1D0E22]/20 py-2 md:py-3 text-sm md:text-base text-[#1D0E22] placeholder-[#1D0E22]/80 focus:outline-none focus:border-[#1D0E22] transition-colors font-montserrat font-light"
                                 required
                                 value={formData.email}
                                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -104,7 +104,7 @@ export default function KontaktPage() {
                             <input
                                 type="tel"
                                 placeholder="Telefón"
-                                className="w-full bg-transparent border-b border-[#1D0E22]/20 py-4 text-[#1D0E22] placeholder-[#1D0E22]/50 focus:outline-none focus:border-gold transition-colors font-montserrat font-light"
+                                className="w-full bg-transparent border-b border-[#1D0E22]/20 py-2 md:py-3 text-sm md:text-base text-[#1D0E22] placeholder-[#1D0E22]/80 focus:outline-none focus:border-[#1D0E22] transition-colors font-montserrat font-light"
                                 value={formData.phone}
                                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                                 disabled={status === "success"}
@@ -113,8 +113,8 @@ export default function KontaktPage() {
                         <div>
                             <textarea
                                 placeholder="Správa"
-                                rows={4}
-                                className="w-full bg-transparent border-b border-[#1D0E22]/20 py-4 text-[#1D0E22] placeholder-[#1D0E22]/50 focus:outline-none focus:border-gold transition-colors font-montserrat font-light resize-none"
+                                rows={3}
+                                className="w-full bg-transparent border-b border-[#1D0E22]/20 py-2 md:py-3 text-sm md:text-base text-[#1D0E22] placeholder-[#1D0E22]/80 focus:outline-none focus:border-[#1D0E22] transition-colors font-montserrat font-light resize-none"
                                 required
                                 value={formData.message}
                                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
@@ -142,12 +142,13 @@ export default function KontaktPage() {
                             checked={privacyConsent}
                             onChange={setPrivacyConsent}
                             theme="light"
+                            compactOnMobile
                         />
 
                         <button
                             type="submit"
                             disabled={status === "submitting" || status === "success" || !privacyConsent || (TURNSTILE_ENABLED && !turnstileToken)}
-                            className="px-12 py-4 bg-[#1D0E22] text-gold font-marcellus font-bold tracking-widest hover:bg-opacity-90 transition-colors duration-300 w-full md:w-auto disabled:opacity-50 flex items-center justify-center gap-2"
+                            className="px-12 py-3 md:py-4 bg-[#1D0E22] text-gold font-marcellus font-bold tracking-widest hover:bg-opacity-90 transition-colors duration-300 w-full md:w-auto disabled:opacity-50 flex items-center justify-center gap-2"
                         >
                             {status === "submitting" ? (
                                 <>
@@ -164,7 +165,7 @@ export default function KontaktPage() {
                 </div>
 
                 {/* Map Section */}
-                <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-4 h-[600px] w-full">
+                <div className="hidden md:grid lg:col-span-8 grid-cols-1 sm:grid-cols-2 gap-4 h-[600px] w-full">
                     <div className="relative w-full h-full rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
                         <LightboxImage
                             src="/shared/mapa.jpeg"

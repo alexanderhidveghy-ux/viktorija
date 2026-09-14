@@ -53,7 +53,7 @@ export default function Footer() {
                         </div>
 
                         {/* Navigation */}
-                        <div className="space-y-6 pt-4">
+                        <div className="order-4 space-y-6 pt-4 md:order-2">
                             <h4 className="font-marcellus text-[#EEE3CE] tracking-[0.2em] text-sm uppercase">NAVIGÁCIA</h4>
                             <nav className="flex flex-col gap-3">
                                 <NavLink href="/" label="Domov" pathname={pathname} />
@@ -64,7 +64,7 @@ export default function Footer() {
                         </div>
 
                         {/* Contact */}
-                        <div className="space-y-6 pt-4">
+                        <div className="order-3 space-y-6 pt-4 md:order-3">
                             <h4 className="font-marcellus text-[#EEE3CE] tracking-[0.2em] text-sm uppercase">KONTAKT</h4>
                             <div className="font-montserrat text-[#EEE3CE] font-light text-sm space-y-3">
                                 <p className="leading-relaxed text-[#EEE3CE]">Twin City Tower<br />Mlynské Nivy 10<br />821 09 Bratislava</p>
@@ -74,7 +74,7 @@ export default function Footer() {
                         </div>
 
                         {/* Opening hours */}
-                        <div className="space-y-6 pt-4">
+                        <div className="order-2 space-y-6 pt-4 md:order-4">
                             <h4 className="font-marcellus text-[#EEE3CE] tracking-[0.2em] text-sm uppercase">OTVÁRACIE HODINY</h4>
                             <dl className="font-montserrat text-[#EEE3CE] font-light text-sm space-y-2">
                                 {openingHours.map(({ day, hours }) => (

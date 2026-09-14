@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 type PrivacyConsentCheckboxProps = {
     checked: boolean;
     children?: ReactNode;
+    compactOnMobile?: boolean;
     id: string;
     onChange: (checked: boolean) => void;
     theme?: "light" | "dark";
@@ -12,6 +13,7 @@ type PrivacyConsentCheckboxProps = {
 export default function PrivacyConsentCheckbox({
     checked,
     children,
+    compactOnMobile = false,
     id,
     onChange,
     theme = "dark",
@@ -21,7 +23,9 @@ export default function PrivacyConsentCheckbox({
     return (
         <label
             htmlFor={id}
-            className={`flex items-start gap-3 rounded-xl border p-4 font-montserrat text-xs leading-relaxed ${
+            className={`flex items-start rounded-xl border font-montserrat text-xs leading-relaxed ${
+                compactOnMobile ? "gap-2 p-3 md:gap-3 md:p-4" : "gap-3 p-4"
+            } ${
                 isDark
                     ? "border-white/10 bg-white/5 text-white/70"
                     : "border-[#1D0E22]/10 bg-[#1D0E22]/5 text-[#1D0E22]/70"
@@ -36,14 +40,14 @@ export default function PrivacyConsentCheckbox({
                 className="mt-0.5 h-4 w-4 shrink-0 accent-gold"
             />
             <span>
-                {children || "Súhlasím so spracovaním osobných údajov podľa"}{" "}
+                {children || "Súhlasím so spracovaním"}{" "}
                 <Link
                     href="/osobne-udaje"
                     className={`underline underline-offset-4 transition-colors ${
                         isDark ? "text-gold hover:text-white" : "text-[#1D0E22] hover:text-gold"
                     }`}
                 >
-                    Ochrana osobných údajov
+                    Ochrany osobných údajov
                 </Link>
                 .
             </span>
