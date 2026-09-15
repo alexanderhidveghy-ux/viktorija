@@ -36,11 +36,12 @@ function NavLink({ href, label, pathname }: { href: string; label: string; pathn
 export default function Footer() {
     const pathname = usePathname();
     // Na kontakt stránke má mapu s fotkou samotná stránka – vo footeri by boli duplicitné.
+    // Mriežka ostáva dvojstĺpcová, aby ľavá časť zostala na rovnakom mieste ako inde.
     const showMaps = pathname !== "/kontakt";
 
     return (
         <footer id="kontakt" className="bg-[#1D0E22] py-16 border-t border-white/10">
-            <div className={`w-[95vw] mx-auto grid grid-cols-1 gap-12 ${showMaps ? "lg:grid-cols-2" : ""}`}>
+            <div className="w-[95vw] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
                 {/* LEFT SIDE - Content */}
                 <div className="flex flex-col justify-between h-full">
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-[minmax(0,0.75fr)_repeat(3,minmax(0,1fr))] gap-8 lg:gap-10 text-center md:text-left items-start">
