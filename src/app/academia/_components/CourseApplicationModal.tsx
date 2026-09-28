@@ -1,18 +1,9 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, CheckCircle, AlertCircle, Loader2 } from "lucide-react";
-import TurnstileWidget, { TURNSTILE_ENABLED } from "@/components/TurnstileWidget";
-import PrivacyConsentCheckbox from "@/components/PrivacyConsentCheckbox";
-
-const COURSES = [
-    { name: "The Art of PMU", term: "2. 10. – 13. 11. 2026" },
-    { name: "Tri Techniky Obočia", term: "19. 10. – 27. 11. 2026" },
-    { name: "Hyperrealistické Obočie", term: "5. 10. – 20. 11. 2026" },
-    { name: "Master Class: PMU Očných Liniek", term: "28. 9. – 6. 11. 2026" },
-    { name: "Master Class: PMU Pier", term: "14. 9. – 23. 10. 2026" },
-];
+import { X } from "lucide-react";
+import CourseApplicationForm from "./CourseApplicationForm";
 
 interface CourseApplicationModalProps {
     isOpen: boolean;
@@ -20,31 +11,10 @@ interface CourseApplicationModalProps {
     courseName: string;
 }
 
-export default function CourseApplicationModal({ isOpen, onClose, courseName: initialCourseName }: CourseApplicationModalProps) {
-    const [selectedCourse, setSelectedCourse] = useState(COURSES.find(c => c.name === initialCourseName) || COURSES[0]);
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
-    const [phone, setPhone] = useState("");
-    const [instagram, setInstagram] = useState("");
-    const [facebook, setFacebook] = useState("");
-    const [experienceLevel, setExperienceLevel] = useState<"beginner" | "intermediate" | "advanced" | null>(null);
-    const [practiceScope, setPracticeScope] = useState("");
-    const [worksInBeauty, setWorksInBeauty] = useState<boolean | null>(null);
-    const [beautyField, setBeautyField] = useState("");
-    const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
-    const [errorMsg, setErrorMsg] = useState("");
-    const [turnstileToken, setTurnstileToken] = useState("");
-    const [privacyConsent, setPrivacyConsent] = useState(false);
-
-    const closeModal = useCallback(() => {
-        setTurnstileToken("");
-        setPrivacyConsent(false);
-        onClose();
-    }, [onClose]);
-
+export default function CourseApplicationModal({ isOpen, onClose, courseName }: CourseApplicationModalProps) {
     const handleKeyDown = useCallback((e: KeyboardEvent) => {
-        if (e.key === "Escape") closeModal();
-    }, [closeModal]);
+        if (e.key === "Escape") onClose();
+    }, [onClose]);
 
     useEffect(() => {
         if (isOpen) {
@@ -59,54 +29,6 @@ export default function CourseApplicationModal({ isOpen, onClose, courseName: in
         };
     }, [isOpen, handleKeyDown]);
 
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-        setStatus("submitting");
-        setErrorMsg("");
-
-        try {
-            if (!privacyConsent) {
-                setStatus("error");
-                setErrorMsg("Pre odoslanie je potrebný súhlas so spracovaním osobných údajov.");
-                return;
-            }
-
-            // Save to CMS + send email confirmation (anti-bot verified server-side)
-            const res = await fetch("/api/course-application", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    courseName: selectedCourse.name,
-                    selectedTerm: selectedCourse.term,
-                    name,
-                    email,
-                    phone,
-                    instagram,
-                    facebook,
-                    experienceLevel,
-                    practiceScope,
-                    worksInBeauty,
-                    beautyField,
-                    turnstileToken,
-                    privacyConsent,
-                }),
-            });
-
-            if (!res.ok) {
-                const data = await res.json().catch(() => ({}));
-                setStatus("error");
-                setErrorMsg(data.error || "Niečo sa pokazilo. Skúste to znova neskôr.");
-                return;
-            }
-
-            setStatus("success");
-        } catch (err) {
-            console.error("Error submitting application:", err);
-            setStatus("error");
-            setErrorMsg("Niečo sa pokazilo. Skúste to znova neskôr.");
-        }
-    };
-
     return (
         <AnimatePresence>
             {isOpen && (
@@ -115,7 +37,7 @@ export default function CourseApplicationModal({ isOpen, onClose, courseName: in
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-xl p-4"
-                    onClick={closeModal}
+                    onClick={onClose}
                 >
                     <motion.div
                         initial={{ opacity: 0, scale: 0.95, y: 20 }}
@@ -128,7 +50,7 @@ export default function CourseApplicationModal({ isOpen, onClose, courseName: in
                         <div className="p-6 border-b border-gold/20 flex justify-between items-center bg-black/20">
                             <h3 className="font-marcellus text-gold text-xl uppercase tracking-widest">Prihláška</h3>
                             <button
-                                onClick={closeModal}
+                                onClick={onClose}
                                 className="w-10 h-10 flex items-center justify-center rounded-full text-white/50 hover:text-white hover:bg-white/10 transition-all"
                             >
                                 <X className="w-6 h-6" />
@@ -137,200 +59,7 @@ export default function CourseApplicationModal({ isOpen, onClose, courseName: in
 
                         {/* Content Area */}
                         <div className="flex-1 overflow-y-auto p-8 md:p-12" data-lenis-prevent>
-                            {status === "success" ? (
-                                <motion.div
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    className="h-full flex flex-col items-center justify-center space-y-6 text-center py-12"
-                                >
-                                    <CheckCircle className="w-20 h-20 text-gold" />
-                                    <div className="space-y-2">
-                                        <h3 className="font-marcellus text-gold text-3xl uppercase tracking-widest">Prihláška odoslaná</h3>
-                                        <p className="font-montserrat text-white/70 max-w-md">
-                                            Ďakujeme za váš záujem o kurz {selectedCourse.name}. Čoskoro vás budeme kontaktovať s ďalšími informáciami.
-                                        </p>
-                                    </div>
-                                    <button
-                                        onClick={closeModal}
-                                        className="px-12 py-4 bg-gold text-[#1D0E22] font-marcellus uppercase tracking-widest rounded-full hover:bg-white transition-colors"
-                                    >
-                                        Zavrieť
-                                    </button>
-                                </motion.div>
-                            ) : (
-                                <div className="grid grid-cols-1 lg:grid-cols-[1fr,1.2fr] gap-12">
-                                    {/* Left Side: Course Selector */}
-                                    <div className="space-y-8">
-                                        <div>
-                                            <h2 className="font-marcellus text-2xl text-white uppercase tracking-widest">Výber kurzu</h2>
-                                        </div>
-
-                                        <div className="space-y-3">
-                                            {COURSES.map((course) => (
-                                                <button
-                                                    key={course.name}
-                                                    onClick={() => setSelectedCourse(course)}
-                                                    className={`w-full text-left p-5 rounded-xl border transition-all duration-300 group ${
-                                                        selectedCourse.name === course.name
-                                                            ? "border-gold bg-gold/10 text-white shadow-[0_0_20px_rgba(212,175,55,0.1)]"
-                                                            : "border-white/10 bg-white/5 text-white/40 hover:border-white/30"
-                                                    }`}
-                                                >
-                                                    <div className="flex flex-col gap-1">
-                                                        <span className={`font-marcellus text-sm uppercase tracking-widest transition-colors ${selectedCourse.name === course.name ? "text-gold" : "group-hover:text-white/70"}`}>
-                                                            {course.name}
-                                                        </span>
-                                                        <span className="font-montserrat text-[11px] opacity-60">
-                                                            Termín: {course.term}
-                                                        </span>
-                                                    </div>
-                                                </button>
-                                            ))}
-                                        </div>
-                                    </div>
-
-                                    {/* Right Side: Detailed Form */}
-                                    <form onSubmit={handleSubmit} className="space-y-10">
-                                        {/* Section: Personal Info */}
-                                        <div className="space-y-6">
-                                            <div className="flex items-center gap-4">
-                                                <div className="h-px flex-1 bg-white/10" />
-                                                <h4 className="font-marcellus text-[10px] uppercase tracking-[0.3em] text-gold/80">Osobné údaje</h4>
-                                                <div className="h-px flex-1 bg-white/10" />
-                                            </div>
-                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                                                <div className="space-y-1 md:col-span-2">
-                                                    <label className="font-montserrat text-[11px] font-medium uppercase tracking-widest text-white/70 ml-1">Meno a priezvisko</label>
-                                                    <input type="text" value={name} onChange={(e) => setName(e.target.value)} required className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white font-montserrat text-sm focus:border-gold outline-none transition-all" />
-                                                </div>
-                                                <div className="space-y-1">
-                                                    <label className="font-montserrat text-[11px] font-medium uppercase tracking-widest text-white/70 ml-1">Mobil</label>
-                                                    <input type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} required className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white font-montserrat text-sm focus:border-gold outline-none transition-all" />
-                                                </div>
-                                                <div className="space-y-1">
-                                                    <label className="font-montserrat text-[11px] font-medium uppercase tracking-widest text-white/70 ml-1">E-mail</label>
-                                                    <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white font-montserrat text-sm focus:border-gold outline-none transition-all" />
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        {/* Section: Social Media */}
-                                        <div className="space-y-6">
-                                            <div className="flex items-center gap-4">
-                                                <div className="h-px flex-1 bg-white/10" />
-                                                <h4 className="font-marcellus text-[10px] uppercase tracking-[0.3em] text-gold/80">Sociálne siete</h4>
-                                                <div className="h-px flex-1 bg-white/10" />
-                                            </div>
-                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                                                <div className="space-y-1">
-                                                    <label className="font-montserrat text-[11px] font-medium uppercase tracking-widest text-white/70 ml-1">Instagram</label>
-                                                    <input type="text" value={instagram} onChange={(e) => setInstagram(e.target.value)} className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white font-montserrat text-sm focus:border-gold outline-none transition-all" placeholder="@vas_profil" />
-                                                </div>
-                                                <div className="space-y-1">
-                                                    <label className="font-montserrat text-[11px] font-medium uppercase tracking-widest text-white/70 ml-1">Facebook</label>
-                                                    <input type="text" value={facebook} onChange={(e) => setFacebook(e.target.value)} className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white font-montserrat text-sm focus:border-gold outline-none transition-all" />
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        {/* Section: Professional Experience */}
-                                        <div className="space-y-8">
-                                            <div className="flex items-center gap-4">
-                                                <div className="h-px flex-1 bg-white/10" />
-                                                <h4 className="font-marcellus text-[10px] uppercase tracking-[0.3em] text-gold/80">Odborné skúsenosti</h4>
-                                                <div className="h-px flex-1 bg-white/10" />
-                                            </div>
-
-                                            <div className="space-y-6">
-                                                <div className="space-y-3">
-                                                    <p className="font-montserrat text-xs font-medium uppercase tracking-widest text-white/85">Aká je Vaša úroveň zručnosti s permanentným makeupom?</p>
-                                                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                                                        {[
-                                                            { id: "beginner", label: "Som začiatočník" },
-                                                            { id: "intermediate", label: "Som mierne pokročilá" },
-                                                            { id: "advanced", label: "Som pokročilá" }
-                                                        ].map((level) => (
-                                                            <button
-                                                                key={level.id}
-                                                                type="button"
-                                                                onClick={() => setExperienceLevel(level.id as "beginner" | "intermediate" | "advanced")}
-                                                                className={`py-3 px-4 rounded-xl border transition-all text-[10px] font-montserrat uppercase tracking-widest ${
-                                                                    experienceLevel === level.id ? "bg-gold text-[#1D0E22] border-gold" : "bg-white/5 border-white/10 text-white/40 hover:border-white/20"
-                                                                }`}
-                                                            >
-                                                                {level.label}
-                                                            </button>
-                                                        ))}
-                                                    </div>
-                                                </div>
-                                                {(experienceLevel === "intermediate" || experienceLevel === "advanced") && (
-                                                    <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} className="space-y-1">
-                                                        <label className="font-montserrat text-[11px] font-medium uppercase tracking-widest text-white/70 ml-1">Uveďte prosím rozsah vašej praxe (počet klientiek mesačne)</label>
-                                                        <input type="text" value={practiceScope} onChange={(e) => setPracticeScope(e.target.value)} className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white font-montserrat text-sm focus:border-gold outline-none transition-all" />
-                                                    </motion.div>
-                                                )}
-
-                                                <div className="space-y-3 pt-2">
-                                                    <p className="font-montserrat text-xs font-medium uppercase tracking-widest text-white/85">Pracujete v skrášľujúcich službách?</p>
-                                                    <div className="flex gap-4">
-                                                        {[true, false].map((val) => (
-                                                            <button
-                                                                key={val ? "ano-beauty" : "nie-beauty"}
-                                                                type="button"
-                                                                onClick={() => setWorksInBeauty(val)}
-                                                                className={`flex-1 py-3 px-6 rounded-xl border transition-all text-xs font-montserrat uppercase tracking-widest ${
-                                                                    worksInBeauty === val ? "bg-gold text-[#1D0E22] border-gold" : "bg-white/5 border-white/10 text-white/40 hover:border-white/20"
-                                                                }`}
-                                                            >
-                                                                {val ? "Áno" : "Nie"}
-                                                            </button>
-                                                        ))}
-                                                    </div>
-                                                </div>
-
-                                                {worksInBeauty === true && (
-                                                    <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} className="space-y-1">
-                                                        <label className="font-montserrat text-[11px] font-medium uppercase tracking-widest text-white/70 ml-1">V akej oblasti</label>
-                                                        <input type="text" value={beautyField} onChange={(e) => setBeautyField(e.target.value)} className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white font-montserrat text-sm focus:border-gold outline-none transition-all" placeholder="napr. Kozmetika, Nechty..." />
-                                                    </motion.div>
-                                                )}
-                                            </div>
-                                        </div>
-
-                                        {status === "error" && (
-                                            <div className="flex items-center gap-2 text-red-400 text-xs font-montserrat bg-red-400/10 p-3 rounded-lg border border-red-400/20">
-                                                <AlertCircle className="w-4 h-4" />
-                                                {errorMsg}
-                                            </div>
-                                        )}
-
-                                        {TURNSTILE_ENABLED && (
-                                            <TurnstileWidget onVerify={setTurnstileToken} onExpire={() => setTurnstileToken("")} theme="dark" className="flex justify-center" />
-                                        )}
-                                        <PrivacyConsentCheckbox
-                                            id="course-privacy-consent"
-                                            checked={privacyConsent}
-                                            onChange={setPrivacyConsent}
-                                            theme="dark"
-                                        />
-
-                                        <button
-                                            type="submit"
-                                            disabled={status === "submitting" || !privacyConsent || (TURNSTILE_ENABLED && !turnstileToken)}
-                                            className="w-full py-5 bg-gold text-[#1D0E22] font-marcellus uppercase tracking-[0.2em] rounded-xl hover:bg-white transition-all shadow-xl hover:shadow-gold/20 flex items-center justify-center gap-3 disabled:opacity-50"
-                                        >
-                                            {status === "submitting" ? (
-                                                <>
-                                                    <Loader2 className="w-5 h-5 animate-spin" />
-                                                    Odosielam...
-                                                </>
-                                            ) : (
-                                                "Odoslať prihlášku"
-                                            )}
-                                        </button>
-                                    </form>
-                                </div>
-                            )}
+                            <CourseApplicationForm initialCourseName={courseName} onClose={onClose} />
                         </div>
                     </motion.div>
                 </motion.div>

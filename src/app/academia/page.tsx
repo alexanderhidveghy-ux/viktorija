@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { ChevronDown } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WebinarButton from "./_components/WebinarButton";
 import HeroVideo from "./_components/HeroVideo";
+import CourseApplicationForm from "./_components/CourseApplicationForm";
 import RevealGroup from "@/components/RevealGroup";
 
 export const metadata: Metadata = {
@@ -132,7 +134,28 @@ export default function AcademiaPage() {
                 </div>
             </section>
 
-                        <RevealGroup className="mt-4 max-w-4xl mx-auto px-6 space-y-20 pb-32">
+            {/* Otvorená prihláška hneď pod kurzami */}
+            <section id="prihlaska" className="px-6 pt-16 pb-20 scroll-mt-32">
+                <div className="max-w-5xl mx-auto">
+                    <h2 className="text-center font-marcellus text-2xl md:text-3xl uppercase tracking-[0.2em] text-[#1D0E22]">
+                        Prihláška na kurz
+                    </h2>
+                    <div className="mt-10 bg-[#1D0E22] border border-gold/30 rounded-2xl shadow-2xl p-8 md:p-12">
+                        <CourseApplicationForm />
+                    </div>
+                </div>
+            </section>
+
+            {/* Legislatíva zbalená do štvorčeka – rozbalí sa kliknutím, text ostáva v HTML (SEO) */}
+            <section className="px-6 pb-32">
+                <details className="group max-w-4xl mx-auto border border-[#1D0E22]/15 rounded-2xl bg-white/40 backdrop-blur-sm">
+                    <summary className="flex cursor-pointer list-none items-center justify-between gap-6 px-6 md:px-10 py-6 [&::-webkit-details-marker]:hidden">
+                        <span className="font-marcellus text-xl md:text-2xl uppercase tracking-[0.2em] text-[#1D0E22]">Legislatíva PMU</span>
+                        <span aria-hidden className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#1D0E22] text-white transition-transform duration-300 group-open:rotate-180">
+                            <ChevronDown className="h-5 w-5" />
+                        </span>
+                    </summary>
+                    <RevealGroup className="max-w-4xl mx-auto px-6 md:px-10 pt-8 pb-12 space-y-20">
                     {/* Question 1 */}
                     <div className="space-y-8">
                         <div className="text-center space-y-2">
@@ -358,6 +381,8 @@ export default function AcademiaPage() {
                         </div>
                     </div>
                 </RevealGroup>
+                </details>
+            </section>
             <Footer />
             <WebinarButton />
         </main>
