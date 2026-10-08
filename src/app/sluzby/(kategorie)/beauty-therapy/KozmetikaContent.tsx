@@ -4,6 +4,7 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import Reveal from "@/components/Reveal";
+import StickyCennikButton from "../_components/StickyCennikButton";
 
 const HERO_VIDEO_LEFT = "https://pub-60b685024baf4def829d5151d4dc320a.r2.dev/kozmetika.mp4";
 const HERO_VIDEO = "https://pub-60b685024baf4def829d5151d4dc320a.r2.dev/ritualy.mp4";
@@ -628,6 +629,8 @@ export default function KozmetikaContent() {
                     </button>
                 ))}
             </Reveal>
+
+            <StickyCennikButton />
 
             {/* Video Lightbox */}
             <AnimatePresence>
