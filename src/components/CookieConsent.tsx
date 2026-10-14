@@ -9,7 +9,8 @@ export default function CookieConsent() {
     const [showSettings, setShowSettings] = useState(false);
     const [preferences, setPreferences] = useState({
         necessary: true,
-        analytics: true,
+        // GDPR: voliteľné cookies nesmú byť vopred zaškrtnuté
+        analytics: false,
     });
 
     useEffect(() => {
@@ -24,6 +25,13 @@ export default function CookieConsent() {
         }
 
         const handleOpenSettings = () => {
+            // pri znovuotvorení ukázať doterajšiu voľbu
+            try {
+                const saved = JSON.parse(localStorage.getItem("cookie_consent") || "null");
+                if (saved) setPreferences({ necessary: true, analytics: Boolean(saved.analytics) });
+            } catch {
+                /* ignore */
+            }
             setShow(true);
             setShowSettings(true);
         };
@@ -38,6 +46,11 @@ export default function CookieConsent() {
     const handleAcceptAll = () => {
         setPreferences({ necessary: true, analytics: true });
         saveConsent({ necessary: true, analytics: true });
+    };
+
+    const handleRejectAll = () => {
+        setPreferences({ necessary: true, analytics: false });
+        saveConsent({ necessary: true, analytics: false });
     };
 
     const handleSaveSettings = () => {
@@ -76,6 +89,12 @@ export default function CookieConsent() {
                                     className="px-6 py-3 bg-gold text-[#1D0E22] font-bold font-marcellus uppercase tracking-wider hover:bg-white transition-colors text-sm"
                                 >
                                     Prijať všetky
+                                </button>
+                                <button
+                                    onClick={handleRejectAll}
+                                    className="px-6 py-3 border border-white/20 text-white font-marcellus uppercase tracking-wider hover:border-gold hover:text-gold transition-colors text-sm"
+                                >
+                                    Odmietnuť všetky
                                 </button>
                                 <button
                                     onClick={() => setShowSettings(true)}
@@ -144,7 +163,13 @@ export default function CookieConsent() {
                         </div>
 
                         {/* Modal Footer */}
-                        <div className="p-6 border-t border-white/10 bg-black/20 flex justify-end gap-3">
+                        <div className="p-6 border-t border-white/10 bg-black/20 flex flex-wrap justify-end gap-3">
+                            <button
+                                onClick={handleRejectAll}
+                                className="px-5 py-2.5 border border-white/20 text-white font-marcellus uppercase tracking-wider hover:bg-white hover:text-black hover:border-white transition-colors text-xs"
+                            >
+                                Odmietnuť všetky
+                            </button>
                             <button
                                 onClick={handleSaveSettings}
                                 className="px-5 py-2.5 border border-white/20 text-white font-marcellus uppercase tracking-wider hover:bg-white hover:text-black hover:border-white transition-colors text-xs"
