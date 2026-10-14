@@ -81,7 +81,7 @@ export default function Kurz4Page() {
                 </div>
             </PhotoSection>
 
-            <PhotoSection photo="https://pub-60b685024baf4def829d5151d4dc320a.r2.dev/IMG_3405.mp4" flip={true} photoLabel="Práca absolventky Moniky">
+            <PhotoSection photo="https://pub-60b685024baf4def829d5151d4dc320a.r2.dev/IMG_3405-m.mp4" flip={true} photoLabel="Práca absolventky Moniky">
                 <div className="space-y-6 font-montserrat font-light text-[#1D0E22] leading-snug text-base">
                     <h2 className="font-marcellus text-2xl uppercase tracking-widest text-[#1D0E22] mb-6">
                         Komplexný špecialista na obočie

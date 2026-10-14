@@ -69,7 +69,7 @@ export default function Kurz7Page() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-0 items-stretch md:[&>*:first-child]:order-2 md:[&>*:last-child]:order-1">
                 <div className="relative min-h-[400px] md:min-h-[520px] h-full w-full overflow-hidden rounded-2xl">
                     <video
-                        src="https://pub-60b685024baf4def829d5151d4dc320a.r2.dev/kurz7.mp4"
+                        src="https://pub-60b685024baf4def829d5151d4dc320a.r2.dev/kurz7-m.mp4"
                         autoPlay
                         muted
                         loop

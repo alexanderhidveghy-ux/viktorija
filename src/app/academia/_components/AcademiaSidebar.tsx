@@ -22,8 +22,8 @@ const COURSES: Course[] = [
     { label: "PMU Očných Liniek", href: "/academia/pmu-ocnych-liniek", image: "/academia/kurz-linky/linky_preview.PNG" },
     { label: "PMU Pier", href: "/academia/pmu-pier", image: "/academia/kurz-pery/pery_preview.PNG" },
     { label: "Laser Touch", href: "/academia/laser-touch", image: "/academia/kurz-laser/lasertouch_preview.PNG" },
-    { label: "Deň Otvorených Dverí", href: "/academia/dod", video: "https://pub-60b685024baf4def829d5151d4dc320a.r2.dev/dod.mp4", position: "center 20%" },
-    { label: "Estetické nastrelovanie náušníc", href: "/academia/esteticke-nastrelovanie-nausnic", video: "https://pub-60b685024baf4def829d5151d4dc320a.r2.dev/kurz7.mp4" },
+    { label: "Deň Otvorených Dverí", href: "/academia/dod", video: "https://pub-60b685024baf4def829d5151d4dc320a.r2.dev/dod-m.mp4", position: "center 20%" },
+    { label: "Estetické nastrelovanie náušníc", href: "/academia/esteticke-nastrelovanie-nausnic", video: "https://pub-60b685024baf4def829d5151d4dc320a.r2.dev/kurz7-m.mp4" },
 ];
 
 export default function AcademiaSidebar() {

@@ -10,11 +10,11 @@ export const metadata: Metadata = {
     alternates: { canonical: "/academia/the-art-of-pmu" },
 };
 
-const PHOTOS = ["/academia/kurz-art-of-pmu/main.PNG", "/academia/kurz-art-of-pmu/vik2.jpg", "https://pub-60b685024baf4def829d5151d4dc320a.r2.dev/IMG_5740.mp4"];
-const SYSTEM_VIDEO = "https://pub-60b685024baf4def829d5151d4dc320a.r2.dev/kurz1.mp4";
+const PHOTOS = ["/academia/kurz-art-of-pmu/main.PNG", "/academia/kurz-art-of-pmu/vik2.jpg", "https://pub-60b685024baf4def829d5151d4dc320a.r2.dev/IMG_5740-m.mp4"];
+const SYSTEM_VIDEO = "https://pub-60b685024baf4def829d5151d4dc320a.r2.dev/kurz1-m.mp4";
 const STUDENT_WORKS = [
     "/academia/kurz-art-of-pmu/prace/PHOTO-2026-05-12-14-11-03.jpg",
-    "https://pub-60b685024baf4def829d5151d4dc320a.r2.dev/IMG_9186.mp4",
+    "https://pub-60b685024baf4def829d5151d4dc320a.r2.dev/IMG_9186-m.mp4",
     "/academia/kurz-art-of-pmu/prace/PHOTO-2026-05-12-13-54-40%202.jpg",
 ];
 

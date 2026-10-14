@@ -51,7 +51,7 @@ export default function DodPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-0 items-start md:[&>*:first-child]:order-2 md:[&>*:last-child]:order-1">
                 <div className="relative h-full min-h-[400px] md:min-h-[520px] overflow-hidden rounded-2xl">
                     <video
-                        src="https://pub-60b685024baf4def829d5151d4dc320a.r2.dev/dod.mp4"
+                        src="https://pub-60b685024baf4def829d5151d4dc320a.r2.dev/dod-m.mp4"
                         autoPlay
                         muted
                         loop
