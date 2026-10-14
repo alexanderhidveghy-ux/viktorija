@@ -5,12 +5,14 @@ import { ChevronDown } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WebinarButton from "./_components/WebinarButton";
+import { COURSES as COURSE_DATES } from "@/lib/academy-dates";
+import { SITE_URL } from "@/lib/business";
 import HeroVideo from "./_components/HeroVideo";
 import CourseApplicationForm from "./_components/CourseApplicationForm";
 import RevealGroup from "@/components/RevealGroup";
 
 export const metadata: Metadata = {
-    title: "Academia | Salón Viktória",
+    title: "Kurzy permanentného make-upu Bratislava | Viktorija Kendra Academia",
     description: "Certifikované kurzy permanentného make-upu. Profesionálne vzdelávanie pre začiatočníčky aj pokročilé.",
     alternates: { canonical: "/academia" },
 };
@@ -35,9 +37,59 @@ const COURSES: Course[] = [
     { label: "Estetické nastrelovanie náušníc", href: "/academia/esteticke-nastrelovanie-nausnic", video: "https://pub-60b685024baf4def829d5151d4dc320a.r2.dev/kurz7.mp4", sub: "Kurz" },
 ];
 
+// Kurzy pre vyhľadávače (schema.org Course). Termíny (hasCourseInstance) doplniť, až budú potvrdené.
+const COURSE_DESCRIPTIONS: Record<string, { name?: string; description: string }> = {
+    "the-art-of-pmu": {
+        "description": "THE ART OF PMU – profesionálny kurz permanentného make-upu pre začiatočníčky. Naučte sa púdrové obočie, očné linky a lip blush."
+    },
+    "tri-techniky-obocia": {
+        "description": "Komplexný kurz zameraný na hybridné, minerálne a hyperrealistické obočie pre začiatočníkov aj pokročilých."
+    },
+    "hyperrealisticke-obocie": {
+        "description": "Master Class pre pokročilých zameraný na najnáročnejšiu techniku PMU – hyperrealistické obočie (hair stroke)."
+    },
+    "pmu-ocnych-liniek": {
+        "description": "Špecializačný kurz zameraný na moderné techniky očných liniek, precíznu prácu na viečkach a tieňované linky."
+    },
+    "pmu-pier": {
+        "description": "Špecializačný kurz zameraný na moderné techniky pier, ombré a kórejské pery pre pokročilých artistov."
+    },
+    "laser-touch": {
+        "name": "Laser Touch",
+        "description": "Individuálny kurz odstraňovania permanentného make-upu ND:YAG Q-Switch laserom – teória, bezpečnosť a prax v rukách skúsenej špecialistky."
+    },
+    "esteticke-nastrelovanie-nausnic": {
+        "name": "Estetické nastreľovanie náušníc",
+        "description": "Individuálny praktický kurz estetického nastreľovania náušníc – hygiena, anatómia a precízne umiestnenie."
+    }
+};
+
+const coursesJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Kurzy permanentného make-upu – Viktorija Kendra Academia",
+    "itemListElement": Object.entries(COURSE_DESCRIPTIONS).map(([slug, info], i) => {
+        const dated = COURSE_DATES.find((c) => c.slug === slug);
+        return {
+            "@type": "ListItem",
+            "position": i + 1,
+            "item": {
+                "@type": "Course",
+                "name": info.name ?? dated?.name,
+                "description": info.description,
+                "url": `${SITE_URL}/academia/${slug}`,
+                "inLanguage": "sk",
+                "provider": { "@id": `${SITE_URL}/#academia` },
+                "instructor": { "@id": `${SITE_URL}/#viktorija` },
+            },
+        };
+    }),
+};
+
 export default function AcademiaPage() {
     return (
         <main className="min-h-screen">
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(coursesJsonLd) }} />
             <Header />
             <h1 className="sr-only">Akadémia permanentného make-upu</h1>
 
@@ -179,7 +231,7 @@ export default function AcademiaPage() {
                                         </div>
                                         <div className="space-y-1">
                                             <p className="font-montserrat text-base font-medium text-[#1D0E22]">Osvedčenie o profesijnej kvalifikácii:</p>
-                                            <p className="font-montserrat text-base text-[#1D0E22]/70 leading-tight">Samotný certifikát z kurzu dnes už na otvorenie živnosti nestačí. Pokurze musíte absolvovať skúšku na overenie vzdelávacích výstupov pred autorizovanou inštitúciou. Po jej úspešnom zvládnutí získa osvedčenie, ktoré je rovnocenné s výučným listom pre účely živnostenského zákona. (Zákon č. 292/2024 Z. z. explicitne uvádza, že osvedčenie o profesijnej kvalifikácii je dokladom o odbornej spôsobilosti.)</p>
+                                            <p className="font-montserrat text-base text-[#1D0E22]/70 leading-tight">Samotný certifikát z kurzu dnes už na otvorenie živnosti nestačí. Po kurze musíte absolvovať skúšku na overenie vzdelávacích výstupov pred autorizovanou inštitúciou. Po jej úspešnom zvládnutí získa osvedčenie, ktoré je rovnocenné s výučným listom pre účely živnostenského zákona. (Zákon č. 292/2024 Z. z. explicitne uvádza, že osvedčenie o profesijnej kvalifikácii je dokladom o odbornej spôsobilosti.)</p>
                                         </div>
                                         <div className="p-4 bg-gold/5 rounded-lg border border-gold/10">
                                             <p className="font-montserrat text-sm text-[#1D0E22]/80 leading-tight italic">
@@ -261,7 +313,7 @@ export default function AcademiaPage() {
                                 <div className="space-y-2">
                                     <h3 className="font-marcellus text-lg uppercase tracking-widest text-[#1D0E22]">1. Rozšírenie odbornosti (Akreditovaný kurz)</h3>
                                     <div className="space-y-1">
-                                        <p className="font-montserrat text-base text-[#1D0E22]/70 leading-tight">Aj keď má „papiere“ na kozmetiku, stredné školy bežne PMU nevyučujú v potrebnom rozsahu. Pre her vlastnú ochranu a poistenie zodpovednosti za škodu musí absolvovať:</p>
+                                        <p className="font-montserrat text-base text-[#1D0E22]/70 leading-tight">Aj keď má „papiere“ na kozmetiku, stredné školy bežne PMU nevyučujú v potrebnom rozsahu. Pre vlastnú ochranu a poistenie zodpovednosti za škodu musí absolvovať:</p>
                                         <ul className="space-y-1 font-montserrat text-base text-[#1D0E22]/70">
                                             <li><span className="text-gold">✦</span> <span className="font-medium">Špecializovaný akreditovaný kurz PMU:</span> Zameraný na mikropigmentáciu, koloristiku a prácu s prístrojom/čepieľkami.</li>
                                             <li><span className="text-gold">✦</span> <span className="font-medium">Certifikát:</span> Po ukončení získa doklad, ktorý predkladá poisťovni a RÚVZ pri aktualizácii prevádzkového poriadku.</li>
@@ -303,7 +355,7 @@ export default function AcademiaPage() {
                                                 </tr>
                                                 <tr>
                                                     <td className="py-2 pr-4 align-top">Je zamestnanec</td>
-                                                    <td className="py-2">Musí dismantle PMU v náplni práce a schválené hygienou.</td>
+                                                    <td className="py-2">Musí mať PMU v náplni práce a prevádzka musí byť schválená RÚVZ.</td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -375,7 +427,7 @@ export default function AcademiaPage() {
                             <div className="space-y-1">
                                 <p className="font-montserrat text-base font-medium text-[#1D0E22]">Dôležité upozornenie k PMU:</p>
                                 <p className="font-montserrat text-base text-[#1D0E22]/70 leading-tight">
-                                    Hoci na tento vzor môžete napísať &quot;Permanentný mejkap&quot;, toto konkrétne osvedčenie stále <span className="font-medium text-[#1D0E22]">nestačí na otvorenie viazanej živnosti</span>. Na to absolvent potrebuje osvedčenie o akreditovanom vzdelávacom programe. Tento vzor slúži na doplnkové zručnosti.
+                                    Hoci na tento vzor môžete napísať &quot;Permanentný mejkap&quot;, toto konkrétne osvedčenie stále <span className="font-medium text-[#1D0E22]">nestačí na ohlásenie remeselnej živnosti „Kozmetické služby“</span>. Na to absolvent potrebuje osvedčenie o akreditovanom vzdelávacom programe. Tento vzor slúži na doplnkové zručnosti.
                                 </p>
                             </div>
                         </div>

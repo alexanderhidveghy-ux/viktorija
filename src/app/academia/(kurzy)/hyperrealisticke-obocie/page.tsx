@@ -4,7 +4,7 @@ import CourseProgram from "@/app/academia/_components/CourseProgram";
 import TatraBankaBanner from "@/app/academia/_components/TatraBankaBanner";
 
 export const metadata: Metadata = {
-    title: "Hyperrealistické Obočie | Academia | Salón Viktória",
+    title: "Hyperrealistické Obočie | Viktorija Kendra Academia",
     description: "Master Class pre pokročilých zameraný na najnáročnejšiu techniku PMU – hyperrealistické obočie (hair stroke).",
     alternates: { canonical: "/academia/hyperrealisticke-obocie" },
 };

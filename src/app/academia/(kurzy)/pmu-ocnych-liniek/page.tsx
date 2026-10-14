@@ -5,7 +5,7 @@ import CourseProgram from "@/app/academia/_components/CourseProgram";
 import TatraBankaBanner from "@/app/academia/_components/TatraBankaBanner";
 
 export const metadata: Metadata = {
-    title: "Master Class: PMU Očných Liniek | Academia | Salón Viktória",
+    title: "Master Class: PMU Očných Liniek | Viktorija Kendra Academia",
     description: "Špecializačný kurz zameraný na moderné techniky očných liniek, precíznu prácu na viečkach a tieňované linky.",
     alternates: { canonical: "/academia/pmu-ocnych-liniek" },
 };

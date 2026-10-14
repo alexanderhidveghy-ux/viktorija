@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import KozmetikaContent from "./KozmetikaContent";
 
 export const metadata: Metadata = {
-    title: "Rituály tváre | Salón Viktória",
+    title: "Rituály tváre a kozmetika Bratislava | Viktorija Kendra",
     description: "Komplexné kozmetické ošetrenia pre zdravie a krásu pleti. Mezoboost, exozómy, peelingy, luxusné rituály a ošetrenia pre citlivú pleť.",
     alternates: { canonical: "/sluzby/beauty-therapy" },
 };

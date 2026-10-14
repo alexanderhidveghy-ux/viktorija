@@ -3,8 +3,8 @@ import LightboxImage from "@/components/LightboxImage";
 import AnimatedSpace from "@/app/academia/_components/AnimatedSpace";
 
 export const metadata: Metadata = {
-    title: "Deň Otvorených Dverí | Academia | Salón Viktória",
-    description: "Permanentný make-up ako profesia. Vyskúšajte si prácu permanent make-up artistu na latexe a face chartoch — 18. 09. 2026.",
+    title: "Deň Otvorených Dverí | Viktorija Kendra Academia",
+    description: "Permanentný make-up ako profesia. Na dni otvorených dverí si vyskúšate prácu permanent make-up artistu na latexe a face chartoch.",
     alternates: { canonical: "/academia/dod" },
 };
 

@@ -4,7 +4,7 @@ import PhotoSection from "@/app/academia/_components/PhotoSection";
 import TatraBankaBanner from "@/app/academia/_components/TatraBankaBanner";
 
 export const metadata: Metadata = {
-    title: "Tri Techniky Obočia | Academia | Salón Viktória",
+    title: "Tri Techniky Obočia | Viktorija Kendra Academia",
     description: "Komplexný kurz zameraný na hybridné, minerálne a hyperrealistické obočie pre začiatočníkov aj pokročilých.",
     alternates: { canonical: "/academia/tri-techniky-obocia" },
 };

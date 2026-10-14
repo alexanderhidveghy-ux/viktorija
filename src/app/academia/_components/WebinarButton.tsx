@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { useNow } from "@/lib/use-now";
+import { WEBINAR, isPast } from "@/lib/academy-dates";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { X, CheckCircle, AlertCircle, Loader2 } from "lucide-react";
@@ -37,6 +39,9 @@ export default function WebinarButton() {
     const [turnstileToken, setTurnstileToken] = useState("");
     const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
     const [errorMsg, setErrorMsg] = useState("");
+    // Po termíne webinára sa tlačidlo už nezobrazuje.
+    const now = useNow();
+    const expired = now === null || isPast(WEBINAR.endsAt, now);
 
     const close = () => {
         setView("closed");
@@ -102,6 +107,8 @@ export default function WebinarButton() {
         }
     };
 
+    if (expired) return null;
+
     return (
         <>
             <motion.button
@@ -146,7 +153,7 @@ export default function WebinarButton() {
                                 <div className="flex-1 p-8 md:p-14 flex flex-col justify-center space-y-8">
                                     <div className="space-y-4">
                                         <p className="text-[#A6824D] font-marcellus uppercase tracking-[0.3em] text-xs">
-                                            14. 9. 2026 | 19:00 | LIVE WEBINAR
+                                            {WEBINAR.label.replace(" | LIVE", "")} | LIVE WEBINAR
                                         </p>
                                         <h2 className="text-[#1D0E22] font-marcellus text-3xl md:text-5xl uppercase leading-tight">
                                             Permanentný make-up 2027

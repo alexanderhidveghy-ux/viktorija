@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 import Reveal from "@/components/Reveal";
 
 export const metadata: Metadata = {
-    title: "Blog | Salón Viktória",
+    title: "Blog | Viktorija Kendra",
     description: "Odborné články z oblasti permanentného make-upu, hojenia, pigmentov a estetickej kozmetiky od Viktoriji Kendry.",
     alternates: { canonical: "/blog" },
 };

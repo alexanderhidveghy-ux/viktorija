@@ -6,13 +6,7 @@ import { CheckCircle, AlertCircle, Loader2 } from "lucide-react";
 import TurnstileWidget, { TURNSTILE_ENABLED } from "@/components/TurnstileWidget";
 import PrivacyConsentCheckbox from "@/components/PrivacyConsentCheckbox";
 
-const COURSES = [
-    { name: "The Art of PMU", term: "2. 10. – 13. 11. 2026" },
-    { name: "Tri Techniky Obočia", term: "19. 10. – 27. 11. 2026" },
-    { name: "Hyperrealistické Obočie", term: "5. 10. – 20. 11. 2026" },
-    { name: "Master Class: PMU Očných Liniek", term: "28. 9. – 6. 11. 2026" },
-    { name: "Master Class: PMU Pier", term: "14. 9. – 23. 10. 2026" },
-];
+import { COURSES } from "@/lib/academy-dates";
 
 /**
  * Prihláška na kurz (výber kurzu + údaje). Používa ju vyskakovacie okno na

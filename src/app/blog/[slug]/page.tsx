@@ -233,9 +233,9 @@ const BLOG_POSTS = [
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
     const { slug } = await params;
     const post = BLOG_POSTS.find(p => p.slug === slug);
-    if (!post) return { title: "Článok nenájdený | Blog | Salón Viktória" };
+    if (!post) return { title: "Článok nenájdený | Blog | Viktorija Kendra" };
     return {
-        title: `${post.title} | Blog | Salón Viktória`,
+        title: `${post.title} | Blog | Viktorija Kendra`,
         description: post.excerpt,
         alternates: { canonical: `/blog/${post.slug}` },
         openGraph: {
@@ -281,7 +281,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
         author: { "@type": "Person", name: "Viktorija Kendra" },
         publisher: {
             "@type": "Organization",
-            name: "Salón Viktória",
+            name: "Viktorija Kendra",
             logo: { "@type": "ImageObject", url: "https://viktorija.sk/shared/favicon.png" },
         },
         mainEntityOfPage: `https://viktorija.sk/blog/${post.slug}`,

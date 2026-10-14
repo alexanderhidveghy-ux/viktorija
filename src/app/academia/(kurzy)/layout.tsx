@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import AcademiaSidebar from "../_components/AcademiaSidebar";
 import WebinarButton from "../_components/WebinarButton";
+import CourseStatusBanner from "../_components/CourseStatusBanner";
 
 export default function KurzyLayout({ children }: { children: React.ReactNode }) {
     return (
@@ -11,6 +12,7 @@ export default function KurzyLayout({ children }: { children: React.ReactNode })
                 <div className="grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-8 items-start">
                     <AcademiaSidebar />
                     <div className="min-h-[600px] relative">
+                        <CourseStatusBanner />
                         {children}
                     </div>
                 </div>

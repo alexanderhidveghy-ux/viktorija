@@ -6,7 +6,7 @@ import PlayableVideo from "@/components/PlayableVideo";
 import TatraBankaBanner from "@/app/academia/_components/TatraBankaBanner";
 
 export const metadata: Metadata = {
-    title: "Master Class: Permanentný Make-up Pier | Academia | Salón Viktória",
+    title: "Master Class: Permanentný Make-up Pier | Viktorija Kendra Academia",
     description: "Špecializačný kurz zameraný na moderné techniky pier, ombré a kórejské pery pre pokročilých artistov.",
     alternates: { canonical: "/academia/pmu-pier" },
 };
@@ -24,7 +24,7 @@ const SCHEDULE = [
     { num: "2", title: "1. DEŇ – TEÓRIA + TRÉNING", date: "09:00 – 19:00", items: ["komplexný teoretický základ", "analýza typov pokožky", "tréning na latexe", "demo ukážka od Viktorije", "prezentácia techník (ombré, kórejské pery, čistá forma)"] },
     { num: "3", title: "2. DEŇ – PRAX NA MODELKÁCH", date: "09:00 – 18:00", items: ["každá účastníčka pracuje na modelkách", "výber 2 techník", "individuálne vedenie", "malá skupina pre maximálnu pozornosť"] },
     { num: "4", title: "ONLINE", date: "08:00 – 9:00", items: ["Rozbor domácich úloh (latex / klientky)"] },
-    { num: "5", title: "KOREKCIA", date: "09:00 – 19:00", items: ["Stabilizácia výsledkov and prehĺbenie techniky"] },
+    { num: "5", title: "KOREKCIA", date: "09:00 – 19:00", items: ["Stabilizácia výsledkov a prehĺbenie techniky"] },
 ];
 
 import CourseBookingSection from "@/app/academia/_components/CourseBookingSection";

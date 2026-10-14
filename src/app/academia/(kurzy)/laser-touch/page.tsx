@@ -7,7 +7,7 @@ import ContactCTA from "@/app/academia/_components/ContactCTA";
 import CourseBookingSection from "@/app/academia/_components/CourseBookingSection";
 
 export const metadata: Metadata = {
-    title: "Laser Touch | Academia | Salón Viktória",
+    title: "Laser Touch | Viktorija Kendra Academia",
     description: "Individuálny kurz odstraňovania permanentného make-upu ND:YAG Q-Switch laserom – teória, bezpečnosť a prax v rukách skúsenej špecialistky.",
     alternates: { canonical: "/academia/laser-touch" },
 };
@@ -91,7 +91,7 @@ export default function Kurz6Page() {
                         </div>
                         <div className="space-y-6 font-montserrat font-light text-[#1D0E22] leading-snug text-base">
                             <p>Druhá časť kurzu prebieha priamo u vás v salóne alebo na klinike.</p>
-                            <p>Pracujeme s vaším laserom and nastavujeme vhodné parametre podľa typu zariadenia, výkonu a konkrétnych procedúr.</p>
+                            <p>Pracujeme s vaším laserom a nastavujeme vhodné parametre podľa typu zariadenia, výkonu a konkrétnych procedúr.</p>
                             <p>Nasleduje praktická časť na modelkách, kde sa špecialista zaučuje pod mojím vedením priamo v praxi.</p>
                         </div>
                     </div>
@@ -113,7 +113,7 @@ export default function Kurz6Page() {
                         <li className="flex gap-2"><span className="text-gold shrink-0">✦</span><span>individuálne vedenie počas zaučenia</span></li>
                     </ul>
                     <div className="border-l-2 border-gold/40 pl-4 italic text-[#1D0E22]/70 text-sm">
-                        <p className="font-montserrat font-light leading-relaxed">V prípade záujmu viem individuálne pomôcť aj so zabezpečením kvalitného lasera priamo od výrobcu — od komunikácie and dohodnutia podmienok až po samotný proces objednávky.</p>
+                        <p className="font-montserrat font-light leading-relaxed">V prípade záujmu viem individuálne pomôcť aj so zabezpečením kvalitného lasera priamo od výrobcu — od komunikácie a dohodnutia podmienok až po samotný proces objednávky.</p>
                     </div>
                     <div className="relative aspect-square overflow-hidden rounded-2xl border border-black/10 shadow-sm">
                         <LightboxImage src="/academia/kurz-laser/IMG_4532%201.jpg" alt="" fill className="object-cover" />

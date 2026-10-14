@@ -65,7 +65,7 @@ export async function POST(request: Request) {
                 (message ? `\nVaša správa:\n${message}\n` : "") +
                 `\nRezervácia je záväzná až po našom potvrdení.\n\n` +
                 `Tešíme sa na vás,\n` +
-                `Salón Viktória` +
+                `Viktorija Kendra` +
                 CONFIRMATION_TEXT_FOOTER;
 
             const confirmationHtml = confirmationLayout(
@@ -83,7 +83,7 @@ export async function POST(request: Request) {
                     }
                     <p>Rezervácia je záväzná až po našom potvrdení.</p>
                     <br />
-                    <p>Tešíme sa na vás,<br />Salón Viktória</p>
+                    <p>Tešíme sa na vás,<br />Viktorija Kendra</p>
                 `
             );
 

@@ -5,7 +5,7 @@ import ContactForm from "../_components/ContactForm";
 import StickyCennikButton from "../_components/StickyCennikButton";
 
 export const metadata: Metadata = {
-    title: "Odstraňovanie PMU | Salón Viktória",
+    title: "Odstraňovanie PMU Bratislava | Viktorija Kendra",
     description: "Bezpečné odstraňovanie starého alebo nepodareného permanentného make-upu pomocou laserov a removerov.",
     alternates: { canonical: "/sluzby/odstranovanie-pmu" },
 };

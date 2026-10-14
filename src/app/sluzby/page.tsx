@@ -5,7 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-    title: "Naše služby | Salón Viktória Bratislava",
+    title: "Služby – permanentný make-up a kozmetika Bratislava | Viktorija Kendra",
     description:
         "Prehľad služieb Salónu Viktória v Bratislave – permanentný make-up, laserové odstraňovanie PMU, nastreľovanie náušníc, beauty therapy a domáca starostlivosť o pleť.",
     alternates: { canonical: "/sluzby" },

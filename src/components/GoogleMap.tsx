@@ -172,7 +172,7 @@ type GoogleMapProps = {
 export default function GoogleMap({
     className = "",
     heightClassName = "h-full",
-    title = "Salón Viktória - mapa",
+    title = "Viktorija Kendra - mapa",
     extraMarkers = [],
 }: GoogleMapProps) {
     const mapRef = useRef<HTMLDivElement>(null);
@@ -228,20 +228,20 @@ export default function GoogleMap({
                 const pin = document.createElement("button");
                 pin.type = "button";
                 pin.className = "google-map-pin";
-                pin.setAttribute("aria-label", "Zobraziť informácie o Salón Viktória");
+                pin.setAttribute("aria-label", "Zobraziť informácie o Viktorija Kendra");
                 pin.innerHTML =
                     '<span class="google-map-pin__badge"></span><img class="google-map-pin__image" src="/shared/output-onlinepngtools-removebg-preview.png" alt="" />';
 
                 const primaryMarker = new AdvancedMarkerElement({
                     map,
                     position: SALON_LOCATION,
-                    title: "Salón Viktória",
+                    title: "Viktorija Kendra",
                     content: pin,
                 });
                 marker = primaryMarker;
 
                 primaryMarker.addListener("click", () => {
-                    infoWindow.setContent(makeInfoContent("Salón Viktória", "Mlynské Nivy 10, 821 09 Bratislava", "/shared/Gemini_Generated_Image_3tbp373tbp373tbp.png"));
+                    infoWindow.setContent(makeInfoContent("Viktorija Kendra", "Mlynské Nivy 10, 821 09 Bratislava", "/shared/Gemini_Generated_Image_3tbp373tbp373tbp.png"));
                     infoWindow.open({ anchor: primaryMarker, map });
                 });
 

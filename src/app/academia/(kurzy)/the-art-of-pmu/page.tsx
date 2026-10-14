@@ -5,7 +5,7 @@ import CourseProgram from "@/app/academia/_components/CourseProgram";
 import TatraBankaBanner from "@/app/academia/_components/TatraBankaBanner";
 
 export const metadata: Metadata = {
-    title: "The Art of PMU | Academia | Salón Viktória",
+    title: "The Art of PMU | Viktorija Kendra Academia",
     description: "THE ART OF PMU – profesionálny kurz permanentného make-upu pre začiatočníčky. Naučte sa púdrové obočie, očné linky a lip blush.",
     alternates: { canonical: "/academia/the-art-of-pmu" },
 };

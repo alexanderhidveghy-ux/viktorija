@@ -4,17 +4,7 @@ import { usePathname } from "next/navigation";
 import Image from "next/image";
 import GoogleMap from "@/components/GoogleMap";
 
-// Otváracie hodiny podľa pútača na prevádzke (Twin City Tower).
-// Pozor: JSON-LD v app/layout.tsx uvádza Po–Pi 09:00–18:00, čo im nezodpovedá.
-const openingHours = [
-    { day: "Po", hours: "zatvorené" },
-    { day: "Ut", hours: "8:00 – 12:00" },
-    { day: "St", hours: "10:00 – 19:00" },
-    { day: "Št", hours: "10:00 – 19:00" },
-    { day: "Pi", hours: "9:00 – 13:00" },
-    { day: "So", hours: "zatvorené" },
-    { day: "Ne", hours: "zatvorené" },
-];
+import { openingHoursForDisplay as openingHours } from "@/lib/business";
 
 function NavLink({ href, label, pathname }: { href: string; label: string; pathname: string }) {
     const isActive = pathname === href || (href.startsWith('/#') && pathname === '/');
@@ -116,7 +106,7 @@ export default function Footer() {
                     </div>
                     <div className="w-full h-full min-h-[300px] sm:min-h-full rounded-xl overflow-hidden border border-white/10 shadow-2xl">
                         <GoogleMap
-                            title="Salón Viktória - mapa vo footeri"
+                            title="Viktorija Kendra - mapa vo footeri"
                             extraMarkers={[
                                 { lat: 48.146789638941314, lng: 17.12874363688941, label: "NIVY", imageSrc: "/shared/NIVY.webp", name: "NIVY centrum", address: "Mlynské Nivy 16, 821 09 Bratislava" },
                             ]}

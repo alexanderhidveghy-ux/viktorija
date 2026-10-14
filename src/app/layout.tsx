@@ -5,6 +5,7 @@ import SmoothScroller from "@/components/SmoothScroller";
 import CookieConsent from "@/components/CookieConsent";
 import SiteBackdrop from "@/components/SiteBackdrop";
 import LightboxProvider from "@/components/lightbox/LightboxContext";
+import { ACADEMY, BRAND, GEO, INSTAGRAM, PHONE, SITE_URL, openingHoursSchema, postalAddressSchema } from "@/lib/business";
 
 const marcellus = Marcellus_SC({
   variable: "--font-marcellus",
@@ -38,7 +39,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://viktorija.sk"),
   title: "Viktorija Kendra | Permanentný make-up a kozmetika Bratislava",
   description: "Exkluzívny kozmetický salón v Bratislave. Ponúkame permanentný make-up (PMU), estetické rituály tváre, nastreľovanie náušníc a odborné kurzy v našej akadémii.",
-  keywords: ["kozmetický salón Bratislava", "permanentný make-up Bratislava", "PMU Bratislava", "estetická kozmetika", "nastreľovanie náušníc", "kurzy permanentného make-upu", "Viktorija Kendra", "Viktorija Kendra Bratislava", "Salón Viktória"],
+  keywords: ["kozmetický salón Bratislava", "permanentný make-up Bratislava", "PMU Bratislava", "estetická kozmetika", "nastreľovanie náušníc", "kurzy permanentného make-upu", "Viktorija Kendra", "Viktorija Kendra Bratislava"],
   authors: [{ name: "Viktorija Kendra" }],
   alternates: { canonical: "/" },
   openGraph: {
@@ -70,40 +71,43 @@ export const metadata: Metadata = {
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "BeautySalon",
-  "name": "Viktorija Kendra",
-  "alternateName": "Salón Viktória",
-  "image": "https://viktorija.sk/shared/IMG_1422.JPG",
-  "@id": "https://viktorija.sk",
-  "url": "https://viktorija.sk",
-  "telephone": "+421907796562",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Mlynské nivy",
-    "addressLocality": "Bratislava",
-    "postalCode": "821 09",
-    "addressCountry": "SK"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 48.1466,
-    "longitude": 17.1333
-  },
-  "openingHoursSpecification": {
-    "@type": "OpeningHoursSpecification",
-    "dayOfWeek": [
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday"
-    ],
-    "opens": "09:00",
-    "closes": "18:00"
-  },
-  "sameAs": [
-    "https://www.instagram.com/viktorija_kendra_pmu_academy/"
-  ]
+  "@graph": [
+    {
+      "@type": "BeautySalon",
+      "@id": `${SITE_URL}/#salon`,
+      "name": BRAND,
+      "url": SITE_URL,
+      "image": `${SITE_URL}/shared/IMG_1422.JPG`,
+      "telephone": PHONE,
+      "priceRange": "€€",
+      "address": postalAddressSchema,
+      "geo": { "@type": "GeoCoordinates", ...GEO },
+      "openingHoursSpecification": openingHoursSchema,
+      "areaServed": { "@type": "City", "name": "Bratislava" },
+      "founder": { "@id": `${SITE_URL}/#viktorija` },
+      "sameAs": [INSTAGRAM],
+    },
+    {
+      "@type": "Person",
+      "@id": `${SITE_URL}/#viktorija`,
+      "name": BRAND,
+      "jobTitle": "Permanent make-up artistka a lektorka PMU",
+      "url": SITE_URL,
+      "image": `${SITE_URL}/shared/IMG_1422.JPG`,
+      "worksFor": { "@id": `${SITE_URL}/#salon` },
+      "knowsAbout": ["permanentný make-up", "PMU obočia", "PMU pier", "PMU očných liniek", "odstraňovanie PMU", "estetické nastreľovanie náušníc"],
+      "sameAs": [INSTAGRAM],
+    },
+    {
+      "@type": "EducationalOrganization",
+      "@id": `${SITE_URL}/#academia`,
+      "name": ACADEMY,
+      "url": `${SITE_URL}/academia`,
+      "address": postalAddressSchema,
+      "founder": { "@id": `${SITE_URL}/#viktorija` },
+      "parentOrganization": { "@id": `${SITE_URL}/#salon` },
+    },
+  ],
 };
 
 export default function RootLayout({

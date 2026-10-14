@@ -6,7 +6,7 @@ import ContactCTA from "@/app/academia/_components/ContactCTA";
 import CourseBookingSection from "@/app/academia/_components/CourseBookingSection";
 
 export const metadata: Metadata = {
-    title: "Estetické Nastreľovanie Náušníc | Academia | Salón Viktória",
+    title: "Estetické Nastreľovanie Náušníc | Viktorija Kendra Academia",
     description: "Individuálny praktický kurz estetického nastreľovania náušníc – hygiena, anatómia a precízne umiestnenie.",
     alternates: { canonical: "/academia/esteticke-nastrelovanie-nausnic" },
 };

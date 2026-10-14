@@ -176,7 +176,7 @@ export default function KontaktPage() {
                     </div>
                     <div className="relative w-full h-full rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
                         <GoogleMap
-                            title="Salón Viktória - kontakt mapa"
+                            title="Viktorija Kendra - kontakt mapa"
                             extraMarkers={[
                                 { lat: 48.146789638941314, lng: 17.12874363688941, label: "NIVY", imageSrc: "/shared/NIVY.webp", name: "NIVY centrum", address: "Mlynské Nivy 16, 821 09 Bratislava" },
                             ]}
