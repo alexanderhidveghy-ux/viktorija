@@ -18,11 +18,12 @@ export default function PrivacyPage() {
 
                     {/* Header Info */}
                     <div className="bg-black/5 p-8 rounded-xl border border-[#1D0E22]/10 space-y-2">
-                        <p className="font-bold text-[#1D0E22] text-lg mb-4">AEB Digital s. r. o.</p>
-                        <p>IČO: 57 307 709</p>
-                        <p>Konateľ: Peter Samuel Bobák</p>
-                        <p>E-mail: <a href="mailto:peter@aebdig.com" className="text-[#1D0E22] font-semibold hover:underline">peter@aebdig.com</a></p>
-                        <p>Tel.: <a href="tel:+421908507131" className="text-[#1D0E22] font-semibold hover:underline">+421 908 507 131</a></p>
+                        <p className="font-bold text-[#1D0E22] text-lg mb-4">Viktorija Kendra</p>
+                        <p>IČO: 37 421 719</p>
+                        <p>Miesto podnikania: Plánky 390/16E, 840 02 Bratislava – Záhorská Bystrica</p>
+                        <p>Zapísaná v Živnostenskom registri Okresného úradu Bratislava, č. 105-25240</p>
+                        <p>E-mail: <a href="mailto:viktorijakendra.pmu@gmail.com" className="text-[#1D0E22] font-semibold hover:underline">viktorijakendra.pmu@gmail.com</a></p>
+                        <p>Tel.: <a href="tel:+421907796562" className="text-[#1D0E22] font-semibold hover:underline">+421 907 796 562</a></p>
                     </div>
 
                     <p>
@@ -31,7 +32,7 @@ export default function PrivacyPage() {
 
                     <section className="space-y-4">
                         <h2 className="font-marcellus text-2xl text-[#1D0E22] uppercase tracking-widest border-b border-[#1D0E22]/20 pb-2">I. Kontaktný formulár</h2>
-                        <p>Na stránke www.aebdigital.sk prevádzkujeme kontaktný formulár na dvoch samostatných stránkach, ktorého účelom je umožniť vám:</p>
+                        <p>Na stránke www.viktorija.sk prevádzkujeme kontaktné formuláre, ktorých účelom je umožniť vám:</p>
                         <ul className="list-disc pl-5 space-y-1 marker:text-[#1D0E22]">
                             <li>Položiť otázku k našim produktom a službám</li>
                             <li>Požiadať o cenovú ponuku</li>
@@ -133,10 +134,10 @@ export default function PrivacyPage() {
                         </ul>
 
                         <p className="mt-8 pt-8 border-t border-[#1D0E22]/10">
-                            V prípade otázok alebo uplatnenia Vašich práv nás môžete kontaktovať na <a href="mailto:reachout@aebdig.com" className="text-[#1D0E22] font-semibold hover:underline">reachout@aebdig.com</a> alebo telefónnom čísle <a href="tel:+421917422245" className="text-[#1D0E22] font-semibold hover:underline">+421 917 422 245</a>.
+                            V prípade otázok alebo uplatnenia Vašich práv nás môžete kontaktovať na <a href="mailto:viktorijakendra.pmu@gmail.com" className="text-[#1D0E22] font-semibold hover:underline">viktorijakendra.pmu@gmail.com</a> alebo telefónnom čísle <a href="tel:+421907796562" className="text-[#1D0E22] font-semibold hover:underline">+421 907 796 562</a>.
                         </p>
                         <p className="text-[#1D0E22]/60 text-sm">
-                            Tieto Zásady nadobúdajú účinnosť dňom 25. 4. 2025.
+                            Tieto Zásady nadobúdajú účinnosť dňom 16. 11. 2026.
                         </p>
                     </section>
                 </div>
