@@ -157,7 +157,10 @@ type ExtraMarker = {
     lat: number;
     lng: number;
     label: string;
+    /** photo in the popup (keep it small – it loads on click) */
     imageSrc?: string;
+    /** small image inside the round pin on the map */
+    pinSrc?: string;
     name?: string;
     address?: string;
 };
@@ -230,7 +233,7 @@ export default function GoogleMap({
                 pin.className = "google-map-pin";
                 pin.setAttribute("aria-label", "Zobraziť informácie o Viktorija Kendra");
                 pin.innerHTML =
-                    '<span class="google-map-pin__badge"></span><img class="google-map-pin__image" src="/shared/output-onlinepngtools-removebg-preview.png" alt="" />';
+                    '<span class="google-map-pin__badge"></span><img class="google-map-pin__image" src="/shared/logo-pin.webp" alt="" width="48" height="48" />';
 
                 const primaryMarker = new AdvancedMarkerElement({
                     map,
@@ -241,7 +244,7 @@ export default function GoogleMap({
                 marker = primaryMarker;
 
                 primaryMarker.addListener("click", () => {
-                    infoWindow.setContent(makeInfoContent("Viktorija Kendra", "Mlynské Nivy 10, 821 09 Bratislava", "/shared/Gemini_Generated_Image_3tbp373tbp373tbp.png"));
+                    infoWindow.setContent(makeInfoContent("Viktorija Kendra", "Mlynské Nivy 10, 821 09 Bratislava", "/shared/salon-popup.webp"));
                     infoWindow.open({ anchor: primaryMarker, map });
                 });
 
@@ -251,7 +254,7 @@ export default function GoogleMap({
                         const el = document.createElement("div");
                         el.className = "google-map-pin google-map-pin--extra";
                         el.setAttribute("aria-label", extra.label);
-                        el.innerHTML = `<span class="google-map-pin__badge"></span><img class="google-map-pin__image" src="${extra.imageSrc}" alt="" />`;
+                        el.innerHTML = `<span class="google-map-pin__badge"></span><img class="google-map-pin__image" src="${extra.pinSrc ?? extra.imageSrc}" alt="" />`;
                         content = el;
                     } else {
                         const pinEl = new PinElement({
@@ -287,10 +290,22 @@ export default function GoogleMap({
             }
         };
 
-        initMap();
+        // The Maps script is ~280 KB; the map sits in the footer, so load it only
+        // when it's about to scroll into view.
+        const observer = new IntersectionObserver(
+            (entries) => {
+                if (entries.some((e) => e.isIntersecting)) {
+                    observer.disconnect();
+                    initMap();
+                }
+            },
+            { rootMargin: "400px" },
+        );
+        observer.observe(mapRef.current);
 
         return () => {
             isCancelled = true;
+            observer.disconnect();
             if (marker) {
                 marker.map = null;
             }
@@ -302,7 +317,7 @@ export default function GoogleMap({
 
     return (
         <div className={`relative w-full overflow-hidden ${heightClassName} ${className}`.trim()}>
-            <div ref={mapRef} className="h-full w-full" aria-label={title} />
+            <div ref={mapRef} className="h-full w-full" role="region" aria-label={title} />
 
             <a
                 href={SALON_MAPS_URL}

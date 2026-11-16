@@ -33,6 +33,39 @@ const REVIEW_IMAGES = REVIEWS.filter(
     (r): r is { image: string; name?: string; objectPosition?: string } => "image" in r
 ).map((r) => r.image);
 
+// Muted review clip that only starts downloading when it scrolls near the
+// viewport (it sits far below the fold; the marquee also renders it twice).
+function LazyLoopVideo({ src }: { src: string }) {
+    const ref = useRef<HTMLVideoElement>(null);
+    useEffect(() => {
+        const v = ref.current;
+        if (!v) return;
+        const observer = new IntersectionObserver(
+            (entries) => {
+                if (entries.some((e) => e.isIntersecting)) {
+                    observer.disconnect();
+                    v.src = src;
+                    v.play().catch(() => {});
+                }
+            },
+            { rootMargin: "300px" },
+        );
+        observer.observe(v);
+        return () => observer.disconnect();
+    }, [src]);
+    return (
+        <video
+            ref={ref}
+            muted
+            loop
+            playsInline
+            preload="none"
+            className="absolute inset-0 w-full h-full object-cover"
+            style={{ objectPosition: "50% 40%" }}
+        />
+    );
+}
+
 function ReviewCard({ review }: { review: Review }) {
     const { open } = useLightbox();
 
@@ -78,15 +111,7 @@ function ReviewCard({ review }: { review: Review }) {
     if ("video" in review) {
         return (
             <div className="relative self-stretch w-[350px] md:w-[450px] flex-shrink-0 rounded-xl overflow-hidden border border-white/10">
-                <video
-                    src={review.video}
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    className="absolute inset-0 w-full h-full object-cover"
-                    style={{ objectPosition: "50% 40%" }}
-                />
+                <LazyLoopVideo src={review.video} />
                 {review.name && (
                     <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/45 to-transparent px-8 pb-6 pt-20">
                         <p className="font-marcellus text-white tracking-wider text-sm">

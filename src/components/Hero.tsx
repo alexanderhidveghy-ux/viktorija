@@ -127,6 +127,8 @@ export default function Hero() {
                             src="/homepage/IMG_1401.JPG"
                             alt="Studio Services Background"
                             fill
+                            priority
+                            sizes="(max-width: 1024px) 100vw, 33vw"
                             className="object-cover"
                         />
                     </div>
@@ -158,12 +160,23 @@ export default function Hero() {
                 <div className="order-1 lg:order-2 flex flex-col items-center space-y-6">
                     {/* Video */}
                     <div className="relative w-full max-w-[420px] lg:max-w-[350px] h-[70vh] md:h-auto md:aspect-[9/16] overflow-hidden shadow-2xl border border-white/20 group">
+                        {/* First frame as a real image (fast, high priority) under the video;
+                            the video itself loads only after the play button is pressed. */}
+                        <Image
+                            src="/homepage/homehero-poster.webp"
+                            alt=""
+                            fill
+                            priority
+                            fetchPriority="high"
+                            sizes="(max-width: 1024px) 420px, 350px"
+                            className="object-cover"
+                        />
                         <video
                             ref={videoRef}
-                            src="https://pub-60b685024baf4def829d5151d4dc320a.r2.dev/homehero.mp4#t=0.1"
+                            src="https://pub-60b685024baf4def829d5151d4dc320a.r2.dev/homehero.mp4"
                             loop
                             playsInline
-                            preload="metadata"
+                            preload="none"
                             onPlay={() => setIsPlaying(true)}
                             onPause={() => setIsPlaying(false)}
                             className="absolute inset-0 w-full h-full object-cover"

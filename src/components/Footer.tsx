@@ -41,13 +41,14 @@ export default function Footer() {
                                 src="/shared/output-onlinepngtools-removebg-preview.png"
                                 alt="Viktorija Kendra"
                                 fill
+                                sizes="200px"
                                 className="object-contain md:object-left"
                             />
                         </div>
 
                         {/* Navigation */}
                         <div className="order-4 space-y-6 pt-4 md:order-2">
-                            <h4 className="font-marcellus text-[#EEE3CE] tracking-[0.2em] text-sm uppercase">NAVIGÁCIA</h4>
+                            <h2 className="font-marcellus text-[#EEE3CE] tracking-[0.2em] text-sm uppercase">NAVIGÁCIA</h2>
                             <nav className="flex flex-col gap-3">
                                 <NavLink href="/" label="Domov" pathname={pathname} />
                                 <NavLink href="/sluzby/permanentny-makeup" label="Štúdio" pathname={pathname} />
@@ -58,7 +59,7 @@ export default function Footer() {
 
                         {/* Contact */}
                         <div className="order-3 space-y-6 pt-4 md:order-3">
-                            <h4 className="font-marcellus text-[#EEE3CE] tracking-[0.2em] text-sm uppercase">KONTAKT</h4>
+                            <h2 className="font-marcellus text-[#EEE3CE] tracking-[0.2em] text-sm uppercase">KONTAKT</h2>
                             <div className="font-montserrat text-[#EEE3CE] font-light text-sm space-y-3">
                                 <p className="leading-relaxed text-[#EEE3CE]">Twin City Tower<br />Mlynské Nivy 10<br />821 09 Bratislava</p>
                                 <a href="tel:+421907796562" className="block hover:text-white transition-all duration-300 text-[#EEE3CE]">+421 907 796 562</a>
@@ -68,7 +69,7 @@ export default function Footer() {
 
                         {/* Opening hours */}
                         <div className="order-2 space-y-6 pt-4 md:order-4">
-                            <h4 className="font-marcellus text-[#EEE3CE] tracking-[0.2em] text-sm uppercase">OTVÁRACIE HODINY</h4>
+                            <h2 className="font-marcellus text-[#EEE3CE] tracking-[0.2em] text-sm uppercase">OTVÁRACIE HODINY</h2>
                             <dl className="font-montserrat text-[#EEE3CE] font-light text-sm space-y-2">
                                 {openingHours.map(({ day, hours }) => (
                                     <div key={day} className="flex items-baseline justify-center gap-3 md:justify-between">
@@ -101,6 +102,7 @@ export default function Footer() {
                             src="/shared/mapa.jpeg"
                             alt="Mapa prístupu"
                             fill
+                            sizes="(max-width: 640px) 100vw, 25vw"
                             className="object-cover"
                         />
                     </div>
@@ -108,7 +110,7 @@ export default function Footer() {
                         <GoogleMap
                             title="Viktorija Kendra - mapa vo footeri"
                             extraMarkers={[
-                                { lat: 48.146789638941314, lng: 17.12874363688941, label: "NIVY", imageSrc: "/shared/NIVY.webp", name: "NIVY centrum", address: "Mlynské Nivy 16, 821 09 Bratislava" },
+                                { lat: 48.146789638941314, lng: 17.12874363688941, label: "NIVY", imageSrc: "/shared/NIVY-popup.webp", pinSrc: "/shared/NIVY-pin.webp", name: "NIVY centrum", address: "Mlynské Nivy 16, 821 09 Bratislava" },
                             ]}
                         />
                     </div>

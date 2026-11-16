@@ -74,6 +74,7 @@ export default function BlogSection() {
                                         src={post.image}
                                         alt={post.title}
                                         fill
+                                        sizes="(max-width: 768px) 100vw, 400px"
                                         className="object-cover group-hover:scale-105 transition-transform duration-500"
                                         style={{ objectPosition: post.imagePosition ?? "50% 50%" }}
                                     />

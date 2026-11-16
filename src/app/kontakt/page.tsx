@@ -178,7 +178,7 @@ export default function KontaktPage() {
                         <GoogleMap
                             title="Viktorija Kendra - kontakt mapa"
                             extraMarkers={[
-                                { lat: 48.146789638941314, lng: 17.12874363688941, label: "NIVY", imageSrc: "/shared/NIVY.webp", name: "NIVY centrum", address: "Mlynské Nivy 16, 821 09 Bratislava" },
+                                { lat: 48.146789638941314, lng: 17.12874363688941, label: "NIVY", imageSrc: "/shared/NIVY-popup.webp", pinSrc: "/shared/NIVY-pin.webp", name: "NIVY centrum", address: "Mlynské Nivy 16, 821 09 Bratislava" },
                             ]}
                         />
                     </div>
