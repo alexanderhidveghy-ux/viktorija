@@ -113,7 +113,7 @@ export default function FinancingModal({ variant = "link" }: { variant?: "link" 
 
                                         <div className="pt-4">
                                             <a
-                                                href="https://www.tatrabanka.sk/"
+                                                href="https://www.tatrabanka.sk/sk/personal/uvery/na-splatky/?utm_medium=banner&utm_campaign=naplatky2026&utm_source=viktorijakendra"
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                                 className="w-full inline-flex items-center justify-center gap-2 py-3 border border-gold/40 text-gold rounded-full text-[10px] uppercase tracking-widest hover:bg-gold hover:text-[#1D0E22] transition-all"

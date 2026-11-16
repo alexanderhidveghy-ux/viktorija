@@ -99,7 +99,7 @@ export default function Kurz7Page() {
 
 
             {/* Pricing Section */}
-            <div className="grid md:grid-cols-2 gap-6 md:max-w-[66.666%] md:mx-auto">
+            <div className="grid gap-6 md:max-w-[66.666%] md:mx-auto">
                 <div className="border border-[#1D0E22]/30 bg-[#1D0E22]/5 rounded-2xl p-8 text-center space-y-3 flex flex-col justify-center">
                     <p className="font-montserrat text-xs uppercase tracking-[0.2em] text-[#1D0E22]/50">Cena kurzu</p>
                     <p className="font-marcellus text-5xl text-[#1D0E22]">458 €</p>
