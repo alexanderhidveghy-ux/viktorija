@@ -69,10 +69,7 @@ export default function ArtOfPmuPage() {
             <div className="relative w-full aspect-[20/9] overflow-hidden rounded-2xl">
                 <video
                     src={SYSTEM_VIDEO}
-                    autoPlay
                     controls
-                    muted
-                    loop
                     playsInline
                     preload="metadata"
                     poster="/academia/kurz-art-of-pmu/main.PNG"

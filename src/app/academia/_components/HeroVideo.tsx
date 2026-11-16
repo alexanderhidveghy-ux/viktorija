@@ -27,13 +27,14 @@ export default function HeroVideo({ src }: { src: string }) {
 
     return (
         <>
+            {/* No autoplay or loop: a 6-minute video with sound used to start on its own and
+                repeat forever. It starts on the play button and stops at the end;
+                #t=0.1 shows the first frame instead of a black box. */}
             <video
                 ref={videoRef}
-                src={src}
-                autoPlay
-                loop
+                src={`${src}#t=0.1`}
                 playsInline
-                preload="auto"
+                preload="metadata"
                 onPlay={() => setIsPlaying(true)}
                 onPause={() => setIsPlaying(false)}
                 className="absolute inset-0 w-full h-full object-cover scale-[1.01]"
