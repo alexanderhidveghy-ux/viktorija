@@ -13,21 +13,22 @@ const PHOTOS = ["/academia/kurz-obocie/2.png", "/academia/kurz-obocie/3d72931a-0
 
 
 const SCHEDULE = [
-    { num: "1", title: "ONLINE ŠTART", date: "21.9.", items: ["4 online stretnutia – teória, systém práce, príprava"] },
-    { num: "2", title: "ACADEMIA – NASTAVENIE", date: "26.9. | 09:00 – 18:00", items: ["Nastavenie ruky", "Technika práce na latexe", "Demo ukážka"] },
-    { num: "3", title: "ACADEMIA – PRAX", date: "1. – 2.10. | 09:00 – 18:00", items: ["Prax na modelkách - púdrové obočie", "Hyperrealistické obočie na latexe"] },
-    { num: "4", title: "Prax na modelkách", date: "10.10. | 09:00 – 18:00", items: ["Hyperrealistické obočie"] },
-    { num: "5", title: "KOREKCIE všetkých techník", date: "10. – 11.11. | 09:00 – 18:00", items: [] },
+    { num: "1", title: "ONLINE ŠTART", date: "Týždeň 1", items: ["4 online stretnutia – teória, systém práce, príprava"] },
+    { num: "2", title: "ACADEMIA – NASTAVENIE", date: "Týždeň 2 | 09:00 – 18:00", items: ["Nastavenie ruky", "Technika práce na latexe", "Demo ukážka"] },
+    { num: "3", title: "ACADEMIA – PRAX", date: "Týždeň 3 | 09:00 – 18:00", items: ["Prax na modelkách - púdrové obočie", "Hyperrealistické obočie na latexe"] },
+    { num: "4", title: "Prax na modelkách", date: "Týždeň 4 | 09:00 – 18:00", items: ["Hyperrealistické obočie"] },
+    { num: "5", title: "KOREKCIE všetkých techník", date: "Týždeň 5 | 09:00 – 18:00", items: [] },
 ];
 
 import CourseBookingSection from "@/app/academia/_components/CourseBookingSection";
 import AnimatedSpace from "@/app/academia/_components/AnimatedSpace";
 import ContactCTA from "@/app/academia/_components/ContactCTA";
+import { INDIVIDUAL_NOTE } from "@/lib/academy-dates";
 
 export default function Kurz4Page() {
     return (
         <AnimatedSpace className="space-y-10">
-            <PhotoSection photo={PHOTOS[0]} flip={false}>
+            <PhotoSection poster="tri-techniky-obocia" flip={false}>
                 <div className="space-y-6 font-montserrat font-light text-[#1D0E22] leading-snug text-base">
                     <h1 className="font-marcellus text-3xl uppercase tracking-widest text-[#1D0E22] mb-4">
                         TRI TECHNIKY OBOČIA
@@ -123,7 +124,10 @@ export default function Kurz4Page() {
 
             {/* Program kurzu */}
             <div className="space-y-8 max-w-xl mx-auto flex flex-col items-center py-8">
-                <h2 className="font-marcellus text-2xl uppercase tracking-widest text-[#1D0E22] text-center">Program kurzu</h2>
+                <div className="space-y-1 text-center">
+                    <h2 className="font-marcellus text-2xl uppercase tracking-widest text-[#1D0E22]">Program kurzu</h2>
+                    <p className="font-montserrat text-sm text-[#1D0E22]/60">{INDIVIDUAL_NOTE}</p>
+                </div>
                 <div className="space-y-4 w-full px-4 sm:px-8">
                     {SCHEDULE.map((block) => (
                         <div key={block.num} className="flex gap-3 items-start">

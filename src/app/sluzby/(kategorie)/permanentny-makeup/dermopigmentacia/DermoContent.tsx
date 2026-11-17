@@ -2,7 +2,6 @@
 
 import PmuSubSidebar from "../../_components/PmuSubSidebar";
 import ContactForm from "../../_components/ContactForm";
-import StickyCennikButton from "../../_components/StickyCennikButton";
 import Link from "next/link";
 import LightboxImage from "@/components/LightboxImage";
 import RevealGroup from "@/components/RevealGroup";
@@ -17,7 +16,7 @@ export default function DermoContent() {
                 {/* Desktop Back Button */}
                 <Link
                     href="/sluzby/permanentny-makeup"
-                    className="hidden xl:flex items-center gap-2 text-[#1D0E22] text-sm uppercase tracking-widest font-marcellus hover:text-gold transition-colors mb-4"
+                    className="hidden xl:flex items-center gap-2 text-[#1D0E22] text-sm uppercase tracking-widest font-marcellus hover:text-[#936a82] transition-colors mb-4"
                 >
                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
                     Späť na prehľad
@@ -57,7 +56,6 @@ export default function DermoContent() {
                     </RevealGroup>
                 </div>
 
-                <StickyCennikButton />
             </div>
 
             {/* Desktop Right Sub-Sidebar */}

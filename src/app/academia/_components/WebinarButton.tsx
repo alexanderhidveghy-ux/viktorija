@@ -117,7 +117,7 @@ export default function WebinarButton() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setView("intro")}
-                className="fixed bottom-8 right-8 z-50 bg-gold text-[#1D0E22] px-8 py-4 rounded-full shadow-[0_10px_30px_rgba(238,227,206,0.35)] font-marcellus uppercase tracking-[0.2em] text-sm hover:bg-white transition-colors flex items-center gap-3 border border-white/20"
+                className="fixed bottom-24 right-4 md:right-8 z-50 bg-gold text-[#1D0E22] px-8 py-4 rounded-full shadow-[0_10px_30px_rgba(238,227,206,0.35)] font-marcellus uppercase tracking-[0.2em] text-sm hover:bg-white transition-colors flex items-center gap-3 border border-white/20"
             >
                 <span className="relative flex h-3 w-3">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#1D0E22] opacity-75" />

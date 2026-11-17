@@ -2,7 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import Image from "next/image";
-import GoogleMap from "@/components/GoogleMap";
+import GoogleMapEmbed from "@/components/GoogleMapEmbed";
 
 import { openingHoursForDisplay as openingHours } from "@/lib/business";
 
@@ -107,12 +107,7 @@ export default function Footer() {
                         />
                     </div>
                     <div className="w-full h-full min-h-[300px] sm:min-h-full rounded-xl overflow-hidden border border-white/10 shadow-2xl">
-                        <GoogleMap
-                            title="Viktorija Kendra - mapa vo footeri"
-                            extraMarkers={[
-                                { lat: 48.146789638941314, lng: 17.12874363688941, label: "NIVY", imageSrc: "/shared/NIVY-popup.webp", pinSrc: "/shared/NIVY-pin.webp", name: "NIVY centrum", address: "Mlynské Nivy 16, 821 09 Bratislava" },
-                            ]}
-                        />
+                        <GoogleMapEmbed title="Viktorija Kendra - mapa vo footeri" />
                     </div>
                 </div>
                 )}

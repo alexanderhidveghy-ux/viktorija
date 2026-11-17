@@ -6,13 +6,19 @@ export type ScheduleBlock = { num: string; title: string; date?: string | null; 
 export default function CourseProgram({
     schedule,
     heading = "Program kurzu",
+    note,
 }: {
     schedule: ScheduleBlock[];
     heading?: string;
+    /** One line under the heading, e.g. when the course starts. */
+    note?: string;
 }) {
     return (
         <>
-            <h2 className="font-marcellus text-2xl uppercase tracking-widest text-[#1D0E22]">{heading}</h2>
+            <div className="space-y-1">
+                <h2 className="font-marcellus text-2xl uppercase tracking-widest text-[#1D0E22]">{heading}</h2>
+                {note && <p className="font-montserrat text-sm text-[#1D0E22]/60">{note}</p>}
+            </div>
             <div className="space-y-4">
                 {schedule.map((block) => (
                     <div key={block.num} className="flex gap-3">

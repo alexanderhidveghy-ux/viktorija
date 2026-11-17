@@ -4,7 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useState } from "react";
 import { Loader2, CheckCircle, AlertCircle } from "lucide-react";
-import GoogleMap from "@/components/GoogleMap";
+import GoogleMapEmbed from "@/components/GoogleMapEmbed";
 import LightboxImage from "@/components/LightboxImage";
 import TurnstileWidget, { TURNSTILE_ENABLED } from "@/components/TurnstileWidget";
 import PrivacyConsentCheckbox from "@/components/PrivacyConsentCheckbox";
@@ -68,11 +68,11 @@ export default function KontaktPage() {
                         </div>
                         <div className="flex flex-col gap-1">
                             <span className="text-[#1D0E22] uppercase tracking-widest text-xs md:text-sm font-bold">Telefón</span>
-                            <a href="tel:+421907796562" className="hover:text-gold transition-colors">+421 907 796 562</a>
+                            <a href="tel:+421907796562" className="hover:text-[#936a82] transition-colors">+421 907 796 562</a>
                         </div>
                         <div className="flex flex-col gap-1">
                             <span className="text-[#1D0E22] uppercase tracking-widest text-xs md:text-sm font-bold">Email</span>
-                            <a href="mailto:viktorija@viktorija.sk" className="hover:text-gold transition-colors">viktorija@viktorija.sk</a>
+                            <a href="mailto:viktorija@viktorija.sk" className="hover:text-[#936a82] transition-colors">viktorija@viktorija.sk</a>
                         </div>
                     </div>
 
@@ -175,12 +175,7 @@ export default function KontaktPage() {
                         />
                     </div>
                     <div className="relative w-full h-full rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
-                        <GoogleMap
-                            title="Viktorija Kendra - kontakt mapa"
-                            extraMarkers={[
-                                { lat: 48.146789638941314, lng: 17.12874363688941, label: "NIVY", imageSrc: "/shared/NIVY-popup.webp", pinSrc: "/shared/NIVY-pin.webp", name: "NIVY centrum", address: "Mlynské Nivy 16, 821 09 Bratislava" },
-                            ]}
-                        />
+                        <GoogleMapEmbed title="Viktorija Kendra - kontakt mapa" />
                     </div>
                 </div>
             </div>

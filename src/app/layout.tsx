@@ -3,6 +3,7 @@ import { Marcellus_SC, Montserrat, Alex_Brush, Prociono, EB_Garamond } from "nex
 import "./globals.css";
 import SmoothScroller from "@/components/SmoothScroller";
 import CookieConsent from "@/components/CookieConsent";
+import FloatingCta from "@/components/FloatingCta";
 import SiteBackdrop from "@/components/SiteBackdrop";
 import LightboxProvider from "@/components/lightbox/LightboxContext";
 import { ACADEMY, BRAND, GEO, INSTAGRAM, PHONE, SITE_URL, openingHoursSchema, postalAddressSchema } from "@/lib/business";
@@ -136,6 +137,7 @@ export default function RootLayout({
           <LightboxProvider>
             <div className="relative z-10 min-h-screen">
               {children}
+              <FloatingCta />
             </div>
           </LightboxProvider>
         </SmoothScroller>

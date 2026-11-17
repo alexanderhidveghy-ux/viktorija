@@ -24,6 +24,7 @@ const SCHEDULE = [
 import CourseBookingSection from "@/app/academia/_components/CourseBookingSection";
 import AnimatedSpace from "@/app/academia/_components/AnimatedSpace";
 import ContactCTA from "@/app/academia/_components/ContactCTA";
+import { INDIVIDUAL_NOTE } from "@/lib/academy-dates";
 
 export default function Kurz3Page() {
     return (
@@ -31,7 +32,7 @@ export default function Kurz3Page() {
             <h1 className="sr-only">Master Class: PMU Očných Liniek</h1>
 
             {/* Section 1: Intro & Techniques */}
-            <PhotoSection photo={PHOTOS[0]} flip={false}>
+            <PhotoSection poster="pmu-ocnych-liniek" flip={false}>
                 <div className="space-y-6 font-montserrat font-light text-[#1D0E22] leading-snug text-base">
                     <h2 className="font-marcellus text-3xl uppercase tracking-widest text-[#1D0E22] mb-4">
                         MASTER CLASS — Permanentný make-up očných liniek
@@ -91,7 +92,7 @@ export default function Kurz3Page() {
 
             {/* Program kurzu */}
             <div className="max-w-3xl mx-auto px-2 md:px-0 space-y-6">
-                <CourseProgram schedule={SCHEDULE} />
+                <CourseProgram schedule={SCHEDULE} note={INDIVIDUAL_NOTE} />
 
             </div>
 

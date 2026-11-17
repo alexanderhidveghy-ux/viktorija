@@ -44,7 +44,7 @@ export default function PrivacyConsentCheckbox({
                 <Link
                     href="/osobne-udaje"
                     className={`underline underline-offset-4 transition-colors ${
-                        isDark ? "text-gold hover:text-white" : "text-[#1D0E22] hover:text-gold"
+                        isDark ? "text-gold hover:text-white" : "text-[#1D0E22] hover:text-[#936a82]"
                     }`}
                 >
                     Ochrany osobných údajov

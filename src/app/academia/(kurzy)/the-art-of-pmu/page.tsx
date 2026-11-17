@@ -20,12 +20,12 @@ const STUDENT_WORKS = [
 
 
 const SCHEDULE = [
-    { num: "1", title: "ONLINE ŠTART", date: "2. 10. 2026 | 08:00 – 10:00", items: ["úvodné stretnutie", "nastavenie programu", "organizácia výučby", "Prvý týždeň: teoretické lekcie, kreslenie a šrafovanie (face charty), kontrola domácich úloh"] },
-    { num: "2", title: "ACADEMIA – ZÁKLADY (PRÁCA SO STROJČEKOM)", date: "8. – 9. 10. 2026 | 09:00 – 18:00", items: ["zoznámenie so strojčekom", "nastavenie ruky", "šrafovanie na latexe", "základy techniky obočia"] },
-    { num: "3", title: "ACADEMIA – INTENZÍVNA PRAX", date: "14. – 16. 10. 2026 | 09:00 – 18:00", items: ["púdrové obočie", "očné linky medzi riasy", "lip blush", "demo ukážky", "práca na modelkách"] },
+    { num: "1", title: "ONLINE ŠTART", date: "Týždeň 1 | 08:00 – 10:00", items: ["úvodné stretnutie", "nastavenie programu", "organizácia výučby", "Prvý týždeň: teoretické lekcie, kreslenie a šrafovanie (face charty), kontrola domácich úloh"] },
+    { num: "2", title: "ACADEMIA – ZÁKLADY (PRÁCA SO STROJČEKOM)", date: "Týždeň 2 | 09:00 – 18:00", items: ["zoznámenie so strojčekom", "nastavenie ruky", "šrafovanie na latexe", "základy techniky obočia"] },
+    { num: "3", title: "ACADEMIA – INTENZÍVNA PRAX", date: "Týždeň 3 | 09:00 – 18:00", items: ["púdrové obočie", "očné linky medzi riasy", "lip blush", "demo ukážky", "práca na modelkách"] },
     { num: "4", title: "STÁŽ (dobrovoľná | individuálne termíny)", date: null, items: ["možnosť individuálnej stáže", "online alebo priamo v salóne", "podľa dohody"] },
-    { num: "5", title: "BONUS MODUL – Laser & remover", date: "2. 11. 2026", items: ["master class", "praktické ukážky"], bonus: true },
-    { num: "6", title: "ACADEMIA – KOREKCIA", date: "12. – 13. 11. 2026 | 08:00 – 19:00", items: ["práca na zahojenom výsledku", "pochopenie správania pigmentu v pokožke", "finálne doladenie techniky"] },
+    { num: "5", title: "BONUS MODUL – Laser & remover", date: "Týždeň 4", items: ["master class", "praktické ukážky"], bonus: true },
+    { num: "6", title: "ACADEMIA – KOREKCIA", date: "Týždeň 5 | 08:00 – 19:00", items: ["práca na zahojenom výsledku", "pochopenie správania pigmentu v pokožke", "finálne doladenie techniky"] },
 ];
 
 const DIRECTIONS = [
@@ -44,13 +44,14 @@ const DIRECTIONS = [
 import CourseBookingSection from "@/app/academia/_components/CourseBookingSection";
 import AnimatedSpace from "@/app/academia/_components/AnimatedSpace";
 import ContactCTA from "@/app/academia/_components/ContactCTA";
+import { courseBySlug } from "@/lib/academy-dates";
 
 export default function ArtOfPmuPage() {
     return (
         <AnimatedSpace className="space-y-16">
 
             {/* Section 1: Profession + photo */}
-            <PhotoSection photo={PHOTOS[0]} flip={false}>
+            <PhotoSection poster="the-art-of-pmu" flip={false}>
                 <div className="space-y-6 font-montserrat font-light text-[#1D0E22] leading-snug text-base">
                     <h1 className="font-marcellus text-3xl uppercase tracking-widest text-[#1D0E22] mb-4">Permanentný makeup ako profesia</h1>
                     <p>
@@ -72,7 +73,7 @@ export default function ArtOfPmuPage() {
                     controls
                     playsInline
                     preload="metadata"
-                    poster="/academia/kurz-art-of-pmu/main.PNG"
+                    poster="/academia/kurz-art-of-pmu/video-poster.webp"
                     className="absolute inset-0 w-full h-full object-cover"
                 />
             </div>
@@ -80,7 +81,7 @@ export default function ArtOfPmuPage() {
             {/* Section 2: Schedule + photo */}
             <PhotoSection photo={PHOTOS[1]} flip={true} contentBottomPadding="pb-0">
                 <div className="space-y-6">
-                    <CourseProgram schedule={SCHEDULE} />
+                    <CourseProgram schedule={SCHEDULE} note={`${courseBySlug("the-art-of-pmu")!.term}, program po týždňoch`} />
                 </div>
             </PhotoSection>
 

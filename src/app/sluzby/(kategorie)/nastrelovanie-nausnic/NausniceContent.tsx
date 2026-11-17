@@ -6,7 +6,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import Lightbox from "@/components/Lightbox";
 import RevealGroup from "@/components/RevealGroup";
 import ContactForm from "../_components/ContactForm";
-import StickyCennikButton from "../_components/StickyCennikButton";
 
 const HERO_VIDEOS = [
     "https://pub-60b685024baf4def829d5151d4dc320a.r2.dev/nausnice3.mp4",
@@ -409,7 +408,6 @@ export default function NausniceContent() {
                 </div>
             </div>
 
-            <StickyCennikButton />
 
             <Lightbox
                 isOpen={lightbox.isOpen}

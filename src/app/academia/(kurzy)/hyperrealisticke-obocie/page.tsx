@@ -13,19 +13,20 @@ const PHOTOS = ["/academia/kurz-hyperrealisticke-obocie/5.png", "/academia/kurz-
 
 
 const SCHEDULE = [
-    { num: "1", title: "ONLINE ŠTART", date: "20.10.", items: ["4 online stretnutia po 60 min – teória, systém práce"] },
-    { num: "2", title: "ACADEMIA – TRÉNING + PRAX", date: "4. – 6.11. | 09:00 – 18:00", items: ["Intenzívny tréning techniky", "Práca na modelkách"] },
-    { num: "3", title: "ACADEMIA – MODELKY + KOREKCIE", date: "4.12. | 09:00 – 18:00", items: ["Práca na modelkách", "Korekcie výsledkov"] },
+    { num: "1", title: "ONLINE ŠTART", date: "Týždeň 1", items: ["4 online stretnutia po 60 min – teória, systém práce"] },
+    { num: "2", title: "ACADEMIA – TRÉNING + PRAX", date: "Týždeň 2 | 09:00 – 18:00", items: ["Intenzívny tréning techniky", "Práca na modelkách"] },
+    { num: "3", title: "ACADEMIA – MODELKY + KOREKCIE", date: "Týždeň 3 | 09:00 – 18:00", items: ["Práca na modelkách", "Korekcie výsledkov"] },
 ];
 
 import CourseBookingSection from "@/app/academia/_components/CourseBookingSection";
 import AnimatedSpace from "@/app/academia/_components/AnimatedSpace";
 import ContactCTA from "@/app/academia/_components/ContactCTA";
+import { INDIVIDUAL_NOTE } from "@/lib/academy-dates";
 
 export default function Kurz5Page() {
     return (
         <AnimatedSpace className="space-y-16">
-            <PhotoSection photo={PHOTOS[0]} flip={false}>
+            <PhotoSection poster="hyperrealisticke-obocie" flip={false}>
                 <div className="space-y-6">
                     <h1 className="font-marcellus text-3xl uppercase tracking-widest text-[#1D0E22] mb-4">
                         HYPERREALISTICKÉ OBOČIE / HAIRSTROKE
@@ -73,7 +74,7 @@ export default function Kurz5Page() {
 
             <PhotoSection photo={PHOTOS[2]} flip={false}>
                 <div className="space-y-6">
-                    <CourseProgram schedule={SCHEDULE} />
+                    <CourseProgram schedule={SCHEDULE} note={INDIVIDUAL_NOTE} />
                 </div>
             </PhotoSection>
 

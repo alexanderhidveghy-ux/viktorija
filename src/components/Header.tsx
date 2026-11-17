@@ -202,7 +202,7 @@ export default function Header() {
                                                     <button
                                                         onClick={() => setOpenSection(isOpen ? null : item.label)}
                                                         aria-expanded={isOpen}
-                                                        className="flex items-center gap-2 font-marcellus uppercase tracking-widest text-3xl text-[#1D0E22] transition-colors hover:text-gold"
+                                                        className="flex items-center gap-2 font-marcellus uppercase tracking-widest text-3xl text-[#1D0E22] transition-colors hover:text-[#936a82]"
                                                     >
                                                         {item.label}
                                                         <motion.span
@@ -229,7 +229,7 @@ export default function Header() {
                                                                             key={sub.href}
                                                                             href={sub.href}
                                                                             onClick={closeMenu}
-                                                                            className="font-marcellus text-lg text-[#1D0E22]/75 text-center transition-colors hover:text-gold"
+                                                                            className="font-marcellus text-lg text-[#1D0E22]/75 text-center transition-colors hover:text-[#936a82]"
                                                                         >
                                                                             {sub.label}
                                                                         </Link>
@@ -243,7 +243,7 @@ export default function Header() {
                                                 <Link
                                                     href={item.href!}
                                                     onClick={closeMenu}
-                                                    className="relative font-marcellus uppercase tracking-widest text-3xl text-[#1D0E22] hover:text-gold transition-colors after:content-[\'\'] after:absolute after:bottom-0 after:left-0 after:h-px after:w-full after:bg-current after:origin-left after:scale-x-0 after:transition-transform after:duration-300 hover:after:scale-x-100"
+                                                    className="relative font-marcellus uppercase tracking-widest text-3xl text-[#1D0E22] hover:text-[#936a82] transition-colors after:content-[\'\'] after:absolute after:bottom-0 after:left-0 after:h-px after:w-full after:bg-current after:origin-left after:scale-x-0 after:transition-transform after:duration-300 hover:after:scale-x-100"
                                                 >
                                                     {item.label}
                                                 </Link>

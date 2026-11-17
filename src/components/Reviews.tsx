@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { useAnimationFrame } from "framer-motion";
 import Image from "next/image";
+import { Star } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import { useLightbox } from "@/components/lightbox/LightboxContext";
 
@@ -201,6 +202,49 @@ function ReviewsMarquee() {
     );
 }
 
+// Straight to "write a review" on the salon's Google profile (Salón Krásy Viktórija).
+// The QR code (public/shared/google-recenzia-qr.svg) encodes the same link – it is for
+// visitors on a computer, so on phones only the button is shown.
+const GOOGLE_REVIEW_URL = "https://g.page/r/CbRpXXpIKQzLEAE/review";
+
+function GoogleReviewCta() {
+    return (
+        <Reveal className="w-[92vw] max-w-5xl mx-auto mt-14">
+            <div className="grid overflow-hidden rounded-2xl border border-gold/30 bg-[#1D0E22] shadow-2xl md:grid-cols-[1fr_auto]">
+                <div className="p-8 md:p-12 text-center md:text-left">
+                    <p className="font-montserrat text-xs uppercase tracking-[0.25em] text-gold/60">Recenzie na Google</p>
+                    <h3 className="mt-3 font-marcellus text-2xl md:text-3xl uppercase tracking-widest text-gold">Boli ste u mňa?</h3>
+                    <p className="mt-4 max-w-xl font-montserrat font-light leading-relaxed text-white/70">
+                        Podeľte sa o svoju skúsenosť. Vaša recenzia pomôže ďalším klientkam pri rozhodovaní a mne urobí radosť.
+                    </p>
+                    <a
+                        href={GOOGLE_REVIEW_URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-7 inline-flex items-center gap-3 rounded-full bg-gold px-8 py-3.5 font-marcellus text-sm uppercase tracking-[0.2em] text-[#1D0E22] transition-colors hover:bg-white"
+                    >
+                        <Star aria-hidden="true" className="h-4 w-4" fill="currentColor" />
+                        Napísať recenziu
+                    </a>
+                </div>
+                <a
+                    href={GOOGLE_REVIEW_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Otvoriť hodnotenie na Google"
+                    className="group hidden md:flex flex-col items-center justify-center gap-4 border-l border-white/10 bg-white/[0.04] px-12 py-10"
+                >
+                    <span className="rounded-2xl bg-[#EEE3CE] p-4 shadow-xl transition-transform duration-300 group-hover:-translate-y-1">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src="/shared/google-recenzia-qr.svg" alt="QR kód – recenzia na Google" width={168} height={168} className="h-[168px] w-[168px]" loading="lazy" />
+                    </span>
+                    <span className="font-montserrat text-xs uppercase tracking-[0.2em] text-white/60">Naskenujte mobilom</span>
+                </a>
+            </div>
+        </Reveal>
+    );
+}
+
 export default function Reviews() {
     return (
         <section id="referencie" className="pt-14 pb-24 overflow-hidden">
@@ -214,6 +258,7 @@ export default function Reviews() {
             </Reveal>
 
             <ReviewsMarquee />
+            <GoogleReviewCta />
         </section>
     );
 }

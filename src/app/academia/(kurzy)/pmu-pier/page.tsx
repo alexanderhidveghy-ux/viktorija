@@ -30,6 +30,7 @@ const SCHEDULE = [
 import CourseBookingSection from "@/app/academia/_components/CourseBookingSection";
 import AnimatedSpace from "@/app/academia/_components/AnimatedSpace";
 import ContactCTA from "@/app/academia/_components/ContactCTA";
+import { INDIVIDUAL_NOTE } from "@/lib/academy-dates";
 
 export default function Kurz2Page() {
     return (
@@ -37,7 +38,7 @@ export default function Kurz2Page() {
             <h1 className="sr-only">Master Class: PMU Pier</h1>
 
             {/* Section 1: Techniques */}
-            <PhotoSection photo={PHOTOS[0]} flip={false} contentClassName="md:pl-8 md:pr-6">
+            <PhotoSection poster="pmu-pier" flip={false} contentClassName="md:pl-8 md:pr-6">
                 <div className="space-y-6">
                     <div className="space-y-1">
                         <h2 className="font-marcellus text-3xl uppercase tracking-widest text-[#1D0E22] leading-none">
@@ -115,7 +116,7 @@ export default function Kurz2Page() {
                 </div>
                 <div className="flex flex-col justify-start px-0 md:px-12 pt-6 md:pt-0 pb-10">
                     <div className="space-y-6">
-                        <CourseProgram schedule={SCHEDULE} />
+                        <CourseProgram schedule={SCHEDULE} note={INDIVIDUAL_NOTE} />
                     </div>
                 </div>
             </div>

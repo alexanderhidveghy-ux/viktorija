@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import LightboxImage from "@/components/LightboxImage";
 import RevealGroup from "@/components/RevealGroup";
 import ContactForm from "../_components/ContactForm";
-import StickyCennikButton from "../_components/StickyCennikButton";
 
 export const metadata: Metadata = {
     title: "Odstraňovanie PMU Bratislava | Viktorija Kendra",
@@ -460,7 +459,6 @@ export default function RemovalPage() {
                 </RevealGroup>
             </div>
 
-            <StickyCennikButton />
         </div>
     );
 }

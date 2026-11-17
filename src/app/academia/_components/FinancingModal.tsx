@@ -12,7 +12,7 @@ export default function FinancingModal({ variant = "link" }: { variant?: "link" 
             {variant === "link" ? (
                 <button
                     onClick={() => setIsOpen(true)}
-                    className="inline-flex items-center gap-2 text-[#1D0E22]/60 hover:text-gold transition-colors font-montserrat text-[11px] uppercase tracking-widest mt-2"
+                    className="inline-flex items-center gap-2 text-[#1D0E22]/60 hover:text-[#936a82] transition-colors font-montserrat text-[11px] uppercase tracking-widest mt-2"
                 >
                     <CreditCard size={14} className="opacity-50" />
                     Možnosť financovania

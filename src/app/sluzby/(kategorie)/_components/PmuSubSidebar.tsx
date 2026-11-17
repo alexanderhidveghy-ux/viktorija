@@ -21,7 +21,7 @@ export default function PmuSubSidebar({ variant = "both" }: { variant?: "mobile"
                 <div className="xl:hidden flex flex-col gap-2 mb-4">
                     <Link
                         href="/sluzby/permanentny-makeup"
-                        className="flex items-center gap-2 text-[#1D0E22] text-sm uppercase tracking-widest mb-2 font-marcellus hover:text-gold transition-colors"
+                        className="flex items-center gap-2 text-[#1D0E22] text-sm uppercase tracking-widest mb-2 font-marcellus hover:text-[#936a82] transition-colors"
                     >
                         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
                         Späť na prehľad
@@ -33,8 +33,8 @@ export default function PmuSubSidebar({ variant = "both" }: { variant?: "mobile"
                                 key={sub.href}
                                 href={sub.href}
                                 className={`px-4 py-2 rounded-lg border text-sm uppercase tracking-wider transition-all ${pathname === sub.href
-                                    ? "border-gold bg-gold text-[#1D0E22] font-bold"
-                                    : "border-white/20 text-white opacity-60 hover:opacity-100"
+                                    ? "border-[#1D0E22] bg-[#1D0E22] text-gold"
+                                    : "border-[#1D0E22]/25 text-[#1D0E22]/70 hover:border-[#1D0E22]/60 hover:text-[#1D0E22]"
                                     }`}
                             >
                                 {sub.label}
