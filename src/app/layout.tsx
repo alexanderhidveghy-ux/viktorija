@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://viktorija.sk"),
   title: "Viktorija Kendra | Permanentný make-up a kozmetika Bratislava",
   description: "Exkluzívny kozmetický salón v Bratislave. Ponúkame permanentný make-up (PMU), estetické rituály tváre, nastreľovanie náušníc a odborné kurzy v našej akadémii.",
-  keywords: ["kozmetický salón Bratislava", "permanentný make-up Bratislava", "PMU Bratislava", "estetická kozmetika", "nastreľovanie náušníc", "kurzy permanentného make-upu", "Viktorija Kendra", "Viktorija Kendra Bratislava"],
+  keywords: ["kozmetický salón Bratislava", "permanentný make-up Bratislava", "PMU Bratislava", "estetická kozmetika", "nastreľovanie náušníc", "kurzy permanentného make-upu", "Viktorija Kendra", "Viktorija Kendra Bratislava", "Viktoria Kendra", "Viktoria Bratislava", "salón Viktoria Bratislava", "salón krásy Viktorija"],
   authors: [{ name: "Viktorija Kendra" }],
   alternates: { canonical: "/" },
   openGraph: {
@@ -76,6 +76,8 @@ const jsonLd = {
       "@type": "BeautySalon",
       "@id": `${SITE_URL}/#salon`,
       "name": BRAND,
+      // people often type the name without the "j"
+      "alternateName": ["Viktoria Kendra", "Salón krásy Viktorija", "Salón Viktoria Bratislava"],
       "url": SITE_URL,
       "image": `${SITE_URL}/shared/IMG_1422.JPG`,
       "telephone": PHONE,
@@ -91,6 +93,7 @@ const jsonLd = {
       "@type": "Person",
       "@id": `${SITE_URL}/#viktorija`,
       "name": BRAND,
+      "alternateName": "Viktoria Kendra",
       "jobTitle": "Permanent make-up artistka a lektorka PMU",
       "url": SITE_URL,
       "image": `${SITE_URL}/shared/IMG_1422.JPG`,
@@ -102,6 +105,7 @@ const jsonLd = {
       "@type": "EducationalOrganization",
       "@id": `${SITE_URL}/#academia`,
       "name": ACADEMY,
+      "alternateName": "Viktoria Kendra Academia",
       "url": `${SITE_URL}/academia`,
       "address": postalAddressSchema,
       "founder": { "@id": `${SITE_URL}/#viktorija` },

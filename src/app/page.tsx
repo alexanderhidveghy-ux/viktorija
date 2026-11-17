@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
     title: "Viktorija Kendra | Permanentný make-up a kozmetika Bratislava",
-    description: "Profesionálny permanentný make-up, estetická kozmetika, nastreľovanie náušníc a kurzy v akadémii. Viktorija Kendra – 20+ rokov skúseností v srdci Bratislavy.",
+    description: "Profesionálny permanentný make-up, estetická kozmetika, nastreľovanie náušníc a kurzy v akadémii. Viktorija (Viktoria) Kendra – 20+ rokov skúseností v srdci Bratislavy.",
     alternates: { canonical: "/" },
 };
 
