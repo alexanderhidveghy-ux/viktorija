@@ -207,7 +207,7 @@ export default function ArtOfPmuPage() {
                         <p className="font-marcellus text-xl text-[#1D0E22]">Spolu: 117 hodín</p>
                     </div>
                 </div>
-                <div className="grid md:grid-cols-2 gap-6">
+                <div className="grid md:grid-cols-3 gap-6">
                     <div className="border border-[#1D0E22]/15 rounded-2xl p-8 text-center space-y-3 flex flex-col justify-center">
                         <p className="font-montserrat text-xs uppercase tracking-[0.2em] text-[#1D0E22]/50">Bez štartovacieho balíka</p>
                         <p className="font-marcellus text-5xl text-[#1D0E22]">2 380 €</p>
@@ -217,7 +217,7 @@ export default function ArtOfPmuPage() {
                         <p className="font-marcellus text-5xl text-[#1D0E22]">2 980 €</p>
                         <span className="inline-block font-montserrat text-[10px] uppercase tracking-widest text-[#1D0E22] border border-[#1D0E22]/30 rounded-full px-3 py-0.5">Odporúčané</span>
                     </div>
-                    <TatraBankaBanner className="md:col-span-2" />
+                    <TatraBankaBanner />
                 </div>
             </div>
 
